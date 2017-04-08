@@ -31,7 +31,7 @@ AppAsset::register($this);
     <!-- HEADER -->
     <header class="header" id="header">
         <div class="wc header-wrapper">
-            <div class="header-logo"><img src="img/logo-white.png"> </div>
+            <div class="header-logo"><img src="/template/img/logo-white.png"> </div>
             <nav class="header-menu">
                 <ul class="header-menu-list">
                     <li class="header-menu-list-li"><a href="#" class="header-menu-list-li-a">Последние достижения</a></li>

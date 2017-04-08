@@ -32,6 +32,35 @@ $(document).ready(function(){
 			p.fadeOut(function(){track.css('margin-left', '-'+ ((5-countInterests())/5)*100+'%' );});
 			$('.js-interest-selector-takeinterest[data-id="'+id+'"]').fadeIn();
 		});
+
+
+		$(document).on('click', '.js-quick-register', function(){
+			var p = $(this).parents('form.pregister-form'),
+				action = p.attr('action'),
+				email = p.find('input[name=email]'),
+				_csrf = p.find('input[name=_csrf]');
+				successUrl = p.find('input[name=successUrl]');
+
+				console.log(  email.val());
+
+				$.ajax({
+					type: 'post',
+					url: action ,
+					data: {email: email.val(), _csrf : _csrf.val()},
+					dataType : 'json',
+					success: function( data ){
+						if( data.success ){
+							console.log('123')
+							document.location.href =   successUrl.val();
+						}
+					}
+				});
+
+				return false;
+		});
+
+
+
 	/* . REGISTRATION END */
 
 

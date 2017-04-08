@@ -16,7 +16,17 @@ $config = [
         ],
         'user' => [
             'class' => 'amnah\yii2\user\components\User',
+
         ],
+
+        'view' => [
+            'theme' => [
+                'pathMap' => [
+                    '@vendor/amnah/yii2-user/views' => '@app/views/user', // example: @app/views/user/default/login.php
+                ],
+            ],
+        ],
+
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
