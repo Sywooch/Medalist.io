@@ -1,0 +1,727 @@
+FRoboto = "Roboto", sans-serif
+CRed = #ff2d0b
+CBlue = #04a9f4
+CPurple = #8a44ff
+CYell = #ffe212
+
+/*CMain = CBlue*/
+CMain = CPurple
+CAccent = CRed
+CSub = CYell
+CBlack = #31333e
+CGray = #a7a7a7
+
+border-radius(n)
+    -webkit-border-radius n
+    -moz-border-radius n
+    border-radius n
+    
+text-shadow(n)
+    -webkit-text-shadow n
+    -moz-text-shadow n
+    -ms-text-shadow n
+    -o-text-shadow n
+    text-shadow n
+
+.dib
+    display inline-block
+    *display inline 
+    zoom 1
+.dib_t
+    @extends .dib
+    vertical-align top
+.dib_m
+    @extends .dib
+    vertical-align middle
+.dib_b
+    @extends .dib
+    vertical-align bottom
+.dib_base
+    @extends .dib
+    vertical-align baseline
+.inp-border
+    border rgba(CBlack, 0.2) 1px solid   
+    box-shadow 0 0 7px rgba(CBlack, 0.1)
+    box-sizing border-box
+    padding 8px    
+/* 1280 */
+/*col dimenstions*/
+body, html
+    padding 0
+    margin 0
+    font-family FRoboto
+a 
+    color CMain    
+.wc
+    width 1163px
+    margin 0 auto
+    position relative
+    &-c 
+        text-align center
+
+#header
+    height 108px
+    background-image url(../img/h-bg-2.png)
+    background-repeat repeat-x
+    position relative
+    z-index 500
+#content 
+    position relative
+    z-index 250
+.content 
+    &-pic
+        &-chooseemail
+            background-image url(../img/pic-register-ok.png)    
+            background-repeat no-repeat
+            background-position right 70px
+
+#footer 
+    height 166px
+    background-image url(../img/f-bg-2.png)
+    background-repeat repeat-x
+    
+.header
+    &-wrapper
+        padding-top 25px
+        white-space nowrap
+    &-logo
+        @extends .dib_m
+        white-space normal
+        width 272px
+    &-menu
+        @extends .dib_base
+        white-space normal
+        width 571px
+        &-list 
+            margin 0
+            padding 0
+            &-li 
+                @extends .dib_base
+                margin-left 25px
+                &:first-child 
+                    margin-left 0
+                &-a 
+                    text-decoration none 
+                    color white 
+                    font-family FRoboto
+    &-enter
+        @extends .dib_base
+        white-space normal
+        &-link 
+            font-family FRoboto
+            color white 
+            text-decoration none 
+            position relative
+            margin-right 40px
+            &:after 
+                content " "
+                position absolute 
+                height 2px 
+                width 100%
+                background-color CSub
+                left 0
+                bottom -5px
+        &-button 
+            background-color CAccent 
+            color white
+            
+.footer 
+    &-wrapper
+        padding-top 30px
+        white-space nowrap
+    &-copy 
+        @extends .dib_base
+        width 40%
+        color white
+    &-menu 
+        @extends .dib_base
+        width 60%
+        &-list 
+            margin 0
+            padding 0
+            text-align right 
+            &-li 
+                @extends .dib_base
+                margin-left 50px
+                &-a 
+                    color white
+                    text-decoration none
+        
+
+/* container */
+.container
+    padding-top 20px 
+    padding-bottom 20px
+    background-color rgba(CMain, 0.02)
+    &-cols
+        white-space nowrap
+    &-col 
+        @extends .dib_t
+        white-space normal
+        &-1
+            width 270px
+            margin-right 50px
+        &-2
+            width 790px
+    &-menu 
+        &-list 
+            margin 0
+            padding 0
+            list-style none
+            border-radius 8px 
+            overflow hidden
+            &-li
+                background-color white
+                border-bottom 1px solid rgba(CBlack, 0.1)
+                position relative
+                &-active 
+                    background-color CSub
+            &-link 
+                display block
+                padding 25px 
+                font-size 18px 
+                color CBlack
+                text-decoration none
+                -webkit-transition all 250ms linear 
+                -o-transition all 250ms linear 
+                transition all 250ms linear 
+                &:hover 
+                    background-color rgba(CBlack, 0.03)
+            &-meta 
+                position absolute
+                right 0
+                top 0 
+                height 100%
+                &-counter 
+                    color CMain
+                    padding 25px 13px
+                &-add 
+                    display block 
+                    width 43px
+                    height 43px
+                    box-sizing border-box
+                    overflow hidden
+                    position relative
+                    border 5px rgba(CMain, 0.2) solid
+                    border-radius 22px
+                    margin 13px 11px
+                    &:hover
+                        -webkit-transform scale(1.1)
+                        -ms-transform scale(1.1)
+                        -o-transform scale(1.1)
+                        transform scale(1.1)
+                    &-plus 
+                        position absolute
+                        background-color CMain
+                        color white 
+                        font-size 28px
+                        width 100%
+                        height 100%
+                        text-align center
+                    
+                
+/* . container end */
+
+
+/* output */
+.output
+    &-header 
+        white-space nowrap
+        position relative
+        &-meta
+            position absolute
+            right 0
+            top 22px
+    &-controlls 
+        &-searchbox
+            @extends .dib_base
+            width 530px
+        &-checkbox
+            @extends .dib_base
+            margin-left 14px
+        
+/* . output end */
+
+/* dropdown select */
+.dropdown-select
+    position relative
+    &-real
+        position absolute
+        left 0
+        top 0
+        width 100%
+        height 100%
+        opacity 0
+    &-block 
+        @extends .inp-border
+        min-width 246px
+        background-color white
+        text-align left
+
+        border-radius 5px
+        min-height 33px
+        position relative
+        overflow hidden
+        &-text 
+            font-size 14px
+        &-arrow
+            position absolute
+            right  0
+            top 0
+            height 100%
+            width 45px
+            background-color CMain
+            background-position center
+            background-repeat no-repeat
+            background-image url(../img/arrow-down.png)
+            
+/* . dropdown select end*/
+
+/* searchbox */
+.searchbox
+    position relative
+    width 100%
+    &-inp
+        @extends .inp-border
+        border-radius 20px
+        outline 0
+        width 100%
+        padding 12px
+    &-icon 
+        position absolute
+        right 16px
+        top 10px
+        background-image url(../img/search-icon.png)
+        width 16px
+        height 16px
+/* . searchbox end*/
+
+/* checkbox */
+.chk
+    &-w
+        position relative
+        cursor pointer
+    &-img 
+        @extends .inp-border
+        @extends .dib_base
+        background-color white
+        position relative
+        padding 11px
+        top 3px
+        margin-right 5px
+    &-t 
+        @extends .dib_base
+    &-chk 
+        display none
+/* . checkbox end*/
+
+/* like-controll */
+.like-controll
+    white-space nowrap
+    &-plus 
+        @extends .dib_base
+        margin-right 15px
+        & span 
+            @extends .dib_base
+            background-image url(../img/like-thumbsup.png)
+            width 23px
+            height 24px
+            background-repeat no-repeat
+            margin-right 8px
+    &-minus 
+        @extends .dib_base
+        & span 
+            @extends .dib_base
+            background-image url(../img/like-thumbsdown.png)
+            width 23px
+            height 24px
+            background-repeat no-repeat
+            position relative 
+            top 12px
+            margin-right 8px
+    &-active 
+        & span 
+            background-position 0  -24px  
+/* . like-controll end*/
+
+/* comment */
+.comment-controll
+    & span 
+        @extends .dib_base
+        position relative 
+        top 5px
+        margin-right 8px
+        background-image url(../img/comments.png)
+        width 26px
+        height 25px
+        background-repeat no-repeat
+/* . comment end */
+
+/* questblock */
+.quests-list 
+    margin-top 50px
+.questblock
+    white-space nowrap
+    box-shadow 0 0 5px rgba(CBlack, 0.1)
+    margin-bottom 35px
+    position relative
+    background-color white
+    &-pic 
+        @extends .dib_t
+        width 340px
+        height 270px
+        background-position center
+        background-size cover
+    &-info 
+        @extends .dib_t
+        box-sizing border-box
+        padding 16px 26px 16px 16px
+        width 450px
+        &-title 
+            font-size 36px
+            font-weight bold
+        &-meta 
+            position relative
+            height 25px 
+            &-points 
+                position absolute
+                left 0
+                top 0
+                color CAccent
+                
+            &-lurms
+                position absolute
+                right 0
+                top 0
+                color CAccent
+                font-weight bold
+        &-info 
+            margin-bottom 10px
+            &-list 
+                @extends .dib_t
+                margin-left 0
+                padding-left 0  
+                margin-bottom 0
+                &-li 
+                    margin-bottom 15px
+                    margin-left 20px
+            &-list-2
+                @extends .dib_t
+                list-style none
+                margin-bottom 0
+                margin-left 0
+        &-controlls
+            white-space nowrap
+            &-likes 
+                @extends .dib_base
+                margin-right 65px
+            &-comments 
+                @extends .dib_base
+                margin-right 25px
+            &-button 
+                @extends .dib_base
+
+/* registration page */
+.pregister
+    position relative 
+    top -15px
+    &-button-wrapper
+        margin-top 25px
+        margin-bottom 25px
+    &-socials 
+        margin-top 55px 
+        margin-bottom 50px
+        &-icons 
+            white-space nowrap
+            &-i 
+                @extends .dib_t
+                width 26px
+                height 27px
+                background-repeat no-repeat
+                margin-left 3px
+                &-fb 
+                    background-image url(../img/ic-fb.png)
+                &-vk 
+                    background-image url(../img/ic-vk.png)
+                &-tw 
+                    background-image url(../img/ic-twitter.png)
+                &-gp 
+                    background-image url(../img/ic-google.png)
+
+    /* page with postman after email entrance */                    
+    &-checkemail
+        margin-top 50px
+        margin-bottom 50px
+    &-chooseemail
+        padding-top 150px
+    &-img 
+        &-interests
+            margin-bottom -145px
+            margin-left 835px
+        
+    &-interests
+        position relative
+        text-align center
+    &-reward
+        margin-top 35px
+    
+/* USER PANEL*/
+.userpanel
+    background-color white 
+    box-shadow 0 0 3px rgba(CBlack, 0.5)
+
+    padding-top 20px
+    padding-bottom 15px
+    margin-top -20px
+    &-user
+        
+        @extends .dib_t
+        white-space nowrap
+        width 540px
+        &-pic 
+            @extends .dib_m
+            white-space normal
+            width 100px 
+            height 100px
+            background-position center 
+            background-size cover 
+            background-repeat no-repeat
+            margin-right 34px
+        &-info 
+            @extends .dib_m
+            white-space normal
+            &-name 
+                font-size 24px 
+            &-date 
+                font-size 18px 
+                color CGray
+            
+            
+    &-info 
+        @extends .dib_t
+        width 540px
+        margin-top 15px
+        &-level
+            @extends .dib_m
+            width 70px
+            height 70px
+            box-sizing border-box
+            border 6px rgba(CAccent, 0.5) solid
+            position relative
+            overflow hidden
+            border-radius 35px
+            margin-right 30px
+            &-point 
+                position absolute
+                background-color CAccent
+                font-size 32px 
+                color white 
+                text-align center
+                width 100%
+                height 100%
+                font-weight bold
+                padding-top 9px
+        &-scale
+            @extends .dib_m
+            &-scale 
+                margin 0 !important
+                width 100% !important
+            & p 
+                margin 0
+                margin-top 10px
+                
+/* . USER PANEL END*/
+
+/* interests-selector */
+.interests
+    &-selector 
+        width 75%
+        margin 0 auto
+        margin-top 50px
+        &-selected
+            width 75%
+            margin 0 auto
+            margin-top 50px   
+        &-scale 
+            margin-top 15px 
+            margin-bottom 15px
+            &-viewport 
+                background-color rgba(CMain, 0.25)
+                width 55%
+                margin 0 auto 
+                height 12px
+                position relative
+                border-radius(10px)
+                overflow hidden
+            &-track
+                position absolute
+                left 0 
+                top 0 
+                height 12px 
+                width 100%
+                margin-left -100%
+                -webkit-transition all 400ms linear
+                -o-transition all 400ms linear
+                transition all 400ms linear
+                border-radius(10px)
+                background-color CMain
+                    
+                                 
+            
+    &-button
+        @extends .dib_base
+        background-color CSub
+        color black
+        margin-bottom 20px
+        &-selected 
+            @extends .dib_base 
+            background-color CMain
+            color white 
+            margin-bottom 20px 
+
+
+/* myrewards */
+/*list*/
+.myrewards-list 
+    padding-top 40px
+    padding-bottom 40px
+.myrewards-block
+    @extends .dib_t 
+    text-decoration none 
+    text-align center
+    margin-right 100px
+    width 190px    
+    &-text 
+        color CMain
+        margin-top 10px
+        margin-bottom 10px
+        color CBlack
+        font-weight bold 
+        font-size 16px
+
+    &-points 
+    &:nth-child(3)
+        margin-right 0
+.rewards
+    &-catalog 
+        margin-top 50px
+        background-color white 
+        box-sizing border-box 
+        padding 30px 
+        box-shadow 0 0 5px rgba(CBlack, 0.1)
+        
+        &-header 
+            position relative
+            margin-bottom 45px
+            &-text 
+                font-size 24px 
+            &-meta 
+                position absolute 
+                right 0
+                top 0
+                
+        &-block 
+            @extends .dib_t
+            margin-right 25px
+            width 160px
+            text-align center
+            margin-bottom 25px
+            &-extra 
+                background-image url(../img/reward-crown.png)
+                background-repeat no-repeat
+                background-position center
+                font-size 10px 
+                margin-bottom 10px
+                margin-top 10px
+                padding-top 10px
+                padding-bottom 4px
+                color CAccent
+            &-text 
+                font-size 16px 
+                font-weight bold
+                margin-top 10px
+                margin-bottom 5px
+            &-people 
+                color CMain
+                & span 
+                    @extends .dib_base 
+                    width 21px
+                    height 22px
+                    background-image url(../img/people.png)
+                    
+            &:nth-child(4n)
+                margin-right 0
+/* myrewards */
+
+ 
+            
+/*system */
+.c
+    &=analytics 
+        color CAccent
+
+.mdlst
+    &-h2
+        font-size 44px 
+        text-transform uppercase 
+        color CAccent
+    &-h2t
+        font-size 44px 
+ 
+        color CBlack
+    &-h3
+        font-size 18px
+        color CBlack
+        font-weight normal
+    &-accent 
+        color CMain
+        
+    &-button
+        font-size 14px 
+        border-radius 30px 
+        padding 9px 30px
+        text-decoration none 
+        border none
+        outline 0
+        cursor pointer
+        &-default 
+            background-color CMain
+            color white
+            padding 13px 30px
+        &-accent 
+            @extends .dib_base
+            margin-top 37px
+            margin-bottom 50px
+            background-color CAccent
+            color white             
+        &-closer 
+            @extends .dib_base
+            width 17px 
+            height 17px 
+            background-image url(../img/closer.png)
+            margin-bottom -4px
+            margin-left 5px 
+        
+    &-input
+        border none 
+        outline 0
+        border-bottom 2px CMain solid 
+        padding 10px 20px 
+        font-size 18px
+        text-align center
+        
+    &-hr 
+        background-image url(../img/hr.png)
+        width 75%
+        height 10px 
+        margin 0 auto 
+        margin-top 15px 
+        margin-bottom 15px
+        &-w 
+            width 100%
+        
+        
+        
+        
+            
+            
