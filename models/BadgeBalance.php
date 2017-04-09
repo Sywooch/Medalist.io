@@ -50,6 +50,13 @@ class BadgeBalance extends \yii\db\ActiveRecord
         ];
     }
 
+    public function getScalePoints(){
+        return ScalePointsBalance::find()->where(['user_id' => $this->user_id, 'attached_entity_class' => 'Badge', 'attached_entity_id' => $this->badge_id])->one();
+    }
+    public function getBadge(){
+        return Badge::findOne($this->badge_id);
+    }
+
     /**
      * @inheritdoc
      * @return BadgeBalanceQuery the active query used by this AR class.

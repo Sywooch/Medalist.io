@@ -33,6 +33,8 @@ $this->title = Yii::t('user', $success ? 'Confirmed' : 'Error');
 
 <?php endif; ?>
 
+
+<?php if(false) { ?>
 <div class="user-default-confirm">
 
     <?php if ($success): ?>
@@ -65,3 +67,4 @@ $this->title = Yii::t('user', $success ? 'Confirmed' : 'Error');
     <?php endif; ?>
 
 </div>
+<? } ?>

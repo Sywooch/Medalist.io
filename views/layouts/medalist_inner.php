@@ -40,8 +40,12 @@ AppAsset::register($this);
                 </ul>
             </nav>
             <div class="header-enter">
-                <a class="header-enter-link" href="#">Регистрация</a>
-                <a class="header-enter-button mdlst-button" href="#">Войти</a>
+            <?php if( Yii::$app->user->isGuest ) {  ?>
+                <a class="header-enter-link" href="<?=Yii::$app->urlManager->createUrl('user/register')?>">Регистрация</a>
+                <a class="header-enter-button mdlst-button" href="<?=Yii::$app->urlManager->createUrl('user/login')?>">Войти</a>
+                <?php }else{ ?>
+                <a class="header-enter-link" href="<?=Yii::$app->urlManager->createUrl('user/logout')?>">Выход</a>
+                <? } ?>
             </div>
         </div>
 

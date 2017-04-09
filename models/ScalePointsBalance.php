@@ -55,6 +55,20 @@ class ScalePointsBalance extends \yii\db\ActiveRecord
         ];
     }
 
+
+    public function getScale(){
+        return Scale::findOne( $this->scale_id );
+    }
+
+
+    public static function getUserPointsSum( $user_id, $scale = false ){
+        $scalePoints = self::find()->where('user_id = '.$user_id)->all();
+        $total = 0;
+        foreach ($scalePoints as $scalePoint) {
+            $total += $scalePoint->points;
+        }
+        return $total;
+    }
     /**
      * @inheritdoc
      * @return ScalePointsBalanceQuery the active query used by this AR class.
