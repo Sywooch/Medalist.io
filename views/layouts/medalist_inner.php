@@ -48,7 +48,7 @@ AppAsset::register($this);
     </header>
     <!-- .HEADER END -->
 
-    <div id="content" class="content">
+    <div id="content" class="content  <?php if( !empty($this->params['wrapperExtraClass']) ) { echo $this->params['wrapperExtraClass']; } ?>">
         <?= $content ?>
     </div>
     <footer id="footer" class="footer">

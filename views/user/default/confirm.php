@@ -10,6 +10,29 @@ use yii\helpers\Html;
 
 $this->title = Yii::t('user', $success ? 'Confirmed' : 'Error');
 ?>
+<?php if ($success || !Yii::$app->user->isGuest ): ?>
+<!-- REGISTRATION -->
+        <div class="pregister pregister-chooseemail">
+            <div class="wc wc-c">
+                <h2 class="mdlst-h2">Email подтвержден</h2>
+                <h3 class="mdlst-h3">Придумайте пароль для учетной записи Medalist</h3>
+                <form action="<?=Yii::$app->urlManager->createUrl('user/ajax-change-password')?>" class="pregister-form">
+                    <input type="password" class="mdlst-input" placeholder="" name="password">
+                    <input type="hidden" value="<?=Yii::$app->request->getCsrfToken()?>" placeholder="email" name="_csrf">
+                    <input type="hidden" value="<?=Yii::$app->urlManager->createUrl('user/interests')?>" placeholder="email" name="successUrl">
+                    <div class="pregister-button-wrapper"><button class="mdlst-button mdlst-button-default js-set-password">Сохранить и войти в Medalist</button></div>
+                    
+                     
+                </form>
+            </div>
+        </div>
+        <!-- .REGISTRATION END-->
+<?php else: ?>
+
+    <div class="alert alert-danger"><?= Yii::t("user", "Invalid token") ?></div>
+
+<?php endif; ?>
+
 <div class="user-default-confirm">
 
     <?php if ($success): ?>
