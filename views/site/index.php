@@ -1,8 +1,7 @@
 <?php
 
 /* @var $this yii\web\View */
-var_dump($interests);
-var_dump($interests2);
+ 
 $this->title = 'My Yii Application';
 ?>
 <div class="site-index">

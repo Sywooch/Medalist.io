@@ -64,20 +64,9 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $q = Quest::findOne(1);
-        $c = Category::findOne(1);
-     
-        $interests = $q->getInterests()->all();
-        $interests2 =  $c->getInterests()->all();
+   
       
-
-        $mail = Yii::$app->mailer->compose()->setFrom('from@domain.com')
-    ->setTo('to@domain.com')
-    ->setSubject('Тема сообщения')
-    ->setTextBody('Текст сообщения')
-    ->setHtmlBody('<b>текст сообщения в формате HTML</b>')
-    ->send();
-        return $this->render('index', ['interests' => $interests, 'interests2' => $interests2 ]);
+        return $this->render('index', ['interests' => '', 'interests2' => '']);
     }
 
     /**
