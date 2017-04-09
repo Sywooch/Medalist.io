@@ -34,6 +34,26 @@ $(document).ready(function(){
  
 				}
 			})
+		};
+
+
+		var checkIfInterestCompleted = function(){
+			var count = $('.interests-button-selected').length,
+				needed = interestForReward;
+
+				return (count >= needed);
+		}
+
+		var curtainReward = function(){
+			if( checkIfInterestCompleted() ){
+				//Showing Reward
+				$('.h-interests-before-reward').stop().slideUp();
+				$('.h-interests-after-reward').stop().slideDown();
+			}else{
+				//Showing Back
+				$('.h-interests-before-reward').stop().slideDown();
+				$('.h-interests-after-reward').stop().slideUp();
+			}
 		}
 
 		$(document).on('click', '.js-interest-selector-takeinterest', function(){
@@ -59,6 +79,7 @@ $(document).ready(function(){
 				$(this).data('childloaded', true);
 			}
 			$(this).fadeOut();
+			curtainReward();
 			 
 
 		});
@@ -70,11 +91,12 @@ $(document).ready(function(){
 
 			console.log(' removing id ' + id );
 					 
-			p.fadeOut(function(){track.css('margin-left', '-'+ ((interestForReward-countInterests())/interestForReward)*100+'%' ); p.remove();});
+			p.fadeOut(function(){track.css('margin-left', '-'+ ((interestForReward-countInterests())/interestForReward)*100+'%' ); p.remove(); curtainReward();});
 			$('.js-interest-selector-takeinterest').filter(function(){ return $(this).data("id") == id  }).fadeIn();
 			 
 			console.log($('.js-interest-selector-takeinterest[data-id="'+id+'"]').length);
 			console.log('.js-interest-selector-takeinterest[data-id="'+id+'"]');
+			
 		});
 
 
