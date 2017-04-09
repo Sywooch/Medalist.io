@@ -14,8 +14,9 @@ use yii\helpers\Html;
 <!-- REGISTRATION -->
             <div class="pregister-interests">
                 <div class="wc wc-c">
+                <form action="<?=Yii::$app->urlManager->createUrl('user/ajax-save-interests')?>" class="pregister-form">
                     <input type="hidden" name="childInterestsUrl" value="<?=Yii::$app->urlManager->createUrl('user/ajax-more-interests')?>">
-
+                    <input type="hidden" value="<?=Yii::$app->request->getCsrfToken()?>" placeholder="email" name="_csrf">
                     <div class="pregister-img-interests"><img src="/template/img/interests-hello.png" alt=""></div>
                     <div class="h-interests-before-reward">
                         <h2 class="mdlst-h2">Выберите 7 наиболее<br>интересных вещей для вас</h2>
@@ -43,7 +44,8 @@ use yii\helpers\Html;
                             <div class="interests-selector-scale-track"></div>
                         </div>
                      </div>
-                     <a href="#" class="mdlst-button mdlst-button-accent">Перейти в личный кабинет</a>
+                     <a href="#" class="mdlst-button mdlst-button-accent js-register-save-interests">Перейти в личный кабинет</a>
+                     </form>
                 </div>
             </div>
  

@@ -164,6 +164,41 @@ $(document).ready(function(){
 				return false;
 		});
 
+		/* Изменение пароля */
+		$(document).on('click', '.js-register-save-interests', function(){
+			var p = $(this).parents('form.pregister-form'),
+				action = p.attr('action'),
+				_csrf = p.find('input[name=_csrf]'),
+				interests = [];
+
+				$('.interests-button-selected').each(function(i,e){
+ 					interests[interests.length] = $(e).data('id');
+				});
+
+				console.log( interests );
+
+			 
+				
+
+				
+				$.ajax({
+					type: 'post',
+					url: action ,
+					data: {interests: interests, _csrf : _csrf.val()},
+					dataType : 'json',
+					success: function( data ){
+						console.log(data);
+					 
+						if( data.success ){
+							 
+							document.location.href =   data.returnUrl;
+						}
+					}
+				});
+
+				return false;
+		});
+
 
 
 	/* . REGISTRATION END */
