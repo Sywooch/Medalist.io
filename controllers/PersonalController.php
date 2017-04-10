@@ -8,6 +8,7 @@ use app\models\BadgeCategory;
 use app\models\BadgeGroup;
 use app\models\ScalePointsBalance;
 use app\models\Badge;
+use app\models\Quest;
 use Yii;
 
 class PersonalController extends \yii\web\Controller
@@ -43,7 +44,13 @@ class PersonalController extends \yii\web\Controller
 
     public function actionQuests()
     {
-        return $this->render('quests');
+
+        //Todo подбор интересных квестов
+
+
+        $quests = Quest::find()->all();
+
+        return $this->render('quests', ['quests' => $quests]);
     }
 
     public function actionRewards()

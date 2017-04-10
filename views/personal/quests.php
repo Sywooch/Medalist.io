@@ -47,9 +47,10 @@ echo $this->render('_panel.php');
 								
 							</div>
 							<div class="quests-list">
+								<?php foreach( $quests as $q ) { ?>
 								<!-- QUEST -->
 								<div class="questblock">
-									<div class="questblock-pic" style="background-image: url(/template/img/_quest.jpg)">
+									<div class="questblock-pic" style="background-image: url(<?=$q->picture?>)">
 										<div class="questblock-pic-tag">музыка</div>
 									</div>
 									<div class="questblock-info">
@@ -57,11 +58,11 @@ echo $this->render('_panel.php');
 											<div class="questblock-info-meta-points">+7 к музыкальности</div>
 											<div class="questblock-info-meta-lurms">+2</div>
 										</div>
-										<div class="questblock-info-title">Сходить на рейв</div>
+										<div class="questblock-info-title"><?=$q->name?></div>
 										<div class="questblock-info-info">
 											<ul class="questblock-info-info-list">
 												<li class="questblock-info-info-list-li">Участвует: <b>любой</b></li>
-												<li class="questblock-info-info-list-li">Дедлай: <b>28.05.2017</b></li>
+												<li class="questblock-info-info-list-li">Дедлай: <b><?=$q->deadline_period?></b></li>
 												<li class="questblock-info-info-list-li">Даты старта: <b>нет</b></li>
 											</ul>
 											<ul class="questblock-info-info-list-2">
@@ -81,132 +82,15 @@ echo $this->render('_panel.php');
 												<div class="comment-controll"><span></span>94</div>
 											</div>
 											<div class="questblock-info-controlls-button">
-												<a href="#" class="mdlst-button mdlst-button-default">Взять квест</a>
+												<a href="#" class="mdlst-button mdlst-button-default js-quest-takequest" data-id="<?=$q->quest_id?>">Взять квест</a>
 											</div>
 										</div>
 									</div>
 								</div>
 								<!-- QUEST END . -->
-								<!-- QUEST -->
-								<div class="questblock">
-									<div class="questblock-pic" style="background-image: url(/template/img/_quest.jpg)">
-										<div class="questblock-pic-tag">музыка</div>
-									</div>
-									<div class="questblock-info">
-										<div class="questblock-info-meta">
-											<div class="questblock-info-meta-points">+7 к музыкальности</div>
-											<div class="questblock-info-meta-lurms">+2</div>
-										</div>
-										<div class="questblock-info-title">Сходить на рейв</div>
-										<div class="questblock-info-info">
-											<ul class="questblock-info-info-list">
-												<li class="questblock-info-info-list-li">Участвует: <b>любой</b></li>
-												<li class="questblock-info-info-list-li">Дедлай: <b>28.05.2017</b></li>
-												<li class="questblock-info-info-list-li">Даты старта: <b>нет</b></li>
-											</ul>
-											<ul class="questblock-info-info-list-2">
-												<li class="questblock-info-info-list-li"><span class="mdlst-accent">Награда: Ночной житель</span></li>
-												<li class="questblock-info-info-list-li"><span class="mdlst-accent">Выполнили: 13 466</span></li>
-												<li class="questblock-info-info-list-li">Провалили: 241</li>
-											</ul>
-										</div>
-										<div class="questblock-info-controlls">
-											<div class="questblock-info-controlls-likes">
-												<div class="like-controll">
-													<div class="like-controll-plus like-controll-active"><span></span>25</div>
-													<div class="like-controll-minus"><span></span>12</div>
-												</div>
-											</div>
-											<div class="questblock-info-controlls-comments">
-												<div class="comment-controll"><span></span>94</div>
-											</div>
-											<div class="questblock-info-controlls-button">
-												<a href="#" class="mdlst-button mdlst-button-default">Взять квест</a>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- QUEST END . -->
-								<!-- QUEST -->
-								<div class="questblock">
-									<div class="questblock-pic" style="background-image: url(/template/img/_quest.jpg)">
-										<div class="questblock-pic-tag">музыка</div>
-									</div>
-									<div class="questblock-info">
-										<div class="questblock-info-meta">
-											<div class="questblock-info-meta-points">+7 к музыкальности</div>
-											<div class="questblock-info-meta-lurms">+2</div>
-										</div>
-										<div class="questblock-info-title">Сходить на рейв</div>
-										<div class="questblock-info-info">
-											<ul class="questblock-info-info-list">
-												<li class="questblock-info-info-list-li">Участвует: <b>любой</b></li>
-												<li class="questblock-info-info-list-li">Дедлай: <b>28.05.2017</b></li>
-												<li class="questblock-info-info-list-li">Даты старта: <b>нет</b></li>
-											</ul>
-											<ul class="questblock-info-info-list-2">
-												<li class="questblock-info-info-list-li"><span class="mdlst-accent">Награда: Ночной житель</span></li>
-												<li class="questblock-info-info-list-li"><span class="mdlst-accent">Выполнили: 13 466</span></li>
-												<li class="questblock-info-info-list-li">Провалили: 241</li>
-											</ul>
-										</div>
-										<div class="questblock-info-controlls">
-											<div class="questblock-info-controlls-likes">
-												<div class="like-controll">
-													<div class="like-controll-plus like-controll-active"><span></span>25</div>
-													<div class="like-controll-minus"><span></span>12</div>
-												</div>
-											</div>
-											<div class="questblock-info-controlls-comments">
-												<div class="comment-controll"><span></span>94</div>
-											</div>
-											<div class="questblock-info-controlls-button">
-												<a href="#" class="mdlst-button mdlst-button-default">Взять квест</a>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- QUEST END . -->
-								<!-- QUEST -->
-								<div class="questblock">
-									<div class="questblock-pic" style="background-image: url(/template/img/_quest.jpg)">
-										<div class="questblock-pic-tag">музыка</div>
-									</div>
-									<div class="questblock-info">
-										<div class="questblock-info-meta">
-											<div class="questblock-info-meta-points">+7 к музыкальности</div>
-											<div class="questblock-info-meta-lurms">+2</div>
-										</div>
-										<div class="questblock-info-title">Сходить на рейв</div>
-										<div class="questblock-info-info">
-											<ul class="questblock-info-info-list">
-												<li class="questblock-info-info-list-li">Участвует: <b>любой</b></li>
-												<li class="questblock-info-info-list-li">Дедлай: <b>28.05.2017</b></li>
-												<li class="questblock-info-info-list-li">Даты старта: <b>нет</b></li>
-											</ul>
-											<ul class="questblock-info-info-list-2">
-												<li class="questblock-info-info-list-li"><span class="mdlst-accent">Награда: Ночной житель</span></li>
-												<li class="questblock-info-info-list-li"><span class="mdlst-accent">Выполнили: 13 466</span></li>
-												<li class="questblock-info-info-list-li">Провалили: 241</li>
-											</ul>
-										</div>
-										<div class="questblock-info-controlls">
-											<div class="questblock-info-controlls-likes">
-												<div class="like-controll">
-													<div class="like-controll-plus like-controll-active"><span></span>25</div>
-													<div class="like-controll-minus"><span></span>12</div>
-												</div>
-											</div>
-											<div class="questblock-info-controlls-comments">
-												<div class="comment-controll"><span></span>94</div>
-											</div>
-											<div class="questblock-info-controlls-button">
-												<a href="#" class="mdlst-button mdlst-button-default">Взять квест</a>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- QUEST END . -->
+
+								<?php  } ?>
+								 
 							</div>
 
 						</div>
