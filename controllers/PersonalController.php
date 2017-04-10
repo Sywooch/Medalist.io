@@ -5,6 +5,7 @@ namespace app\controllers;
 
 use app\models\BadgeBalance;
 use app\models\BadgeCategory;
+use app\models\BadgeGroup;
 use app\models\ScalePointsBalance;
 use app\models\Badge;
 use Yii;
@@ -57,7 +58,10 @@ class PersonalController extends \yii\web\Controller
 
         }
 
-        return $this->render('rewards', ['badges' => $badges]);
+        $badgeGroups = BadgeGroup::find()->all();
+        $badgeTotal = Badge::find()->all();
+
+        return $this->render('rewards', ['badges' => $badges, 'badgeGroups' => $badgeGroups, 'badgeTotal' => $badgeTotal]);
     }
 
     public function actionSettings()

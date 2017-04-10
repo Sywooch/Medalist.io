@@ -110,4 +110,25 @@ class Badge extends \yii\db\ActiveRecord
  
 
     }
+
+
+    /**
+    * Сколько какой шкалы даётся за получение бейджа
+    */
+    public function getBadgeScalePoints(){
+        $q = new Query();
+        $row = $q->select(['scale_id', 'points'])->from('badge_scale_points')->where('badge_id = '.$this->badge_id)->one();
+
+        return   array('points' => $row['points'], 'scale_id' => $row['scale_id'], 'scale' => Scale::findOne($row['scale_id']));
+    }
+
+    /**
+    * Сколько человек получили этот бейдж
+    */
+    public function getAchievedUserCount(){
+        $q = new Query();
+        $row = $q->select(['count(*)'])->from('badge_balance')->where('badge_id = '.$this->badge_id)->one();
+        return $row['count(*)'];
+    }
+
 }

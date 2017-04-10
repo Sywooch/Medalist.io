@@ -49,15 +49,18 @@ echo $this->render('_panel.php');
 										</div>
 										<div class="rewards-catalog-header-meta">
 													
+
+
 											<div class="dropdown-select">
 												<div class="dropdown-select-block">
-													<div class="dropdown-select-block-text">Политика</div>
+													<div class="dropdown-select-block-text"><?=$badgeGroups[0]->name?></div>
 													<div class="dropdown-select-block-arrow"></div>
 												</div>
+
 												<select name="" id="" class="dropdown-select-real">
-													<option value="">Политика</option>
-													<option value="">Спорт</option>
-													<option value="">Природа</option>
+												<?php foreach( $badgeGroups as $bg ) { ?>
+													<option value="<?=$bg->badge_group_id?>"><?=$bg->name?></option>
+												<?php } ?> 
 												</select>
 											</div>
 
@@ -67,78 +70,21 @@ echo $this->render('_panel.php');
 									</div>
 
 									<div class="rewards-catalog-list">
+
+
+									<?php foreach( $badgeTotal as $badge ) {
+											$scale = $badge->getBadgeScalePoints();
+										 ?>
 										<!-- reward catalog block -->
 										<div class="rewards-catalog-block">
-											<div class="rewards-catalog-block-extra">+10</div>
-											<div class="rewards-catalog-block-pic"><img src="/template/img/_reward-small.png" alt=""></div>
-											<div class="rewards-catalog-block-text">Доброе сердце</div>
-											<div class="rewards-catalog-block-people"><span></span> 185</div>
+											<div class="rewards-catalog-block-extra" title="<?=$scale['scale']->name?>">+<?=$scale['points']?></div>
+											<div class="rewards-catalog-block-pic"><img src="<?=$badge->picture?>" alt="" style="max-width: 100%"></div>
+											<div class="rewards-catalog-block-text"><?=$badge->name?></div>
+											<div class="rewards-catalog-block-people"><span></span> <?=$badge->getAchievedUserCount();?></div>
 										</div>
 										<!-- . reward catalog block -->
-										<!-- reward catalog block -->
-										<div class="rewards-catalog-block">
-											<div class="rewards-catalog-block-extra">+10</div>
-											<div class="rewards-catalog-block-pic"><img src="/template/img/_reward-small.png" alt=""></div>
-											<div class="rewards-catalog-block-text">Доброе сердце</div>
-											<div class="rewards-catalog-block-people"><span></span> 185</div>
-										</div>
-										<!-- . reward catalog block -->
-										<!-- reward catalog block -->
-										<div class="rewards-catalog-block">
-											<div class="rewards-catalog-block-extra">+10</div>
-											<div class="rewards-catalog-block-pic"><img src="/template/img/_reward-small.png" alt=""></div>
-											<div class="rewards-catalog-block-text">Доброе сердце</div>
-											<div class="rewards-catalog-block-people"><span></span> 185</div>
-										</div>
-										<!-- . reward catalog block -->
-										<!-- reward catalog block -->
-										<div class="rewards-catalog-block">
-											<div class="rewards-catalog-block-extra">+10</div>
-											<div class="rewards-catalog-block-pic"><img src="/template/img/_reward-small.png" alt=""></div>
-											<div class="rewards-catalog-block-text">Доброе сердце</div>
-											<div class="rewards-catalog-block-people"><span></span> 185</div>
-										</div>
-										<!-- . reward catalog block -->
-										<!-- reward catalog block -->
-										<div class="rewards-catalog-block">
-											<div class="rewards-catalog-block-extra">+10</div>
-											<div class="rewards-catalog-block-pic"><img src="/template/img/_reward-small.png" alt=""></div>
-											<div class="rewards-catalog-block-text">Доброе сердце</div>
-											<div class="rewards-catalog-block-people"><span></span> 185</div>
-										</div>
-										<!-- . reward catalog block -->
-										<!-- reward catalog block -->
-										<div class="rewards-catalog-block">
-											<div class="rewards-catalog-block-extra">+10</div>
-											<div class="rewards-catalog-block-pic"><img src="/template/img/_reward-small.png" alt=""></div>
-											<div class="rewards-catalog-block-text">Доброе сердце</div>
-											<div class="rewards-catalog-block-people"><span></span> 185</div>
-										</div>
-										<!-- . reward catalog block -->
-										<!-- reward catalog block -->
-										<div class="rewards-catalog-block">
-											<div class="rewards-catalog-block-extra">+10</div>
-											<div class="rewards-catalog-block-pic"><img src="/template/img/_reward-small.png" alt=""></div>
-											<div class="rewards-catalog-block-text">Доброе сердце</div>
-											<div class="rewards-catalog-block-people"><span></span> 185</div>
-										</div>
-										<!-- . reward catalog block -->
-										<!-- reward catalog block -->
-										<div class="rewards-catalog-block">
-											<div class="rewards-catalog-block-extra">+10</div>
-											<div class="rewards-catalog-block-pic"><img src="/template/img/_reward-small.png" alt=""></div>
-											<div class="rewards-catalog-block-text">Доброе сердце</div>
-											<div class="rewards-catalog-block-people"><span></span> 185</div>
-										</div>
-										<!-- . reward catalog block -->
-										<!-- reward catalog block -->
-										<div class="rewards-catalog-block">
-											<div class="rewards-catalog-block-extra">+10</div>
-											<div class="rewards-catalog-block-pic"><img src="/template/img/_reward-small.png" alt=""></div>
-											<div class="rewards-catalog-block-text">Доброе сердце</div>
-											<div class="rewards-catalog-block-people"><span></span> 185</div>
-										</div>
-										<!-- . reward catalog block -->
+									<? } ?>
+										 
 									</div>
 
 								</div>

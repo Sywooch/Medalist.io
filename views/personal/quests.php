@@ -49,7 +49,7 @@ echo $this->render('_panel.php');
 							<div class="quests-list">
 								<!-- QUEST -->
 								<div class="questblock">
-									<div class="questblock-pic" style="background-image: url(img/_quest.jpg)">
+									<div class="questblock-pic" style="background-image: url(/template/img/_quest.jpg)">
 										<div class="questblock-pic-tag">музыка</div>
 									</div>
 									<div class="questblock-info">
@@ -89,7 +89,7 @@ echo $this->render('_panel.php');
 								<!-- QUEST END . -->
 								<!-- QUEST -->
 								<div class="questblock">
-									<div class="questblock-pic" style="background-image: url(img/_quest.jpg)">
+									<div class="questblock-pic" style="background-image: url(/template/img/_quest.jpg)">
 										<div class="questblock-pic-tag">музыка</div>
 									</div>
 									<div class="questblock-info">
@@ -129,7 +129,7 @@ echo $this->render('_panel.php');
 								<!-- QUEST END . -->
 								<!-- QUEST -->
 								<div class="questblock">
-									<div class="questblock-pic" style="background-image: url(img/_quest.jpg)">
+									<div class="questblock-pic" style="background-image: url(/template/img/_quest.jpg)">
 										<div class="questblock-pic-tag">музыка</div>
 									</div>
 									<div class="questblock-info">
@@ -169,7 +169,7 @@ echo $this->render('_panel.php');
 								<!-- QUEST END . -->
 								<!-- QUEST -->
 								<div class="questblock">
-									<div class="questblock-pic" style="background-image: url(img/_quest.jpg)">
+									<div class="questblock-pic" style="background-image: url(/template/img/_quest.jpg)">
 										<div class="questblock-pic-tag">музыка</div>
 									</div>
 									<div class="questblock-info">
