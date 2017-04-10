@@ -45,6 +45,7 @@ AppAsset::register($this);
                 <a class="header-enter-button mdlst-button" href="<?=Yii::$app->urlManager->createUrl('user/login')?>">Войти</a>
                 <?php }else{ ?>
                 <a class="header-enter-link" href="<?=Yii::$app->urlManager->createUrl('user/logout')?>">Выход</a>
+                <a class="header-enter-button mdlst-button" href="<?=Yii::$app->urlManager->createUrl('personal/rewards')?>">Ваш профиль</a>
                 <? } ?>
             </div>
         </div>
