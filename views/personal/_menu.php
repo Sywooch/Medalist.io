@@ -17,18 +17,24 @@
 									<li class="container-menu-list-li">
 										<a class="container-menu-list-link" href="<?=Yii::$app->urlManager->createUrl('personal/profile')?>">Моя страница</a>
 										<div class="container-menu-list-meta">
+										
+										</div>
+									</li>
+									<li class="container-menu-list-li">
+										<a class="container-menu-list-link" href="<?=Yii::$app->urlManager->createUrl('personal/achievements')?>">Достижения</a>
+										<div class="container-menu-list-meta">
 											<a class="container-menu-list-meta-add" href="#">
 												<span class="container-menu-list-meta-add-plus">+</span>
 											</a>
 										</div>
 									</li>
 									<li class="container-menu-list-li">
-										<a class="container-menu-list-link" href="<?=Yii::$app->urlManager->createUrl('personal/achievements')?>">Достижения</a>
-										<div class="container-menu-list-meta"></div>
-									</li>
-									<li class="container-menu-list-li">
 										<a class="container-menu-list-link" href="<?=Yii::$app->urlManager->createUrl('personal/goals')?>">Цели</a>
-										<div class="container-menu-list-meta"></div>
+										<div class="container-menu-list-meta">
+											<a class="container-menu-list-meta-add" href="#">
+												<span class="container-menu-list-meta-add-plus">+</span>
+											</a>
+										</div>
 									</li>
 									<li class="container-menu-list-li">
 										<a class="container-menu-list-link" href="<?=Yii::$app->urlManager->createUrl('personal/friends')?>">Мои друзья</a>
