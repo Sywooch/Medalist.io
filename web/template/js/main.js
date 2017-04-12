@@ -125,7 +125,7 @@ $(document).ready(function(){
 					h.css('display', 'none');
 					$('.questpending-wrapper').append( h );
 					h.slideDown();
-					$('.h-quest-pendint-tasks-title'.slideDown();
+					$('.h-quest-pendint-tasks-title').slideDown();
 				}
 			});
 
