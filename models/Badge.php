@@ -21,6 +21,8 @@ class Badge extends \yii\db\ActiveRecord
 {
 
     const BDG_WELCOME = 1;
+    
+    const BDG_QUEST_TAKE_QUEST = 2;
 
     /**
      * @inheritdoc
@@ -80,6 +82,7 @@ class Badge extends \yii\db\ActiveRecord
 
         //Adding Badge Balance
         $badgeBalance = new BadgeBalance; 
+        //Todo Check if user had this badge
         $badgeBalance->user_id = $user_id; 
         $badgeBalance->badge_id = $badge_id; 
         $badgeBalance->date_created = date("Y-m-d H:i:s"); 
@@ -89,8 +92,7 @@ class Badge extends \yii\db\ActiveRecord
         //Getting Scale Points 
 
         $q = new Query();
-      
-            $row = $q->select(['scale_id', 'points'])->from('badge_scale_points')->where('badge_id = '.$badge_id)->one();
+        $row = $q->select(['scale_id', 'points'])->from('badge_scale_points')->where('badge_id = '.$badge_id)->one();
 
 
 

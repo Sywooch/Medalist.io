@@ -31,6 +31,8 @@ $(document).ready(function(){
 						$('.interests-selector').append(dummy);
 					}
 
+					EventEngine.registerEventFromRawAjax (data);
+
  
 				}
 			})
@@ -104,7 +106,32 @@ $(document).ready(function(){
 
 
 
+		/* QUESTS ====================*/
 
+		var pushNewQuestChallenge = function() {};
+		var pushNewQuestPending = function() {};
+
+		//Взять квест
+		$(document).on('click', '.js-quest-takequest', function(){
+			var p = $(this).parents('.questblock'),
+				id = $(this).data('id');
+				 
+		 	
+				$.ajax({
+					url: ajaxUrls['takeQuest'],
+					data: { quest_id : id},
+					dataType: 'json',
+					success: function(data){
+						
+						EventEngine.registerEventFromRawAjax (data);
+					}
+
+				});
+ 
+			
+		});
+
+		/* . END QUESTS ====================*/
 
 
 
@@ -123,10 +150,14 @@ $(document).ready(function(){
 					data: {email: email.val(), _csrf : _csrf.val()},
 					dataType : 'json',
 					success: function( data ){
+
 						if( data.success ){
 							console.log('123')
 							document.location.href =   successUrl.val();
 						}
+
+
+						EventEngine.registerEventFromRawAjax (data);
 					}
 				});
 
@@ -158,6 +189,7 @@ $(document).ready(function(){
 							console.log('123');
 							document.location.href =   successUrl.val();
 						}
+						EventEngine.registerEventFromRawAjax (data);
 					}
 				});
 
@@ -193,6 +225,7 @@ $(document).ready(function(){
 							 
 							document.location.href =   data.returnUrl;
 						}
+						EventEngine.registerEventFromRawAjax (data);
 					}
 				});
 

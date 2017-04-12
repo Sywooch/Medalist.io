@@ -27,6 +27,8 @@ AppAsset::register($this);
         var ajaxUrls = <?php 
             $ajaxUrls = [];
             $ajaxUrls['getBadgeInfo'] = Yii::$app->urlManager->createUrl('badge/ajax-get-info');
+
+            $ajaxUrls['takeQuest'] = Yii::$app->urlManager->createUrl('quest/ajax-take-quest');
             echo json_encode( $ajaxUrls );
         ?>        
     </script>
