@@ -60,4 +60,9 @@ class Likes extends \yii\db\ActiveRecord
     {
         return new LikesQuery(get_called_class());
     }
+
+    //GetLikesOfObject
+    public static function getLikesOfObject( $obj ){
+
+    }
 }

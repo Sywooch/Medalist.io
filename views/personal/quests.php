@@ -47,7 +47,9 @@ echo $this->render('_panel.php');
 								
 							</div>
 							<div class="quests-list">
-								<?php foreach( $quests as $q ) { ?>
+								<?php foreach( $quests as $q ) { 
+									$rewards = $q->getRewards()->all();
+									?>
 								<!-- QUEST -->
 								<div class="questblock">
 									<div class="questblock-pic" style="background-image: url(<?=$q->picture?>)">
@@ -55,7 +57,7 @@ echo $this->render('_panel.php');
 									</div>
 									<div class="questblock-info">
 										<div class="questblock-info-meta">
-											<div class="questblock-info-meta-points">+7 к музыкальности</div>
+											<div class="questblock-info-meta-points">+<?=$rewards[0]->points?> к музыкальности</div>
 											<div class="questblock-info-meta-lurms">+2</div>
 										</div>
 										<div class="questblock-info-title"><?=$q->name?></div>

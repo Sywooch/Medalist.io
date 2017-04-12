@@ -23,6 +23,14 @@ AppAsset::register($this);
     <link rel="stylesheet" href="/template/css/system.css">
     <link rel="stylesheet" href="/template/css/style.css">
     <script src="/template/js/jquery-3.2.0.min.js"></script>
+    <script type="text/javascript">
+        var ajaxUrls = <?php 
+            $ajaxUrls = [];
+            $ajaxUrls['getBadgeInfo'] = Yii::$app->urlManager->createUrl('badge/ajax-get-info');
+            echo json_encode( $ajaxUrls );
+        ?>        
+    </script>
+    <script src="/template/js/eventengine.js"></script>
     <script src="/template/js/main.js"></script>
   </head>
 

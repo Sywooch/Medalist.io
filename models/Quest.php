@@ -89,4 +89,16 @@ class Quest extends \yii\db\ActiveRecord
     public function getInterests(){
         return $this->hasMany( Interest::className(), ['interest_id' => 'interest_id'] )->viaTable('quest2interest', ['quest_id' => 'quest_id']);
     }
+    public function getRewards(){
+        $reward = QuestReward::find()->where('quest_id = '.$this->quest_id);
+        return $reward;
+    }
+    public function getUsersComplete(){
+         
+        return 0;
+    }
+    public function getUsersFailed(){
+         
+        return 0;
+    } 
 }
