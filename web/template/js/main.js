@@ -108,8 +108,13 @@ $(document).ready(function(){
 
 		/* QUESTS ====================*/
 
-		var fireNewBadgePopup = function(data){
+		window.fireNewBadgePopup = function(data){
+			var popup = $('.rewardpopup');
 
+			popup.find('.rewardpopup-form-pic img').attr('src', data.picture);
+			popup.find('.rewardpopup-form-text').text(data.description);
+			popup.find('.mdlst-button').text('+' + data.points + ' ' + data.scale);
+			popup.fadeIn();
 		};
 
 		var pushNewQuestChallenge = function() {};
@@ -151,6 +156,13 @@ $(document).ready(function(){
 
 				});
  
+			
+		});
+		//Взять квест
+		$(document).on('click', '.rewardpopup-bg', function(){
+			var p = $(this).parents('.rewardpopup');
+				 
+		 	 p.fadeOut();
 			
 		});
 

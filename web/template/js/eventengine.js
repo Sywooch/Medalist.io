@@ -55,7 +55,7 @@ EventEngine.registerHandler( 'newBadge', function(params){
 			success: function( data ){
 				//fireNewBadgePopup( data );
 				//TODO new Event - updateUserPoints
-				fireNewBadgePopup(data);
+				window.fireNewBadgePopup(data.badge);
 				console.log(data);
 				//alert(data.badge.name);
 

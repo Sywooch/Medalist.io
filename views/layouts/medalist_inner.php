@@ -81,6 +81,25 @@ AppAsset::register($this);
             </div>
         </div>
     </footer>
+
+<!-- reward popup -->
+    <div class="rewardpopup" style="display: none;">
+        <div class="rewardpopup-bg"></div>
+        <div class="rewardpopup-form">
+            <div class="rewardpopup-form-text">
+                Вы написали какой-то адский модуль или программу? Покажите её нам!  Уверены, многие программисты оценят ваши стремления. Что она делает и зачем? Не понятно... Но вы старались, и вот ваша награда!
+            </div>
+            
+            <div class="rewardpopup-form-pic"><img src="img/reward/reward-01.png" alt="" class="rewardpopup-form-pic-img"></div>
+            <div class="rewardpopup-form-btn-wrapper"><a class="rewardpopup-form-goto-reward rewardpopup-form-btn mdlst-button" href="<?=Yii::$app->urlManager->createUrl('personal/rewards')?>">+20 к  достижению</a></div>
+
+            <!-- todo socials -->
+        </div>
+    </div>
+    <!-- reward popup end-->
+
+
+
     <?php $this->endBody() ?>
   </body>
 </html>

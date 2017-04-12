@@ -17,9 +17,15 @@ class BadgeController extends \yii\web\Controller
    
 
     	$badge = Badge::findOne( $get['badge_id'] );
+        $scalePoints = $badge->getBadgeScalePoints();
+
     	$result['badge'] = [
     		'badge_id' => $badge->badge_id,
-    		'name' => $badge->name,
+            'name' => $badge->name,
+            'description' => $badge->description,
+    		'picture' => $badge->picture,
+            'points' => $scalePoints['points'],
+            'scale' => $scalePoints['scale']->name
     	];
     	$result['get'] = $get;
     	$result['post'] = $post;
