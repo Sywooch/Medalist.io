@@ -28,6 +28,8 @@
 .questblock-info-controlls-likes,
 .questblock-info-controlls-comments,
 .questblock-info-controlls-button,
+.questpending-description,
+.questpending-done,
 .pregister-socials-icons-i,
 .userpanel-user,
 .userpanel-user-pic,
@@ -52,6 +54,8 @@
 .questblock-info,
 .questblock-info-info-list,
 .questblock-info-info-list-2,
+.questpending-description,
+.questpending-done,
 .pregister-socials-icons-i,
 .userpanel-user,
 .userpanel-info,
@@ -506,6 +510,39 @@ a {
 .questblock-info-controlls-comments {
   margin-right: 25px;
 }
+/* questchallenge */
+/* .questchallenge end*/
+/* questpendingtask */
+.questpending {
+  background-color: #fff;
+  color: #000;
+  padding: 15px;
+  margin-bottom: 25px;
+  box-shadow: 0 0 5px rgba(49,51,62,0.1);
+  position: relative;
+  white-space: normal;
+}
+.questpending-deadline {
+  background-color: #ffe212;
+  color: #31333e;
+  position: absolute;
+  right: 20px;
+  top: 0;
+  padding: 8px;
+}
+.questpending-description {
+  width: 590px;
+  margin-right: 10px;
+}
+.questpending-title {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+.questpending-done {
+  background-color: #ff2d0b;
+  color: #fff;
+}
+/* .questpendingtask end*/
 /* registration page */
 .pregister {
   position: relative;

@@ -1,15 +1,17 @@
 FRoboto = "Roboto", sans-serif
-CRed = #ff2d0b
-CBlue = #04a9f4
-CPurple = #8a44ff
-CYell = #ffe212
+C_Red = #ff2d0b
+C_Blue = #04a9f4
+C_Purple = #8a44ff
+C_Yell = #ffe212
 
 /*CMain = CBlue*/
-CMain = CPurple
-CAccent = CRed
-CSub = CYell
+CMain = C_Purple
+CAccent = C_Red
+CSub = C_Yell
 CBlack = #31333e
 CGray = #a7a7a7
+
+BoxShadow = 0 0 5px rgba(CBlack, 0.1);
 
 border-radius(n)
     -webkit-border-radius n
@@ -362,7 +364,7 @@ a
     margin-top 50px
 .questblock
     white-space nowrap
-    box-shadow 0 0 5px rgba(CBlack, 0.1)
+    box-shadow BoxShadow
     margin-bottom 35px
     position relative
     background-color white
@@ -420,6 +422,43 @@ a
                 margin-right 25px
             &-button 
                 @extends .dib_base
+
+/* questchallenge */
+/* .questchallenge end*/
+
+
+/* questpendingtask */
+
+.questpending 
+    background-color white
+    color black
+    padding 15px
+    margin-bottom 25px
+    box-shadow BoxShadow
+    position relative
+    white-space normal
+    &-deadline 
+        background-color CSub
+        color CBlack
+        position absolute
+        right 20px
+        top 0
+        padding 8px
+    &-description
+        @extends .dib_t
+        width 590px 
+        margin-right 10px
+    &-title 
+        font-size 24px
+        margin-bottom 15px
+    &-done 
+        background-color CAccent
+        color white
+        @extends .dib_t
+        
+        
+/* .questpendingtask end*/
+
 
 /* registration page */
 .pregister
