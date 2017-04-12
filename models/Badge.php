@@ -80,34 +80,47 @@ class Badge extends \yii\db\ActiveRecord
 
         $badge = self::findOne( $badge_id );
 
-        //Adding Badge Balance
-        $badgeBalance = new BadgeBalance; 
+
         //Todo Check if user had this badge
-        $badgeBalance->user_id = $user_id; 
-        $badgeBalance->badge_id = $badge_id; 
-        $badgeBalance->date_created = date("Y-m-d H:i:s"); 
-        $badgeBalance->save();
- 
+        $badgeExists = BadgeBalance::find()->where('badge_id = '.$badge_id.' AND user_id = '.$user_id)->one();
 
-        //Getting Scale Points 
-
-        $q = new Query();
-        $row = $q->select(['scale_id', 'points'])->from('badge_scale_points')->where('badge_id = '.$badge_id)->one();
+        if( !$badgeExists ){
 
 
+            //Adding Badge Balance
+            $badgeBalance = new BadgeBalance; 
+            
+            $badgeBalance->user_id = $user_id; 
+            $badgeBalance->badge_id = $badge_id; 
+            $badgeBalance->date_created = date("Y-m-d H:i:s"); 
+            $badgeBalance->save();
+     
 
-        
-         
+            //Getting Scale Points 
 
-        //Adding Scale Points Balance
-        $scalePointsBalance = new ScalePointsBalance;
-        $scalePointsBalance->scale_id = $row['scale_id'];
-        $scalePointsBalance->points = $row['points'];
-        $scalePointsBalance->date_created = date("Y-m-d H:i:s");
-        $scalePointsBalance->user_id = $user_id;
-        $scalePointsBalance->attached_entity_class = "Badge";
-        $scalePointsBalance->attached_entity_id =  (int)$badge_id;
-        $scalePointsBalance->save();
+            $q = new Query();
+            $row = $q->select(['scale_id', 'points'])->from('badge_scale_points')->where('badge_id = '.$badge_id)->one();
+
+
+
+            
+             
+
+            //Adding Scale Points Balance
+            $scalePointsBalance = new ScalePointsBalance;
+            $scalePointsBalance->scale_id = $row['scale_id'];
+            $scalePointsBalance->points = $row['points'];
+            $scalePointsBalance->date_created = date("Y-m-d H:i:s");
+            $scalePointsBalance->user_id = $user_id;
+            $scalePointsBalance->attached_entity_class = "Badge";
+            $scalePointsBalance->attached_entity_id =  (int)$badge_id;
+            $scalePointsBalance->save();
+
+            return true;
+
+        }else{
+            return false;
+        }
 
  
 

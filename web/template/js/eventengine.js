@@ -17,8 +17,6 @@ EventEngine.registerEventFromRawAjax = function ( data ){
 	}
 };
 
-
-
 EventEngine.fireEvents = function() {
 
 	for( var k in EventEngine.events  ){
@@ -42,22 +40,26 @@ EventEngine.registerHandler = function( eventName, f, predefinedParams ){
 
 //=====================================================================================
 
-
+//Вызов события по JavaScript - хендлер ПОСЛЕ добавления бейджа - красивый попап
 EventEngine.registerHandler( 'newBadge', function(params){
-	var badgeId = params.badgeId,
+	var badge_id = params.badge_id,
 		url = ajaxUrls['getBadgeInfo'];
 
 		console.log( params );
-		console.log( { badge_id: badgeId } );
+		console.log( { badge_id: badge_id } );
 
 		$.ajax({
 			url: url, 
-			data: { badge_id: badgeId },
+			data: { badge_id: badge_id },
 			dataType: 'json',
 			success: function( data ){
 				//fireNewBadgePopup( data );
+				//TODO new Event - updateUserPoints
+				fireNewBadgePopup(data);
 				console.log(data);
-				alert(data.badge.name);
+				//alert(data.badge.name);
+
+
 			}
 		})
 

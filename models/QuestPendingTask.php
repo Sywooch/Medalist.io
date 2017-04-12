@@ -28,9 +28,9 @@ class QuestPendingTask extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['quest_id', 'deadline'], 'required'],
-            [['quest_id', 'quest_challenge_id'], 'integer'],
-            [['deadline'], 'safe'],
+            [['quest_id', 'deadline', 'user_id'], 'required'],
+            [['quest_id', 'quest_challenge_id', 'user_id'], 'integer'],
+            [['deadline', 'status'], 'safe'],
         ];
     }
 
@@ -54,5 +54,9 @@ class QuestPendingTask extends \yii\db\ActiveRecord
     public static function find()
     {
         return new QuestPendingTaskQuery(get_called_class());
+    }
+
+    public function getQuest(){
+        return $this->hasOne( Quest::className(), ['quest_id' => 'quest_id'] );
     }
 }

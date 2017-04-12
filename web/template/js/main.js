@@ -108,8 +108,28 @@ $(document).ready(function(){
 
 		/* QUESTS ====================*/
 
+		var fireNewBadgePopup = function(data){
+
+		};
+
 		var pushNewQuestChallenge = function() {};
-		var pushNewQuestPending = function() {};
+
+		//Выводит блок
+		var pushNewQuestPending = function(quest_id) {
+			$.ajax({
+				url: ajaxUrls['getQuestPendingTaskHtml'],
+				data: {quest_id:quest_id},
+				dataType: 'json',
+				success: function(data){
+					var h = $(data.html);
+					h.css('display', 'none');
+					$('.questpending-wrapper').append( h );
+					h.slideDown();
+					$('.h-quest-pendint-tasks-title'.slideDown();
+				}
+			});
+
+		};
 
 		//Взять квест
 		$(document).on('click', '.js-quest-takequest', function(){
@@ -122,7 +142,10 @@ $(document).ready(function(){
 					data: { quest_id : id},
 					dataType: 'json',
 					success: function(data){
-						
+						//TODO Success
+						pushNewQuestPending( id );
+						p.slideUp();
+
 						EventEngine.registerEventFromRawAjax (data);
 					}
 

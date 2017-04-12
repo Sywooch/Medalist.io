@@ -9,6 +9,7 @@ use app\models\BadgeGroup;
 use app\models\ScalePointsBalance;
 use app\models\Badge;
 use app\models\Quest;
+use app\models\QuestPendingTask;
 use Yii;
 
 class PersonalController extends \yii\web\Controller
@@ -47,10 +48,15 @@ class PersonalController extends \yii\web\Controller
 
         //Todo подбор интересных квестов
 
+        $questPendingTasks = QuestPendingTask::find()->where('user_id = '.Yii::$app->user->identity->id.' AND status = 0')->all();
+        $excludeIds = [];
+        foreach($questPendingTasks as $pt ){
+            $excludeIds[] = $pt->quest_id;
+        }
 
-        $quests = Quest::find()->all();
+        $quests = Quest::find()->where(['not in', 'quest_id', $excludeIds])->all();
 
-        return $this->render('quests', ['quests' => $quests]);
+        return $this->render('quests', ['quests' => $quests, 'questsPending' => $questPendingTasks]);
     }
 
     public function actionRewards()

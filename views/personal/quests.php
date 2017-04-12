@@ -15,6 +15,36 @@ echo $this->render('_panel.php');
 					<!-- container-content -->
 					<div class="container-col container-col-2">
 						<div class="output">
+
+
+							 
+
+							<div class="output-header">
+								<h2 class="mdlst-h2 h-quest-pendint-tasks-title" <?php if( count($questsPending) == 0) { ?> style="display: none"<?} ?>>Вы участвуете в квестах</h2>
+								 
+								
+							</div>
+
+
+							<div class="questpending-wrapper">
+							<?php foreach($questsPending as $questPending ) {
+
+									$quest = $questPending->getQuest()->one();
+							 ?>
+
+							 <div class="questpending">
+								 	<div class="questpending-deadline">До <?=$questPending->deadline?></div>
+								 	<div class="questpending-title"><?=$quest->name;?></div>
+								 	<div class="questpending-description"><?=$quest->description;?></div>
+								 	<a href="" class="questpending-done mdlst-button">Готово!</a>
+							</div>
+
+							<?php } ?>
+							</div>
+
+							 
+
+
 							<div class="output-header">
 								<h2 class="mdlst-h2">Квесты</h2>
 								<div class="output-header-meta">
