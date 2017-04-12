@@ -861,3 +861,53 @@ a {
 .mdlst-hr-w {
   width: 100%;
 }
+.rewardpopup {
+  position: fixed;
+  background-color: rgba(49,51,62,0.9);
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2000;
+}
+.rewardpopup-bg {
+  background-image: url("../img/reward_ribbons_back.png");
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 500;
+}
+.rewardpopup-form {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background-image: url("../img/reward_bg.png");
+  margin-left: -265px;
+  margin-top: -295px;
+  z-index: 1000;
+  width: 530px;
+  height: 590px;
+}
+.rewardpopup-form-text {
+  padding: 35px 55px;
+  margin-top: 145px;
+  font-size: 16px;
+}
+.rewardpopup-form-btn {
+  background-color: #ff2d0b;
+  color: #fff;
+}
+.rewardpopup-form-btn-wrapper {
+  text-align: center;
+}
+.rewardpopup-form-pic {
+  text-align: center;
+}
+.rewardpopup-form-pic-img {
+  max-width: 140px;
+  margin-bottom: 15px;
+}
