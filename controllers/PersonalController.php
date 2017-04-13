@@ -59,6 +59,8 @@ class PersonalController extends \yii\web\Controller
         return $this->render('quests', ['quests' => $quests, 'questsPending' => $questPendingTasks]);
     }
 
+
+
     public function actionRewards()
     {
 
@@ -76,6 +78,20 @@ class PersonalController extends \yii\web\Controller
 
         return $this->render('rewards', ['badges' => $badges, 'badgeGroups' => $badgeGroups, 'badgeTotal' => $badgeTotal]);
     }
+
+    
+
+    public function actionRewardDetail()
+    {
+
+        $get = Yii::$app->request->get();
+
+        $badge = Badge::findOne( $get['badge_id'] );
+        
+
+        return $this->render('reward-detail', ['badge' => $badge]);
+    }
+
 
     public function actionSettings()
     {

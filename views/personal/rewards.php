@@ -30,7 +30,7 @@ echo $this->render('_panel.php');
 
 								<div class="myrewards-list">
 									<?php foreach($badges as $badge) { ?> 
-									<a class="myrewards-block" href="">
+									<a class="myrewards-block" href="<?=Yii::$app->urlManager->createUrl(['personal/reward-detail', 'badge_id' => $badge->badge_id])?>">
 										<div class="myrewards-block-pic"><img src="/template/img/_reward.png" alt=""></div>
 										<div class="myrewards-block-text"><?=$badge->getBadge()->name;?></div>
 										<div class="myrewards-block-points"><span class="c-analytics">+<?=$badge->getScalePoints()->points;?> к <?=$badge->getScalePoints()->getScale()->name;?></span></div>
