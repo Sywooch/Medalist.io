@@ -1,3 +1,8 @@
+<?php
+use yii\helpers\Url;
+
+$currentUrl = Url::current();
+ ?>
 <!-- menu -->
 					<div class="container-col container-col-1">
 						<div class="container-menu">
@@ -40,11 +45,11 @@
 										<a class="container-menu-list-link" href="<?=Yii::$app->urlManager->createUrl('personal/friends')?>">Мои друзья</a>
 										<div class="container-menu-list-meta"></div>
 									</li>
-									<li class="container-menu-list-li">
+									<li class="container-menu-list-li <?php if($currentUrl == Yii::$app->urlManager->createUrl('personal/quests') ) {  ?> container-menu-list-li-active <? } ?>">
 										<a class="container-menu-list-link" href="<?=Yii::$app->urlManager->createUrl('personal/quests')?>">Квесты</a>
 										<div class="container-menu-list-meta"></div>
 									</li>
-									<li class="container-menu-list-li  container-menu-list-li-active">
+									<li class="container-menu-list-li  <?php if($currentUrl == Yii::$app->urlManager->createUrl('personal/rewards') ) {  ?> container-menu-list-li-active <? } ?>">
 										<a class="container-menu-list-link" href="<?=Yii::$app->urlManager->createUrl('personal/rewards')?>">Награды</a>
 										<div class="container-menu-list-meta"></div>
 									</li>
