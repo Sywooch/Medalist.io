@@ -106,68 +106,6 @@ $(document).ready(function(){
 
 
 
-		/* QUESTS ====================*/
-
-		window.fireNewBadgePopup = function(data){
-			var popup = $('.rewardpopup');
-
-			popup.find('.rewardpopup-form-pic img').attr('src', data.picture);
-			popup.find('.rewardpopup-form-text').text(data.description);
-			popup.find('.mdlst-button').text('+' + data.points + ' ' + data.scale);
-			popup.fadeIn();
-		};
-
-		var pushNewQuestChallenge = function() {};
-
-		//Выводит блок
-		var pushNewQuestPending = function(quest_id) {
-			$.ajax({
-				url: ajaxUrls['getQuestPendingTaskHtml'],
-				data: {quest_id:quest_id},
-				dataType: 'json',
-				success: function(data){
-					var h = $(data.html);
-					h.css('display', 'none');
-					$('.questpending-wrapper').append( h );
-					h.slideDown();
-					$('.h-quest-pendint-tasks-title').slideDown();
-				}
-			});
-
-		};
-
-		//Взять квест
-		$(document).on('click', '.js-quest-takequest', function(){
-			var p = $(this).parents('.questblock'),
-				id = $(this).data('id');
-				 
-		 	
-				$.ajax({
-					url: ajaxUrls['takeQuest'],
-					data: { quest_id : id},
-					dataType: 'json',
-					success: function(data){
-						//TODO Success
-						pushNewQuestPending( id );
-						p.slideUp();
-
-						EventEngine.registerEventFromRawAjax (data);
-					}
-
-				});
- 
-			
-		});
-		//Взять квест
-		$(document).on('click', '.rewardpopup-bg', function(){
-			var p = $(this).parents('.rewardpopup');
-				 
-		 	 p.fadeOut();
-			
-		});
-
-		/* . END QUESTS ====================*/
-
 
 
 		$(document).on('click', '.js-quick-register', function(){
@@ -270,6 +208,93 @@ $(document).ready(function(){
 
 
 	/* . REGISTRATION END */
+
+
+
+
+
+		/* QUESTS ====================*/
+
+		window.fireNewBadgePopup = function(data){
+			var popup = $('.rewardpopup');
+
+			popup.find('.rewardpopup-form-pic img').attr('src', data.picture);
+			popup.find('.rewardpopup-form-text').text(data.description);
+			popup.find('.mdlst-button').text('+' + data.points + ' ' + data.scale);
+			popup.fadeIn();
+		};
+
+		var pushNewQuestChallenge = function() {};
+
+		//Выводит блок
+		var pushNewQuestPending = function(quest_id) {
+			$.ajax({
+				url: ajaxUrls['getQuestPendingTaskHtml'],
+				data: {quest_id:quest_id},
+				dataType: 'json',
+				success: function(data){
+					var h = $(data.html);
+					h.css('display', 'none');
+					$('.questpending-wrapper').append( h );
+					h.slideDown();
+					$('.h-quest-pendint-tasks-title').slideDown();
+				}
+			});
+
+		};
+
+		//Взять квест
+		$(document).on('click', '.js-quest-takequest', function(){
+			var p = $(this).parents('.questblock'),
+				id = $(this).data('id');
+				 
+		 	
+				$.ajax({
+					url: ajaxUrls['takeQuest'],
+					data: { quest_id : id},
+					dataType: 'json',
+					success: function(data){
+						//TODO Success
+						pushNewQuestPending( id );
+						p.slideUp();
+
+						EventEngine.registerEventFromRawAjax (data);
+					}
+
+				});
+ 
+			
+		});
+		//Взять квест
+		$(document).on('click', '.rewardpopup-bg', function(){
+			var p = $(this).parents('.rewardpopup');
+				 
+		 	 p.fadeOut();
+			
+		});
+
+		/* . END QUESTS ====================*/
+
+
+		/* ACHIEVEMENT */
+		$('.addach-description-text-textarea').trumbowyg(  );
+		/* ACHIEVEMENT END */
+
+
+		/* CONTROLLS */
+		$(document).on('click','.mdlst-switch', function(){
+			var check = $(this).find('input');
+
+			if( $(this).hasClass('mdlst-switch-on') ){
+				$(this).removeClass('mdlst-switch-on');
+				check.attr('checked', false);
+			}else{
+				$(this).addClass('mdlst-switch-on');
+				check.attr('checked', 'checked');
+			}
+
+		});
+		/* . CONTROLLS END ===================== */
 
 
 });
