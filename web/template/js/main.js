@@ -278,6 +278,17 @@ $(document).ready(function(){
 
 		/* ACHIEVEMENT */
 		$('.addach-description-text-textarea').trumbowyg(  );
+		$('[data-toggle="datepicker"]').datepicker();
+		$(document).on('keydown', '.js-tag-adder', function(e ){
+		 	var  v = $(this).val();
+
+			if( e.which == 13 ){
+				e.preventDefault();
+				$(this).val('');
+				$('.addach-tags-w').append('<div class="  mdlst-button mdlst-button-default addach-tags-tag"  >'+v+'<div class="mdlst-button-closer "></div></div>')
+
+			}
+		})
 		/* ACHIEVEMENT END */
 
 

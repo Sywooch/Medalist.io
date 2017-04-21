@@ -8,9 +8,11 @@
     <link rel="stylesheet" href="css/system.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="js/trumbowyg/dist/ui/trumbowyg.css">
+    <link rel="stylesheet" href="js/datepicker/dist/datepicker.css">
     <script src="js/jquery-3.2.0.min.js"></script>
+    <script src="js/datepicker/dist/datepicker.js"></script>
     <script src="js/trumbowyg/dist/trumbowyg.js"></script>
-    <script src="js/trumbowyg/dist/trumbowyg.js"></script>
+ 
     <script src="js/main.js"></script>
   </head>
 
@@ -149,11 +151,12 @@
 			 							<div class="addach-description-text">
 			 								<textarea name="" id="" cols="30" rows="10" class="addach-description-text-textarea"></textarea>
 			 							</div>
-			 							<div class="addach-description-date"></div>
+			 							<div class="addach-description-date"><span class="addach-description-date-icon"></span><input data-toggle="datepicker" class="addach-description-date-date mdlst-input-small"></div>
 			 							<div class="addach-description-photos">
-			 								<a class="container-menu-list-meta-add" href="#">
+			 								<a class="container-menu-list-meta-add addach-description-photos-icon" href="#">
 												<span class="container-menu-list-meta-add-plus">+</span>
 											</a>
+											<div class="addach-description-photos-text">Перетащите сюда фотографии (до 3Мб)</div>
 			 							</div>
 			 						</div>
 
@@ -161,10 +164,9 @@
 			 						<div class="addach-tags">
 			 							<div class="addach-tags-title">Теги:</div>
 			 							<div class="addach-tags-w">
-			 								<input type="text" class="addach-tags-inp">
-			 								<div class="addach-tags-tags">
-			 									<div class="  mdlst-button"  >Философия <div class="mdlst-button-closer "></div></div>
-			 								</div>
+			 								<input type="text" class="addach-tags-inp js-tag-adder">
+			 							 
+			 								 
 			 							</div>
 			 						</div>
 

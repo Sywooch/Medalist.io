@@ -44,6 +44,14 @@
 .rewards-catalog-block-people span,
 .addach-header-inp-w,
 .addach-header-isdifficult,
+.addach-description-date-date,
+.addach-description-date-icon,
+.addach-description-photos-icon,
+.addach-description-photos-text,
+.addach-tags-title,
+.addach-tags-w,
+.addach-tags-tags,
+.addach-tags-tag,
 .mdlst-button-accent,
 .mdlst-button-closer,
 .mdlst-switch-state,
@@ -64,7 +72,12 @@
 .userpanel-user,
 .userpanel-info,
 .myrewards-block,
-.rewards-catalog-block {
+.rewards-catalog-block,
+.addach-description-date-date,
+.addach-description-date-icon,
+.addach-tags-title,
+.addach-tags-w,
+.addach-tags-tags {
   vertical-align: top;
 }
 .dib_m,
@@ -73,6 +86,8 @@
 .userpanel-user-info,
 .userpanel-info-level,
 .userpanel-info-scale,
+.addach-description-photos-icon,
+.addach-description-photos-text,
 .mdlst-switch-state {
   vertical-align: middle;
 }
@@ -103,6 +118,7 @@
 .rewards-catalog-block-people span,
 .addach-header-inp-w,
 .addach-header-isdifficult,
+.addach-tags-tag,
 .mdlst-button-accent,
 .mdlst-button-closer,
 .mdlst-switch-text {
@@ -832,13 +848,62 @@ a {
 .addach-description-text-textarea {
   background-color: #fff;
 }
+.addach-description-text .trumbowyg-box {
+  margin-bottom: 0;
+}
+.addach-description-text .trumbowyg-editor {
+  background-color: #fff;
+}
 .addach-description-date {
   position: absolute;
   top: 0;
   right: 0;
-  background-color: #ff2d0b;
-  width: 50px;
-  height: 50px;
+  width: 140px;
+  white-space: nowrap;
+  height: 30px;
+}
+.addach-description-date-date {
+  width: 110px !important;
+  white-space: normal;
+}
+.addach-description-date-icon {
+  background-image: url("../img/datepicker.png");
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+.addach-description-photos {
+  background-color: rgba(138,68,255,0.15);
+  padding: 22px 15px;
+}
+.addach-description-photos-icon {
+  display: inline-block !important;
+  margin: 0;
+  margin-right: 20px;
+}
+.addach-tags {
+  margin-top: 25px;
+  white-space: nowrap;
+}
+.addach-tags-title {
+  font-size: 18px;
+  font-weight: bold;
+  width: 100px;
+  padding-top: 10px;
+}
+.addach-tags-w {
+  padding: 10px;
+  box-shadow: 0 0 5px rgba(49,51,62,0.1);
+  background-color: #fff;
+  white-space: normal;
+  width: 665px;
+}
+.addach-tags-inp {
+  outline: 0;
+  border: 0;
+}
+.addach-tags-tag {
+  margin-bottom: 5px;
 }
 /* . add achievement end */
 /*system */
@@ -898,6 +963,18 @@ a {
   padding: 10px 20px;
   font-size: 18px;
   text-align: center;
+}
+.mdlst-input-small {
+  padding: 2px 5px;
+  font-size: 14px;
+  text-align: center;
+  border: 2px solid rgba(138,68,255,0.3);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  width: 100%;
+  box-sizing: border-box;
+  outline: 0;
 }
 .mdlst-hr {
   background-image: url("../img/hr.png");

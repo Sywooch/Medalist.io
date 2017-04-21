@@ -718,13 +718,63 @@ a
             box-shadow BoxShadow
             &-textarea
                 background-color white
+            & .trumbowyg-box
+                margin-bottom 0
+            & .trumbowyg-editor
+                background-color white
         &-date
             position absolute
             top 0 
             right 0
-            background-color CAccent
-            width 50px 
-            height 50px
+            width 140px
+            white-space nowrap 
+            height 30px
+            &-date 
+                width 110px !important
+                @extends .dib_t
+                white-space normal
+            &-icon 
+                background-image url(../img/datepicker.png)
+                width 20px
+                height 20px
+                @extends .dib_t
+                margin-right 10px
+        &-photos 
+            background-color rgba(CMain, 0.15)
+            padding 22px 15px
+           
+            &-icon 
+                @extends .dib_m
+                display inline-block !important
+                margin 0
+                margin-right 20px
+            &-text 
+                @extends .dib_m
+    &-tags 
+        margin-top 25px
+        white-space nowrap
+        &-title 
+            @extends .dib_t
+            font-size 18px 
+            font-weight bold 
+            width 100px
+            padding-top 10px
+        &-w 
+            @extends .dib_t
+            padding 10px 
+            box-shadow BoxShadow
+            background-color white 
+            white-space normal
+            width 665px
+        &-inp 
+            outline 0 
+            border 0
+        &-tags 
+            @extends .dib_t 
+        &-tag 
+            @extends .dib_base
+            margin-bottom 5px
+                
 /* . add achievement end */
 
  
@@ -783,6 +833,15 @@ a
         padding 10px 20px 
         font-size 18px
         text-align center
+        &-small
+            padding 2px 5px 
+            font-size 14px 
+            text-align center
+            border 2px solid rgba(CMain, 0.3)
+            border-radius 3px
+            width 100%
+            box-sizing border-box
+            outline 0
         
     &-hr 
         background-image url(../img/hr.png)
