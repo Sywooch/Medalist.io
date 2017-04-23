@@ -81,4 +81,11 @@ class Achievement extends \yii\db\ActiveRecord
     {
         return new AchievementQuery(get_called_class());
     }
+
+
+
+    public static function getPhotos(){
+        return Photo::find()->where("entity_class = 'Achievement' and entity_id = ".$this->goal_id)->all();
+    }
+
 }

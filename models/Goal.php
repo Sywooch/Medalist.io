@@ -82,4 +82,17 @@ class Goal extends \yii\db\ActiveRecord
     {
         return new GoalQuery(get_called_class());
     }
+
+
+    public static function getPhotos(){
+        return Photo::find()->where("entity_class = 'Goal' and entity_id = ".$this->goal_id)->all();
+    }
+    public static function getGoalSubtasks(){
+        return $this->hasMany(GoalSubtask::classname(), ['goal_id' => 'goal_id']);
+
+    }
+
+    public static function getUserGoals( $user_id ){
+        return Goal::find()->where(" user_id = ".$user_id)->all();
+    }
 }

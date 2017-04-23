@@ -35,8 +35,8 @@ class GoalSubtask extends \yii\db\ActiveRecord
     {
         return [
             [['goal_subtask_parent_id', 'goal_id', 'active', 'deleted', 'blocked', 'completed', 'sort'], 'integer'],
-            [['goal_id', 'date_created'], 'required'],
-            [['deadline', 'date_created'], 'safe'],
+            [['goal_id', 'date_created', 'name'], 'required'],
+            [['deadline', 'date_created', 'description'], 'safe'],
         ];
     }
 
@@ -49,6 +49,8 @@ class GoalSubtask extends \yii\db\ActiveRecord
             'goal_subtask_id' => 'Goal Subtask ID',
             'goal_subtask_parent_id' => 'Goal Subtask Parent ID',
             'goal_id' => 'Goal ID',
+            'name' => 'Name',
+            'description' => 'description',
             'deadline' => 'Deadline',
             'date_created' => 'Date Created',
             'active' => 'Active',
