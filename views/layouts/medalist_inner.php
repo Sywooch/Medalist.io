@@ -31,6 +31,7 @@ AppAsset::register($this);
     <script src="/template/js/datepicker/dist/datepicker.js"></script>
     <script src="/template/js/trumbowyg/dist/trumbowyg.js"></script>
     <script src="/template/js/rangeslider/rangeslider.js"></script>
+   
     <script type="text/javascript">
         var ajaxUrls = <?php 
             $ajaxUrls = [];
