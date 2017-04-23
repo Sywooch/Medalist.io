@@ -48,14 +48,23 @@
 .addach-description-date-icon,
 .addach-description-photos-icon,
 .addach-description-photos-text,
+.addach-extra-range,
+.addach-extra-range-text,
+.addach-extra-range-range,
+.addach-extra-checks,
 .addach-tags-title,
 .addach-tags-w,
 .addach-tags-tags,
 .addach-tags-tag,
+.addach-controlls-send,
+.addach-controlls-isgoal,
+.input-check-inline,
 .mdlst-button-accent,
 .mdlst-button-closer,
 .mdlst-switch-state,
-.mdlst-switch-text {
+.mdlst-switch-text,
+.mdlst-pan-icon,
+.mdlst-pan-text {
   display: inline-block;
   *display: inline;
   zoom: 1;
@@ -75,9 +84,15 @@
 .rewards-catalog-block,
 .addach-description-date-date,
 .addach-description-date-icon,
+.addach-extra-range,
+.addach-extra-checks,
 .addach-tags-title,
 .addach-tags-w,
-.addach-tags-tags {
+.addach-tags-tags,
+.addach-controlls-send,
+.addach-controlls-isgoal,
+.mdlst-pan-icon,
+.mdlst-pan-text {
   vertical-align: top;
 }
 .dib_m,
@@ -88,6 +103,8 @@
 .userpanel-info-scale,
 .addach-description-photos-icon,
 .addach-description-photos-text,
+.addach-extra-range-text,
+.addach-extra-range-range,
 .mdlst-switch-state {
   vertical-align: middle;
 }
@@ -119,6 +136,7 @@
 .addach-header-inp-w,
 .addach-header-isdifficult,
 .addach-tags-tag,
+.input-check-inline,
 .mdlst-button-accent,
 .mdlst-button-closer,
 .mdlst-switch-text {
@@ -881,6 +899,29 @@ a {
   margin: 0;
   margin-right: 20px;
 }
+.addach-extra {
+  margin-top: 25px;
+  white-space: nowrap;
+}
+.addach-extra-range {
+  width: 60%;
+  white-space: nowrap;
+}
+.addach-extra-range-text {
+  font-size: 18px;
+  font-weight: bold;
+  width: 270px;
+  padding-top: 10px;
+  white-space: normal;
+}
+.addach-extra-range-range {
+  white-space: normal;
+  width: 160px;
+  margin-top: 10px;
+}
+.addach-extra-checks {
+  margin-top: 9px;
+}
 .addach-tags {
   margin-top: 25px;
   white-space: nowrap;
@@ -905,9 +946,32 @@ a {
 .addach-tags-tag {
   margin-bottom: 5px;
 }
+.addach-controlls {
+  margin-top: 25px;
+  white-space: nowrap;
+}
+.addach-controlls-send {
+  width: 50%;
+  text-align: right;
+}
+.addach-controlls-isgoal {
+  width: 50%;
+}
+.addach-important {
+  margin-top: 25px;
+}
 /* . add achievement end */
 /*system */
-.c=analytics {
+.rangeslider {
+  background-color: rgba(138,68,255,0.3) !important;
+}
+.rangeslider__fill {
+  background-color: #8a44ff !important;
+}
+.input-check-inline {
+  margin-right: 20px;
+}
+.c-analytics {
   color: #ff2d0b;
 }
 .mdlst-h2 {
@@ -1043,6 +1107,28 @@ a {
 }
 .mdlst-switch-chk {
   display: none;
+}
+.mdlst-pan {
+  position: relative;
+  white-space: nowrap;
+  box-sizing: border-box;
+  padding: 20px;
+}
+.mdlst-pan-important {
+  background-color: rgba(255,45,11,0.2);
+}
+.mdlst-pan-important .mdlst-pan-icon {
+  background-image: url("../img/important.png");
+}
+.mdlst-pan-icon {
+  width: 10%;
+  height: 63px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.mdlst-pan-text {
+  white-space: normal;
+  width: 90%;
 }
 .rewardpopup {
   position: fixed;

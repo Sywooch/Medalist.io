@@ -750,6 +750,31 @@ a
                 margin-right 20px
             &-text 
                 @extends .dib_m
+                
+    &-extra 
+        margin-top 25px
+        white-space nowrap
+        &-range 
+            width 60%
+            @extends .dib_t
+            white-space nowrap
+            &-text 
+                @extends .dib_m
+                font-size 18px 
+                font-weight bold 
+                width 270px
+                padding-top 10px
+                white-space normal
+            &-range 
+                @extends .dib_m
+                white-space normal
+                width 160px
+                margin-top 10px
+        &-checks
+            @extends .dib_t
+            margin-top 9px
+               
+       
     &-tags 
         margin-top 25px
         white-space nowrap
@@ -774,14 +799,34 @@ a
         &-tag 
             @extends .dib_base
             margin-bottom 5px
+    &-controlls 
+        margin-top 25px
+        white-space nowrap
+        &-send 
+            @extends .dib_t
+            width 50%
+            text-align right
+        &-isgoal 
+            @extends .dib_t
+            width 50%
+    &-important
+        margin-top 25px
                 
 /* . add achievement end */
 
  
             
 /*system */
+.rangeslider
+    background-color rgba(CMain, 0.3)  !important
+.rangeslider__fill
+    background-color CMain !important
+    
+.input-check-inline
+    @extends .dib_base
+    margin-right 20px
 .c
-    &=analytics 
+    &-analytics 
         color CAccent
 
 .mdlst
@@ -905,6 +950,27 @@ a
                 
         &-text 
             @extends .dib_base
+            
+    &-pan 
+        position relative 
+        white-space nowrap
+        
+        box-sizing border-box 
+        padding 20px
+        &-important
+            background-color rgba(CAccent, 0.2)
+            & .mdlst-pan-icon
+                background-image url(../img/important.png)    
+        &-icon 
+            @extends .dib_t
+            width 10%
+            height 63px
+            background-repeat no-repeat
+            background-position center
+        &-text
+            @extends .dib_t
+            white-space normal
+            width 90%
         
         
         

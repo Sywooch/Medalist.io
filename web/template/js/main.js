@@ -277,8 +277,14 @@ $(document).ready(function(){
 
 
 		/* ACHIEVEMENT */
+		$('.js-addach-isdifficult').hide();
+		console.log($('[data-toggle="rangeslider"]').rangeslider({ polyfill: false }));
 		$('.addach-description-text-textarea').trumbowyg(  );
 		$('[data-toggle="datepicker"]').datepicker();
+		
+		console.log( $('[data-toggle="rangeslider"]').rangeslider('update', true) );
+ 
+
 		$(document).on('keydown', '.js-tag-adder', function(e ){
 		 	var  v = $(this).val();
 
@@ -288,7 +294,17 @@ $(document).ready(function(){
 				$('.addach-tags-w').append('<div class="  mdlst-button mdlst-button-default addach-tags-tag"  >'+v+'<div class="mdlst-button-closer "></div></div>')
 
 			}
-		})
+		});
+		$(document).on('change', 'input[name="addach-chk-isimportant"]', function(e ){
+			console.log('123');
+		 	if( $(this).is(":checked")) {
+				$('.js-addach-isdifficult').show();
+				$('.js-addach-isdifficult-h').hide();
+		 	}else{
+		 		$('.js-addach-isdifficult').hide();
+		 		$('.js-addach-isdifficult-h').show();
+		 	}
+		});
 		/* ACHIEVEMENT END */
 
 
@@ -299,9 +315,11 @@ $(document).ready(function(){
 			if( $(this).hasClass('mdlst-switch-on') ){
 				$(this).removeClass('mdlst-switch-on');
 				check.attr('checked', false);
+				check.change();
 			}else{
 				$(this).addClass('mdlst-switch-on');
 				check.attr('checked', 'checked');
+				check.change();
 			}
 
 		});

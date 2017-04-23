@@ -9,11 +9,18 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="js/trumbowyg/dist/ui/trumbowyg.css">
     <link rel="stylesheet" href="js/datepicker/dist/datepicker.css">
+    <link rel="stylesheet" href="js/rangeslider/rangeslider.css">
     <script src="js/jquery-3.2.0.min.js"></script>
     <script src="js/datepicker/dist/datepicker.js"></script>
     <script src="js/trumbowyg/dist/trumbowyg.js"></script>
+    <script src="js/rangeslider/rangeslider.js"></script>
+  
  
     <script src="js/main.js"></script>
+    <script>
+    	 $('input[type="range"]').rangeslider();
+
+	</script>
   </head>
 
   <body>
@@ -38,6 +45,7 @@
 	<!-- .HEADER END -->
 
 	<div id="content" class="content">
+		 <link rel="stylesheet" href="./css/goals.css">
 		<!-- USERPANEL -->
 	 	<div id="userpanel" class="userpanel">
 	 		<div class="wc">
@@ -143,7 +151,7 @@
 			 									</div>
 			 								</div>
 			 								<div class="  mdlst-switch-text">Важное достижение</div>
-			 								<input type="checkbox" class="mdlst-switch-chk">
+			 								<input type="checkbox" name="addach-chk-isimportant" class="mdlst-switch-chk">
 			 							</div>
 			 						</div>
 
@@ -161,6 +169,7 @@
 			 						</div>
 
 
+
 			 						<div class="addach-tags">
 			 							<div class="addach-tags-title">Теги:</div>
 			 							<div class="addach-tags-w">
@@ -170,16 +179,62 @@
 			 							</div>
 			 						</div>
 
+
+
+
+			 						<div class="addach-extra js-addach-isdifficult">
+			 							<div class="addach-extra-range">
+			 								<div class="addach-extra-range-text">Насколько это было сложно?</div>
+			 								<div class="addach-extra-range-range"> <input type="range" data-toggle="rangeslider"  data-rangeslider min="1" max="100" step="1" value="50" ></div>
+			 							</div>
+			 							<div class="addach-extra-checks">
+			 								<div class="input-check input-check-inline">
+                                      			<input id="addach-check-achieved" name="important" value="1" type="checkbox">
+                                    			<label for="subGoal2"  >Я достиг цели</label>
+                                   			</div>
+			 								<div class="input-check  input-check-inline ">
+                                      			<input id="addach-check-achieved" name="important" value="1" type="checkbox">
+                                    			<label for="subGoal2" >Я прошел квест</label>
+                                   			</div>
+			 							</div>
+			 						</div>
+
+
+
+
+										
+									<!-- add achievement  CONTROLLS -->
 			 						<div class="addach-controlls">
 			 							<div class="addach-controlls-isgoal">
-			 								<div class="chk-w">
-												<div class="chk-img"></div>
-												<div class="chk-t">Я выполнил цель или квест</div>
-												<input type="checkbox" class="chk-chk">
+			 								<div class="input-check js-addach-isdifficult-h">
+                                      			<input id="addach-check-achieved" name="important" value="1" type="checkbox">
+                                    			<label for="subGoal2" class="subtask-top-name">Я достиг своей цели</label>
+                                   			</div>
+
+		                           			<div class="dropdown-select js-addach-isdifficult">
+												<div class="dropdown-select-block">
+													<div class="dropdown-select-block-text">Выберите ЦЕЛЬ или КВЕСТ</div>
+													<div class="dropdown-select-block-arrow"></div>
+												</div>
+												<select name="" id="" class="dropdown-select-real">
+													<option value="">Выберите ЦЕЛЬ или КВЕСТ</option>
+													<option value="">Политика</option>
+													<option value="">Спорт</option>
+													<option value="">Природа</option>
+												</select>
 											</div>
+
 			 							</div>
 			 							<div class="addach-controlls-send">
 			 								<button class="mdlst-button  mdlst-button-default">Добавить достижение</button>
+			 							</div>
+			 						</div>
+			 						<!-- add achievement CONTROLLS end -->
+
+			 						<div class="addach-important js-addach-isdifficult">
+			 							<div class="mdlst-pan mdlst-pan-important">
+			 								<div class="mdlst-pan-icon"></div>
+			 								<div class="mdlst-pan-text">Вы собираетесь рассказать о серьёзном достижении своей жизни. Если большая часть сообщества вам не поверит, вы не получите награды и баллы за достижение. Если пользователи сочтут, что вы обманули, вы будете оштрафованы.</div>
 			 							</div>
 			 						</div>
 
