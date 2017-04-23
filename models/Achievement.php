@@ -83,6 +83,12 @@ class Achievement extends \yii\db\ActiveRecord
     }
 
 
+    public static function getLikes(){
+        return Likes::find()->where("entity_class = 'Achievement' and entity_id = ".$this->goal_id)->all();
+    }
+    public static function getComments(){
+        return Comment::find()->where("entity_class = 'Achievement' and entity_id = ".$this->goal_id)->all();
+    }
 
     public static function getPhotos(){
         return Photo::find()->where("entity_class = 'Achievement' and entity_id = ".$this->goal_id)->all();

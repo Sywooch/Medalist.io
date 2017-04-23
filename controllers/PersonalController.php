@@ -10,6 +10,8 @@ use app\models\ScalePointsBalance;
 use app\models\Badge;
 use app\models\Quest;
 use app\models\QuestPendingTask;
+use app\models\Goal;
+use app\models\GoalSubtask;
 use Yii;
 
 class PersonalController extends \yii\web\Controller
