@@ -28,7 +28,7 @@ $currentUrl = Url::current();
 									<li class="container-menu-list-li">
 										<a class="container-menu-list-link" href="<?=Yii::$app->urlManager->createUrl('personal/achievements')?>">Достижения</a>
 										<div class="container-menu-list-meta">
-											<a class="container-menu-list-meta-add" href="<?=Yii::$app->urlManager->createUrl('personal/add-achievement')?>">
+											<a class="container-menu-list-meta-add" href="<?=Yii::$app->urlManager->createUrl('personal/achievement-add')?>">
 												<span class="container-menu-list-meta-add-plus">+</span>
 											</a>
 										</div>

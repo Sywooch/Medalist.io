@@ -24,6 +24,10 @@ class PersonalController extends \yii\web\Controller
     {
         return $this->render('achievements');
     }
+    public function actionAchievementAdd()
+    {
+        return $this->render('achievement-add');
+    }
 
     public function actionDashboard()
     {

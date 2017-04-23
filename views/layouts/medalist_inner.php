@@ -22,7 +22,15 @@ AppAsset::register($this);
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="/template/css/system.css">
     <link rel="stylesheet" href="/template/css/style.css">
+    <link rel="stylesheet" href="/template/js/trumbowyg/dist/ui/trumbowyg.css">
+    <link rel="stylesheet" href="/template/js/datepicker/dist/datepicker.css">
+    <link rel="stylesheet" href="/template/js/rangeslider/rangeslider.css">
+     <link rel="stylesheet" href="/template/css/goals.css">
+
     <script src="/template/js/jquery-3.2.0.min.js"></script>
+    <script src="/template/js/datepicker/dist/datepicker.js"></script>
+    <script src="/template/js/trumbowyg/dist/trumbowyg.js"></script>
+    <script src="/template/js/rangeslider/rangeslider.js"></script>
     <script type="text/javascript">
         var ajaxUrls = <?php 
             $ajaxUrls = [];
