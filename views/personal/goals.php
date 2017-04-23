@@ -92,7 +92,7 @@ echo $this->render('_panel.php');
 									</div>
 								</div>
     
-								<div class="tabs-container">
+								<div class="tabs-container marginTop30">
 									<div class="tabs">
 									  <ul class="tabs-ul">
 									    <li class="tabs-li">
