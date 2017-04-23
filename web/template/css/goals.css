@@ -488,9 +488,10 @@ margin-top:30px;
 
 }
 
-.goals-picture-mid{
+.goals-picture-mid img{
 /*	margin-left:50px;*/
-
+	width:284px;
+	height:227px;
 }
 
 .withList{
@@ -513,4 +514,8 @@ margin-top:30px;
 .goal-content{
 	margin-bottom:30px;
 
+}
+
+.mygoals-block{
+    text-decoration: none;
 }
