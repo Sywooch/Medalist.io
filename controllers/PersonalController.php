@@ -51,7 +51,7 @@ class PersonalController extends \yii\web\Controller
 
         $id = Yii::$app->request->get()['goal_id'];
         $goal = Goal::findOne( $id );
-        return $this->render('goal', ['goal' => $goal]);
+        return $this->render('goal-detail', ['goal' => $goal]);
     }
 
     public function actionNews()
