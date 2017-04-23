@@ -42,8 +42,8 @@ class PersonalController extends \yii\web\Controller
     public function actionGoals()
     {
         //$id = Yii::$app->request->get()['goal_id'];
-        $goal = Goal::find()->all();
-        return $this->render('goals');
+        $goals = Goal::find()->all();
+        return $this->render('goals', ['goals' => $goals]);
     }
 
     public function actionGoal()
