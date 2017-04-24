@@ -36,6 +36,8 @@ EventEngine.fireEvents = function() {
 				console.log('firing' + EventEngine.events[k].eventName + 'Handler');
 			 EventEngine.handlers[ EventEngine.events[k].eventName + 'Handler' ] ( EventEngine.events[k].eventParams );
 			 EventEngine.events[k].fired = true;
+		}else{
+			console.log( 'thereAre No handlers');
 		}
 
 	}
