@@ -23,6 +23,7 @@ class Badge extends \yii\db\ActiveRecord
     const BDG_WELCOME = 1;
     
     const BDG_QUEST_TAKE_QUEST = 2;
+    const BDG_ACHIEVEMENT_FIRST_ACHIEVEMENT = 3;
 
     /**
      * @inheritdoc

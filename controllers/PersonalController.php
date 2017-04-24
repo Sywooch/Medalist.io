@@ -26,7 +26,11 @@ class PersonalController extends \yii\web\Controller
     }
     public function actionAchievementAdd()
     {
-        return $this->render('achievement-add');
+
+        $questPendingTasks = QuestPendingTask::find()->where('user_id = '.Yii::$app->user->identity->id.' AND status = 0')->all();
+        $goals = Goal::find()->where('user_id = '.Yii::$app->user->identity->id.' AND completed = 0')->all();
+
+        return $this->render('achievement-add', ['goals' => $goals, 'questPendingTasks' => $questPendingTasks]);
     }
 
     public function actionDashboard()

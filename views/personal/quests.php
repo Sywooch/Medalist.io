@@ -1,6 +1,6 @@
 <?php
 /* @var $this yii\web\View */
-
+use app\models\Like;
 echo $this->render('_panel.php');
 ?>
 
@@ -79,6 +79,13 @@ echo $this->render('_panel.php');
 							<div class="quests-list">
 								<?php foreach( $quests as $q ) { 
 									$rewards = $q->getRewards()->all();
+
+									$likes = Like::getLikesOfObject( $q );
+									$likeArr = array(1 => 0, -1 => 0);
+									foreach ($likes as $like) {
+										$likeArr[ $like->points ] += $like->points;
+									}
+
 									?>
 								<!-- QUEST -->
 								<div class="questblock">
@@ -87,7 +94,7 @@ echo $this->render('_panel.php');
 									</div>
 									<div class="questblock-info">
 										<div class="questblock-info-meta">
-											<div class="questblock-info-meta-points">+<?=$rewards[0]->points?> к музыкальности</div>
+											<?php if(!empty($rewards[0]) ) { ?><div class="questblock-info-meta-points">+<?=$rewards[0]->points?> к музыкальности</div> <? } ?>
 											<div class="questblock-info-meta-lurms">+2</div>
 										</div>
 										<div class="questblock-info-title"><?=$q->name?></div>
@@ -106,8 +113,8 @@ echo $this->render('_panel.php');
 										<div class="questblock-info-controlls">
 											<div class="questblock-info-controlls-likes">
 												<div class="like-controll">
-													<div class="like-controll-plus like-controll-active"><span></span>25</div>
-													<div class="like-controll-minus"><span></span>12</div>
+													<div class="like-controll-plus like-controll-active"><span></span><?=abs($likeArr[ 1 ]) ?></div>
+													<div class="like-controll-minus"><span></span><?=abs($likeArr[ -1 ]) ?></div>
 												</div>
 											</div>
 											<div class="questblock-info-controlls-comments">

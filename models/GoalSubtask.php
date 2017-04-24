@@ -69,4 +69,8 @@ class GoalSubtask extends \yii\db\ActiveRecord
     {
         return new GoalSubtaskQuery(get_called_class());
     }
+
+    public  function getSubtasks(){
+        return GoalSubtask::find()->where("goal_subtask_parent_id = ".$this->goal_subtask_id)->all();
+    }
 }
