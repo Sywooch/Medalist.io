@@ -85,7 +85,7 @@ class Goal extends \yii\db\ActiveRecord
 
 
     public  function getLikes(){
-        return Likes::find()->where("entity_class = 'Goal' and entity_id = ".$this->goal_id)->all();
+        return Like::find()->where("entity_class = 'Goal' and entity_id = ".$this->goal_id)->all();
     }
     public  function getComments(){
         return Comment::find()->where("entity_class = 'Goal' and entity_id = ".$this->goal_id)->all();

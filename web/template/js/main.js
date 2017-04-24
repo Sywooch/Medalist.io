@@ -280,7 +280,7 @@ $(document).ready(function(){
 		$('.js-addach-isdifficult').hide();
 		console.log($('[data-toggle="rangeslider"]').rangeslider({ polyfill: false }));
 		$('.addach-description-text-textarea').trumbowyg(  );
-		$('[data-toggle="datepicker"]').datepicker();
+		$('[data-toggle="datepicker"]').datepicker( {format: 'dd.mm.yyyy'});
 		
 		console.log( $('[data-toggle="rangeslider"]').rangeslider('update', true) );
  
@@ -305,6 +305,58 @@ $(document).ready(function(){
 		 		$('.js-addach-isdifficult-h').show();
 		 	}
 		});
+
+
+
+		//Взять квест
+		$(document).on('click', '.js-add-achievement', function(){
+			var p = $(this).parents('.addachievement-form'),
+				name = p.find('input[name="name"]'),
+				description = p.find('textarea[name="description"]'),
+				difficulty = p.find('input[name="difficulty"]'),
+				difficult = p.find('input[name="addach-chk-isimportant"]'),
+				entity = p.find('[name="entity"]'),
+				date_achieved = p.find('[name="date_achieved"]'),
+				tags = p.find('.addach-tags-w .addach-tags-tag'),
+				tagWords = [],
+				_csrf = p.find('input[name=_csrf]'),
+				data = {}
+				;
+
+				tags.each(function(i,e){
+					tagWords[ tagWords.length ] = $(e).text();
+				});
+
+				data['name'] = name.val();
+				data['description'] = description.val();
+				data['difficulty'] = difficulty.val();
+				data['difficult'] = difficult.val();
+				data['date_achieved'] = date_achieved.val();
+				data['entity'] = entity.val();
+				data['interests'] =  tagWords;
+				data['_csrf'] = _csrf.val();
+				 
+		 	
+				$.ajax({
+					url: ajaxUrls['addAchievement'],
+					data: data,
+					dataType: 'json',
+					type: 'post',
+					success: function(data){
+						console.log(data);
+
+						EventEngine.registerEventFromRawAjax (data);
+					}
+
+				});
+
+				return false;
+ 
+			
+		});
+
+
+
 		/* ACHIEVEMENT END */
 
 
