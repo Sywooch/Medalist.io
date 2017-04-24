@@ -345,6 +345,11 @@ $(document).ready(function(){
 					success: function(data){
 						console.log(data);
 
+						if( data.success ){
+							$('.addach').slideUp();
+							$('.addach-success').slideDown();
+						}
+
 						EventEngine.registerEventFromRawAjax (data);
 					}
 

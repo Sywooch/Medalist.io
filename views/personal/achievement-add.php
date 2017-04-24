@@ -131,6 +131,14 @@ echo $this->render('_panel.php');
 
 		 						</form>
 		 					</div>
+
+		 					<div class="addach-success" style="display: none;">
+		 						<div class="mdlst-pan mdlst-pan-ok">
+	 								<div class="mdlst-pan-icon"></div>
+	 								<div class="mdlst-pan-text">Вы успешно добавили достижение! Посмотрите его в <a href="<?=Yii::$app->urlManager->createUrl('personal/achievements')?>">вашем списке достижений!</a></div>
+	 							</div>
+		 					</div>
+
 		 					<!-- . ADDING ACHIEVEMENT END -->
 
 						</div>
