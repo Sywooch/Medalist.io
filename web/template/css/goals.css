@@ -161,9 +161,10 @@ margin-left:10px;
 
 }
 
-.goals-picture-big{
+.goals-picture-big img{
 	float:left;
-
+	width:431px;
+	height:285px;
 
 }
 
@@ -177,6 +178,8 @@ margin-left:10px;
 .goals-picture-small{
 	float:left;
 	margin-left:18px;
+	width:161px;
+	height:128px;
 
 }
 
@@ -434,6 +437,9 @@ height:43px;
 margin-top:30px;
 }
 
+.marginBottom30{
+margin-bottom:30px;
+}
 
 
 
