@@ -64,7 +64,8 @@ class Like extends \yii\db\ActiveRecord
     //GetLikesOfObject
     public static function getLikesOfObject( $obj ){
         $classname = get_class( $obj );
-        $id = $obj->{strtolower($classname)."_id"};
+        $idVarName = str_replace('app\\models\\','', strtolower($classname)."_id");
+        $id = $obj->{$idVarName};
 
         return Like::find()->where("entity_class = '".$classname."' and entity_id = ".$id)->all();
     }
