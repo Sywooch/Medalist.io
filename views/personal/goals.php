@@ -104,12 +104,12 @@ echo $this->render('_panel.php');
 
 							<div class="clear"></div>
 
-							<span class="showSubtasts">Смотреть подцели (<?=count($goal->getGoalSubtasks())?>)</span>
+							<span class="showSubtasts">Смотреть подцели (<?=count($goal->getSubtasks())?>)</span>
 							
 											<div>
 												<ul class="goal-subtask"> 
 												<? 
-												        $goal_subtasks = $goal->getGoalSubtasks();
+												        $goal_subtasks = $goal->getSubtasks();
 														var_dump($goal_subtasks);
 														foreach($goal_subtasks as $subtask){?>
 												        <?//=$subtask->goal_id?>
