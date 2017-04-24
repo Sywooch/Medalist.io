@@ -1120,6 +1120,12 @@ a {
 .mdlst-pan-important .mdlst-pan-icon {
   background-image: url("../img/important.png");
 }
+.mdlst-pan-important {
+  background-color: rgba(138,68,255,0.2);
+}
+.mdlst-pan-important .mdlst-pan-icon {
+  background-image: url("../img/pan-ok.png");
+}
 .mdlst-pan-icon {
   width: 10%;
   height: 63px;
