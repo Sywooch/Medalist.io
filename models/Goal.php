@@ -95,7 +95,7 @@ class Goal extends \yii\db\ActiveRecord
         return Photo::find()->where("entity_class = 'Goal' and entity_id = ".$this->goal_id)->all();
     }
     public  function getSubtasks(){
-        return $this->hasMany(GoalSubtask::classname(), ['goal_id' => 'goal_id'])->where('goal_subtask_parent_id = 0')->all();
+        return $this->hasMany(GoalSubtask::classname(), ['goal_id' => 'goal_id'])->all();
 
     }
 
