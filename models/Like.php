@@ -79,7 +79,7 @@ class Like extends \yii\db\ActiveRecord
         $idVarName = strtolower($classname."_id");
         $id = $obj->{$idVarName};
 
-        return Like::find()->where("entity_class = '".$classname."' and entity_id = ".$id." and where points = 1")->count();
+        return Like::find()->where("entity_class = '".$classname."' and entity_id = ".$id." and  point = 1")->count();
     }
         //GetLikesOfObject
     public static function getDislikesOfObjectCount( $obj ){
@@ -89,6 +89,6 @@ class Like extends \yii\db\ActiveRecord
         $idVarName = strtolower($classname."_id");
         $id = $obj->{$idVarName};
 
-        return Like::find()->where("entity_class = '".$classname."' and entity_id = ".$id." and where points = -1")->count();
+        return Like::find()->where("entity_class = '".$classname."' and entity_id = ".$id." and point = -1")->count();
     }
 }

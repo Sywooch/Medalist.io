@@ -83,7 +83,7 @@ echo $this->render('_panel.php');
 									$likes = Like::getLikesOfObject( $q );
 									$likeArr = array(1 => 0, -1 => 0);
 									foreach ($likes as $like) {
-										$likeArr[ $like->points ] += $like->points;
+										$likeArr[ $like->point ] += $like->point;
 									}
 
 									?>
