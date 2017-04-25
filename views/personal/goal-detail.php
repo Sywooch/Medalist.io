@@ -1,5 +1,7 @@
 <?php
    /* @var $this yii\web\View */
+use app\models\Like;   
+use app\models\Goal;   
    
    echo $this->render('_panel.php');
    ?>
@@ -61,7 +63,7 @@
 
                         <div class="mygoals-progress">
                            <div class="interests-selector-scale-viewport userpanel-info-scale-scale">
-                              <div class="interests-selector-scale-track" style="margin-left: -<?=100-$goal->percent_completed?>%;"></div>
+                              <div class="interests-selector-scale-track" style="margin-left: -<?=100-$goal->getProgressPercent()?>%;"></div>
                            </div>
                         </div>
                      </div>
@@ -87,8 +89,8 @@
                   <div class="questblock-info-controlls">
                      <div class="questblock-info-controlls-likes">
                         <div class="like-controll">
-                           <div class="like-controll-plus like-controll-active"><span></span>25</div>
-                           <div class="like-controll-minus"><span></span>12</div>
+                           <div class="like-controll-plus like-controll-active"><span></span><?=Like::getLikesOfObjectCount($goal)?></div>
+                           <div class="like-controll-minus"><span></span><?=Like::getDislikesOfObjectCount($goal)?></div>
                         </div>
                      </div>
                      <div class="questblock-info-controlls-comments">
@@ -102,91 +104,78 @@
                               <input type="radio" name="tabs-0" checked="checked" id="tabs-0-0" />
                               <label for="tabs-0-0">Список подзадач</label>
                               <div>
-                                 <ul class="goal-subtask">
-                                    <li class="subtask-container">
-                                       <div class="subtask-top">
-                                          <div class="subtask-top-left subtask-done">
-                                             <div class="input-check">
-                                                <input checked="checked" type="checkbox" id="subGoal1" name="subGoal1" value="subGoal1"/>
-                                                <label for="subGoal1" class="subtask-top-name">1. Выбрать дату с Мариной</label>
-                                             </div>
-                                             <div class="subtask-progress">
-                                                <div class="interests-selector-scale-viewport userpanel-info-scale-scale subtask-progress-height">
-                                                   <div class="interests-selector-scale-track subtask-progress-height" style="margin-left: -80%;"></div>
-                                                </div>
-                                             </div>
-                                             <span class="mygoals-dead color-red subtask-top-dead">10.01.2017</span>
-                                          </div>
+
+
+
+
+		   <?   $subtasks = Goal::getSubtasksById($goal->goal_id);
+						$g = "ListbGoal" . $goal->goal_id;
+
+			$is_subtasks = count($subtasks) > 0;?>
+
+		   <? if ($is_subtasks){ ?>
+
+                     <div>
+                        <ul class="goal-subtask">
+                    <?}?>
+
+
+                           <? foreach( $subtasks as $subtask){
+                                $s = $g."s".$subtask->goal_subtask_id;
+				?>
+                           <li class="subtask-container">
+                              <div class="subtask-top">
+                                 <div class="subtask-top-left <?=$subtask->completed ? 'subtask-done' : ''; ?>">
+                                    <div class="input-check">
+                                       <input <?=$subtask->completed ? 'checked = "checked"' : ''; ?> type="checkbox" id="<?=$s;?>" name="<?=$s;?>" value="<?=$s;?>"/>
+                                       <label for="<?=$s;?>" class="subtask-top-name">1. <?=$subtask->name?></label>
+                                    </div>
+                                    <div class="subtask-progress">
+                                       <div class="interests-selector-scale-viewport userpanel-info-scale-scale subtask-progress-height">
+                                          <div class="interests-selector-scale-track subtask-progress-height" style="margin-left: -<?=100-$subtask->getProgressPercent()?>%;"></div>
+                                       </div>
+                                    </div>
+                                    <span class="mygoals-dead color-red subtask-top-dead"><? echo date("Y.m.d",strtotime($subtask->deadline))?></span>
+                                 </div>
                                           <a class="container-menu-list-meta-add margin-0" href="#">
                                           <span class="container-menu-list-meta-add-plus">+</span>
                                           </a>
-                                       </div>
-                                       <div class="subtask-bottom">
-                                          Лучше всего летом, так как в городе не очень хочется...
-                                       </div>
-                                    </li>
-                                    <li class="subtask-container">
-                                       <div class="subtask-top">
-                                          <div class="subtask-top-left">
-                                             <div class="input-check">
-                                                <input type="checkbox" id="subGoal2" name="subGoal2" value="subGoal2"/>
-                                                <label for="subGoal2" class="subtask-top-name">1. Выбрать дату с Мариной</label>
-                                             </div>
-                                             <div class="subtask-progress">
-                                                <div class="interests-selector-scale-viewport userpanel-info-scale-scale subtask-progress-height">
-                                                   <div class="interests-selector-scale-track subtask-progress-height" style="margin-left: -80%;"></div>
-                                                </div>
-                                             </div>
-                                             <span class="mygoals-dead color-red subtask-top-dead">10.01.2017</span>
-                                          </div>
-                                          <a class="container-menu-list-meta-add margin-0" href="#">
-                                          <span class="container-menu-list-meta-add-plus">+</span>
-                                          </a>
-                                       </div>
-                                       <div class="subtask-bottom">
-                                          Лучше всего летом, так как в городе не очень хочется...
-                                       </div>
-                                       <ul class="subtask-points">
-                                          <li>
-                                             <div class="input-check">
-                                                <input type="checkbox" id="subGoal2p1" name="subGoal2p1" value="subGoal2p1"/>
-                                                <label for="subGoal2p1" class="subtask-top-name">1. Выбрать дату с Мариной</label>
-                                             </div>
-                                             <div class="clear"></div>
-                                          </li>
-                                          <li>
-                                             <div class="input-check">
-                                                <input type="checkbox" id="subGoal2p2" name="subGoal2p2" value="subGoal2p2"/>
-                                                <label for="subGoal2p2" class="subtask-top-name">1. Выбрать дату с Мариной</label>
-                                             </div>
-                                             <div class="clear"></div>
-                                          </li>
-                                       </ul>
-                                    </li>
-                                    <li class="subtask-container">
-                                       <div class="subtask-top">
-                                          <div class="subtask-top-left subtask-done">
-                                             <div class="input-check">
-                                                <input checked="checked" type="checkbox" id="subGoal3" name="subGoal3" value="subGoal3"/>
-                                                <label for="subGoal3" class="subtask-top-name">1. Выбрать дату с Мариной</label>
-                                             </div>
-                                             <div class="subtask-progress">
-                                                <div class="interests-selector-scale-viewport userpanel-info-scale-scale subtask-progress-height">
-                                                   <div class="interests-selector-scale-track subtask-progress-height" style="margin-left: -80%;"></div>
-                                                </div>
-                                             </div>
-                                             <span class="mygoals-dead color-red subtask-top-dead">10.01.2017</span>
-                                          </div>
-                                          <a class="container-menu-list-meta-add margin-0" href="#">
-                                          <span class="container-menu-list-meta-add-plus">+</span>
-                                          </a>
-                                       </div>
-                                       <div class="subtask-bottom">
-                                          Лучше всего летом, так как в городе не очень хочется...
-                                       </div>
-                                    </li>
-                                 </ul>
                               </div>
+                              <div class="subtask-bottom">
+                                 <?=$subtask->description?>
+                              </div>
+
+			   <? $subtasks_points = $subtask->getSubtasks();
+				 $is_subtask_points = count($subtasks) > 0;?>
+
+			   <? if ($is_subtask_points){ ?>
+                              <ul class="subtask-points">
+                           <?}?>
+
+                           <? foreach($subtasks_points as $subtask_point){
+                                $p = $s."p".$subtask_point->goal_subtask_id;
+				?>
+
+                              
+                                 <li>
+                                    <div class="input-check <?=$subtask_point->completed ? 'subtask-done' : ''; ?>">
+                                       <input <?=$subtask_point->completed ? 'checked = "checked"' : ''; ?> type="checkbox" id="<?=$p?>" name="<?=$p?>" value="<?=$p?>"/>
+                                       <label for="<?=$p?>" class="subtask-top-name">1. <?=$subtask_point->name?></label>
+                                    </div>
+                                    <div class="clear"></div>
+                                 </li>
+	                    <?}?>
+
+			   <? if ($is_subtask_points){ ?>
+                              </ul>
+                           <?}?>
+
+                           <?}?>
+
+
+
+                              </div>
+
                            </li>
                            <li class="tabs-li">
                               <input type="radio" name="tabs-0" id="tabs-0-1" />
