@@ -73,4 +73,27 @@ class GoalSubtask extends \yii\db\ActiveRecord
     public  function getSubtasks(){
         return GoalSubtask::find()->where("goal_subtask_parent_id = ".$this->goal_subtask_id)->all();
     }
+
+
+
+    public function getProgressPercent(){
+
+        $subtasks = $this->getSubtasks();
+
+        if( !empty($subtasks) ){
+            $count = 0;
+            $percent = 0;
+            foreach ($subtasks as $st) {
+                $count++;
+                $percent += $st->getProgressPercent();
+            }
+            return ($percent/$count);
+        }else{
+            return ($this->completed)?100:0;
+        }
+
+    }
+
+
+
 }

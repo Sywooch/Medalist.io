@@ -99,6 +99,35 @@ class Goal extends \yii\db\ActiveRecord
 
     }
 
+
+    //Процент выполнения цели.
+
+    public function getProgressPercent(){
+
+        $subtasks = $this->getSubtasks();
+
+        if( !empty($subtasks) ){
+            $count = 0;
+            $percent = 0;
+            foreach ($subtasks as $st) {
+                if( $st->goal_subtask_parent_id == 0) {
+                    $count++;
+                    $percent += $st->getProgressPercent();    
+                }
+                
+            }
+            if( $count > 0){
+                return ($percent/$count);    
+            }else{
+                return 0;
+            }
+            
+        }else{
+            return $this->percent_completed;
+        }
+
+    }
+
     public static function getUserGoalsById( $user_id ){
         return Goal::find()->where(" user_id = ".$user_id)->all();
     }
