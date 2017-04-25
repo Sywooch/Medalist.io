@@ -3,7 +3,7 @@
 
 echo $this->render('_panel.php');
 ?>
-
+ 
 		<!-- CONTENT -->
 		<div class="container">
 			<div class="wc">
