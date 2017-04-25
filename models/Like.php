@@ -66,7 +66,7 @@ class Like extends \yii\db\ActiveRecord
         $classname = get_class( $obj );
         $classname = explode("\\",$classname);
         $classname = $classname[count($classname) - 1];
-        $idVarName = $classname."_id");
+        $idVarName = strtolower($classname."_id");
         $id = $obj->{$idVarName};
 
         return Like::find()->where("entity_class = '".$classname."' and entity_id = ".$id)->all();
@@ -76,7 +76,7 @@ class Like extends \yii\db\ActiveRecord
         $classname = get_class( $obj );
         $classname = explode("\\",$classname);
         $classname = $classname[count($classname) - 1];
-        $idVarName = $classname."_id");
+        $idVarName = strtolower($classname."_id");
         $id = $obj->{$idVarName};
 
         return Like::find()->where("entity_class = '".$classname."' and entity_id = ".$id."  points = 1")->count();
@@ -86,7 +86,7 @@ class Like extends \yii\db\ActiveRecord
         $classname = get_class( $obj );
         $classname = explode("\\",$classname);
         $classname = $classname[count($classname) - 1];
-        $idVarName = $classname."_id");
+        $idVarName = strtolower($classname."_id");
         $id = $obj->{$idVarName};
 
         return Like::find()->where("entity_class = '".$classname."' and entity_id = ".$id."  points = -1")->count();
