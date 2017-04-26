@@ -34,7 +34,10 @@ echo $this->render('_panel.php');
 
 								 <div class="achievement-list">
 								 	
-								 	<?php foreach($achievements as $a) { ?>
+								 	<?php foreach($achievements as $a) { 
+
+								 		if( $a->difficult == 1 ){
+								 		?>
 
 								 	<!-- ACHIEVEMENT BLOCK -->
 								 	<div class="achievement-block achievement-block--big">
@@ -115,7 +118,11 @@ echo $this->render('_panel.php');
 								 	<!-- .ACHIEVEMENT BLOCK END -->
 
 
-								 	<?php } ?>
+								 	<?php
+
+								 		}else{
+								 			//Todo partial render
+								 			?>
 
 
 								 	<!-- ACHIEVEMENT BLOCK SMALL-->
@@ -132,13 +139,13 @@ echo $this->render('_panel.php');
 								 		<div class="achievement-block-content">
 								 			<div class="achievement-block-content-cols">
 								 				<div class="achievement-block-content-col achievement-block-content-col-1">
-								 					<div class="achievement-block-content-title">Купить квартиру в Кудрово</div>
+								 					<div class="achievement-block-content-title"><?=$a->name?></div>
 								 					<div class="achievement-block-content-info">
 								 						<div class="achievement-block-content-info-date">27.11.2010</div>
 								 					
 								 					</div>
 														
-													<div class="achievement-block-content-description">Мы наконец сделали это! Купили свою квартирку! деятельность по проектированию эстетических свойств промышленных изделий...</div>
+													<div class="achievement-block-content-description"><?=$a->description?></div>
   
 
 
@@ -163,49 +170,15 @@ echo $this->render('_panel.php');
 								 	</div>
 
 								 	<!-- .ACHIEVEMENT BLOCK END -->
+								 			<?
+								 		}
+
+
+								 	 } ?>
 
 
 
-								 	<!-- ACHIEVEMENT BLOCK SMALL-->
-								 	<div class="achievement-block achievement-block--small">
-								 		<!-- meta --> 
-								 		<div class="achievement-block-meta">
-								 			<div class="achievement-block-category">
-								 				<div class="mdlst-cattag mdlst-cattag-3">Культура</div>
-								 			</div> 
-
-								 		</div>
-
-								 		<!-- content --> 
-								 		<div class="achievement-block-content">
-								 			<div class="achievement-block-content-cols">
-								 				<div class="achievement-block-content-col achievement-block-content-col-1">
-								 					<div class="achievement-block-content-title">Сходили на новую постановку Макбета</div>
-								 					<div class="achievement-block-content-info">
-								 						<div class="achievement-block-content-info-date">27.11.2010</div>
-								 					
-								 					</div>
-														
-													<div class="achievement-block-content-description">Мы наконец сделали это! Купили свою квартирку! деятельность по проектированию эстетических свойств промышленных изделий...</div>
-  
-
-
-								 				</div>
-								 				<div class="achievement-block-content-col achievement-block-content-col-2">
-								 					  
-										 			<div class="achievement-block-comments">
-									 					<div class="comment-controll"><span></span>55 комментария</div>
-										 			</div>
-
-								 				</div>
-								 			</div>
-								 		</div>
-
-								 		<!-- extra info --> 
-								 		
-								 	</div>
-
-								 	<!-- .ACHIEVEMENT BLOCK END -->
+ 
 
 								 </div>
 								 <!-- . achievement list end -->

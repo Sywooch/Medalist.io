@@ -23,7 +23,7 @@ class PersonalController extends \yii\web\Controller
 
     public function actionAchievements()
     {
-        $achievements = Achievement::find()->where('user_id = '.Yii::$app->user->identity->id)->orderBy(['date_created' => 'DESC'])->all();
+        $achievements = Achievement::find()->where('user_id = '.Yii::$app->user->identity->id)->orderBy([ 'date_created' => SORT_DESC])->all();
         return $this->render('achievements', ['achievements' =>$achievements]);
     }
     public function actionAchievementAdd()

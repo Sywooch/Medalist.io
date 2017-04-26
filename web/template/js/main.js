@@ -335,7 +335,7 @@ $(document).ready(function(){
 				data['name'] = name.val();
 				data['description'] = description.val();
 				data['difficulty'] = difficulty.val();
-				data['difficult'] = difficult.val();
+				data['difficult'] = ( difficult.attr("checked") == 'checked' ?1:0);
 				data['date_achieved'] = date_achieved.val();
 				data['entity'] = entity.val();
 				data['interests'] =  tagWords;
