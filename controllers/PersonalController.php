@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 
+use app\models\Achievement;
 use app\models\BadgeBalance;
 use app\models\BadgeCategory;
 use app\models\BadgeGroup;
@@ -22,7 +23,8 @@ class PersonalController extends \yii\web\Controller
 
     public function actionAchievements()
     {
-        return $this->render('achievements');
+        $achievements = Achievement::find()->where('user_id = '.Yii::$app->user->identity->id)->orderBy(['date_created' => 'DESC'])->all();
+        return $this->render('achievements', ['achievements' =>$achievements]);
     }
     public function actionAchievementAdd()
     {
@@ -30,7 +32,29 @@ class PersonalController extends \yii\web\Controller
         $questPendingTasks = QuestPendingTask::find()->where('user_id = '.Yii::$app->user->identity->id.' AND status = 0')->all();
         $goals = Goal::find()->where('user_id = '.Yii::$app->user->identity->id.' AND completed = 0')->all();
 
-        return $this->render('achievement-add', ['goals' => $goals, 'questPendingTasks' => $questPendingTasks]);
+        $quest = false;
+        $quest_id = !empty(Yii::$app->request->get()['quest_id']) ?  Yii::$app->request->get()['quest_id'] : 0;
+        $predefinedTitle = "";
+        $predefinedText = "";
+        if( !empty(Yii::$app->request->get()['quest_id']) ){
+            $quest = Quest::findOne( Yii::$app->request->get()['quest_id'] );
+            $predefinedTitle ="Выполнен квест ".$quest->name;
+            $predefinedText ="Вы выполнили квест ".$quest->name.". Опишите как это было? Сложно или не очень? Что запомнилось?";
+            $difficult = true;
+        }
+
+        
+        
+
+        return $this->render('achievement-add', [
+            'goals' => $goals, 
+            'questPendingTasks' => $questPendingTasks,
+            'quest' => $quest,
+            'quest_id' => $quest_id,
+
+            'predefinedTitle' => $predefinedTitle,
+            'predefinedText' => $predefinedText,
+        ]);
     }
 
     public function actionDashboard()

@@ -26,7 +26,7 @@ echo $this->render('_panel.php');
 
 			 						<div class="addach-header">
 			 							<div class="addach-header-inp-w">
-			 								<input type="text" name="name" class="addach-header-inp" placeholder="Название достижения">
+			 								<input type="text" name="name" class="addach-header-inp" placeholder="Название достижения" value="<?=$predefinedTitle?>">
 			 							</div>
 			 							<div class="addach-header-isdifficult mdlst-switch ">
 			 								<div class="  mdlst-switch-state">
@@ -42,7 +42,7 @@ echo $this->render('_panel.php');
 
 			 						<div class="addach-description">
 			 							<div class="addach-description-text">
-			 								<textarea name="description" id="description" cols="30" rows="10" class="addach-description-text-textarea"></textarea>
+			 								<textarea name="description" id="description" cols="30" rows="10" class="addach-description-text-textarea"><?=$predefinedText?></textarea>
 			 							</div>
 			 							<div class="addach-description-date"><span class="addach-description-date-icon"></span><input data-toggle="datepicker" class="addach-description-date-date mdlst-input-small" name="date_achieved"></div>
 			 							<div class="addach-description-photos">
@@ -104,7 +104,7 @@ echo $this->render('_panel.php');
 												<select name="entity" id="entity" class="dropdown-select-real">
 													<option value="">Выберите ЦЕЛЬ или КВЕСТ</option>
 													<?php foreach($questPendingTasks as $qpt ) { ?>
-													<option value="q<?=$qpt->quest_id?>"><?=$qpt->getQuest()->one()->name?></option>
+													<option value="q<?=$qpt->quest_id?>" <?=($quest_id===$qpt->getQuest()->one()->quest_id)?"selected":""?>><?=$qpt->getQuest()->one()->name?></option>
 													<? } ?>
 													<?php foreach($goals as $goal ) { ?>
 													<option value="q<?=$goal->goal_id?>"><?=$goal->name?></option>

@@ -1,40 +1,154 @@
-<?php
-/* @var $this yii\web\View */
-use app\models\Achievement;
-echo $this->render('_panel.php');
-?>
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <title>Medalyst.io - register</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="css/system.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="js/trumbowyg/dist/ui/trumbowyg.css">
+    <link rel="stylesheet" href="js/datepicker/dist/datepicker.css">
+    <link rel="stylesheet" href="js/rangeslider/rangeslider.css">
+    <script src="js/jquery-3.2.0.min.js"></script>
+    <script src="js/datepicker/dist/datepicker.js"></script>
+    <script src="js/trumbowyg/dist/trumbowyg.js"></script>
+    <script src="js/rangeslider/rangeslider.js"></script>
+  
+ 
+    <script src="js/main.js"></script>
+    <script>
+    	 $('input[type="range"]').rangeslider();
+
+	</script>
+  </head>
+
+  <body>
+  	<!-- HEADER -->
+	<header class="header" id="header">
+		<div class="wc header-wrapper">
+			<div class="header-logo"><img src="img/logo-white.png"> </div>
+			<nav class="header-menu">
+				<ul class="header-menu-list">
+					<li class="header-menu-list-li"><a href="#" class="header-menu-list-li-a">Последние достижения</a></li>
+					<li class="header-menu-list-li"><a href="#" class="header-menu-list-li-a">Как это работает</a></li>
+					<li class="header-menu-list-li"><a href="#" class="header-menu-list-li-a">Истории успеха</a></li>
+				</ul>
+			</nav>
+			<div class="header-enter">
+				<a class="header-enter-link" href="#">Регистрация</a>
+				<a class="header-enter-button mdlst-button" href="#">Войти</a>
+			</div>
+		</div>
+
+	</header>
+	<!-- .HEADER END -->
+
+	<div id="content" class="content">
+		 <link rel="stylesheet" href="./css/goals.css">
+		<!-- USERPANEL -->
+	 	<div id="userpanel" class="userpanel">
+	 		<div class="wc">
+	 			<div class="userpanel-user">
+	 				<div class="userpanel-user-pic" style="background-image: url(img/_user-ava.png)"></div>
+	 				<div class="userpanel-user-info">
+	 					<div class="userpanel-user-info-name">Иван Константиновский</div>
+	 					<div class="userpanel-user-info-date">2 месяца на сайте</div>
+	 				</div>
+	 			</div>
+	 			<div class="userpanel-info">
+	 				<div class="userpanel-info-level">
+	 					<div class="userpanel-info-level-point">12</div>
+	 				</div>
+	 				<div class="userpanel-info-scale">
+	 					<div class="interests-selector-scale-viewport userpanel-info-scale-scale">
+					 		<div class="interests-selector-scale-track" style="margin-left: -40%;"></div>
+					 	</div>
+					 	<p>Ваш уровень, до следующего уровня осталось 23 очка. <i class="js-tooltip" data-content="Совершайте достижения, чтобы заработать баллы"></i></p>
+	 				</div>
+	 			</div>
+	 		</div>
+	 	</div>
+		<!-- .USERPANEL END-->
 
 		<!-- CONTENT -->
 		<div class="container">
 			<div class="wc">
 				<div class="container-cols">
-					<?=$this->render("_menu.php")?>
+					<!-- menu -->
+					<div class="container-col container-col-1">
+						<div class="container-menu">
+							<div class="container-menu-mobile"></div>
+							<div class="container-menu-wrapper">
+								<ul class="container-menu-list">
+									<li class="container-menu-list-li">
+										<a class="container-menu-list-link" href="#">Дэшборд</a>
+										<div class="container-menu-list-meta"></div>
+									</li>
+									<li class="container-menu-list-li">
+										<a class="container-menu-list-link" href="#">Новости</a>
+										<div class="container-menu-list-meta">
+											<div class="container-menu-list-meta-counter">(185)</div>
+										</div>
+									</li>
+									<li class="container-menu-list-li">
+										<a class="container-menu-list-link" href="#">Моя страница</a>
+										<div class="container-menu-list-meta">
+											<a class="container-menu-list-meta-add" href="#">
+												<span class="container-menu-list-meta-add-plus">+</span>
+											</a>
+										</div>
+									</li>
+									<li class="container-menu-list-li container-menu-list-li-active">
+										<a class="container-menu-list-link" href="#">Достижения</a>
+										<div class="container-menu-list-meta"></div>
+									</li>
+									<li class="container-menu-list-li">
+										<a class="container-menu-list-link" href="#">Цели</a>
+										<div class="container-menu-list-meta"></div>
+									</li>
+									<li class="container-menu-list-li">
+										<a class="container-menu-list-link" href="#">Мои друзья</a>
+										<div class="container-menu-list-meta"></div>
+									</li>
+									<li class="container-menu-list-li">
+										<a class="container-menu-list-link" href="#">Квесты</a>
+										<div class="container-menu-list-meta"></div>
+									</li>
+									<li class="container-menu-list-li">
+										<a class="container-menu-list-link" href="#">Награды</a>
+										<div class="container-menu-list-meta"></div>
+									</li>
+									<li class="container-menu-list-li">
+										<a class="container-menu-list-link" href="#">Моё развитие</a>
+										<div class="container-menu-list-meta"></div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
 
 
-				 
 					<!-- container-content -->
 					<div class="container-col container-col-2">
 						<div class="output">
 
 							<div class="output-header">
-								<h2 class="mdlst-h2">Достижеия </h2>
+								<h2 class="mdlst-h2t">Мои достижения</h2>
 								<div class="output-header-meta">
 
-									 
-									 <a class="goal-done-button mdlst-button " href="<?=Yii::$app->urlManager->createUrl(['personal/achievement-add' ])?>">+ Добавить новое!</a>
+									 <a class="goal-done-button mdlst-button " href="#">+ Добавить новое!</a>
 
 								</div>
 
-							</div>
-
-
+							</div> 
 
 							<div class="output-content">
 								 <!-- achievement list -->
 
 								 <div class="achievement-list">
 								 	
-								 	<?php foreach($achievements as $a) { ?>
+								 	
 
 								 	<!-- ACHIEVEMENT BLOCK -->
 								 	<div class="achievement-block achievement-block--big">
@@ -55,13 +169,13 @@ echo $this->render('_panel.php');
 								 		<div class="achievement-block-content">
 								 			<div class="achievement-block-content-cols">
 								 				<div class="achievement-block-content-col achievement-block-content-col-1">
-								 					<div class="achievement-block-content-title"><?=$a->name?></div>
+								 					<div class="achievement-block-content-title">Купить квартиру в Кудрово</div>
 								 					<div class="achievement-block-content-info">
 								 						<div class="achievement-block-content-info-date">27.11.2010</div>
 								 						<div class="achievement-block-content-info-status mdlst-status mdlst-status__pending"><span class="mdlst-status-icon"></span> Подтверждается</div>
 								 					</div>
 														
-													<div class="achievement-block-content-description"><?=$a->description;?></div>
+													<div class="achievement-block-content-description">Мы наконец сделали это! Купили свою квартирку! деятельность по проектированию эстетических свойств промышленных изделий...</div>
 
 								 					<div class="achievement-block-content-bar">
 								 						<!-- todo universa;-bar-->	
@@ -115,7 +229,7 @@ echo $this->render('_panel.php');
 								 	<!-- .ACHIEVEMENT BLOCK END -->
 
 
-								 	<?php } ?>
+
 
 
 								 	<!-- ACHIEVEMENT BLOCK SMALL-->
@@ -210,9 +324,9 @@ echo $this->render('_panel.php');
 								 </div>
 								 <!-- . achievement list end -->
 
-							 </div>							
-						 
-
+							 </div>
+ 
+					 
 						</div>
 
 					</div>
@@ -222,3 +336,25 @@ echo $this->render('_panel.php');
 			</div>
 		</div>
 		<!-- . CONTENT END -->
+
+
+
+
+
+	</div>
+	<footer id="footer" class="footer">
+		<div class="footer-wrapper">
+			<div class="wc">
+				<div class="footer-copy">@Medalyst, 2017</div>
+				<div class="footer-menu">
+					<ul class="footer-menu-list">
+						<li class="footer-menu-list-li"><a href="#" class="footer-menu-list-li-a">Политика</a></li>
+						<li class="footer-menu-list-li"><a href="#" class="footer-menu-list-li-a">Обратная связь</a></li>
+						<li class="footer-menu-list-li"><a href="#" class="footer-menu-list-li-a">Публичная оферта</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</footer>
+  </body>
+</html>

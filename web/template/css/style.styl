@@ -10,6 +10,7 @@ CAccent = C_Red
 CSub = C_Yell
 CBlack = #31333e
 CGray = #a7a7a7
+CGrayText = #9a9ba0
 
 BoxShadow = 0 0 5px rgba(CBlack, 0.1);
 
@@ -41,11 +42,25 @@ text-shadow(n)
 .dib_base
     @extends .dib
     vertical-align baseline
+.dib_icon 
+    @extends .dib_base
+    background-repeat no-repeat
+    background-position center
+    width 16px
+    height 16px
 .inp-border
     border rgba(CBlack, 0.2) 1px solid   
     box-shadow 0 0 7px rgba(CBlack, 0.1)
     box-sizing border-box
-    padding 8px    
+    padding 8px
+.simplebox    
+    box-shadow BoxShadow
+    box-sizing border-box
+    border-radius 4px
+    background-color white
+    line-height 1em
+    &-padding 
+        padding 39px 36px 
 /* 1280 */
 /*col dimenstions*/
 body, html
@@ -815,6 +830,116 @@ a
 /* . add achievement end */
 
  
+/* achievement list */
+.achievement
+    &-list 
+        color inherit 
+        position relative
+        &:after
+            content " "
+            width 3px
+            height 100%
+            left 47px
+            top 0
+            position absolute
+            z-index -1
+            background-color rgba(CBlack, 0.05)
+        
+    &-block 
+        @extends .simplebox
+        position relative
+        margin-bottom 50px
+        
+        &-category 
+            @extends .dib_base
+            margin-right 10px
+        &-tags 
+            @extends .dib_base
+            &-tag
+                font-size 12px
+                color CGrayText
+        &-meta 
+            position absolute
+            left 0
+            top -15px
+            left 20px
+        &-content 
+            @extends .simplebox-padding 
+            &-title 
+                font-size 24px 
+                color CMain
+                font-weight bold
+                margin-bottom 17px
+                line-height 1.1em
+            &-info
+                color CGrayText
+                font-size 12px
+                white-space nowrap
+                margin-bottom 20px
+                &-date 
+                    @extends .dib_t
+                    margin-right 10px
+                &-status 
+                    @extends .dib_t
+            &-description
+                line-height 1.65em
+            &-bar 
+                width 212px
+            &-col 
+                @extends .dib_t
+                white-space normal
+                &-1 
+                    width 450px
+                    margin-right 20px
+                &-2
+                    width 240px
+                    
+        &-comments 
+            text-align right
+            font-size 14px
+                    
+        &-info 
+            background-color rgba(CBlack, 0.02)
+            padding 15px 30px 
+            font-size 14px
+        &-rewards
+            white-space nowrap
+            margin-bottom 20px
+            &-reward 
+                @extends .dib_m
+        &-images 
+            white-space nowrap
+            margin-bottom 30px
+            &-image 
+                @extends .dib_t
+                
+
+        /* SMALL INVARIATION */
+        &--small 
+            margin-left 90px
+            opacity 0.7
+            & .achievement-block-content-title
+                font-size 18px 
+                margin-bottom 5px
+            & .achievement-block-content-description
+                font-size 14px
+            & .achievement-block-content-info
+                margin-bottom 12px
+            & .achievement-block-content-col-1
+                width 454px
+            & .achievement-block-content-col-2
+                width 150px
+            & .achievement-block-images
+                text-align right
+                margin-bottom 8px
+                
+    &-cols 
+        white-space nowrap
+
+        
+/* . achievement list end */
+
+
             
 /*system */
 .rangeslider
@@ -975,7 +1100,81 @@ a
             @extends .dib_t
             white-space normal
             width 90%
-        
+    &-progress
+        margin-top 15px 
+        margin-bottom 15px
+        &__agressive 
+            & .mdlst-progress-viewport
+                background-color rgba(CAccent, 0.6) !important
+        &__smaller 
+            & .mdlst-progress-viewport
+                height 6px
+            & .mdlst-progress-track
+                height 6px
+        &-viewport 
+            background-color rgba(CMain, 0.25)
+            width 100%
+            height 12px
+            position relative
+            border-radius(10px)
+            overflow hidden
+        &-track
+            position absolute
+            left 0 
+            top 0 
+            height 12px 
+            width 100%
+            margin-left -100%
+            -webkit-transition all 400ms linear
+            -o-transition all 400ms linear
+            transition all 400ms linear
+            border-radius(10px)
+            background-color CMain
+            
+    &-status
+        &-icon 
+            @extends .dib_t
+            width 16px
+            height 16px
+            margin-right 5px
+            background-repeat no-repeat
+        &__pending 
+            & .mdlst-status-icon
+                background-image url(../img/icon-time.png)
+                
+    &-cattag 
+        color white 
+
+        @extends .dib_base
+        padding 5px 15px
+        font-size 14px
+        /* todo - dynamic */
+        &-1 
+            background-color #04a9f4    
+            
+        &-2 
+            background-color #79c8a6   
+        &-3 
+            background-color #cfa218    
+            
+    &-rewardbadge
+        &-small 
+            width 50px 
+            & img 
+                max-width 40px     
+                
+    &-lurm 
+        color CAccent
+        font-size 18px 
+        font-weight bold
+        & i 
+            @extends .dib_icon
+            vertical-align middle
+            margin-right 3px
+            width 18px
+            height 24px
+            background-image url(../img/lurms.png)
+
         
         
             
