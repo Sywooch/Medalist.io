@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 
+use app\models\Achievement;
 use app\models\BadgeBalance;
 use app\models\BadgeCategory;
 use app\models\BadgeGroup;
@@ -22,7 +23,8 @@ class PersonalController extends \yii\web\Controller
 
     public function actionAchievements()
     {
-        return $this->render('achievements');
+        $achievements = Achievement::find()->where('user_id = '.Yii::$app->user->identity->id)->orderBy(['date_created' => 'DESC'])->all();
+        return $this->render('achievements', ['achievements' =>$achievements]);
     }
     public function actionAchievementAdd()
     {
@@ -31,7 +33,7 @@ class PersonalController extends \yii\web\Controller
         $goals = Goal::find()->where('user_id = '.Yii::$app->user->identity->id.' AND completed = 0')->all();
 
         $quest = false;
-        $quest_id = Yii::$app->request->get()['quest_id'];
+        $quest_id = !empty(Yii::$app->request->get()['quest_id']) ?  Yii::$app->request->get()['quest_id'] : 0;
         $predefinedTitle = "";
         $predefinedText = "";
         if( !empty(Yii::$app->request->get()['quest_id']) ){
