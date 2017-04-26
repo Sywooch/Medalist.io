@@ -23,12 +23,13 @@ echo $this->render('_panel.php');
 		 					<div class="addach">
 		 						<form action="" name="addach" class="addachievement-form">
 									<input type="hidden" value="<?=Yii::$app->request->getCsrfToken()?>" placeholder="email" name="_csrf">
+									<?php if($difficult ) { ?><input type="hidden" value="1" placeholder="" name="difficult"><?} ?>
 
 			 						<div class="addach-header">
 			 							<div class="addach-header-inp-w">
 			 								<input type="text" name="name" class="addach-header-inp" placeholder="Название достижения" value="<?=$predefinedTitle?>">
 			 							</div>
-			 							<div class="addach-header-isdifficult mdlst-switch ">
+			 							<div class="addach-header-isdifficult mdlst-switch <?php if($difficult ) { ?>  mdlst-switch-on <?} ?>">
 			 								<div class="  mdlst-switch-state">
 			 									<div class="mdlst-switch-state-w">
 			 										<div class="mdlst-switch-state-curtain"></div>
@@ -36,7 +37,7 @@ echo $this->render('_panel.php');
 			 									</div>
 			 								</div>
 			 								<div class="  mdlst-switch-text">Важное достижение</div>
-			 								<input type="checkbox" name="addach-chk-isimportant" class="mdlst-switch-chk">
+			 								<input type="checkbox" name="addach-chk-isimportant" class="mdlst-switch-chk" <?php if($difficult ) { ?> checked="checked"<?} ?>>
 			 							</div>
 			 						</div>
 
@@ -104,7 +105,7 @@ echo $this->render('_panel.php');
 												<select name="entity" id="entity" class="dropdown-select-real">
 													<option value="">Выберите ЦЕЛЬ или КВЕСТ</option>
 													<?php foreach($questPendingTasks as $qpt ) { ?>
-													<option value="q<?=$qpt->quest_id?>" <?=($quest_id===$qpt->getQuest()->one()->quest_id)?"selected":""?>><?=$qpt->getQuest()->one()->name?></option>
+													<option value="q<?=$qpt->quest_id?>" <?=($quest_id==$qpt->getQuest()->one()->quest_id)?"selected":""?>><?=$qpt->getQuest()->one()->name?></option>
 													<? } ?>
 													<?php foreach($goals as $goal ) { ?>
 													<option value="q<?=$goal->goal_id?>"><?=$goal->name?></option>

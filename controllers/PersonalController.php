@@ -34,6 +34,13 @@ class PersonalController extends \yii\web\Controller
 
         $quest = false;
         $quest_id = !empty(Yii::$app->request->get()['quest_id']) ?  Yii::$app->request->get()['quest_id'] : 0;
+
+
+        $goal = false;
+        $goal_id = !empty(Yii::$app->request->get()['goal_id']) ?  Yii::$app->request->get()['goal_id'] : 0;
+
+
+
         $predefinedTitle = "";
         $predefinedText = "";
         if( !empty(Yii::$app->request->get()['quest_id']) ){
@@ -43,7 +50,7 @@ class PersonalController extends \yii\web\Controller
             $difficult = true;
         }
 
-        
+        $difficult = (!empty($goal_id) || !empty($quest_id));
         
 
         return $this->render('achievement-add', [
@@ -51,6 +58,9 @@ class PersonalController extends \yii\web\Controller
             'questPendingTasks' => $questPendingTasks,
             'quest' => $quest,
             'quest_id' => $quest_id,
+            'goal' => $goal,
+            'goal_id' => $goal_id,
+            'difficult' => $difficult,
 
             'predefinedTitle' => $predefinedTitle,
             'predefinedText' => $predefinedText,

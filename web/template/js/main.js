@@ -306,6 +306,11 @@ $(document).ready(function(){
 		 	}
 		});
 
+		if ( $('input[name=difficult]').length > 0  ){
+			$('.js-addach-isdifficult').show();
+			$('.js-addach-isdifficult-h').hide();
+		}
+
 
 
 		//Взять квест
@@ -380,6 +385,16 @@ $(document).ready(function(){
 			}
 
 		});
+
+		$(document).on('change', '.dropdown-select select', function(){
+			var o = $(this).find('option:checked'),
+				t = o.text(),
+				p = $(this).parents('.dropdown-select'),
+				tH = p.find('.dropdown-select-block-text');
+
+				tH.text(t);
+		});
+		$('.dropdown-select select').change();
 		/* . CONTROLLS END ===================== */
 
 
