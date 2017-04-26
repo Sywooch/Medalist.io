@@ -170,12 +170,16 @@ margin-left:10px;
 
 
 .goals-pictures-small{
+	float:left;
+	margin-left:18px;
+	width:161px;
+	height:128px;
 
 
 }
 
 
-.goals-picture-small{
+.goals-picture-small img{
 	float:left;
 	margin-left:18px;
 	width:161px;

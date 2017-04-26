@@ -29,7 +29,7 @@ echo $this->render('_panel.php');
                     </div>
                     <div class="output-content">
                         <div class="mygoals-name-div">
-                            <div class="mygoals-name">Купить квартиру в Кудрово</div>
+                            <div class="mygoals-name"><?= $goal->name ?></div>
                             <div class="mygoals-name-button"><a class="goal-done-button mdlst-button" href="#">Выполнить
                                     цель</a></div>
                         </div>
