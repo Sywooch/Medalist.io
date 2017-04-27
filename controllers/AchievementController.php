@@ -5,6 +5,7 @@ use app\models\Achievement;
 use app\models\QuestPendingTask;
 use app\models\Goal;
 use app\models\Badge;
+use app\models\Tag;
 use Yii;
 
 class AchievementController extends \yii\web\Controller
@@ -60,7 +61,7 @@ class AchievementController extends \yii\web\Controller
             if( $achievement->save() ){
 
                 //Todo - attachTags
-                Tag::attachTagsToObject( $obj, $tagsArray );
+                Tag::attachTagsToObject( $achievement, $post['interests'] );
                 //Todo - attachInterests 
 
                 //Todo - attachCategory 

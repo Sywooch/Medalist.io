@@ -62,13 +62,22 @@ class Tag extends \yii\db\ActiveRecord
     protected static  function mb_ucwords($string) {
         return mb_convert_case($string, MB_CASE_TITLE, "UTF-8");
     } 
-    protected static function( $prepareTagStr ){
-        $s = self::mb_ucwords($prepareTagStr);
+    protected static function prepareTagStr( $s ){
+        $s = self::mb_ucwords($s);
         return preg_replace("#\s#", "", $s);
     }
 
     public static function attachTagsToObject( $obj, $tagsArray ){
         $tagsArray = array_unique($tagsArray);
+
+
+        $classname = get_class( $obj );
+        $classname = explode("\\",$classname);
+        $classname = $classname[count($classname) - 1];
+        $idVarName = strtolower($classname."_id");
+        $id = $obj->{$idVarName};
+
+
 
         foreach ($tagsArray as $text) {
 
@@ -79,9 +88,37 @@ class Tag extends \yii\db\ActiveRecord
                 $tag = new Tag;
                 $tag->name=$text;
                 $tag->save();
+                
+                //Adding interests to tags 
+                if( !Yii::$app->user->isGuest ){
+                    $tag->addUserInterests( Yii::$app->user->identity->id );
+                }
+
             }
 
+            $user_id = (!Yii::$app->user->isGuest)?Yii::$app->user->identity->id:null;
+            Yii::$app->db->createCommand("INSERT INTO tag2entity (tag_id, entity_id, entity_class, user_id) VALUES (
+                ".$tag->tag_id.",
+                ".$id.",
+                '".$classname."',
+                ".$user_id."
+                )")->execute();
+
+
+
+
         }
+    }
+
+
+
+
+    /**
+    * TODO
+    */
+
+    public function addUserInterests( $user_id ){
+        //Find user interests and add them to Tag
     }
 
     public static function findTagByText($text){
