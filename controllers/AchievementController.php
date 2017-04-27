@@ -59,7 +59,10 @@ class AchievementController extends \yii\web\Controller
 
             if( $achievement->save() ){
 
+                //Todo - attachTags
+                Tag::attachTagsToObject( $obj, $tagsArray );
                 //Todo - attachInterests 
+
                 //Todo - attachCategory 
                 //Todo - attachPhotos( Obj )
                 if( Badge::addBadgeToUser(Badge::BDG_ACHIEVEMENT_FIRST_ACHIEVEMENT, Yii::$app->user->identity->id) ){

@@ -84,14 +84,25 @@ class Achievement extends \yii\db\ActiveRecord
 
 
     public  function getLikes(){
-        return Like::find()->where("entity_class = 'Achievement' and entity_id = ".$this->goal_id)->all();
+        return Like::find()->where("entity_class = 'Achievement' and entity_id = ".$this->achievement_id)->all();
     }
     public  function getComments(){
-        return Comment::find()->where("entity_class = 'Achievement' and entity_id = ".$this->goal_id)->all();
+        return Comment::find()->where("entity_class = 'Achievement' and entity_id = ".$this->achievement_id)->all();
     }
 
     public  function getPhotos(){
-        return Photo::find()->where("entity_class = 'Achievement' and entity_id = ".$this->goal_id)->all();
+        return Photo::find()->where("entity_class = 'Achievement' and entity_id = ".$this->achievement_id)->all();
+    }
+    public  function getTags(){
+        $tags = Tag::find();
+        $tags->multiple = true;
+        $tags->innerJoin('tag2entity', 'tag.tag_id = tag2entity.tag_id');
+        $tags->where('tag2entity.entity_id = '.$this->achievement_id ." AND tag2entity.entity_class = 'Achievement'");
+        return $tags->all();
+    }
+    public  function getCategory(){
+        
+        return $this->hasOne(Category::className(), ['category_id' => 'category_id'])->one();
     }
 
     /**

@@ -37,19 +37,24 @@ echo $this->render('_panel.php');
 								 	<?php foreach($achievements as $a) { 
 
 								 		if( $a->difficult == 1 ){
+								 			$tags = $a->getTags();
+								 			$category = $a->getCategory();
+
 								 		?>
 
 								 	<!-- ACHIEVEMENT BLOCK -->
 								 	<div class="achievement-block achievement-block--big">
 								 		<!-- meta --> 
 								 		<div class="achievement-block-meta">
+								 		<?php if( !empty($category) ) { ?>
 								 			<div class="achievement-block-category">
-								 				<div class="mdlst-cattag mdlst-cattag-1">Недвижимость</div>
+								 				<div class="mdlst-cattag mdlst-cattag-1"><?=$category->name?></div>
 								 			</div>
+								 		<?php } ?>
 								 			<div class="achievement-block-tags">
-								 				<a href="" class="achievement-block-tags-tag">#Квартира</a>
-								 				<a href="" class="achievement-block-tags-tag">#УдачнаяПокупка</a>
-								 				<a href="" class="achievement-block-tags-tag">#Кудрово</a>
+								 			<?php foreach($tags as $tag)  { ?>
+								 				<a href="<?=Yii::$app->urlManager->createUrl(['search/tags', 'tag' => $tag->name ])?>" class="achievement-block-tags-tag">#<?=$tag->name?></a>
+								 			<?php } ?> 
 								 			</div>
 
 								 		</div>
