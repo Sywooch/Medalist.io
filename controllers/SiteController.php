@@ -11,6 +11,7 @@ use app\models\ContactForm;
 use app\models\Quest;
 use app\models\Category;
 use app\models\User;
+use app\models\Tag;
 
 class SiteController extends Controller
 {
@@ -64,7 +65,14 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-   
+        $tag = Tag::findOne(6);
+
+        $interests = $tag->getInterests();
+        $int = array();
+        foreach ($interests as $interest) {
+            $int[] = $interest->interest_id;
+        }
+    
       
         return $this->render('index', ['interests' => '', 'interests2' => '']);
     }

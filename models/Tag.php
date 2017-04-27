@@ -91,7 +91,7 @@ class Tag extends \yii\db\ActiveRecord
                 
                 //Adding interests to tags 
                 if( !Yii::$app->user->isGuest ){
-                    $tag->addUserInterests( Yii::$app->user->identity->id );
+                    $tag->addUserInterestsToTagMatrix( Yii::$app->user->identity->id );
                 }
 
             }
@@ -117,9 +117,21 @@ class Tag extends \yii\db\ActiveRecord
     * TODO
     */
 
-    public function addUserInterests( $user_id ){
-        //Find user interests and add them to Tag
+    public function addUserInterestsToTagMatrix( $user_id ){
+        //Find user interests and add them to Tag FLAT MATRIX
     }
+
+
+    public function getInterests(){
+        return $this->hasMany(Interest::className(), ['interest_id' => 'interest_id'])->viaTable('tag2interest', ['tag_id' => 'tag_id'])->all();
+    }
+
+
+    public function getEntities(){
+        //GetTagged Entites
+        //return $this->hasMany(Interest::className(), ['interest_id' => 'interest_id'])->viaTable('tag2interest', ['tag_id' => 'tag_id'])->all();
+    }
+
 
     public static function findTagByText($text){
         return self::find()->where("name = '".$text."'")->one();

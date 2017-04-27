@@ -6,6 +6,7 @@ use app\models\QuestPendingTask;
 use app\models\Goal;
 use app\models\Badge;
 use app\models\Tag;
+use app\models\Category;
 use Yii;
 
 class AchievementController extends \yii\web\Controller
@@ -65,6 +66,15 @@ class AchievementController extends \yii\web\Controller
                 //Todo - attachInterests 
 
                 //Todo - attachCategory 
+                $tags = $achievement->getTags();
+                $tagIDs = [];
+                foreach ($tags as $tag) {
+                    $tagIDs = $tag->tag_id;
+                }
+                $category_id = Category::getByTagIDs($tagIDs);
+                $achievement->category_id = $category_id;
+                $achievement->save();
+
                 //Todo - attachPhotos( Obj )
                 if( Badge::addBadgeToUser(Badge::BDG_ACHIEVEMENT_FIRST_ACHIEVEMENT, Yii::$app->user->identity->id) ){
 
