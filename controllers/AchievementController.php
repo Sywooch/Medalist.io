@@ -61,19 +61,30 @@ class AchievementController extends \yii\web\Controller
 
             if( $achievement->save() ){
 
-                //Todo - attachTags
-                Tag::attachTagsToObject( $achievement, $post['interests'] );
-                //Todo - attachInterests 
+                if( !empty($post['interests']) ) {
+                    //Todo - attachTags
+                    Tag::attachTagsToObject( $achievement, $post['interests'] );
+                    //Todo - attachInterests 
 
-                //Todo - attachCategory 
-                $tags = $achievement->getTags();
-                $tagIDs = [];
-                foreach ($tags as $tag) {
-                    $tagIDs = $tag->tag_id;
+                    //Todo - attachCategory 
+                    $tags = $achievement->getTags();
+                    $tagIDs = [];
+                    foreach ($tags as $tag) {
+                        $tagIDs = $tag->tag_id;
+                    }
+                    $category_id = Category::getByTagIDs($tagIDs);
+                    $achievement->category_id = $category_id;
+                    $achievement->save();
+
                 }
-                $category_id = Category::getByTagIDs($tagIDs);
-                $achievement->category_id = $category_id;
-                $achievement->save();
+
+
+                //Unset Quest
+                if( !empty($achievement->quest_id ) ){
+                    $qpt = QuestPendingTask::find()->where('quest_id = '.$achievement->quest_id.' and user_id = '.Yii::$app->user->identity->id.'  and status = '.QuestPendingTask::STATUS_PENDING)->one();
+                    $qpt->setComplete();
+                    $qpt->save();
+                }
 
                 //Todo - attachPhotos( Obj )
                 if( Badge::addBadgeToUser(Badge::BDG_ACHIEVEMENT_FIRST_ACHIEVEMENT, Yii::$app->user->identity->id) ){

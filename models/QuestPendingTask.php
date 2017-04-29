@@ -14,6 +14,10 @@ use Yii;
  */
 class QuestPendingTask extends \yii\db\ActiveRecord
 {
+    const STATUS_PENDING = 0;
+    const STATUS_COMPLETE = 1;
+    const STATUS_REFUSED = 2;
+    const STATUS_EXPIRED = 3;
     /**
      * @inheritdoc
      */
@@ -58,5 +62,9 @@ class QuestPendingTask extends \yii\db\ActiveRecord
 
     public function getQuest(){
         return $this->hasOne( Quest::className(), ['quest_id' => 'quest_id'] );
+    }
+
+    public function setComplete(){
+        $this->status = self::STATUS_COMPLETE;
     }
 }
