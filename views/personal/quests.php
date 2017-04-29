@@ -20,7 +20,7 @@ echo $this->render('_panel.php');
 							 
 
 							<div class="output-header">
-								<h2 class="mdlst-h2 h-quest-pendint-tasks-title" <?php if( count($questsPending) == 0) { ?> style="display: none"<?} ?>>Вы участвуете в квестах</h2>
+								<h2 class="mdlst-h2t-goals h-quest-pendint-tasks-title" <?php if( count($questsPending) == 0) { ?> style="display: none"<?} ?>>Вы участвуете в квестах</h2>
 								 
 								
 							</div>
@@ -46,7 +46,7 @@ echo $this->render('_panel.php');
 
 
 							<div class="output-header">
-								<h2 class="mdlst-h2">Квесты</h2>
+								<h2 class="mdlst-h2t-goals">Квесты</h2>
 								<div class="output-header-meta">
 
 									<div class="dropdown-select">

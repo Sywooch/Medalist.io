@@ -17,7 +17,7 @@ echo $this->render('_panel.php');
 						<div class="output">
 
 							<div class="output-header">
-								<h2 class="mdlst-h2">Достижеия </h2>
+								<h2 class="mdlst-h2t">Достижеия </h2>
 								<div class="output-header-meta">
 
 									 
