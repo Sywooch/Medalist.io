@@ -80,11 +80,7 @@ echo $this->render('_panel.php');
 								<?php foreach( $quests as $q ) { 
 									$rewards = $q->getRewards()->all();
 
-									$likes = Like::getLikesOfObject( $q );
-									$likeArr = array(1 => 0, -1 => 0);
-									foreach ($likes as $like) {
-										$likeArr[ $like->point ] += $like->point;
-									}
+								 
 
 									?>
 								<!-- QUEST -->
@@ -101,7 +97,7 @@ echo $this->render('_panel.php');
 										<div class="questblock-info-info">
 											<ul class="questblock-info-info-list">
 												<li class="questblock-info-info-list-li">Участвует: <b>любой</b></li>
-												<li class="questblock-info-info-list-li">Дедлай: <b><?=$q->deadline_period?></b></li>
+												<li class="questblock-info-info-list-li">Дедлайн: <b><?=$q->deadline_period?></b></li>
 												<li class="questblock-info-info-list-li">Даты старта: <b>нет</b></li>
 											</ul>
 											<ul class="questblock-info-info-list-2">
@@ -112,10 +108,7 @@ echo $this->render('_panel.php');
 										</div>
 										<div class="questblock-info-controlls">
 											<div class="questblock-info-controlls-likes">
-												<div class="like-controll">
-													<div class="like-controll-plus like-controll-active"><span></span><?=abs($likeArr[ 1 ]) ?></div>
-													<div class="like-controll-minus"><span></span><?=abs($likeArr[ -1 ]) ?></div>
-												</div>
+												 <?=Yii::$app->like->renderWidget($q);?>
 											</div>
 											<div class="questblock-info-controlls-comments">
 												<div class="comment-controll"><span></span>94</div>

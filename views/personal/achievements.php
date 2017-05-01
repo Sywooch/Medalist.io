@@ -81,10 +81,8 @@ echo $this->render('_panel.php');
 
 								 					</div>
 								 					<div class="achievement-block-content-likes">
-							 							<div class="like-controll">
-															<div class="like-controll-plus like-controll-active"><span></span>25</div>
-															<div class="like-controll-minus"><span></span>12</div>
-														</div>
+								 						<?=Yii::$app->like->renderWidget($a);?>
+							 							
 								 					</div>
 
 
