@@ -91,4 +91,49 @@ class Like extends \yii\db\ActiveRecord
 
         return Like::find()->where("entity_class = '".$classname."' and entity_id = ".$id." and point = -1")->count();
     }
+
+
+    /**
+    * Return -1, 1 as point, or int > 1 as like id, OR false in error
+    */
+    public static function addLikeToObject( $entity_class, $entity_id, $point = 1){
+        if( !Yii::$app->user->isGuest ){
+            $like = self::getLikeByUserId( $entity_class, $entity_id, Yii::$app->user->identity->id );
+            if( $like ){
+                $like->point = $point;
+
+                if( $like->save() ){
+                    return $point;
+                }else{
+                    return false;
+                }
+
+            }else{
+                $like = new Like;
+                $like->entity_class = ucfirst($entity_class);
+                $like->entity_id = $entity_id;
+                $like->created_by_id = Yii::$app->user->identity->id ;
+                $like->point = $point;
+                return $like->save();
+            }
+        }else{
+            return false;
+        }
+    }
+
+    public static function getLikeByUserId( $entity_class, $entity_id, $user_id){
+        return Like::find()->where("entity_class = '".ucfirst($entity_class)."' and entity_id = ".$entity_id." and created_by_id = ".$user_id)->one();
+    }
+    public static function getLikeByUserIdOfObject( $obj, $user_id){
+
+        $classname = get_class( $obj );
+        $classname = explode("\\",$classname);
+        $classname = $classname[count($classname) - 1];
+        $idVarName = strtolower($classname."_id");
+        $id = $obj->{$idVarName};
+
+
+        return self::getLikeByUserId( $classname, $id, $user_id );
+    }
+
 }
