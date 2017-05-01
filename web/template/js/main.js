@@ -398,4 +398,29 @@ $(document).ready(function(){
 		/* . CONTROLLS END ===================== */
 
 
+		/* LIKES */
+		$(document).on('click', '.js-add-like', function(){
+			var p = $(this).parents('.like-controll'),
+				className = p.data('obj'),
+				classId = p.data('id'),
+				point = $(this).data('point'),
+				data =  {entity_class : className, entity_id: classId, point: point},
+				that = this;
+
+				$.ajax({
+					url: ajaxUrls['addLike'],
+					data: data,
+					type: 'get',
+					dataType: 'json',
+					success: function(data){
+						console.log(data);
+						p.find('.js-add-like').removeClass('like-controll-active');
+						$(that).addClass('like-controll-active');
+					}
+
+				})
+		});
+		/* LIKES END ================== */
+
+
 });

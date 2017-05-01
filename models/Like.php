@@ -114,6 +114,7 @@ class Like extends \yii\db\ActiveRecord
                 $like->entity_id = $entity_id;
                 $like->created_by_id = Yii::$app->user->identity->id ;
                 $like->point = $point;
+                $like->date_created = date("Y-m-d H:i:s");
                 return $like->save();
             }
         }else{
