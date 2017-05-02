@@ -86,9 +86,14 @@ class Quest extends \yii\db\ActiveRecord
     }
 
 
-    public function getInterests(){
-        return $this->hasMany( Interest::className(), ['interest_id' => 'interest_id'] )->viaTable('quest2interest', ['quest_id' => 'quest_id']);
+    public  function getInterests(){
+        $interests = Interest::find();
+        $interests->multiple = true;
+        $interests->innerJoin('interest2entity', 'interest.interest_id = interest2entity.interest_id');
+        $interests->where('interest2entity.entity_id = '.$this->quest_id ." AND interest2entity.entity_class = 'Quest'");
+        return $interests->all();
     }
+
     public function getRewards(){
         $reward = QuestReward::find()->where('quest_id = '.$this->quest_id);
         return $reward;

@@ -100,6 +100,16 @@ class Achievement extends \yii\db\ActiveRecord
         $tags->where('tag2entity.entity_id = '.$this->achievement_id ." AND tag2entity.entity_class = 'Achievement'");
         return $tags->all();
     }
+
+    public  function getInterests(){
+        $interests = Interest::find();
+        $interests->multiple = true;
+        $interests->innerJoin('interest2entity', 'interest.interest_id = interest2entity.interest_id');
+        $interests->where('interest2entity.entity_id = '.$this->achievement_id ." AND interest2entity.entity_class = 'Achievement'");
+        return $interests->all();
+    }
+
+
     public  function getCategory(){
         
         return $this->hasOne(Category::className(), ['category_id' => 'category_id'])->one();

@@ -33,7 +33,7 @@ class Comment extends \yii\db\ActiveRecord
     {
         return [
             [['active', 'deleted', 'created_by_id', 'entity_id', 'parent_comment_id'], 'integer'],
-            [['created_by_id', 'text', 'entity_class', 'entity_id'], 'required'],
+            [['created_by_id', 'text', 'entity_class', 'entity_id', 'date_created'], 'required'],
             [['text'], 'string'],
             [['entity_class'], 'string', 'max' => 256],
         ];
@@ -47,6 +47,7 @@ class Comment extends \yii\db\ActiveRecord
         return [
             'comment_id' => 'Comment ID',
             'active' => 'Active',
+            'date_created' => 'Date Created',
             'deleted' => 'Deleted',
             'created_by_id' => 'Created By ID',
             'text' => 'Text',
@@ -81,6 +82,36 @@ class Comment extends \yii\db\ActiveRecord
 
 
     }
+
+
+
+    /**
+    * Return -1, 1 as point, or int > 1 as like id, OR false in error
+    */
+    public static function addCommentToObject( $entity_class, $entity_id, $comment, $parent_comment_id = null){
+        if( !Yii::$app->user->isGuest ){
+            
+                $comment = new Comment;
+                $comment->entity_class = ucfirst($entity_class);
+                $comment->entity_id = $entity_id;
+                $comment->created_by_id = Yii::$app->user->identity->id ;
+                $comment->text = $comment;
+                $comment->parent_comment_id = $parent_comment_id;
+                $comment->date_created = date("Y-m-d H:i:s");
+                return $comment->save();
+           
+        }else{
+            return false;
+        }
+    }    
+
+
+
+    public static function getCommentsByUserId( $entity_class, $entity_id, $user_id){
+        return Comment::find()->where("entity_class = '".ucfirst($entity_class)."' and entity_id = ".$entity_id." and created_by_id = ".$user_id)->all();
+    }
+
+
 
 
 }
