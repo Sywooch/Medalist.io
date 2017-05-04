@@ -111,12 +111,15 @@ echo $this->render('_panel.php');
 												 <?=Yii::$app->like->renderWidget($q);?>
 											</div>
 											<div class="questblock-info-controlls-comments">
-												<div class="comment-controll"><span></span>94</div>
+												 <?=Yii::$app->comment->renderCommentCount( count(Comment::getCommentsOfObject($q) ) );?>
 											</div>
 											<div class="questblock-info-controlls-button">
 												<a href="#" class="mdlst-button mdlst-button-default js-quest-takequest" data-id="<?=$q->quest_id?>">Взять квест</a>
 											</div>
 										</div>
+									</div>
+									<div class="questblock-comments">
+										<?=Yii::$app->comment->renderCommentFeed( $q, 0, 2 );?>
 									</div>
 								</div>
 								<!-- QUEST END . -->
