@@ -596,6 +596,10 @@ a {
 .questblock-info-controlls-comments {
   margin-right: 25px;
 }
+.questblock-comments {
+  background-color: rgba(49,51,62,0.02);
+  padding: 25px;
+}
 /* questchallenge */
 /* .questchallenge end*/
 /* questpendingtask */
@@ -749,6 +753,8 @@ a {
   margin-top: 10px;
 }
 /* . USER PANEL END*/
+/* comments widgets */
+/* comments widgets end */
 /* interests-selector */
 .interests-selector {
   width: 75%;

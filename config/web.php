@@ -8,7 +8,10 @@ $config = [
     'bootstrap' => ['log'],
     'components' => [
         'like' => [
-            'class' => 'app\components\LikeComponent'
+            'class' => 'app\components\LikeComponent',
+        ],
+        'comment' => [
+            'class' => 'app\components\CommentComponent',
         ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation

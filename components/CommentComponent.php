@@ -52,7 +52,9 @@ class CommentComponent extends Component
                         }
                     ?>
                 </div>
-                <div class="comment-block-controlls"></div>
+                <div class="comment-block-controlls">
+                    <sudo class="comment-block-controlls-response">Ответить</sudo>
+                </div>
                 
             </div>
         <?   

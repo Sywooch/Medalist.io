@@ -1,6 +1,7 @@
 <?php
 /* @var $this yii\web\View */
 use app\models\Like;
+use app\models\Comment;
 echo $this->render('_panel.php');
 ?>
 
