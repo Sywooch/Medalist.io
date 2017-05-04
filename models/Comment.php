@@ -71,8 +71,11 @@ class Comment extends \yii\db\ActiveRecord
     //GetLikesOfObject
     public static function getCommentsOfObject( $obj, $comment_id = false ){
         $classname = get_class( $obj );
-        $idVarName = str_replace('app\\models\\','', strtolower($classname)."_id");
+        $classname = explode("\\",$classname);
+        $classname = $classname[count($classname) - 1];
+        $idVarName = strtolower($classname."_id");
         $id = $obj->{$idVarName};
+ 
 
         if( $comment_id ===false ){
             return Comment::find()->where("entity_class = '".$classname."' and entity_id = ".$id) ;            

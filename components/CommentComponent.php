@@ -41,20 +41,36 @@ class CommentComponent extends Component
         ?>
             <div class="comment-block comment-id-<?=$comment->comment_id?>">
                 <div class="comment-block-data">
-                    <div class="comment-block-data-user"></div>
-                    <div class="comment-block-data-content"></div>
+                    <div class="comment-block-data-user">
+                        <div class="comment-block-data-user-pic"><img src="/template/img/_user-ava.png"></div>
+                        <div class="comment-block-data-user-name"> <a class="comment-block-data-user-name-link">Иван Петров</a></div>
+                        
+                    </div>
+                    <div class="comment-block-data-content">
+                        <div class="comment-block-data-content-date">27.11.2010</div>
+                        <div class="comment-block-data-content-content"><?=$comment->text?></div>
+                        <div class="comment-block-controlls">
+                            <sudo class="comment-block-controlls-response js-comment-makeresponse" data-id="<?=$comment->comment_id?>">Ответить</sudo>
+                        </div>
+
+
+                    </div>
+
+    
+
+
                 </div>
                 <div class="comment-block-answers">
                     <?php 
-                        $comments = Comment::getCommentsOfObject( $obj, $comment->comment_id )->limit(0, 2 );
+                        $comments = Comment::getCommentsOfObject( $obj, $comment->comment_id )->offset(0)->limit(  2 )->all();
+
+                        
                         foreach( $comments as $c){
-                            self::renderComment( $comment, $obj, false );
+                            self::renderComment( $c, $obj, false );
                         }
                     ?>
                 </div>
-                <div class="comment-block-controlls">
-                    <sudo class="comment-block-controlls-response">Ответить</sudo>
-                </div>
+
                 
             </div>
         <?   
@@ -62,7 +78,20 @@ class CommentComponent extends Component
 
              ?>
             <div class="comment-block  comment-block-sub comment-id-<?=$comment->comment_id?>" data-parent_comment_id="<?=$comment->parent_comment_id?>">
-                <?=$comment->text?>
+                <div class="comment-block-data">
+                    <div class="comment-block-data-user">
+                        <div class="comment-block-data-user-pic"><img src="/template/img/_user-ava.png"></div>
+                        <div class="comment-block-data-user-name"> <a class="comment-block-data-user-name-link">Иван Петров</a></div>
+                        
+                    </div>
+                    <div class="comment-block-data-content">
+                        <div class="comment-block-data-content-date">27.11.2010</div>
+                        <div class="comment-block-data-content-content"><?=$comment->text?></div>
+                       
+
+
+                    </div>
+                </div>  
             </div>
             <? 
 
@@ -71,8 +100,9 @@ class CommentComponent extends Component
 
     public function renderCommentFeed(  $obj, $from = 0, $limit = 10 )
     {
-        $comments = Comment::getCommentsOfObject( $obj, 0 )->limit( $from, $limit )->all();
+        $comments = Comment::getCommentsOfObject( $obj, 0 )->offset($from)->limit( $limit )->all();
 
+       
         foreach( $comments as $com ){
             self::renderComment( $com, $obj );
         }

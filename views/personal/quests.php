@@ -112,7 +112,7 @@ echo $this->render('_panel.php');
 												 <?=Yii::$app->like->renderWidget($q);?>
 											</div>
 											<div class="questblock-info-controlls-comments">
-												 <?=Yii::$app->comment->renderCommentCount( count(Comment::getCommentsOfObject($q) ) );?>
+												 <?=Yii::$app->comment->renderCommentCount( count(Comment::getCommentsOfObject($q)->all() ) );?>
 											</div>
 											<div class="questblock-info-controlls-button">
 												<a href="#" class="mdlst-button mdlst-button-default js-quest-takequest" data-id="<?=$q->quest_id?>">Взять квест</a>

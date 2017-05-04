@@ -21,6 +21,9 @@
 .like-controll-plus span,
 .like-controll-minus,
 .like-controll-minus span,
+.comment-block-data-user,
+.comment-block-data-user-pic,
+.comment-block-data-content,
 .comment-controll span,
 .questblock-pic,
 .questblock-info,
@@ -82,6 +85,9 @@
 }
 .dib_t,
 .container-col,
+.comment-block-data-user,
+.comment-block-data-user-pic,
+.comment-block-data-content,
 .questblock-pic,
 .questblock-info,
 .questblock-info-info-list,
@@ -517,6 +523,35 @@ a {
 }
 /* . like-controll end*/
 /* comment */
+.comment-block {
+  position: relative;
+  width: 100%;
+}
+.comment-block-data-user {
+  width: 100px;
+  margin-right: 10px;
+  text-align: center;
+}
+.comment-block-data-user-pic {
+  width: 60px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+  overflow: hidden;
+}
+.comment-block-data-user-pic img {
+  max-width: 60px;
+}
+.comment-block-data-user-name {
+  width: 60px;
+  margin-top: 5px;
+}
+.comment-block-answers {
+  margin-top: 25px;
+  border-top: 1px solid rgba(49,51,62,0.05);
+  padding-top: 25px;
+  padding-left: 100px;
+}
 .comment-controll span {
   position: relative;
   top: 5px;
