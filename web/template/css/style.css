@@ -527,6 +527,15 @@ a {
   position: relative;
   width: 100%;
 }
+.comment-block-sub .comment-block-data-user-pic {
+  width: 40px;
+}
+.comment-block-sub .comment-block-data-user-pic img {
+  max-width: 40px;
+}
+.comment-block-sub .comment-block-data-user-name {
+  font-size: 14px;
+}
 .comment-block-data-user {
   width: 100px;
   margin-right: 10px;
@@ -543,14 +552,30 @@ a {
   max-width: 60px;
 }
 .comment-block-data-user-name {
-  width: 60px;
+  width: 100px;
   margin-top: 5px;
+}
+.comment-block-data-content-date {
+  font-size: 12px;
+  color: #9a9ba0;
+  margin-bottom: 5px;
+}
+.comment-block-controlls {
+  margin-top: 5px;
+}
+.comment-block-controlls-response {
+  color: #8a44ff;
+  opacity: 0.6;
+  cursor: pointer;
+}
+.comment-block-controlls-response:hover {
+  opacity: 1;
 }
 .comment-block-answers {
   margin-top: 25px;
   border-top: 1px solid rgba(49,51,62,0.05);
   padding-top: 25px;
-  padding-left: 100px;
+  padding-left: 50px;
 }
 .comment-controll span {
   position: relative;
