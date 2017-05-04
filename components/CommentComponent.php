@@ -109,5 +109,29 @@ class CommentComponent extends Component
      
          
     }
+
+
+    public function renderResponseForm( $obj ){
+        $classname = get_class( $obj );
+        $classname = explode("\\",$classname);
+        $classname = $classname[count($classname) - 1];
+        $idVarName = strtolower($classname."_id");
+        $id = $obj->{$idVarName};
+
+        if( Yii::$app->user->isGuest ){
+            ?>
+            <p>Зарегистрируйтесь в Медалисте, чтобы комментировать достижения и цели.</p>
+            <?
+        }else{
+            ?>
+            <form class="form-add-comment" data-class="<?=$classname?>" data-id="<?=$id?>">
+                <textarea class="form-add-comment-textarea" ></textarea>
+                <div class="form-add-comment-button-wrapper">
+                <button class="mdlst-button mdlst-button-default form-add-comment-button ">Оставить комментарий</button>
+                </div>
+            </form>
+            <?
+        }
+    }
  
 }
