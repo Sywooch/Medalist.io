@@ -1,6 +1,7 @@
 <?php
 /* @var $this yii\web\View */
 use app\models\Like;
+use app\models\Comment;
 echo $this->render('_panel.php');
 ?>
 
@@ -111,12 +112,16 @@ echo $this->render('_panel.php');
 												 <?=Yii::$app->like->renderWidget($q);?>
 											</div>
 											<div class="questblock-info-controlls-comments">
-												<div class="comment-controll"><span></span>94</div>
+												 <?=Yii::$app->comment->renderCommentCount( count(Comment::getCommentsOfObject($q)->all() ), 'questblock-comments-quest-'.$q->quest_id );?>
 											</div>
 											<div class="questblock-info-controlls-button">
 												<a href="#" class="mdlst-button mdlst-button-default js-quest-takequest" data-id="<?=$q->quest_id?>">Взять квест</a>
 											</div>
 										</div>
+									</div>
+									<div class="questblock-comments questblock-comments-quest-<?=$q->quest_id?>"  >
+										<div class="questblock-comments-form"><?=Yii::$app->comment->renderResponseForm( $q  );?></div>
+										<div class="questblock-comments-form-wrapper"><?=Yii::$app->comment->renderCommentFeed( $q, 0, 2 );?></div>
 									</div>
 								</div>
 								<!-- QUEST END . -->

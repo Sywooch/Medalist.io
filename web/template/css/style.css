@@ -21,7 +21,11 @@
 .like-controll-plus span,
 .like-controll-minus,
 .like-controll-minus span,
+.comment-block-data-user,
+.comment-block-data-user-pic,
+.comment-block-data-content,
 .comment-controll span,
+.form-add-comment-textarea,
 .questblock-pic,
 .questblock-info,
 .questblock-info-info-list,
@@ -82,6 +86,10 @@
 }
 .dib_t,
 .container-col,
+.comment-block-data-user,
+.comment-block-data-user-pic,
+.comment-block-data-content,
+.form-add-comment-textarea,
 .questblock-pic,
 .questblock-info,
 .questblock-info-info-list,
@@ -517,6 +525,60 @@ a {
 }
 /* . like-controll end*/
 /* comment */
+.comment-block {
+  position: relative;
+  width: 100%;
+}
+.comment-block-sub .comment-block-data-user-pic {
+  width: 40px;
+}
+.comment-block-sub .comment-block-data-user-pic img {
+  max-width: 40px;
+}
+.comment-block-sub .comment-block-data-user-name {
+  font-size: 14px;
+}
+.comment-block-data-user {
+  width: 100px;
+  margin-right: 10px;
+  text-align: center;
+}
+.comment-block-data-user-pic {
+  width: 60px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+  overflow: hidden;
+}
+.comment-block-data-user-pic img {
+  max-width: 60px;
+}
+.comment-block-data-user-name {
+  width: 100px;
+  margin-top: 5px;
+}
+.comment-block-data-content-date {
+  font-size: 12px;
+  color: #9a9ba0;
+  margin-bottom: 5px;
+}
+.comment-block-controlls {
+  margin-top: 5px;
+}
+.comment-block-controlls-response {
+  color: #8a44ff;
+  opacity: 0.6;
+  cursor: pointer;
+}
+.comment-block-controlls-response:hover {
+  opacity: 1;
+}
+.comment-block-answers {
+  margin-top: 25px;
+  border-top: 1px solid rgba(49,51,62,0.05);
+  padding-top: 25px;
+  padding-left: 50px;
+}
 .comment-controll span {
   position: relative;
   top: 5px;
@@ -525,6 +587,23 @@ a {
   width: 26px;
   height: 25px;
   background-repeat: no-repeat;
+}
+.form-add-comment {
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 25px;
+}
+.form-add-comment-textarea {
+  width: 100%;
+  height: 100px;
+  font-size: 12px;
+  box-sizing: border-box;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+.form-add-comment-button-wrapper {
+  text-align: right;
+  width: 100%;
 }
 /* . comment end */
 /* questblock */
@@ -595,6 +674,10 @@ a {
 }
 .questblock-info-controlls-comments {
   margin-right: 25px;
+}
+.questblock-comments {
+  background-color: rgba(49,51,62,0.02);
+  padding: 25px;
 }
 /* questchallenge */
 /* .questchallenge end*/
@@ -749,6 +832,8 @@ a {
   margin-top: 10px;
 }
 /* . USER PANEL END*/
+/* comments widgets */
+/* comments widgets end */
 /* interests-selector */
 .interests-selector {
   width: 75%;
