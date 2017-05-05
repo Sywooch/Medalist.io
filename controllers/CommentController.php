@@ -25,6 +25,7 @@ class CommentController extends \yii\web\Controller
                     $result['step3'] = true;
                     $result['success'] = true;
                     $result['comment_id'] = $res;
+                    $result['parent_comment_id'] = (int)Yii::$app->request->get()['parent_comment_id'];
 
                  
                 }
@@ -49,7 +50,14 @@ class CommentController extends \yii\web\Controller
         if( !empty(Yii::$app->request->get()['comment_id'] ) ){
            
             $comment = Comment::findOne( Yii::$app->request->get()['comment_id']  );
-           Yii::$app->comment->renderComment( $comment );
+
+            //ANSWER?
+            if( empty(Yii::$app->request->get()['parent_comment_id'] ) ) {
+                Yii::$app->comment->renderComment( $comment );
+            }else{
+                Yii::$app->comment->renderComment( $comment, false, false );
+            }
+           
         }else{
             echo "";
         }

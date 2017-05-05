@@ -423,11 +423,17 @@ $(document).ready(function(){
 		/* LIKES END ================== */
 
 		/* COMMENTS */
-		var prependComment = function( viewport, commentId ){
+		var prependComment = function( viewport, commentId, parentCommentId ){
 			var html = '';
+
+			//It is an answer - find proper answer section
+			if( typeof parentCommentId != 'undefined' ){
+				viewport = viewport.find('.comment-id-'+parentCommentId+' .comment-block-answers');
+			}
+
 			$.ajax({
 				url: ajaxUrls['getCommentHtml'],
-				data: {comment_id: commentId},
+				data: {comment_id: commentId, parent_comment_id: parentCommentId },
 				success: function(data){
 
 					console.log( data);
@@ -435,10 +441,15 @@ $(document).ready(function(){
 					if( typeof viewport == 'string '){
 						viewport = $(viewport);
 					}
+
+					
 					viewport.prepend( html );
 				}
 			});
 		}
+
+
+		
 		$(document).on('click', '.js-add-comment', function(){
 			var p = $(this).parents('.form-add-comment'),
 				className = p.data('obj'),
@@ -464,7 +475,7 @@ $(document).ready(function(){
 					success: function(data){
 						console.log(data);
 						if( data.success ){
-							prependComment( $('.questblock-comments-quest-' + classId + ' .questblock-comments-form-wrapper'), data.comment_id );	
+							prependComment( $('.questblock-comments-quest-' + classId + ' .questblock-comments-form-wrapper'), data.comment_id, data.parent_comment_id );	
 							p.find('textarea').val('');
 						}else{
 							err.text( data.error );
@@ -478,6 +489,24 @@ $(document).ready(function(){
 
 				return false;
 		});
+
+
+
+		$(document).on('click', '.js-comment-makeresponse', function(){
+			var p = $(this).parents('.comments-widget'),
+				form = p.find('.form-add-comment');
+
+				form.find('.parent_comment_id').val( $(this).data('id') );
+				form.find('textarea').focus();
+
+				//TODO - add label that "Your answer too..."
+
+				 
+
+				return false;
+		});
+
+
 		/* LIKES END ================== */
 
 
