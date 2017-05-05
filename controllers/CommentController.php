@@ -53,9 +53,9 @@ class CommentController extends \yii\web\Controller
 
             //ANSWER?
             if( empty(Yii::$app->request->get()['parent_comment_id'] ) ) {
-                Yii::$app->comment->renderComment( $comment );
+                Yii::$app->comment->renderComment( $comment, false, true, 'ajax-prepended' );
             }else{
-                Yii::$app->comment->renderComment( $comment, false, false );
+                Yii::$app->comment->renderComment( $comment, false, false, 'ajax-prepended'  );
             }
            
         }else{

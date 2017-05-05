@@ -23,13 +23,13 @@ class CommentComponent extends Component
     }
 
 
-    public function renderComment($comment, $obj = false , $parent = true){
+    public function renderComment($comment, $obj = false , $parent = true, $extraClass = ''){
 
         if( $parent ){
 
             
         ?>
-            <div class="comment-block comment-id-<?=$comment->comment_id?>">
+            <div class="comment-block <?=$extraClass?> comment-id-<?=$comment->comment_id?>">
                 <div class="comment-block-data">
                     <div class="comment-block-data-user">
                         <div class="comment-block-data-user-pic"><img src="/template/img/_user-ava.png"></div>
@@ -71,7 +71,7 @@ class CommentComponent extends Component
         }else{
 
              ?>
-            <div class="comment-block  comment-block-sub comment-id-<?=$comment->comment_id?>" data-parent_comment_id="<?=$comment->parent_comment_id?>">
+            <div class="comment-block  <?=$extraClass?>  comment-block-sub comment-id-<?=$comment->comment_id?>" data-parent_comment_id="<?=$comment->parent_comment_id?>">
                 <div class="comment-block-data">
                     <div class="comment-block-data-user">
                         <div class="comment-block-data-user-pic"><img src="/template/img/_user-ava.png"></div>

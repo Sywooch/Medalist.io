@@ -1,7 +1,43 @@
 countInterests = function(){
 	return $('.interests-button-selected:visible').length;
 };
+
+/*effects */
+blinkNew = function( className ){
+	var cBlink = '#8a44ff',
+		h = $('<div></div>');
+	console.log(className);
+	if( typeof className == 'string' ){
+		className = $(className);
+	}
+
+	console.log(className);
+	console.log(className.length);
+
+	className.css('position', 'relative');
+	h.css('background-color', cBlink);
+	h.css('width', '100%');
+	h.css('height', '100%');
+	h.css('left', '0');
+	h.css('right', '0');
+	h.css('position', 'absolute');
+	h.css('z-index', '100');
+
+	className.prepend(h);
+	className.removeClass('ajax-prepended');
+	h.animate({'opacity': 0}, 500, function(){ h.remove();});
+
+
+	return false;
+};
+
+
 $(document).ready(function(){
+
+
+
+
+	/*effects end */
 
 	/* REGISTRATION */
 
@@ -427,7 +463,7 @@ $(document).ready(function(){
 			var html = '';
 
 			//It is an answer - find proper answer section
-			if( typeof parentCommentId != 'undefined' ){
+			if( typeof parentCommentId != 'undefined' && parseInt(parentCommentId) > 0){
 				viewport = viewport.find('.comment-id-'+parentCommentId+' .comment-block-answers');
 			}
 
@@ -436,16 +472,25 @@ $(document).ready(function(){
 				data: {comment_id: commentId, parent_comment_id: parentCommentId },
 				success: function(data){
 
-					console.log( data);
+				 
 					html = data;
-					if( typeof viewport == 'string '){
+					html = $(html);
+
+					if( typeof viewport == 'string'){
 						viewport = $(viewport);
 					}
 
 					
 					viewport.prepend( html );
+
+					blinkNew( '.ajax-prepended' );
+
+				 
 				}
 			});
+
+			return html;
+		 
 		}
 
 
@@ -473,9 +518,15 @@ $(document).ready(function(){
 					type: 'get',
 					dataType: 'json',
 					success: function(data){
+						var html;
 						console.log(data);
 						if( data.success ){
 							prependComment( $('.questblock-comments-quest-' + classId + ' .questblock-comments-form-wrapper'), data.comment_id, data.parent_comment_id );	
+							console.log('222');
+							console.log( $('.ajax-prepended').length );
+							
+
+
 							p.find('textarea').val('');
 						}else{
 							err.text( data.error );
