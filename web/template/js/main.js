@@ -422,5 +422,63 @@ $(document).ready(function(){
 		});
 		/* LIKES END ================== */
 
+		/* COMMENTS */
+		var prependComment = function( viewport, commentId ){
+			var html = '';
+			$.ajax({
+				url: ajaxUrls['getCommentHtml'],
+				data: {comment_id: commentId},
+				success: function(data){
+
+					console.log( data);
+					html = data;
+					if( typeof viewport == 'string '){
+						viewport = $(viewport);
+					}
+					viewport.prepend( html );
+				}
+			});
+		}
+		$(document).on('click', '.js-add-comment', function(){
+			var p = $(this).parents('.form-add-comment'),
+				className = p.data('obj'),
+				classId = p.data('id'),
+				parent_comment_id = p.find('.parent_comment_id').val(),
+ 				comment = p.find('textarea').val(),
+ 				err = p.find('.form-add-comment-error'),
+				data =  {entity_class : className, entity_id: classId, text: comment, parent_comment_id, parent_comment_id},
+				that = this;
+
+				if( comment.length < 10 ){
+					err.text('Комментарий слишком короткий');
+					err.slideDown();
+					return false;
+				}
+ 
+
+				$.ajax({
+					url: ajaxUrls['addComment'],
+					data: data,
+					type: 'get',
+					dataType: 'json',
+					success: function(data){
+						console.log(data);
+						if( data.success ){
+							prependComment( $('.questblock-comments-quest-' + classId + ' .questblock-comments-form-wrapper'), data.comment_id );	
+							p.find('textarea').val('');
+						}else{
+							err.text( data.error );
+							err.slideDown;
+						}
+						
+						 
+					}
+
+				});
+
+				return false;
+		});
+		/* LIKES END ================== */
+
 
 });

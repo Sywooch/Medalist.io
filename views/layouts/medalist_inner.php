@@ -42,8 +42,11 @@ AppAsset::register($this);
             
             $ajaxUrls['addAchievement'] = Yii::$app->urlManager->createUrl('achievement/ajax-add-achievement');
 
-
             $ajaxUrls['addLike'] = Yii::$app->urlManager->createUrl('like/ajax-add-like');
+
+
+            $ajaxUrls['addComment'] = Yii::$app->urlManager->createUrl('comment/ajax-add-comment');
+            $ajaxUrls['getCommentHtml'] = Yii::$app->urlManager->createUrl('comment/ajax-get-comment-html');
             echo json_encode( $ajaxUrls );
         ?>        
     </script>

@@ -9,17 +9,7 @@ use app\models\Comment;
  
 class CommentComponent extends Component
 {
-    public function renderForm(   )
-    {
-
-     
-        ?>
-<div class="like-controll <?=$class?>" data-obj="<?=$classname?>" data-id="<?=$id?>">
-    <div class="like-controll-plus js-add-like <?=$class_active_plus?>" data-point="1" ><span></span><?=$plus?></div>
-    <div class="like-controll-minus js-add-like <?=$class_active_minus?>"  data-point="-1" ><span></span><?=$minus?></div>
-</div>
-        <?
-    }
+ 
 
 
     
@@ -33,7 +23,7 @@ class CommentComponent extends Component
     }
 
 
-    protected function renderComment($comment, $obj, $parent = true){
+    public function renderComment($comment, $obj = false , $parent = true){
 
         if( $parent ){
 
@@ -62,12 +52,16 @@ class CommentComponent extends Component
                 </div>
                 <div class="comment-block-answers">
                     <?php 
+                    if( $obj !== false ){
+
+
                         $comments = Comment::getCommentsOfObject( $obj, $comment->comment_id )->offset(0)->limit(  2 )->all();
 
                         
                         foreach( $comments as $c){
                             self::renderComment( $c, $obj, false );
                         }
+                    }
                     ?>
                 </div>
 
@@ -124,10 +118,12 @@ class CommentComponent extends Component
             <?
         }else{
             ?>
-            <form class="form-add-comment" data-class="<?=$classname?>" data-id="<?=$id?>">
+            <form class="form-add-comment" data-obj="<?=$classname?>" data-id="<?=$id?>">
                 <textarea class="form-add-comment-textarea" ></textarea>
+                <input type="hidden" name="parent_comment_id" class="parent_comment_id parent_comment_id-<?=$classname?>-<?=$id?>" value="0">
+                <div class="form-add-comment-error" style="display: none;">Введите комментарий</div>
                 <div class="form-add-comment-button-wrapper">
-                <button class="mdlst-button mdlst-button-default form-add-comment-button ">Оставить комментарий</button>
+                <button class="mdlst-button mdlst-button-default form-add-comment-button js-add-comment ">Оставить комментарий</button>
                 </div>
             </form>
             <?

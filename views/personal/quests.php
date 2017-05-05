@@ -121,7 +121,7 @@ echo $this->render('_panel.php');
 									</div>
 									<div class="questblock-comments questblock-comments-quest-<?=$q->quest_id?>"  >
 										<div class="questblock-comments-form"><?=Yii::$app->comment->renderResponseForm( $q  );?></div>
-										<div class="questblock-comments-form-wrapper"><?=Yii::$app->comment->renderCommentFeed( $q, 0, 2 );?></div>
+										<div class="questblock-comments-form-wrapper"><?=Yii::$app->comment->renderCommentFeed( $q, 0, 10 );?></div>
 									</div>
 								</div>
 								<!-- QUEST END . -->

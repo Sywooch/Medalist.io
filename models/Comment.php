@@ -91,19 +91,26 @@ class Comment extends \yii\db\ActiveRecord
     /**
     * Return -1, 1 as point, or int > 1 as like id, OR false in error
     */
-    public static function addCommentToObject( $entity_class, $entity_id, $comment, $parent_comment_id = null){
+    public static function addCommentToObject( $entity_class, $entity_id, $com, $parent_comment_id = null){
         if( !Yii::$app->user->isGuest ){
             
                 $comment = new Comment;
                 $comment->entity_class = ucfirst($entity_class);
                 $comment->entity_id = $entity_id;
                 $comment->created_by_id = Yii::$app->user->identity->id ;
-                $comment->text = $comment;
+                $comment->text = $com;
                 $comment->parent_comment_id = $parent_comment_id;
                 $comment->date_created = date("Y-m-d H:i:s");
-                return $comment->save();
+                $result = $comment->save();
+               
+               if( $result ){
+                return $comment->comment_id;
+               }else{
+                return false;
+               }
            
         }else{
+           
             return false;
         }
     }    
