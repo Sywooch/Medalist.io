@@ -27,7 +27,7 @@ echo $this->render('_panel.php');
 
 			 						<div class="addach-header">
 			 							<div class="addach-header-inp-w">
-			 								<input type="text" name="name" class="addach-header-inp" placeholder="Название достижения" value="<?=$predefinedTitle?>">
+			 								<input type="text" name="name" class="addach-header-inp" placeholder="Какая у вас цель?" value="<?=$predefinedTitle?>">
 			 							</div>
 
 
@@ -38,7 +38,7 @@ echo $this->render('_panel.php');
 			 							<div class="addach-description-text">
 			 								<textarea name="description" id="description" cols="30" rows="10" class="addach-description-text-textarea"><?=$predefinedText?></textarea>
 			 							</div>
-			 							<div class="addach-description-date"><span class="addach-description-date-icon"></span><input data-toggle="datepicker" class="addach-description-date-date mdlst-input-small" name="date_achieved"></div>
+			 							<div class="addach-description-date">Крайний срок до достижениея: <span class="addach-description-date-icon"></span><input data-toggle="datepicker" class="addach-description-date-date mdlst-input-small" name="date_achieved"></div>
 			 							<div class="addach-description-photos">
 			 								<a class="container-menu-list-meta-add addach-description-photos-icon" href="#">
 												<span class="container-menu-list-meta-add-plus">+</span>

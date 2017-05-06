@@ -320,17 +320,6 @@ $(document).ready(function(){
 		
 		console.log( $('[data-toggle="rangeslider"]').rangeslider('update', true) );
  
-
-		$(document).on('keydown', '.js-tag-adder', function(e ){
-		 	var  v = $(this).val();
-
-			if( e.which == 13 ){
-				e.preventDefault();
-				$(this).val('');
-				$('.addach-tags-w').append('<div class="  mdlst-button mdlst-button-default addach-tags-tag"  >'+v+'<div class="mdlst-button-closer "></div></div>')
-
-			}
-		});
 		$(document).on('change', 'input[name="addach-chk-isimportant"]', function(e ){
 			console.log('123');
 		 	if( $(this).is(":checked")) {
@@ -431,6 +420,25 @@ $(document).ready(function(){
 				tH.text(t);
 		});
 		$('.dropdown-select select').change();
+
+
+
+
+
+
+		$(document).on('keydown', '.js-tag-adder', function(e ){
+		 	var  v = $(this).val();
+
+			if( e.which == 13 ){
+				e.preventDefault();
+				$(this).val('');
+				$('.addach-tags-w').append('<div class="  mdlst-button mdlst-button-default addach-tags-tag"  >'+v+'<div class="mdlst-button-closer "></div></div>')
+
+			}
+		});
+
+
+		
 		/* . CONTROLLS END ===================== */
 
 
@@ -558,7 +566,7 @@ $(document).ready(function(){
 		});
 
 
-		/* LIKES END ================== */
+		/* COMMENTS END ================== */
 
 
 });

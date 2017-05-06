@@ -30,16 +30,16 @@ class DecorComponent extends Component
         ?>
 
 
-        <div class=" <?=$extraClass?> mdlst-switch <?php if($checkboxState ) { ?>  mdlst-switch-on <?} ?>">
-            <div class="  mdlst-switch-state">
-                <div class="mdlst-switch-state-w">
-                    <div class="mdlst-switch-state-curtain"></div>
-                    <div class="mdlst-switch-state-track"></div>
-                </div>
-            </div>
-            <div class="  mdlst-switch-text"><?=$checkboxText?></div>
-            <input type="checkbox" name="private" class="mdlst-switch-chk" <?php if($checkboxState ) { ?> checked="checked"<?} ?>>
+<div class=" <?=$extraClass?> mdlst-switch <?php if($checkboxState ) { ?>  mdlst-switch-on <?} ?>">
+    <div class="  mdlst-switch-state">
+        <div class="mdlst-switch-state-w">
+            <div class="mdlst-switch-state-curtain"></div>
+            <div class="mdlst-switch-state-track"></div>
         </div>
+    </div>
+    <div class="  mdlst-switch-text"><?=$checkboxText?></div>
+    <input type="checkbox" name="<?=$checkboxName?>" class="mdlst-switch-chk" <?php if($checkboxState ) { ?> checked="checked"<?} ?>>
+</div>
                                         
         <?
 

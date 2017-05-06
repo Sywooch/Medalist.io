@@ -124,7 +124,7 @@ class PersonalController extends \yii\web\Controller
         $difficult = (!empty($goal_id) || !empty($quest_id));
         
 
-        return $this->render('achievement-add', [
+        return $this->render('goal-add', [
             'goals' => $goals, 
             'questPendingTasks' => $questPendingTasks,
             'quest' => $quest,
