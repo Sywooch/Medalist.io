@@ -29,16 +29,9 @@ echo $this->render('_panel.php');
 			 							<div class="addach-header-inp-w">
 			 								<input type="text" name="name" class="addach-header-inp" placeholder="Название достижения" value="<?=$predefinedTitle?>">
 			 							</div>
-			 							<div class="addach-header-isdifficult mdlst-switch <?php if($difficult ) { ?>  mdlst-switch-on <?} ?>">
-			 								<div class="  mdlst-switch-state">
-			 									<div class="mdlst-switch-state-w">
-			 										<div class="mdlst-switch-state-curtain"></div>
-			 										<div class="mdlst-switch-state-track"></div>
-			 									</div>
-			 								</div>
-			 								<div class="  mdlst-switch-text">Важное достижение</div>
-			 								<input type="checkbox" name="addach-chk-isimportant" class="mdlst-switch-chk" <?php if($difficult ) { ?> checked="checked"<?} ?>>
-			 							</div>
+
+
+			 							<?php Yii::$app->decor->controllSwitch('private', 'Приватная цель', 'addach-header-isdifficult', $difficult);?>
 			 						</div>
 
 			 						<div class="addach-description">
