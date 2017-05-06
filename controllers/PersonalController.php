@@ -77,10 +77,14 @@ class PersonalController extends \yii\web\Controller
         return $this->render('friends');
     }
 
+
+
+
+
     public function actionGoals()
     {
         //$id = Yii::$app->request->get()['goal_id'];
-        $goals = Goal::find()->all();
+        $goals = Goal::find()->where(['user_id' => Yii::$app->user->identity->id ])->all();
         return $this->render('goals', ['goals' => $goals]);
     }
 
@@ -91,6 +95,55 @@ class PersonalController extends \yii\web\Controller
         $goal = Goal::findOne( $id );
         return $this->render('goal-detail', ['goal' => $goal]);
     }
+
+
+    public function actionGoalAdd()
+    {
+
+        $questPendingTasks = QuestPendingTask::find()->where('user_id = '.Yii::$app->user->identity->id.' AND status = 0')->all();
+        $goals = Goal::find()->where('user_id = '.Yii::$app->user->identity->id.' AND completed = 0')->all();
+
+        $quest = false;
+        $quest_id = !empty(Yii::$app->request->get()['quest_id']) ?  Yii::$app->request->get()['quest_id'] : 0;
+
+
+        $goal = false;
+        $goal_id = !empty(Yii::$app->request->get()['goal_id']) ?  Yii::$app->request->get()['goal_id'] : 0;
+
+
+
+        $predefinedTitle = "";
+        $predefinedText = "";
+        if( !empty(Yii::$app->request->get()['quest_id']) ){
+            $quest = Quest::findOne( Yii::$app->request->get()['quest_id'] );
+            $predefinedTitle ="Выполнен квест ".$quest->name;
+            $predefinedText ="Вы выполнили квест ".$quest->name.". Опишите как это было? Сложно или не очень? Что запомнилось?";
+            $difficult = true;
+        }
+
+        $difficult = (!empty($goal_id) || !empty($quest_id));
+        
+
+        return $this->render('achievement-add', [
+            'goals' => $goals, 
+            'questPendingTasks' => $questPendingTasks,
+            'quest' => $quest,
+            'quest_id' => $quest_id,
+            'goal' => $goal,
+            'goal_id' => $goal_id,
+            'difficult' => $difficult,
+
+            'predefinedTitle' => $predefinedTitle,
+            'predefinedText' => $predefinedText,
+        ]);
+    }
+
+
+
+
+
+
+
 
     public function actionNews()
     {

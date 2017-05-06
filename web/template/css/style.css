@@ -1361,11 +1361,17 @@ a {
 .mdlst-pan-important .mdlst-pan-icon {
   background-image: url("../img/important.png");
 }
-.mdlst-pan-important {
+.mdlst-pan-info {
   background-color: rgba(138,68,255,0.2);
 }
-.mdlst-pan-important .mdlst-pan-icon {
+.mdlst-pan-info .mdlst-pan-icon {
   background-image: url("../img/pan-ok.png");
+}
+.mdlst-pan-success {
+  background-color: rgba(0,128,0,0.2);
+}
+.mdlst-pan-success .mdlst-pan-icon {
+  background-image: url("../img/pan-success.png");
 }
 .mdlst-pan-icon {
   width: 10%;

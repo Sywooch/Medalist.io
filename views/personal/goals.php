@@ -17,11 +17,15 @@ echo $this->render('_panel.php');
                     <div class="output-header">
                         <div class="mygoals-name-div">
                             <h2 class="mdlst-h2t-goals withButton">Мои цели (<?= count($goals) ?>)</h2>
-                            <a class="goal-done-button mdlst-button withHeader" href="#">+ Добавить новую цель</a>
+                            <a class="goal-done-button mdlst-button withHeader" href="<?= Yii::$app->urlManager->createUrl('personal/goal-add') ?>">+ Добавить новую цель</a>
 
                             <div class="clear"></div>
                         </div>
                     </div>
+
+
+                <?php if( !empty($goals) ) { ?>
+
                     <?php foreach ($goals as $goal) {
                         $g = "ListbGoal" . $goal->goal_id;
                         ?>
@@ -175,6 +179,13 @@ echo $this->render('_panel.php');
                             </div>
                         </div>
                         <!--goal-content-->
+                    <? } ?>
+
+
+                    <?php }else { ?>
+
+                        <? Yii::$app->decor->infoPanel('Вы пока не добавили целей. Добавьте с помощью кнопки выше!', 'info'); ?>
+ 
                     <? } ?>
 
                     <!--goal-content-->

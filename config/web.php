@@ -13,6 +13,9 @@ $config = [
         'comment' => [
             'class' => 'app\components\CommentComponent',
         ],
+        'decor' => [
+            'class' => 'app\components\DecorComponent',
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => '-OFljktudNiGCjI0IdqK3L-0P_zV7BW_',

@@ -185,6 +185,9 @@ echo $this->render('_panel.php');
 
 								 </div>
 								 <!-- . achievement list end -->
+								 <?php if( empty( $achievements) ) { ?>
+								 <? Yii::$app->decor->infoPanel('У вас пока нет ни одного достижения Добавьте новое, или выберите какой-нибудь квест, чтобы было, чего достичь.', 'info'); ?>
+								 <?}?>
 
 							 </div>							
 						 
