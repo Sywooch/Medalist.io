@@ -131,7 +131,8 @@ echo $this->render('_panel.php');
 		 					</div>
 
 		 					<div class="addach-success" style="display: none;">
-		 						<? Yii::$app->decor->infoPanel('Вы успешно добавили достижение! Посмотрите его в <a href="'.Yii::$app->urlManager->createUrl('personal/achievements').'">вашем списке достижений!', 'success'); ?>
+		 					 	<? Yii::$app->decor->infoPanel('Вы успешно добавили достижение! Посмотрите его в <a href="'.Yii::$app->urlManager->createUrl('personal/achievements').'">вашем списке достижений!', 'success'); ?>
+		 						
 		 					</div>
 
 		 					<!-- . ADDING ACHIEVEMENT END -->
