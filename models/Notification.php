@@ -8,14 +8,13 @@ use Yii;
  * This is the model class for table "notification".
  *
  * @property integer $notification_id
+ * @property integer $notification_type_id
+ * @property integer $user_id
  * @property integer $to_user_id
- * @property integer $date_created
- * @property integer $created_by_id
+ * @property string $date_created
  * @property string $text
- * @property integer $readed
  * @property string $entity_class
  * @property integer $entity_id
- * @property string $type
  */
 class Notification extends \yii\db\ActiveRecord
 {
@@ -33,10 +32,11 @@ class Notification extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['to_user_id', 'date_created', 'text'], 'required'],
-            [['to_user_id', 'date_created', 'created_by_id', 'readed', 'entity_id'], 'integer'],
+            [['notification_type_id', 'user_id', 'to_user_id', 'entity_id'], 'integer'],
+            [['user_id', 'date_created', 'text'], 'required'],
+            [['date_created'], 'safe'],
             [['text'], 'string'],
-            [['entity_class', 'type'], 'string', 'max' => 128],
+            [['entity_class'], 'string', 'max' => 128],
         ];
     }
 
@@ -47,14 +47,13 @@ class Notification extends \yii\db\ActiveRecord
     {
         return [
             'notification_id' => 'Notification ID',
+            'notification_type_id' => 'Notification Type ID',
+            'user_id' => 'User ID',
             'to_user_id' => 'To User ID',
             'date_created' => 'Date Created',
-            'created_by_id' => 'Created By ID',
             'text' => 'Text',
-            'readed' => 'Readed',
             'entity_class' => 'Entity Class',
             'entity_id' => 'Entity ID',
-            'type' => 'Type',
         ];
     }
 
@@ -65,5 +64,9 @@ class Notification extends \yii\db\ActiveRecord
     public static function find()
     {
         return new NotificationQuery(get_called_class());
+    }
+
+    public function getNotificationType(){
+        return $this->hasOne(NotificationType::$className, ['notification_type_id' => 'notification_type_id'])->one();
     }
 }
