@@ -40,10 +40,11 @@ echo $this->render('_panel.php');
 
                                 <div class="mygoals-stars">
                                     <?
-                                    for ($n = 1; $n <= $goal->difficulty; $n++) {
+                                     $difficulty = round( ($goal->difficulty / 100) * 3 );
+                                    for ($n = 1; $n <= $difficulty; $n++) {
                                         echo '<div class="mygoals-star star-yellow"></div>';
                                     }
-                                    for ($n = $goal->difficulty; $n < 3; $n++) {
+                                    for ($n = $difficulty; $n < 3; $n++) {
                                         echo '<div class="mygoals-star star-grey"></div>';
                                     }
 
@@ -72,9 +73,11 @@ echo $this->render('_panel.php');
                             </div>
                         </div>
                         <div class="clear"></div>
+
+
+                        <?php if(!empty($goal->getPhotos()) ) { ?>
                         <div class="goals-pictures">
-                            <div class="goals-picture-big"><img src="uploads<?= $goal->getPhotos()[0]->filename ?>"
-                                                                alt=""/></div>
+                            <div class="goals-picture-big"><?php if(!empty($goal->getPhotos()[0]) ) { ?><img src="uploads<?= $goal->getPhotos()[0]->filename ?>" alt=""/><? } ?></div>
                             <div class="goals-pictures-small">
 
                                 <? $Photos = $goal->getPhotos();
@@ -85,6 +88,8 @@ echo $this->render('_panel.php');
 
                             </div>
                         </div>
+                        <? } ?>
+
                         <div class="clear"></div>
                         <div class="goals-description marginBottom30 marginTop30">
                             <?= $goal->description ?>

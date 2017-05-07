@@ -29,6 +29,10 @@ echo $this->render('_panel.php');
                     <?php foreach ($goals as $goal) {
                         $g = "ListbGoal" . $goal->goal_id;
                         ?>
+
+
+
+
                         <div class="goal-content">
                             <div class="mygoals-name-div">
                                 <div class="input-check withList">
@@ -54,10 +58,11 @@ echo $this->render('_panel.php');
 
                                         <div class="mygoals-stars">
                                             <?
-                                            for ($n = 1; $n <= $goal->difficulty; $n++) {
+                                            $difficulty = round( ($goal->difficulty / 100) * 3 );
+                                            for ($n = 1; $n <= $difficulty; $n++) {
                                                 echo '<div class="mygoals-star star-yellow"></div>';
                                             }
-                                            for ($n = $goal->difficulty; $n < 3; $n++) {
+                                            for ($n = $difficulty; $n < 3; $n++) {
                                                 echo '<div class="mygoals-star star-grey"></div>';
                                             }
 
@@ -93,93 +98,26 @@ echo $this->render('_panel.php');
                                 </div>
                             </div>
                             <!--listGoals-left-->
+                            <?php if(!empty($goal->getPhotos()[0])) {  ?>
                             <div class="goals-picture-mid"><img src="uploads<?= $goal->getPhotos()[0]->filename ?>"
                                                                 alt=""/></div>
+                            <?php } ?>
                             <div class="clear"></div>
 
 
+                            <?=$this->render("_goal_subtask.php", ['goal' => $goal]) ?>
 
-                            <? $subtasks = Goal::getSubtasksById($goal->goal_id);
-
-                            $is_subtasks = count($subtasks) > 0; ?>
-
-                            <? if ($is_subtasks){ ?>
-
-                            <span class="showSubtasts">Смотреть подцели (<?= count($subtasks); ?>)</span>
-
-                            <div>
-                                <ul class="goal-subtask">
-                                    <? } ?>
-
-
-                                    <? foreach ($subtasks as $subtask){
-                                    $s = $g . "s" . $subtask->goal_subtask_id;
-                                    ?>
-                                    <li class="subtask-container">
-                                        <div class="subtask-top">
-                                            <div
-                                                class="subtask-top-left <?= $subtask->completed ? 'subtask-done' : ''; ?>">
-                                                <div class="input-check">
-                                                    <input <?= $subtask->completed ? 'checked = "checked"' : ''; ?>
-                                                        type="checkbox" id="<?= $s; ?>" name="<?= $s; ?>"
-                                                        value="<?= $s; ?>"/>
-                                                    <label for="<?= $s; ?>"
-                                                           class="subtask-top-name">1. <?= $subtask->name ?></label>
-                                                </div>
-                                                <div class="subtask-progress">
-                                                    <div
-                                                        class="interests-selector-scale-viewport userpanel-info-scale-scale subtask-progress-height">
-                                                        <div
-                                                            class="interests-selector-scale-track subtask-progress-height"
-                                                            style="margin-left: -<?= 100 - $subtask->getProgressPercent() ?>%;"></div>
-                                                    </div>
-                                                </div>
-                                                <span
-                                                    class="mygoals-dead color-red subtask-top-dead"><? echo date("Y.m.d", strtotime($subtask->deadline)) ?></span>
-                                            </div>
-                                        </div>
-                                        <div class="subtask-bottom">
-                                            <?= $subtask->description ?>
-                                        </div>
-
-                                        <? $subtasks_points = $subtask->getSubtasks();
-                                        $is_subtask_points = count($subtasks) > 0; ?>
-
-                                        <? if ($is_subtask_points){ ?>
-                                        <ul class="subtask-points">
-                                            <? } ?>
-
-                                            <? foreach ($subtasks_points as $subtask_point) {
-                                                $p = $s . "p" . $subtask_point->goal_subtask_id;
-                                                ?>
-
-
-                                                <li>
-                                                    <div
-                                                        class="input-check <?= $subtask_point->completed ? 'subtask-done' : ''; ?>">
-                                                        <input <?= $subtask_point->completed ? 'checked = "checked"' : ''; ?>
-                                                            type="checkbox" id="<?= $p ?>" name="<?= $p ?>"
-                                                            value="<?= $p ?>"/>
-                                                        <label for="<?= $p ?>"
-                                                               class="subtask-top-name">1. <?= $subtask_point->name ?></label>
-                                                    </div>
-                                                    <div class="clear"></div>
-                                                </li>
-                                            <? } ?>
-
-                                            <? if ($is_subtask_points){ ?>
-                                        </ul>
-                                    <? } ?>
-
-                                        <? } ?>
-
-                                    </li>
-
-                                </ul>
-                            </div>
                         </div>
                         <!--goal-content-->
                     <? } ?>
+
+
+
+
+
+
+
+
 
 
                     <?php }else { ?>

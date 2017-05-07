@@ -41,6 +41,8 @@ AppAsset::register($this);
             $ajaxUrls['getQuestPendingTaskHtml'] = Yii::$app->urlManager->createUrl('quest/ajax-get-quest-pending-task-html');
             
             $ajaxUrls['addAchievement'] = Yii::$app->urlManager->createUrl('achievement/ajax-add-achievement');
+
+
             $ajaxUrls['addGoal'] = Yii::$app->urlManager->createUrl('goal/ajax-add-goal');
 
             $ajaxUrls['addLike'] = Yii::$app->urlManager->createUrl('like/ajax-add-like');
@@ -53,7 +55,7 @@ AppAsset::register($this);
     </script>
     <script src="/template/js/eventengine.js"></script>
     <script src="/template/js/main.js"></script>
-    <script src="/template/js/goal.js"></script>
+    <script src="/template/js/goals.js"></script>
   </head>
 
   <body>

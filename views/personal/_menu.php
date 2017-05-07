@@ -36,7 +36,7 @@ $currentUrl = Url::current();
 									<li class="container-menu-list-li">
 										<a class="container-menu-list-link" href="<?=Yii::$app->urlManager->createUrl('personal/goals')?>">Цели</a>
 										<div class="container-menu-list-meta">
-											<a class="container-menu-list-meta-add" href="#">
+											<a class="container-menu-list-meta-add" href="<?=Yii::$app->urlManager->createUrl('personal/goal-add')?>">
 												<span class="container-menu-list-meta-add-plus">+</span>
 											</a>
 										</div>

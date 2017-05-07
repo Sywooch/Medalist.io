@@ -8,7 +8,8 @@ use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use app\models\Tag;
+use app\models\Category;
 /**
  * GoalController implements the CRUD actions for Goal model.
  */
@@ -104,6 +105,60 @@ class GoalController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+
+
+    public function actionAjaxAddGoal(){
+        $result = [];
+
+        $result['success'] = false;
+
+        if( !empty(Yii::$app->request->post() )){
+            $post = Yii::$app->request->post();
+
+            if( !empty($post['name'])){
+                $goal = new Goal;
+
+                $goal->name = $post['name'];
+                $goal->difficulty = $post['difficulty'];
+                $goal->description = $post['description'];
+                $goal->date_created = date("Y-m-d H:i:s");
+                $goal->deadline = date("Y-m-d H:i:s", strtotime($post['deadline']));
+                $goal->user_id = Yii::$app->user->identity->id;
+
+                if( $goal->save() ){
+
+
+                    if( !empty($post['interests']) ) {
+                        //Todo - attachTags
+                        Tag::attachTagsToObject( $goal, $post['interests'] );
+                        //Todo - attachInterests 
+
+                        //Todo - attachCategory 
+                        $tags = $goal->getTags();
+                        $tagIDs = [];
+                        foreach ($tags as $tag) {
+                            $tagIDs = $tag->tag_id;
+                        }
+                        $category_id = Category::getByTagIDs($tagIDs);
+                        $goal->category_id = $category_id;
+                        $goal->save();
+
+                    }
+
+                
+
+
+                    $result['goal_id'] = $goal->goal_id;
+                    $result['success'] = true;
+                }else{
+                    $result['errors'] = $goal->errors;
+                }
+            }
+        }
+
+        return json_encode($result);
     }
 
     /**

@@ -128,6 +128,25 @@ class Goal extends \yii\db\ActiveRecord
 
     }
 
+
+    public  function getTags(){
+        $tags = Tag::find();
+        $tags->multiple = true;
+        $tags->innerJoin('tag2entity', 'tag.tag_id = tag2entity.tag_id');
+        $tags->where('tag2entity.entity_id = '.$this->goal_id ." AND tag2entity.entity_class = 'Goal'");
+        return $tags->all();
+    }
+
+    public  function getInterests(){
+        $interests = Interest::find();
+        $interests->multiple = true;
+        $interests->innerJoin('interest2entity', 'interest.interest_id = interest2entity.interest_id');
+        $interests->where('interest2entity.entity_id = '.$this->goal_id ." AND interest2entity.entity_class = 'Goal'");
+        return $interests->all();
+    }
+
+
+
     public static function getUserGoalsById( $user_id ){
         return Goal::find()->where(" user_id = ".$user_id)->all();
     }
