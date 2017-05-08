@@ -1,5 +1,21 @@
 <?php
 
+/*
+
+       1   Новое достижение    new_achievement
+       2   Новая цель  new_goal
+       3   Новый квест     new_quest
+       4   Новый подписчик     new_follower
+       5   Новая награда   new_reward
+       6   Цель выполнена  goal_done
+       7   Квест пройден   quest_done
+       8   Достижение подтверждено     achievement_approved
+       9   Новый уровень   new_level
+
+
+*/
+
+
 namespace app\models;
 
 use Yii;

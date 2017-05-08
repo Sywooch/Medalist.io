@@ -10,12 +10,20 @@ use Yii;
 
 $nextLevelPoints = 100;
 $currentLevelPoints = ScalePointsBalance::getUserPointsSum( Yii::$app->user->identity->id);
+
+if( ! $avatarSrc = Yii::$app->user->identity->getProfile()->one()->getAvatarSrc()  )
+{
+	$avatarSrc = 'http://gravatar.com/avatar/$hash?size=128&d=identicon';
+}
+
+
+
 ?>
 	<!-- USERPANEL -->
 	 	<div id="userpanel" class="userpanel">
 	 		<div class="wc">
 	 			<div class="userpanel-user">
-	 				<div class="userpanel-user-pic" style="background-image: url(/template/img/_user-ava.png)"></div>
+	 				<div class="userpanel-user-pic" style="background-image: url(<?=$avatarSrc?>)"></div>
 	 				<div class="userpanel-user-info">
 	 					<div class="userpanel-user-info-name"><?=Yii::$app->user->identity->email?></div>
 	 					<div class="userpanel-user-info-date">2 месяца на сайте</div>

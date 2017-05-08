@@ -44,5 +44,24 @@ class DecorComponent extends Component
         <?
 
     }
+
+
+
+
+
+
+
+
+
+    public static function getHash( $string ){
+        return md5( md5($string)."medalyst123" );
+    }
+    
+    public static function checkHash( $string, $hashed ){
+        return ($hashed === self::getHash( $string ));
+    }
+ 
+
+ 
  
 }

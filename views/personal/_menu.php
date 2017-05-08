@@ -16,7 +16,7 @@ $currentUrl = Url::current();
 									<li class="container-menu-list-li">
 										<a class="container-menu-list-link" href="<?=Yii::$app->urlManager->createUrl('personal/news')?>">Новости</a>
 										<div class="container-menu-list-meta">
-											<div class="container-menu-list-meta-counter">(185)</div>
+											<div class="container-menu-list-meta-counter"></div>
 										</div>
 									</li>
 									<li class="container-menu-list-li">
