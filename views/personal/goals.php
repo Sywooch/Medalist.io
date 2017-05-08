@@ -105,7 +105,7 @@ echo $this->render('_panel.php');
                             <div class="clear"></div>
 
 
-                            <?=$this->render("_goal_subtask.php", ['goal' => $goal]) ?>
+                            <?=$this->render("_goal_subtask.php", ['goal' => $goal, 'g' =>$g]) ?>
 
                         </div>
                         <!--goal-content-->
