@@ -13,6 +13,7 @@ use app\models\Quest;
 use app\models\QuestPendingTask;
 use app\models\Goal;
 use app\models\GoalSubtask;
+use app\models\Follower;
 use Yii;
 
 class PersonalController extends \yii\web\Controller
@@ -74,7 +75,10 @@ class PersonalController extends \yii\web\Controller
 
     public function actionFriends()
     {
-        return $this->render('friends');
+
+        $possibleFriends = Follower::findAlikeUsers( Yii::$app->user->identity->id )->all();
+
+        return $this->render('friends', [ 'possibleFriends' => $possibleFriends ]);
     }
 
 

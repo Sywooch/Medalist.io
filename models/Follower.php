@@ -3,6 +3,8 @@
 namespace app\models;
 
 use Yii;
+use yii\db\Expression;
+use amnah\yii2\user\models\User;
 
 /**
  * This is the model class for table "follower".
@@ -52,5 +54,10 @@ class Follower extends \yii\db\ActiveRecord
     public static function find()
     {
         return new FollowerQuery(get_called_class());
+    }
+
+
+    public static function findAlikeUsers( $userId  ){
+        return User::find()->where('id !='.$userId)->orderBy(new Expression('rand()'))->limit(4);
     }
 }
