@@ -11,11 +11,8 @@ use Yii;
 $nextLevelPoints = 100;
 $currentLevelPoints = ScalePointsBalance::getUserPointsSum( Yii::$app->user->identity->id);
 
-if( ! $avatarSrc = Yii::$app->user->identity->getProfile()->one()->getAvatarSrc()  )
-{
-	$avatarSrc = 'http://gravatar.com/avatar/$hash?size=128&d=identicon';
-}
-
+$avatarSrc = Yii::$app->user->identity->getProfile()->one()->getAvatarSrc();
+ 
 
 
 ?>
