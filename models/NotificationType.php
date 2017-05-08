@@ -11,6 +11,8 @@
        7   Квест пройден   quest_done
        8   Достижение подтверждено     achievement_approved
        9   Новый уровень   new_level
+       10   Взят квест   quest_taken
+       11 Предложен квест quest_challenge_suggested
 
 
 */
@@ -29,6 +31,19 @@ use Yii;
  */
 class NotificationType extends \yii\db\ActiveRecord
 {
+
+    const NT_NEW_ACHIEVEMENT = 1;
+    const NT_NEW_GOAL = 2;
+    const NT_NEW_QUEST = 3;
+    const NT_NEW_FOLLOWER = 4;
+    const NT_NEW_REWARD = 5;
+    const NT_GOAL_DONE = 6;
+    const NT_QUEST_DONE = 7;
+    const NT_ACHIEVEMENT_APPROVED = 8;
+    const NT_NEW_LEVEL = 9;
+    const NT_QUEST_TAKEN = 10;
+    const NT_QUEST_CHALLENGE_SUGGESTED = 11;
+
     /**
      * @inheritdoc
      */

@@ -97,7 +97,7 @@ class Notification extends \yii\db\ActiveRecord
     public static function addNotification($user_id, $notification_type_id, $obj = false, $to_user_id = false, $text = '' ){
 
         $notification = new Notification;
-        $notification->user_id;
+        $notification->user_id = $user_id;
         $notification->notification_type_id = $notification_type_id;
         $notification->date_created = date("Y-m-d H:i:s");
 

@@ -10,6 +10,8 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\models\Tag;
 use app\models\Category;
+use app\models\Notification;
+use app\models\NotificationType;
 /**
  * GoalController implements the CRUD actions for Goal model.
  */
@@ -128,6 +130,10 @@ class GoalController extends Controller
                 $goal->user_id = Yii::$app->user->identity->id;
 
                 if( $goal->save() ){
+
+
+                    //NOTIFICATION - NEW ACHIEVEMENT 
+                    Notification::addNotification( $goal->user_id,  NotificationType::NT_NEW_GOAL,  $goal);
 
 
                     if( !empty($post['interests']) ) {

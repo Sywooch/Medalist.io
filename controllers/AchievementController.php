@@ -2,11 +2,14 @@
 
 namespace app\controllers;
 use app\models\Achievement;
+use app\models\Quest;
 use app\models\QuestPendingTask;
 use app\models\Goal;
 use app\models\Badge;
 use app\models\Tag;
 use app\models\Category;
+use app\models\Notification;
+use app\models\NotificationType;
 use Yii;
 
 class AchievementController extends \yii\web\Controller
@@ -61,6 +64,13 @@ class AchievementController extends \yii\web\Controller
 
             if( $achievement->save() ){
 
+
+                //NOTIFICATION - NEW ACHIEVEMENT 
+                Notification::addNotification( $achievement->user_id,  NotificationType::NT_NEW_ACHIEVEMENT, $achievement );
+
+
+
+
                 if( !empty($post['interests']) ) {
                     //Todo - attachTags
                     Tag::attachTagsToObject( $achievement, $post['interests'] );
@@ -79,11 +89,15 @@ class AchievementController extends \yii\web\Controller
                 }
 
 
+
                 //Unset Quest
                 if( !empty($achievement->quest_id ) ){
                     $qpt = QuestPendingTask::find()->where('quest_id = '.$achievement->quest_id.' and user_id = '.Yii::$app->user->identity->id.'  and status = '.QuestPendingTask::STATUS_PENDING)->one();
                     $qpt->setComplete();
                     $qpt->save();
+
+                    //NOTIFICATION - NEW QUEST DONE 
+                    Notification::addNotification( $achievement->user_id,  NotificationType::NT_QUEST_DONE, Quest::findOne($achievement->quest_id) );
                 }
 
                 //Todo - attachPhotos( Obj )
@@ -92,6 +106,10 @@ class AchievementController extends \yii\web\Controller
                     //TODO возможность передавать массивы  (newAchievement)
                     $result['eventName'] = 'newBadge';
                     $result['eventParams'] =  ['badge_id' => Badge::BDG_ACHIEVEMENT_FIRST_ACHIEVEMENT ];
+
+
+                    //NOTIFICATION - NEW BADGE 
+                    Notification::addNotification( $achievement->user_id,  NotificationType::NT_NEW_REWARD, Badge::findOne(  Badge::BDG_ACHIEVEMENT_FIRST_ACHIEVEMENT  ) );
                 }
                 $result['success'] = true;
             }else{

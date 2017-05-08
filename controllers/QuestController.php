@@ -6,6 +6,8 @@ use app\models\Quest;
 use app\models\QuestChallengeQuery;
 use app\models\QuestPendingTask;
 use app\models\Badge;
+use app\models\Notification;
+use app\models\NotificationType;
 use Yii;
 
 
@@ -31,12 +33,22 @@ class QuestController extends \yii\web\Controller
         $questPendingTask->save();
 
 
+        //NOTIFICATION - NEW ACHIEVEMENT 
+        Notification::addNotification( $questPendingTask->user_id,  NotificationType::NT_QUEST_TAKEN, $quest );
+
+
 
 
         //New Event
         //Todo - by quest reward // some stuff
         //Badge Added
         if( Badge::addBadgeToUser( Badge::BDG_QUEST_TAKE_QUEST, Yii::$app->user->identity->id) ){
+
+
+            //NOTIFICATION - NEW ACHIEVEMENT 
+            Notification::addNotification( Yii::$app->user->identity->id,  NotificationType::NT_NEW_REWARD, Badge::findOne(Badge::BDG_QUEST_TAKE_QUEST) );
+
+
 		  $result['eventName'] = 'newBadge';
 		  $result['eventParams'] =  ['badge_id' => Badge::BDG_QUEST_TAKE_QUEST];
         }
@@ -57,7 +69,7 @@ class QuestController extends \yii\web\Controller
                                     <div class="questpending-deadline">До '.$questPending->deadline.'</div>
                                     <div class="questpending-title">'.$quest->name.'</div>
                                     <div class="questpending-description">'.$quest->description.'</div>
-                                    <a href="" class="questpending-done mdlst-button">Готово!</a>
+                                    <a href="'.Yii::$app->.'" class="questpending-done mdlst-button">Готово!</a>
                             </div>';
 
         return json_encode(['html' => $html]);
