@@ -90,7 +90,7 @@ class PersonalController extends \yii\web\Controller
 
         $possibleFriends = Follower::findAlikeUsers( Yii::$app->user->identity->id )->where(['NOT IN', 'id', $excluded])->all();
 
-        return $this->render('friends', [ 'possibleFriends' => $possibleFriends ]);
+        return $this->render('friends', [ 'possibleFriends' => $possibleFriends, 'followed' => $followed ]);
     }
 
 

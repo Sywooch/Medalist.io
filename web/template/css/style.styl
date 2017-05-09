@@ -1043,7 +1043,31 @@ a
             &.followed 
                 opacity 0.7
 
-
+.friend-list 
+    
+    display block 
+    
+    &-block
+        
+        @extends .simplebox
+        @extends .simplebox-padding 
+        box-shadow BoxShadow 
+        display block
+        margin-bottom 20px
+        &-pic
+            @extends .dib_t
+            width 50px 
+            &-img 
+                max-width 50px
+        &-name 
+            @extends .dib_t
+        &-goals 
+            @extends .dib_t
+        &-achievements
+            @extends .dib_t
+            
+        
+    
 
             
 /*system */

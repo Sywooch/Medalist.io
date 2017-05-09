@@ -1,6 +1,7 @@
 <?php
 /* @var $this yii\web\View */
 use app\models\Goal;
+use app\models\Achievement;
 
 echo $this->render('_panel.php');
 ?>
@@ -23,6 +24,30 @@ echo $this->render('_panel.php');
                         </div>
                     </div>
 
+
+                    <div class="friend-list">
+                    <?php foreach( $followed as $follower) {  
+
+                        $u = $follower->getUser();
+
+                        $profile = $u->getProfile()->one();
+                        $avatarSrc = $profile->getAvatarSrc();
+
+                        $goalsCount = Goal::find()->where(['user_id' => $u->id])->count();
+                        $achievementsCount = Achievement::find()->where(['user_id' => $u->id])->count();
+
+                        ?>
+                    <a class="friend-list-block">
+                        <div class="friend-list-block-pic">
+                            <img class="friend-list-block-pic-img" src="<?=$avatarSrc?>">
+                        </div>
+                        <div class="friend-list-block-name"><?=$u->getName()?></div>
+                        <div class="friend-list-block-goals"><?=$goalsCount?></div>
+                        <div class="friend-list-block-achievements"><?=$achievementsCount?></div>
+                        <div class="friend-list-block-level"></div>
+                    </a>
+                    <?}?>
+                    </div>
 
 
                    <div class="output-header">

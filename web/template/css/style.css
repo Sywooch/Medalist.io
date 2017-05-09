@@ -71,6 +71,10 @@
 .achievement-block-rewards-reward,
 .achievement-block-images-image,
 .possible-friends-block,
+.friend-list-block-pic,
+.friend-list-block-name,
+.friend-list-block-goals,
+.friend-list-block-achievements,
 .input-check-inline,
 .mdlst-button-accent,
 .mdlst-button-closer,
@@ -116,6 +120,10 @@
 .achievement-block-content-col,
 .achievement-block-images-image,
 .possible-friends-block,
+.friend-list-block-pic,
+.friend-list-block-name,
+.friend-list-block-goals,
+.friend-list-block-achievements,
 .mdlst-pan-icon,
 .mdlst-pan-text,
 .mdlst-status-icon {
@@ -191,7 +199,8 @@
   padding: 8px;
 }
 .simplebox,
-.achievement-block {
+.achievement-block,
+.friend-list-block {
   box-shadow: 0 0 5px rgba(49,51,62,0.1);
   box-sizing: border-box;
   -webkit-border-radius: 4px;
@@ -202,7 +211,9 @@
 }
 .simplebox-padding,
 .achievement-block-padding,
-.achievement-block-content {
+.friend-list-block-padding,
+.achievement-block-content,
+.friend-list-block {
   padding: 39px 36px;
 }
 /* 1280 */
@@ -1229,6 +1240,20 @@ a {
 }
 .possible-friends-block-follow.followed {
   opacity: 0.7;
+}
+.friend-list {
+  display: block;
+}
+.friend-list-block {
+  box-shadow: 0 0 5px rgba(49,51,62,0.1);
+  display: block;
+  margin-bottom: 20px;
+}
+.friend-list-block-pic {
+  width: 50px;
+}
+.friend-list-block-pic-img {
+  max-width: 50px;
 }
 /*system */
 .rangeslider {
