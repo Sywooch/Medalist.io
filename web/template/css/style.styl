@@ -1046,6 +1046,25 @@ a
 .friend-list 
     
     display block 
+    &-header
+        margin-bottom 25px
+        &-block 
+            @extends .dib_base
+            
+            text-align center
+            font-size 14px
+            &-goals
+                width 100px
+                margin-left 360px
+            &-achievements
+                width 100px
+    
+            &-points
+                width 100px
+    
+            &-level
+                width 100px
+           
     
     &-block
         
@@ -1055,16 +1074,37 @@ a
         display block
         margin-bottom 20px
         &-pic
-            @extends .dib_t
+            @extends .dib_m
             width 50px 
+            margin-right 30px
             &-img 
                 max-width 50px
         &-name 
-            @extends .dib_t
+            @extends .dib_base
+            font-size 18px 
+            margin-right 25px 
+            width 212px
         &-goals 
-            @extends .dib_t
+            @extends .dib_base
+            color CGrayText
+            width 100px
+            text-align center
         &-achievements
-            @extends .dib_t
+            @extends .dib_base
+            color CGrayText
+            width 100px
+            text-align center
+        &-points
+            @extends .dib_base
+            color CGrayText
+            width 100px
+            text-align center
+        &-level
+            @extends .dib_base
+            text-align center
+            font-size 18px 
+            font-weight bold
+            width 80px
             
         
     

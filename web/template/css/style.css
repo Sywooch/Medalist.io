@@ -71,10 +71,13 @@
 .achievement-block-rewards-reward,
 .achievement-block-images-image,
 .possible-friends-block,
+.friend-list-header-block,
 .friend-list-block-pic,
 .friend-list-block-name,
 .friend-list-block-goals,
 .friend-list-block-achievements,
+.friend-list-block-points,
+.friend-list-block-level,
 .input-check-inline,
 .mdlst-button-accent,
 .mdlst-button-closer,
@@ -120,10 +123,6 @@
 .achievement-block-content-col,
 .achievement-block-images-image,
 .possible-friends-block,
-.friend-list-block-pic,
-.friend-list-block-name,
-.friend-list-block-goals,
-.friend-list-block-achievements,
 .mdlst-pan-icon,
 .mdlst-pan-text,
 .mdlst-status-icon {
@@ -140,6 +139,7 @@
 .addach-extra-range-text,
 .addach-extra-range-range,
 .achievement-block-rewards-reward,
+.friend-list-block-pic,
 .mdlst-switch-state {
   vertical-align: middle;
 }
@@ -174,6 +174,12 @@
 .addach-tags-tag,
 .achievement-block-category,
 .achievement-block-tags,
+.friend-list-header-block,
+.friend-list-block-name,
+.friend-list-block-goals,
+.friend-list-block-achievements,
+.friend-list-block-points,
+.friend-list-block-level,
 .input-check-inline,
 .mdlst-button-accent,
 .mdlst-button-closer,
@@ -1244,6 +1250,26 @@ a {
 .friend-list {
   display: block;
 }
+.friend-list-header {
+  margin-bottom: 25px;
+}
+.friend-list-header-block {
+  text-align: center;
+  font-size: 14px;
+}
+.friend-list-header-block-goals {
+  width: 100px;
+  margin-left: 360px;
+}
+.friend-list-header-block-achievements {
+  width: 100px;
+}
+.friend-list-header-block-points {
+  width: 100px;
+}
+.friend-list-header-block-level {
+  width: 100px;
+}
 .friend-list-block {
   box-shadow: 0 0 5px rgba(49,51,62,0.1);
   display: block;
@@ -1251,9 +1277,36 @@ a {
 }
 .friend-list-block-pic {
   width: 50px;
+  margin-right: 30px;
 }
 .friend-list-block-pic-img {
   max-width: 50px;
+}
+.friend-list-block-name {
+  font-size: 18px;
+  margin-right: 25px;
+  width: 212px;
+}
+.friend-list-block-goals {
+  color: #9a9ba0;
+  width: 100px;
+  text-align: center;
+}
+.friend-list-block-achievements {
+  color: #9a9ba0;
+  width: 100px;
+  text-align: center;
+}
+.friend-list-block-points {
+  color: #9a9ba0;
+  width: 100px;
+  text-align: center;
+}
+.friend-list-block-level {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  width: 80px;
 }
 /*system */
 .rangeslider {

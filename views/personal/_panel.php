@@ -14,6 +14,7 @@ use app\models\Level;
 $level = Level::getUserLevel ( Yii::$app->user->identity->id );
 $levelProgress = Level::getUserCurrentLevelProgress( Yii::$app->user->identity->id  );
 $levelPointsLeft = Level::getUserNextLevelPointsLeft( Yii::$app->user->identity->id  );
+$points = ScalePointsBalance::getUserPointsSum( Yii::$app->user->identity->id  );
 
 $avatarSrc = Yii::$app->user->identity->getProfile()->one()->getAvatarSrc();
  
@@ -38,7 +39,7 @@ $avatarSrc = Yii::$app->user->identity->getProfile()->one()->getAvatarSrc();
 	 					<div class="interests-selector-scale-viewport userpanel-info-scale-scale">
 					 		<div class="interests-selector-scale-track" style="margin-left: -<?=(1-$levelProgress)*100?>%;"></div>
 					 	</div>
-					 	<p>Ваш уровень, до следующего уровня осталось  <?=$levelPointsLeft?> очка. <i class="js-tooltip" data-content="Совершайте достижения, чтобы заработать баллы"></i></p>
+					 	<p><?=$points?> очков, до следующего уровня осталось  <?=($levelPointsLeft+1)?> очка. <i class="js-tooltip" data-content="Совершайте достижения, чтобы заработать баллы"></i></p>
 	 				</div>
 	 			</div>
 	 		</div>

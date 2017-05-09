@@ -2,6 +2,8 @@
 /* @var $this yii\web\View */
 use app\models\Goal;
 use app\models\Achievement;
+use app\models\ScalePointsBalance;
+use app\models\Level;
 
 echo $this->render('_panel.php');
 ?>
@@ -24,6 +26,13 @@ echo $this->render('_panel.php');
                         </div>
                     </div>
 
+                    <div class="friend-list-header">
+                        <div class="friend-list-header-block-goals friend-list-header-block">Цели</div>
+                        <div class="friend-list-header-block-achievements friend-list-header-block">Достижения</div>
+                        <div class="friend-list-header-block-points friend-list-header-block">Очки</div>
+                        <div class="friend-list-header-block-level friend-list-header-block">Уровень</div>
+                    </div>
+
 
                     <div class="friend-list">
                     <?php foreach( $followed as $follower) {  
@@ -35,6 +44,8 @@ echo $this->render('_panel.php');
 
                         $goalsCount = Goal::find()->where(['user_id' => $u->id])->count();
                         $achievementsCount = Achievement::find()->where(['user_id' => $u->id])->count();
+                        $points = ScalePointsBalance::getUserPointsSum( $u->id );
+                        $level = Level::getUserLevel ( $u->id );
 
                         ?>
                     <a class="friend-list-block">
@@ -44,7 +55,8 @@ echo $this->render('_panel.php');
                         <div class="friend-list-block-name"><?=$u->getName()?></div>
                         <div class="friend-list-block-goals"><?=$goalsCount?></div>
                         <div class="friend-list-block-achievements"><?=$achievementsCount?></div>
-                        <div class="friend-list-block-level"></div>
+                        <div class="friend-list-block-points"><?=$points?></div>
+                        <div class="friend-list-block-level"><?=$level->level?></div>
                     </a>
                     <?}?>
                     </div>
