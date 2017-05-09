@@ -38,8 +38,16 @@ echo $this->render('_panel.php');
                         $profile = $user->getProfile()->one();
                         $avatarSrc= $profile->getAvatarSrc();
                         ?>
-                        <img src="<?=$avatarSrc?>">
-                        <?=$user->email?>
+
+                        <div class="possible-friends-block">
+                            <div class="possible-friends-block-pic"><img src="<?=$avatarSrc?>"></div>
+                            <div class="possible-friends-block-name">
+                                <a href="<?=Yii::$app->urlManager->createUrl('profile/view', ['user_id' => $user->id])?>" class="possible-friends-block-name-url"><?=$user->email?></a>
+                            </div>
+                            <div class="possible-friends-block-follow js-follow-person mdlst-button mdlst-button-default" data-user_id="<?=$user->id?>">Подписаться</div>
+                        </div>
+                       
+                        
 
                         <?
                     } ?>

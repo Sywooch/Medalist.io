@@ -70,6 +70,7 @@
 .achievement-block-content-col,
 .achievement-block-rewards-reward,
 .achievement-block-images-image,
+.possible-friends-block,
 .input-check-inline,
 .mdlst-button-accent,
 .mdlst-button-closer,
@@ -114,6 +115,7 @@
 .achievement-block-content-info-status,
 .achievement-block-content-col,
 .achievement-block-images-image,
+.possible-friends-block,
 .mdlst-pan-icon,
 .mdlst-pan-text,
 .mdlst-status-icon {
@@ -1201,6 +1203,33 @@ a {
   white-space: nowrap;
 }
 /* . achievement list end */
+/* possible-frined */
+.possible-friends-block {
+  margin-bottom: 25px;
+  width: 190px;
+  text-align: center;
+}
+.possible-friends-block-pic {
+  width: 100%;
+  margin-bottom: 5px;
+}
+.possible-friends-block-pic img {
+  max-width: 100%;
+}
+.possible-friends-block-name {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+.possible-friends-block-name-url {
+  text-decoration: none;
+}
+.possible-friends-block-follow {
+  width: 100px;
+  margin: 0 auto;
+}
+.possible-friends-block-follow.followed {
+  opacity: 0.7;
+}
 /*system */
 .rangeslider {
   background-color: rgba(138,68,255,0.3) !important;

@@ -48,6 +48,9 @@ AppAsset::register($this);
             $ajaxUrls['addLike'] = Yii::$app->urlManager->createUrl('like/ajax-add-like');
 
 
+            $ajaxUrls['addFollower'] = Yii::$app->urlManager->createUrl('follower/ajax-follow');
+
+
             $ajaxUrls['addComment'] = Yii::$app->urlManager->createUrl('comment/ajax-add-comment');
             $ajaxUrls['getCommentHtml'] = Yii::$app->urlManager->createUrl('comment/ajax-get-comment-html');
             echo json_encode( $ajaxUrls );
@@ -56,6 +59,7 @@ AppAsset::register($this);
     <script src="/template/js/eventengine.js"></script>
     <script src="/template/js/main.js"></script>
     <script src="/template/js/goals.js"></script>
+    <script src="/template/js/followers.js"></script>
   </head>
 
   <body>

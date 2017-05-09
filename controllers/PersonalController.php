@@ -73,10 +73,22 @@ class PersonalController extends \yii\web\Controller
         return $this->render('dashboard');
     }
 
+
+
+
     public function actionFriends()
     {
 
-        $possibleFriends = Follower::findAlikeUsers( Yii::$app->user->identity->id )->all();
+        //Кто уже в друзьях
+        $followed = Follower::find()->where(['user_id' => Yii::$app->user->identity->id])->all();
+
+        $excluded = [];
+        foreach ($followed as $follower) {
+            $excluded[] = $follower->to_user_id;
+        }
+        $excluded[] = Yii::$app->user->identity->id;
+
+        $possibleFriends = Follower::findAlikeUsers( Yii::$app->user->identity->id )->where(['NOT IN', 'id', $excluded])->all();
 
         return $this->render('friends', [ 'possibleFriends' => $possibleFriends ]);
     }
