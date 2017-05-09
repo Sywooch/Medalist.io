@@ -2,14 +2,18 @@
 /* @var $this yii\web\View */
 //Temp
 //TODO Levels Model
+use Yii;
 use app\models\BadgeBalance;
 use app\models\BadgeCategory;
 use app\models\ScalePointsBalance;
 use app\models\Badge;
-use Yii;
+use app\models\Level;
 
-$nextLevelPoints = 100;
-$currentLevelPoints = ScalePointsBalance::getUserPointsSum( Yii::$app->user->identity->id);
+
+
+$level = Level::getUserLevel ( Yii::$app->user->identity->id );
+$levelProgress = Level::getUserCurrentLevelProgress( Yii::$app->user->identity->id  );
+$levelPointsLeft = Level::getUserNextLevelPointsLeft( Yii::$app->user->identity->id  );
 
 $avatarSrc = Yii::$app->user->identity->getProfile()->one()->getAvatarSrc();
  
@@ -28,13 +32,13 @@ $avatarSrc = Yii::$app->user->identity->getProfile()->one()->getAvatarSrc();
 	 			</div>
 	 			<div class="userpanel-info">
 	 				<div class="userpanel-info-level">
-	 					<div class="userpanel-info-level-point">1</div>
+	 					<div class="userpanel-info-level-point"><?=$level->level?></div>
 	 				</div>
 	 				<div class="userpanel-info-scale">
 	 					<div class="interests-selector-scale-viewport userpanel-info-scale-scale">
-					 		<div class="interests-selector-scale-track" style="margin-left: -<?=(($nextLevelPoints-$currentLevelPoints)/$nextLevelPoints)*100?>%;"></div>
+					 		<div class="interests-selector-scale-track" style="margin-left: -<?=(1-$levelProgress)*100?>%;"></div>
 					 	</div>
-					 	<p>Ваш уровень, до следующего уровня осталось <?=(100-ScalePointsBalance::getUserPointsSum( Yii::$app->user->identity->id))?> очка. <i class="js-tooltip" data-content="Совершайте достижения, чтобы заработать баллы"></i></p>
+					 	<p>Ваш уровень, до следующего уровня осталось  <?=$levelPointsLeft?> очка. <i class="js-tooltip" data-content="Совершайте достижения, чтобы заработать баллы"></i></p>
 	 				</div>
 	 			</div>
 	 		</div>
