@@ -1274,6 +1274,7 @@ a {
   box-shadow: 0 0 5px rgba(49,51,62,0.1);
   display: block;
   margin-bottom: 20px;
+  text-decoration: none;
 }
 .friend-list-block-pic {
   width: 50px;
