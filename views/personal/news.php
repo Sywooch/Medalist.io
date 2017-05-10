@@ -27,10 +27,13 @@ echo $this->render('_panel.php');
                         </div>
                     </div>
                     
+                    <div class="news-wrapper">
                     <?php foreach($news as $new ) { 
-                    
+
                          Notification::renderNotificationHTML($new);
                         }?>
+
+                    </div>
 
                     
                 </div>

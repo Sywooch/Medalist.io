@@ -157,7 +157,7 @@ class Notification extends \yii\db\ActiveRecord
 
         ?>
             <div class="newblock">
-                <div class="newblock-userpic"><img src="<?=$userCreatedNew->getProfile()->one()->getAvatarSrc();?>"></div>
+                <div class="newblock-pic"><img src="<?=$userCreatedNew->getProfile()->one()->getAvatarSrc();?>"></div>
                 <div class="newblock-data">
                     Пользователь <a href="<?=Yii::$app->urlManager->createUrl( ['profile/view','user_id' => $userCreatedNew->id])?>"><?=$userCreatedNew->getName()?></a>
 
@@ -219,6 +219,42 @@ class Notification extends \yii\db\ActiveRecord
                             
                             default:
                                 echo $notification->notification_type_id;
+                                break;
+                        }
+                    ?>
+                </div>
+
+
+                <div class="newblock-icon">
+                     <?php 
+                        switch ($notification->notification_type_id) {
+                            case NotificationType::NT_NEW_FOLLOWER:
+
+                                //obj of User
+                                ?>
+                                <img src="/template/img/new-icon-follower.png">
+                                <?
+                                break;
+                            
+                            case NotificationType::NT_NEW_ACHIEVEMENT:
+
+                                //obj of User
+                                ?>
+                                <img src="/template/img/new-icon-achievement.png">
+                                <?
+                                break;
+                            
+                            case NotificationType::NT_NEW_GOAL:
+
+                                //obj of User
+                                ?>
+                                <img src="/template/img/new-icon-goal.png">
+                                <?
+                                break;
+                         
+                            
+                            default:
+                                
                                 break;
                         }
                     ?>
