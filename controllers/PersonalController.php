@@ -14,6 +14,7 @@ use app\models\QuestPendingTask;
 use app\models\Goal;
 use app\models\GoalSubtask;
 use app\models\Follower;
+use app\models\Notification;
 use Yii;
 
 class PersonalController extends \yii\web\Controller
@@ -163,7 +164,10 @@ class PersonalController extends \yii\web\Controller
 
     public function actionNews()
     {
-        return $this->render('news');
+
+        $news = Notification::getUserFeed ( Yii::$app->user->identity->id )->all();
+
+        return $this->render('news', ['news' => $news]);
     }
 
     public function actionQuests()

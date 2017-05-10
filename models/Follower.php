@@ -66,9 +66,13 @@ class Follower extends \yii\db\ActiveRecord
     }
 
 
+
+
     public static function findAlikeUsers( $userId  ){
         return User::find()->where('id !='.$userId)->orderBy(new Expression('rand()'))->limit(4);
     }
+
+ 
 
     
 }
