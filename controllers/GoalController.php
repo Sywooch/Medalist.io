@@ -134,7 +134,8 @@ class GoalController extends Controller
 
   
 
-                    $result['goal_subtask_id'] = $goal->goal_id;
+                    $result['goal_subtask_id'] = $goal->goal_subtask_id;
+                    $result['goal_id'] = $goal->goal_id;
                     $result['posted'] = $post;
                     $result['success'] = true;
                 }else{
@@ -207,11 +208,12 @@ class GoalController extends Controller
 
 
 
-    public static function actionAjaxRenderGoalSubtaskHTML(  ){
+    public static function actionAjaxRenderGoalSubtaskHtml(  ){
 
         $get = Yii::$app->request->get();
 
-        $gaolSubtask = GoalSubtask::findOne($get['goal_subtask_id']);
+        $goalSubtask = GoalSubtask::findOne($get['goal_subtask_id']);
+        $parentGoal = $goalSubtask->getGoal();
         ?>
 
 <li class="subtask-container">
@@ -219,7 +221,7 @@ class GoalController extends Controller
                 <div class="subtask-top-left ">
                     <div class="input-check">
                         <input id="ListbGoal10s8" name="ListbGoal10s8" value="ListbGoal10s8" type="checkbox">
-                        <label for="ListbGoal10s8" class="subtask-top-name"><?=$get['no']?>. <?=$gaolSubtask->name;?> </label>
+                        <label for="ListbGoal10s8" class="subtask-top-name"><?=$get['no']?>. <?=$goalSubtask->name;?> </label>
                     </div>
                     <div class="subtask-progress">
                         <div class="interests-selector-scale-viewport userpanel-info-scale-scale subtask-progress-height">

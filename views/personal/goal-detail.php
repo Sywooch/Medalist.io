@@ -53,7 +53,7 @@ echo $this->render('_panel.php');
                                 </div>
                                 <span class="mygoals-dead">Дедлайн</span>
                                 <span
-                                    class="mygoals-dead color-red"><? echo date("Y.m.d", strtotime($goal->deadline)) ?></span>
+                                    class="mygoals-dead <?php if( strtotime($goal->deadline) < time() ) { ?>color-red <?php } ?>"><? echo date("d.m.Y", strtotime($goal->deadline)) ?></span>
 
                                 <?
                                 if ($goal->private) {
@@ -136,10 +136,10 @@ echo $this->render('_panel.php');
                                             $g = "ListbGoal" . $goal->goal_id;
                                             $is_subtasks = count($subtasks) > 0; ?>
 
-                                            <? if ($is_subtasks){ ?>
+                                          
                                             <div>
                                                 <ul class="goal-subtask">
-                                                    <? } ?>
+                                                
 
                                                     <? foreach ($subtasks as $i => $subtask){
 
@@ -166,7 +166,7 @@ echo $this->render('_panel.php');
                                                                     </div>
                                                                 </div>
                                                                 <span
-                                                                    class="mygoals-dead color-red subtask-top-dead"><? if( !empty($subtask->deadline) ) { echo date("d.m.Y", strtotime($subtask->deadline)); } ?></span>
+                                                                    class="mygoals-dead <?php if( strtotime($subtask->deadline) < time() ) { ?>color-red <?php } ?> subtask-top-dead"><? if( !empty($subtask->deadline) ) { echo date("d.m.Y", strtotime($subtask->deadline)); } ?></span>
                                                             </div>
                                                            
                                                            <? Yii::$app->decor->plus('','js-add-subsubtask'); ?>
@@ -179,6 +179,8 @@ echo $this->render('_panel.php');
                                                         <? $subtasks_points = $subtask->getSubtasks();
                                                         $is_subtask_points = count($subtasks) > 0; ?>
 
+
+                                                        <!-- SUBTASK POINTS -->
                                                         <? if ($is_subtask_points){ ?>
                                                         <ul class="subtask-points">
                                                             <? } ?>
@@ -204,13 +206,16 @@ echo $this->render('_panel.php');
                                                         </ul>
                                                     <? } ?>
 
-                                                        <? } ?>
+                                                    <!-- SUBTASK POINTS END -->
+                                                </li>
+                                            <? } ?>
 
+                                        </ul>
 
+                                       
 
-                                            </div>
-
-                                    </li>
+                                 
+                                     </div>
                                     <!--<li class="tabs-li">
                                         <input type="radio" name="tabs-0" id="tabs-0-1"/>
                                         <label for="tabs-0-1">Новости цели</label>

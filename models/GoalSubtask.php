@@ -34,7 +34,7 @@ class GoalSubtask extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['goal_subtask_parent_id', 'goal_id', 'active', 'deleted', 'blocked', 'completed', 'sort'], 'integer'],
+            [['goal_subtask_parent_id', 'goal_subtask_id','goal_id', 'active', 'deleted', 'blocked', 'completed', 'sort'], 'integer'],
             [['goal_id', 'date_created', 'name'], 'required'],
             [['deadline', 'date_created', 'description'], 'safe'],
         ];
@@ -92,6 +92,11 @@ class GoalSubtask extends \yii\db\ActiveRecord
             return ($this->completed)?100:0;
         }
 
+    }
+
+
+    public function getGoal(){
+        return $this->hasOne( Goal::className(), ['goal_id' => 'goal_id']);
     }
 
 

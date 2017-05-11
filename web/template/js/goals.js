@@ -81,6 +81,25 @@ $(document).ready(function(){
 		});
 
 
+
+		var renderGoalSubtaskHTML= function(goal_subtask_id, no, holder){
+			var url = ajaxUrls['renderGoalSubtaskHTML'];
+
+			$.ajax({
+				url: url,
+				data: { goal_subtask_id : goal_subtask_id, no:no },
+				success: function(data){
+					data = $(data);
+
+					$(holder).append(data);
+
+					blinkNew( data );
+
+				}
+			});
+
+		};
+
 		$(document).on('click', '.js-add-subtask', function(){
 			var p = $(this).parents('.goal-addsubtask-addform'),
 				goal_id = p.data('goal_id'),
@@ -99,6 +118,8 @@ $(document).ready(function(){
 				dataType: 'json',
 				success: function(data){
 					console.log(data);
+
+					renderGoalSubtaskHTML( data.goal_subtask_id, ($('.subtask-container').length+1), '.goal-subtask' );
 				}
 			})
 
