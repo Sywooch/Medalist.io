@@ -44,6 +44,7 @@ AppAsset::register($this);
 
 
             $ajaxUrls['addGoal'] = Yii::$app->urlManager->createUrl('goal/ajax-add-goal');
+            $ajaxUrls['addGoalSubtask'] = Yii::$app->urlManager->createUrl('goal/ajax-add-goal-subtask');
 
             $ajaxUrls['addLike'] = Yii::$app->urlManager->createUrl('like/ajax-add-like');
 

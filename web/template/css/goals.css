@@ -346,7 +346,7 @@ height:43px;
 
 .subtask-top span.subtask-top-dead{
 	width:70px;
-	margin-left:126px;
+	margin-left:46px;
 
 }
 
@@ -528,4 +528,24 @@ margin-bottom:30px;
 
 .mygoals-block{
     text-decoration: none;
+}
+
+
+/* goal comments */
+.goal-comments-block {
+  box-sizing: border-box;
+  padding:  25px;
+}
+
+.goal-addsubtask-button{
+  display:  inline-block;
+  vertical-align:  middle;
+  width:  200px;
+  zoom: 1;
+}
+.goal-addsubtask-text{
+  display:  inline-block;
+  vertical-align:  middle;
+  width:  200px;
+  zoom: 1;
 }

@@ -1,6 +1,7 @@
 <?php
 /* @var $this yii\web\View */
 use app\models\Like;
+use app\models\Comment;
 use app\models\Goal;
 
 echo $this->render('_panel.php');
@@ -96,15 +97,10 @@ echo $this->render('_panel.php');
                         </div>
                         <div class="questblock-info-controlls">
                             <div class="questblock-info-controlls-likes">
-                                <div class="like-controll">
-                                    <div class="like-controll-plus like-controll-active">
-                                        <span></span><?= Like::getLikesOfObjectCount($goal) ?></div>
-                                    <div class="like-controll-minus">
-                                        <span></span><?= Like::getDislikesOfObjectCount($goal) ?></div>
-                                </div>
+                                 <?=Yii::$app->like->renderWidget($goal);?>
                             </div>
                             <div class="questblock-info-controlls-comments">
-                                <div class="comment-controll"><span></span><?= count($goal->getComments()) ?></div>
+                                <?=Yii::$app->comment->renderCommentCount( count(Comment::getCommentsOfObject($goal)->all() ), 'goal-comments-'.$goal->goal_id );?>
                             </div>
                         </div>
                         <div class="tabs-container marginTop30">
@@ -113,7 +109,29 @@ echo $this->render('_panel.php');
                                     <li class="tabs-li">
                                         <input type="radio" name="tabs-0" checked="checked" id="tabs-0-0"/>
                                         <label for="tabs-0-0">Список подзадач</label>
-                                        <div>
+
+
+
+
+
+                                        <div  style="padding: 25px">
+
+
+
+
+
+                                        <!-- widget add subgoal -->
+                           
+
+                                        <?=$this->render('_goal_subtask_add.php', ['goal' => $goal]);?>
+                                       
+                                        <hr>
+                                        <!-- widget add subgoal task -->
+
+
+                                        
+
+
                                             <? $subtasks = Goal::getSubtasksById($goal->goal_id);
                                             $g = "ListbGoal" . $goal->goal_id;
                                             $is_subtasks = count($subtasks) > 0; ?>
@@ -187,16 +205,28 @@ echo $this->render('_panel.php');
                                                         <? } ?>
 
 
+
                                             </div>
 
                                     </li>
-                                    <li class="tabs-li">
+                                    <!--<li class="tabs-li">
                                         <input type="radio" name="tabs-0" id="tabs-0-1"/>
                                         <label for="tabs-0-1">Новости цели</label>
 
                                         <div>
-                                            <p>Какой-то контент
-                                            </p>
+                                            
+                                        </div>
+                                    </li>-->
+                                    <li class="tabs-li">
+                                        <input type="radio" name="tabs-0" id="tabs-0-2"/>
+                                        <label for="tabs-0-2">Комментарии</label>
+
+                                        <div>
+                                            <div class="goal-comments-block goal-comments-<?=$goal->goal_id?>  comments-widget" data-obj="Goal" data-id="<?=$goal->goal_id?>" >
+                                                <div class="questblock-comments-form"><?=Yii::$app->comment->renderResponseForm( $goal  );?></div>
+                                                <div class="questblock-comments-form-wrapper"><?=Yii::$app->comment->renderCommentFeed( $goal, 0, 10 );?></div>
+                                            </div>
+                                           
                                         </div>
                                     </li>
                                 </ul>

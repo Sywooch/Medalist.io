@@ -69,6 +69,43 @@ $(document).ready(function(){
 
 
 
+		$(document).on('click', '.js-add-subtask-showform', function(){
+			var p = $(this).parents('.goal-addsubtask'),
+				addTitle = p.find('.goal-addsubtask-controll')
+				form = p.find('.goal-addsubtask-addform');
+
+			form.slideDown();
+			addTitle.slideUp();
+			form.find('[name=name]').focus();
+			return false;
+		});
+
+
+		$(document).on('click', '.js-add-subtask', function(){
+			var p = $(this).parents('.goal-addsubtask-addform'),
+				goal_id = p.data('goal_id'),
+				name = p.find('[name=name]'),
+				deadline = p.find('[name=date]');
+
+			if( name.val().length < 10 ){
+				alert("Введите подцель не короче 10 символов");
+				return false;
+			}
+
+			$.ajax({
+				url: ajaxUrls['addGoalSubtask'],
+				data: {name: name.val(), deadline: deadline.val(), goal_id: goal_id, _csrf : p.find('input[name=_csrf]').val() },
+				type: 'post',
+				dataType: 'json',
+				success: function(data){
+					console.log(data);
+				}
+			})
+
+			return false;
+		});
+
+
 		/* GOALS END */
 
  

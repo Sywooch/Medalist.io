@@ -22,6 +22,20 @@ class DecorComponent extends Component
  
         <?
     }
+    public function button( $text, $url = '', $class = '' )
+    {
+
+        if( empty($url)) {
+            $tag = 'button';
+        }else{
+            $tag = 'a';
+        }
+        
+        ?>
+            <<?=$tag?> class="mdlst-button  <? if(!empty($url) ) { ?> href="<?=$url?>"<? }?> mdlst-button-default <?=$class?>"><?=$text?></<?=$tag?>>
+ 
+        <?
+    }
 
 
 

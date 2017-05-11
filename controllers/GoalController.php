@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Goal;
+use app\models\GoalSubtask;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -111,6 +112,41 @@ class GoalController extends Controller
 
 
 
+    public function actionAjaxAddGoalSubtask(){
+        $result = [];
+
+        $result['success'] = false;
+
+        if( !empty(Yii::$app->request->post() )){
+            $post = Yii::$app->request->post();
+
+            if( !empty($post['name'])){
+                $goal = new GoalSubtask;
+
+                $goal->name = $post['name'];
+                $goal->date_created = date("Y-m-d H:i:s");
+                $goal->goal_id = $post['goal_id'];
+                $goal->goal_subtask_parent_id = 0;
+                $goal->deadline = !empty($post['deadline'])?date("Y-m-d H:i:s", strtotime($post['deadline'])):"";
+                
+
+                if( $goal->save() ){
+
+  
+
+                    $result['goal_subtask_id'] = $goal->goal_id;
+                    $result['posted'] = $post;
+                    $result['success'] = true;
+                }else{
+                    $result['errors'] = $goal->errors;
+                }
+            }
+        }
+
+        return json_encode($result);
+    }
+
+
     public function actionAjaxAddGoal(){
         $result = [];
 
@@ -165,6 +201,46 @@ class GoalController extends Controller
         }
 
         return json_encode($result);
+    }
+
+
+
+
+
+    public static function actionAjaxRenderGoalSubtaskHTML(  ){
+
+        $get = Yii::$app->request->get();
+
+        $gaolSubtask = GoalSubtask::findOne($get['goal_subtask_id']);
+        ?>
+
+<li class="subtask-container">
+            <div class="subtask-top">
+                <div class="subtask-top-left ">
+                    <div class="input-check">
+                        <input id="ListbGoal10s8" name="ListbGoal10s8" value="ListbGoal10s8" type="checkbox">
+                        <label for="ListbGoal10s8" class="subtask-top-name"><?=$get['no']?>. <?=$gaolSubtask->name;?> </label>
+                    </div>
+                    <div class="subtask-progress">
+                        <div class="interests-selector-scale-viewport userpanel-info-scale-scale subtask-progress-height">
+                            <div class="interests-selector-scale-track subtask-progress-height" style="margin-left: -100%;"></div>
+                        </div>
+                    </div>
+                    <span class="mygoals-dead color-red subtask-top-dead">1970.01.01</span>
+                </div>
+                <a class="container-menu-list-meta-add margin-0 js-add-sub-subtask" href="#">
+                    <span class="container-menu-list-meta-add-plus">+</span>
+                </a>
+            </div>
+            <div class="subtask-bottom"></div>
+
+        <ul class="subtask-points">
+
+
+        </ul>
+
+</li>
+        <?
     }
 
     /**
