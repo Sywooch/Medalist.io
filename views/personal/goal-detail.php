@@ -141,7 +141,9 @@ echo $this->render('_panel.php');
                                                 <ul class="goal-subtask">
                                                     <? } ?>
 
-                                                    <? foreach ($subtasks as $subtask){
+                                                    <? foreach ($subtasks as $i => $subtask){
+
+                                                        
                                                     $s = $g . "s" . $subtask->goal_subtask_id;
                                                     ?>
                                                     <li class="subtask-container">
@@ -153,7 +155,7 @@ echo $this->render('_panel.php');
                                                                         type="checkbox" id="<?= $s; ?>"
                                                                         name="<?= $s; ?>" value="<?= $s; ?>"/>
                                                                     <label for="<?= $s; ?>"
-                                                                           class="subtask-top-name">1. <?= $subtask->name ?></label>
+                                                                           class="subtask-top-name"><?=($i+1)?>. <?= $subtask->name ?></label>
                                                                 </div>
                                                                 <div class="subtask-progress">
                                                                     <div
@@ -164,11 +166,11 @@ echo $this->render('_panel.php');
                                                                     </div>
                                                                 </div>
                                                                 <span
-                                                                    class="mygoals-dead color-red subtask-top-dead"><? echo date("Y.m.d", strtotime($subtask->deadline)) ?></span>
+                                                                    class="mygoals-dead color-red subtask-top-dead"><? if( !empty($subtask->deadline) ) { echo date("d.m.Y", strtotime($subtask->deadline)); } ?></span>
                                                             </div>
-                                                            <a class="container-menu-list-meta-add margin-0" href="#">
-                                                                <span class="container-menu-list-meta-add-plus">+</span>
-                                                            </a>
+                                                           
+                                                           <? Yii::$app->decor->plus('','js-add-subsubtask'); ?>
+
                                                         </div>
                                                         <div class="subtask-bottom">
                                                             <?= $subtask->description ?>
@@ -181,7 +183,7 @@ echo $this->render('_panel.php');
                                                         <ul class="subtask-points">
                                                             <? } ?>
 
-                                                            <? foreach ($subtasks_points as $subtask_point) {
+                                                            <? foreach ($subtasks_points as  $j => $subtask_point) {
                                                                 $p = $s . "p" . $subtask_point->goal_subtask_id;
                                                                 ?>
 
@@ -192,7 +194,7 @@ echo $this->render('_panel.php');
                                                                         <input <?= $subtask_point->completed ? 'checked = "checked"' : ''; ?>
                                                                             type="checkbox" id="<?= $p ?>"
                                                                             name="<?= $p ?>" value="<?= $p ?>"/>
-                                                                        <label for="<?= $p ?>" class="subtask-top-name">1. <?= $subtask_point->name ?></label>
+                                                                        <label for="<?= $p ?>" class="subtask-top-name"><?=($j+1)?>. <?= $subtask_point->name ?></label>
                                                                     </div>
                                                                     <div class="clear"></div>
                                                                 </li>

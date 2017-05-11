@@ -1656,3 +1656,29 @@ a {
   max-width: 140px;
   margin-bottom: 15px;
 }
+.plus-controll {
+  cursor: pointer;
+}
+.plus-add {
+  color: inherit;
+}
+.plus-cross {
+  border-color: rgba(255,45,11,0.3);
+  transform: rotate(45deg);
+}
+.plus-cross:hover {
+  transform: rotate(45deg) scale(1.1);
+}
+.plus-cross .container-menu-list-meta-add-plus {
+  background-color: #ff2d0b;
+}
+.plus-lightcross {
+  border-color: rgba(49,51,62,0.1);
+  transform: rotate(45deg);
+}
+.plus-lightcross:hover {
+  transform: rotate(45deg) scale(1.1);
+}
+.plus-lightcross .container-menu-list-meta-add-plus {
+  background-color: rgba(49,51,62,0.2);
+}

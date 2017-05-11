@@ -38,6 +38,17 @@ class DecorComponent extends Component
     }
 
 
+    /**
+    * style = plus-add plus-cross plus-edit
+    */
+    public function plus($url = '', $class = '', $style = 'plus-add'){
+        ?>
+         <a class="container-menu-list-meta-add margin-0 <?=$class?> <?=$style?> " href="<?=$url?>">
+                                                                <span class="container-menu-list-meta-add-plus">+</span>
+                                                            </a>
+        <?
+    }
+
 
     public function controllSwitch( $checkboxName, $checkboxText , $extraClass = '' , $checkboxState = false ){
 
