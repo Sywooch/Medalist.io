@@ -136,13 +136,29 @@ class PersonalController extends \yii\web\Controller
 
         $interests = Interest::getUserInterests( $user->id )->all() ;
 
-    
+
+        $scalePoints = ScalePointsBalance::find()->where(['user_id' => $user->id])->all();
+        $scales = [];
+        $scaleBalance = [];
+        $totalBalance  = 0;
+        foreach ($scalePoints as $spb) {
+            $totalBalance += $spb->points;
+            $scales[ $spb->scale_id ] = $spb->getScale();
+            if( empty($scaleBalance[ $spb->scale_id ])) { $scaleBalance[ $spb->scale_id ] = 0;}
+            $scaleBalance[ $spb->scale_id ] += $spb->points;
+        }
+        arsort($scaleBalance);
+
+
 
         return $this->render('profileview', [ 
             'user' => $user,  
             'interests' => $interests,  
             'possibleFriends' => $possibleFriends, 
             'followed' => $followed,
+            'scaleBalance' => $scaleBalance,
+            'scales' => $scales,
+            'totalBalance' => $totalBalance,
             'isFollowed' => $isFollowed
          ]);
     }

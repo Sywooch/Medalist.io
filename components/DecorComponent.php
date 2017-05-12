@@ -8,6 +8,20 @@ use yii\base\InvalidConfigException;
  
 class DecorComponent extends Component
 {
+
+    public function scale( $percent ){
+
+        if( $percent > 1){
+            $percent = $percent / 100;
+        }
+
+        ?>
+<div class="interests-selector-scale-viewport userpanel-info-scale-scale">
+    <div class="interests-selector-scale-track" style="margin-left: -<?=(1-$percent)*100?>%;"></div>
+</div>
+        <?
+    }
+
     public function infoPanel( $text, $type='important', $class = '' )
     {
 

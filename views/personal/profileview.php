@@ -59,10 +59,20 @@ echo $this->render('_panel.php');
 
                             <div>
                                 <? foreach( $interests as $interest) {
-                                    Yii::$app->decor->button($interest->name, '', 'mdlst-button-smaller');
+                                    Yii::$app->decor->button($interest->name, '', 'mdlst-button-smaller mdlst-button-interest');
 
                                     } ?>
 
+                            </div>
+
+                            <div class="profileview-scales">
+                                <?php foreach( $scaleBalance as $si => $sb ) {
+
+                                    ?>
+                                        <p><?=$scales[$si]->name?> (<?=$sb?>) </p>
+                                        <? Yii::$app->decor->scale($sb / $totalBalance) ;?>
+                                    <?  
+                                    }?>
                             </div>
 
 

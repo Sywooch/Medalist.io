@@ -1444,6 +1444,9 @@ a {
 .mdlst-button-smaller {
   padding: 7px 15px;
 }
+.mdlst-button-interest {
+  margin-bottom: 5px;
+}
 .mdlst-input {
   border: none;
   outline: 0;
