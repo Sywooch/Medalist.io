@@ -2,6 +2,9 @@
 /* @var $this yii\web\View */
 use app\models\Like;
 use app\models\Comment;
+use app\models\Badge;
+use app\models\Scale;
+use app\models\Category;
 echo $this->render('_panel.php');
 ?>
 
@@ -81,17 +84,55 @@ echo $this->render('_panel.php');
 								<?php foreach( $quests as $q ) { 
 									$rewards = $q->getRewards()->all();
 
+								 	$badge = false; 
+								 	$benefits = [];
+									foreach ($rewards as $rew ) {
+
+
+
+										if( !empty($rew->badge_id ) ) {
+											$badge = Badge::findOne( $rew->badge_id );
+										}
+
+										# code...
+									}
+
+
+									//Если есть шкала - юзаем ее, а если только награда - юзаем его
+
+									if( !empty($rewards[0]->scale_id )){
 								 
+										$scale = Scale::findOne( $rewards[0]->scale_id );
+									}else{
+									 
+										if( !empty($rewards[0]->badge_id ) ){
+										 
+											$badge = Badge::findOne( $rewards[0]->badge_id );
+											$badgeScalePoints = $badge->getBadgeScalePoints( );
+											if( !empty($badgeScalePoints->scale_id)){
+											 
+												$scale = Scale::findOne( $badgeScalePoints->scale_id );
+											}
+										}
+									}
+
+									
+
+									if( !empty($q->category_id)){
+										$category = Category::findOne( $q->category_id );
+									}
+
+
 
 									?>
 								<!-- QUEST -->
 								<div class="questblock">
 									<div class="questblock-pic" style="background-image: url(<?=$q->picture?>)">
-										<div class="questblock-pic-tag">музыка</div>
+										<div class="questblock-pic-tag tagbgcolor-<?=$category->category_id?>"><?=$category->name?></div>
 									</div>
 									<div class="questblock-info">
 										<div class="questblock-info-meta">
-											<?php if(!empty($rewards[0]) ) { ?><div class="questblock-info-meta-points">+<?=$rewards[0]->points?> к музыкальности</div> <? } ?>
+											<?php if(!empty($rewards[0]) ) { ?><div class="questblock-info-meta-points">+<?=$rewards[0]->points?> к <?=$scale->name;?></div> <? } ?>
 											<div class="questblock-info-meta-lurms">+2</div>
 										</div>
 										<div class="questblock-info-title"><?=$q->name?></div>
@@ -102,7 +143,7 @@ echo $this->render('_panel.php');
 												<li class="questblock-info-info-list-li">Даты старта: <b>нет</b></li>
 											</ul>
 											<ul class="questblock-info-info-list-2">
-												<li class="questblock-info-info-list-li"><span class="mdlst-accent">Награда: Ночной житель</span></li>
+												<?php if( $badge !== false ) { ?><li class="questblock-info-info-list-li"><a class="mdlst-accent" href="<?=Yii::$app->urlManager->createUrl(['personal/reward-detail', 'badge_id' => $badge->badge_id])?>">Награда: <?=$badge->name?></a></li><? } ?>
 												<li class="questblock-info-info-list-li"><span class="mdlst-accent">Выполнили: <?=$q->getAchievementsCount();?></span></li>
 												<li class="questblock-info-info-list-li">Провалили: <?=$q->getFailuresCount();?></li>
 											</ul>
