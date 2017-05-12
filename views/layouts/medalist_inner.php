@@ -47,6 +47,8 @@ AppAsset::register($this);
             $ajaxUrls['addGoalSubtask'] = Yii::$app->urlManager->createUrl('goal/ajax-add-goal-subtask');
             $ajaxUrls['addGoalSubsubtask'] = Yii::$app->urlManager->createUrl('goal/ajax-add-goal-subsubtask');
             $ajaxUrls['renderGoalSubtaskHTML'] = Yii::$app->urlManager->createUrl('goal/ajax-render-goal-subtask-html');
+            $ajaxUrls['calcGoalProgress'] = Yii::$app->urlManager->createUrl('goal/ajax-calc-goal-progress');
+            $ajaxUrls['setGoalSubtaskComplete'] = Yii::$app->urlManager->createUrl('goal/ajax-set-goal-subtask-complete');
 
             $ajaxUrls['addLike'] = Yii::$app->urlManager->createUrl('like/ajax-add-like');
 

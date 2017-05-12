@@ -205,6 +205,50 @@ class GoalController extends Controller
     }
 
 
+    public function actionAjaxCalcGoalProgress(){
+        $result = [];
+
+        $result['success'] = false;
+
+        if( !empty(Yii::$app->request->get() )){
+            $get = Yii::$app->request->get();
+
+            if( !empty($get['goal_id'])){
+                $g = Goal::findOne( $get['goal_id']);
+
+                $result['progress'] = $g->getProgressPercent();
+                $result['success'] = true;
+            }
+        }
+
+        return json_encode($result);
+    }
+
+    public function actionAjaxSetGoalSubtaskComplete(){
+        $result = [];
+
+        $result['success'] = false;
+
+        if( !empty(Yii::$app->request->get() )){
+            $get = Yii::$app->request->get();
+
+            if( !empty($get['goal_subtask_id'])){
+                $g = GoalSubtask::findOne( $get['goal_subtask_id'] );
+
+                $g->completed = ((int)$g->completed==1)?0:1;
+                if( $g->save() ){
+                    $result['status'] = $g->completed ; 
+                    $result['success'] = true;   
+                }
+
+                
+            }
+        }
+
+        return json_encode($result);
+    }
+
+
 
 
 
@@ -213,26 +257,27 @@ class GoalController extends Controller
         $get = Yii::$app->request->get();
 
         $goalSubtask = GoalSubtask::findOne($get['goal_subtask_id']);
-        $parentGoal = $goalSubtask->getGoal();
+        $parentGoal = $goalSubtask->getGoal()->one();
+
+        $goalUID = "ListbGoal".$parentGoal->goal_id."s".$goalSubtask->goal_subtask_id;
+
         ?>
 
 <li class="subtask-container">
             <div class="subtask-top">
                 <div class="subtask-top-left ">
                     <div class="input-check">
-                        <input id="ListbGoal10s8" name="ListbGoal10s8" value="ListbGoal10s8" type="checkbox">
-                        <label for="ListbGoal10s8" class="subtask-top-name"><?=$get['no']?>. <?=$goalSubtask->name;?> </label>
+                        <input id="<?=$goalUID?>" name= value="<?=$goalUID?>" type="checkbox">
+                        <label for="<?=$goalUID?>" class="subtask-top-name"><?=$get['no']?>. <?=$goalSubtask->name;?> </label>
                     </div>
                     <div class="subtask-progress">
                         <div class="interests-selector-scale-viewport userpanel-info-scale-scale subtask-progress-height">
                             <div class="interests-selector-scale-track subtask-progress-height" style="margin-left: -100%;"></div>
                         </div>
                     </div>
-                    <span class="mygoals-dead color-red subtask-top-dead">1970.01.01</span>
+                    <span class="mygoals-dead color-red subtask-top-dead"><? if(!empty( $goalSubtask->deadline) ) {  echo date("d.m.Y", strtotime($goalSubtask->deadline));  } ?></span>
                 </div>
-                <a class="container-menu-list-meta-add margin-0 js-add-sub-subtask" href="#">
-                    <span class="container-menu-list-meta-add-plus">+</span>
-                </a>
+                <?=Yii::$app->decor->plus('');?>
             </div>
             <div class="subtask-bottom"></div>
 

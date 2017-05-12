@@ -100,6 +100,31 @@ $(document).ready(function(){
 
 		};
 
+		var renderTotalGoalProgress = function( goal_id ){
+			$.ajax({
+				url: ajaxUrls['calcGoalProgress'],
+				data: {goal_id: goal_id},
+				success: function(data){
+					if( typeof data.progress != 'undefined'){
+						$('.interests-selector-scale-track').css('margin-left', '-'+(100 - data.progress)+'%');
+					}
+				}
+			});
+		};
+
+		var markSubtaskComplete = function(goal_subtask_id, goal_id){
+			$.ajax({
+				url: ajaxUrls['setGoalSubtaskComplete'],
+				data: {goal_subtask_id: goal_subtask_id},
+				success: function(data){
+					if( typeof data.progress != 'undefined'){
+						$('.interests-selector-scale-track').css('margin-left', '-'+(100 - data.progress)+'%');
+					}
+				}
+			});
+			renderTotalGoalProgress(goal_id);
+		};
+
 		$(document).on('click', '.js-add-subtask', function(){
 			var p = $(this).parents('.goal-addsubtask-addform'),
 				goal_id = p.data('goal_id'),
@@ -118,11 +143,28 @@ $(document).ready(function(){
 				dataType: 'json',
 				success: function(data){
 					console.log(data);
+					name.val('');
+					deadline.val('');
 
 					renderGoalSubtaskHTML( data.goal_subtask_id, ($('.subtask-container').length+1), '.goal-subtask' );
 				}
 			})
 
+			return false;
+		});
+
+		$(document).on('click', '.js-set-subtask-complete', function(){
+			var goal_subtask_id = $(this).data('goal_subtask_id'),
+			 	 goal_id = $(this).data('goal_id'),
+				completed = $(this).hasClass('subtask-done');
+
+			if( completed ){
+				$(this).removeClass('subtask-done');
+			}else{
+				$(this).addClass('subtask-done');
+			}
+
+			markSubtaskComplete(goal_subtask_id, goal_id);
 			return false;
 		});
 

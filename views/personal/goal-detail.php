@@ -149,7 +149,7 @@ echo $this->render('_panel.php');
                                                     <li class="subtask-container">
                                                         <div class="subtask-top">
                                                             <div
-                                                                class="subtask-top-left <?= $subtask->completed ? 'subtask-done' : ''; ?>">
+                                                                class="subtask-top-left <?= $subtask->completed ? 'subtask-done' : ''; ?> js-set-subtask-complete" data-goal_subtask_id="<?=$subtask->goal_subtask_id?>" data-goal_id="<?=$subtask->goal_id?>">
                                                                 <div class="input-check">
                                                                     <input <?= $subtask->completed ? 'checked = "checked"' : ''; ?>
                                                                         type="checkbox" id="<?= $s; ?>"
