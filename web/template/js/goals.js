@@ -104,9 +104,10 @@ $(document).ready(function(){
 			$.ajax({
 				url: ajaxUrls['calcGoalProgress'],
 				data: {goal_id: goal_id},
+				dataType: 'json',
 				success: function(data){
 					if( typeof data.progress != 'undefined'){
-						$('.interests-selector-scale-track').css('margin-left', '-'+(100 - data.progress)+'%');
+						$('.mygoals-progress .interests-selector-scale-track').css('margin-left', '-'+(100 - data.progress)+'%');
 					}
 				}
 			});
@@ -116,10 +117,10 @@ $(document).ready(function(){
 			$.ajax({
 				url: ajaxUrls['setGoalSubtaskComplete'],
 				data: {goal_subtask_id: goal_subtask_id},
+				dataType: 'json',
 				success: function(data){
-					if( typeof data.progress != 'undefined'){
-						$('.interests-selector-scale-track').css('margin-left', '-'+(100 - data.progress)+'%');
-					}
+					$('[data-goal_subtask_id='+goal_subtask_id+']').find('[type=checkbox]').attr('checked', data.status);
+				 	$('[data-goal_subtask_id='+goal_subtask_id+']').find('.interests-selector-scale-track').css('margin-left', '-'+(100 - data.progress)+'%');
 				}
 			});
 			renderTotalGoalProgress(goal_id);

@@ -100,5 +100,17 @@ class GoalSubtask extends \yii\db\ActiveRecord
     }
 
 
+    public function setSubtasksCompleted( $state = 1 ){
+        $subtasks = $this->getSubtasks();
+
+        if( !empty($subtasks) ){
+            foreach ($subtasks as $key => $subtask) {
+                $subtask->completed = $state;
+                $subtask->save();
+            }
+        }
+    }
+
+
 
 }

@@ -237,7 +237,12 @@ class GoalController extends Controller
 
                 $g->completed = ((int)$g->completed==1)?0:1;
                 if( $g->save() ){
+
+                    //Force all subtasks to be completed or not !
+                    $g->setSubtasksCompleted( $g->completed );
+                    
                     $result['status'] = $g->completed ; 
+                    $result['progress'] = $g->getProgressPercent() ; 
                     $result['success'] = true;   
                 }
 
