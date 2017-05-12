@@ -70,14 +70,7 @@ echo $this->render('_panel.php');
 							</div>
 							<div class="output-controlls">
 								<div class="output-controlls-searchbox"><div class="searchbox"><input type="text" class="searchbox-inp"><div class="searchbox-icon"></div></div></div>
-								<div class="output-controlls-checkbox">
-									<div class="chk-w">
-										<div class="chk-img"></div>
-										<div class="chk-t">Подходящие по духу</div>
-										<input type="checkbox" class="chk-chk">
-									</div>
-									
-								</div>
+								 
 								
 							</div>
 							<div class="quests-list">
@@ -128,14 +121,14 @@ echo $this->render('_panel.php');
 								<!-- QUEST -->
 								<div class="questblock">
 									<div class="questblock-pic" style="background-image: url(<?=$q->picture?>)">
-										<div class="questblock-pic-tag tagbgcolor-<?=$category->category_id?>"><?=$category->name?></div>
+										<div class="questblock-pic-tag tagbgcolor-<?=$category->category_id?>"><?=$category->name?>	</div>
 									</div>
 									<div class="questblock-info">
 										<div class="questblock-info-meta">
 											<?php if(!empty($rewards[0]) ) { ?><div class="questblock-info-meta-points">+<?=$rewards[0]->points?> к <?=$scale->name;?></div> <? } ?>
-											<div class="questblock-info-meta-lurms">+2</div>
+											 
 										</div>
-										<div class="questblock-info-title"><?=$q->name?></div>
+										<div class="questblock-info-title"><a href="<?=Yii::$app->urlManager->createUrl(['personal/quest', 'quest_id' => $q->quest_id])?>"><?=$q->name?></a></div>
 										<div class="questblock-info-info">
 											<ul class="questblock-info-info-list">
 												<li class="questblock-info-info-list-li">Участвует: <b>любой</b></li>

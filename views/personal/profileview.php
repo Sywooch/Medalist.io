@@ -31,9 +31,15 @@ echo $this->render('_panel.php');
                             <div class="profileview-aside-follower">
                                 <?php if( !$isFollowed ) { ?>
                                     <? Yii::$app->decor->button('Подписаться', '', 'js-follow-person', ['user_id' => $user->id]); ?>
-                                <? }else{ ?>
-                                    <? Yii::$app->decor->button('Уже подписаны', '', 'mdlst-button-disabled mdlst-button-smaller'); ?>
-                                <?}?>
+                                <? }else{ 
+                                    if ($user->id == Yii::$app->user->identity->id ){
+                                        Yii::$app->decor->button('Это ваша страница!', '', 'mdlst-button-disabled mdlst-button-smaller'); 
+                                    }else{
+
+                                        Yii::$app->decor->button('Уже подписаны', '', 'mdlst-button-disabled mdlst-button-smaller'); 
+
+                                    }
+                                }?>
                             </div>
                         </div>
 
@@ -79,7 +85,15 @@ echo $this->render('_panel.php');
 
                         </div>
                     </div>
+                    <?
 
+        if ($user->id == Yii::$app->user->identity->id ){
+            echo "<br>";
+            Yii::$app->decor->infoPanel('Вы можете скинуть ссылку на эту страницу друзьям: <b>'.Yii::$app->getRequest()->serverName.Yii::$app->urlManager->createUrl( ['personal/viewprofile','user_id' => Yii::$app->user->identity->id]) .' </b>'); 
+        }
+
+
+                             ?>
 
                     <br>
                     <br>

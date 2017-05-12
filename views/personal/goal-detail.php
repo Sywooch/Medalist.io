@@ -72,8 +72,7 @@ echo $this->render('_panel.php');
                                     </div>
                                 </div>
                             </div>
-                            <div class="mygoals-edit-button"><a class="goal-edit-button mdlst-button" href="#">Редактировать</a>
-                            </div>
+                            <!--<div class="mygoals-edit-button"><a class="goal-edit-button mdlst-button" href="#">Редактировать</a></div>-->
                         </div>
                         <div class="clear"></div>
 
@@ -171,7 +170,7 @@ echo $this->render('_panel.php');
                                                                     class="mygoals-dead <?php if( strtotime($subtask->deadline) < time() ) { ?>color-red <?php } ?> subtask-top-dead"><? if( !empty($subtask->deadline) ) { echo date("d.m.Y", strtotime($subtask->deadline)); } ?></span>
                                                             </div>
                                                            
-                                                           <? Yii::$app->decor->plus('','js-add-subsubtask'); ?>
+                                                           <? // Yii::$app->decor->plus('','js-add-subsubtask'); ?>
 
                                                         </div>
                                                         <div class="subtask-bottom">

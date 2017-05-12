@@ -73,16 +73,7 @@ echo $this->render('_panel.php');
 			 								<div class="addach-extra-range-text">Насколько это было сложно?</div>
 			 								<div class="addach-extra-range-range"> <input type="range" data-toggle="rangeslider"  data-rangeslider min="1" max="100" step="1" value="50" name="difficulty"></div>
 			 							</div>
-			 							<div class="addach-extra-checks">
-			 								<div class="input-check input-check-inline">
-                                      			<input id="addach-check-achieved" name="important" value="1" type="checkbox">
-                                    			<label for="subGoal2"  >Я достиг цели</label>
-                                   			</div>
-			 								<div class="input-check  input-check-inline ">
-                                      			<input id="addach-check-achieved" name="important" value="1" type="checkbox">
-                                    			<label for="subGoal2" >Я прошел квест</label>
-                                   			</div>
-			 							</div>
+			 							 
 			 						</div>
 
 

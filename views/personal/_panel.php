@@ -28,7 +28,7 @@ $avatarSrc = Yii::$app->user->identity->getProfile()->one()->getAvatarSrc();
 	 				<div class="userpanel-user-pic" style="background-image: url(<?=$avatarSrc?>)"></div>
 	 				<div class="userpanel-user-info">
 	 					<div class="userpanel-user-info-name"><?=Yii::$app->user->identity->email?></div>
-	 					<div class="userpanel-user-info-date">2 месяца на сайте</div>
+	 					<div class="userpanel-user-info-date">на сайте с <?=date("d.m.Y", strtotime(Yii::$app->user->identity->created_at));?></div>
 	 				</div>
 	 			</div>
 	 			<div class="userpanel-info">

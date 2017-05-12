@@ -20,7 +20,7 @@ $currentUrl = Url::current();
 										</div>
 									</li>
 									<li class="container-menu-list-li">
-										<a class="container-menu-list-link" href="<?=Yii::$app->urlManager->createUrl('personal/profile')?>">Моя страница</a>
+										<a class="container-menu-list-link" href="<?=Yii::$app->urlManager->createUrl(['personal/viewprofile', 'user_id' => Yii::$app->user->identity->id])?>">Моя страница</a>
 										<div class="container-menu-list-meta">
 										
 										</div>
