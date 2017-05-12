@@ -6,7 +6,7 @@ use Yii;
 use yii\base\Component;
 use yii\base\InvalidConfigException;
 use app\models\Comment;
- 
+use amnah\yii2\user\models\User;
 class CommentComponent extends Component
 {
  
@@ -27,17 +27,19 @@ class CommentComponent extends Component
 
         if( $parent ){
 
+
+            $user = User::findOne( $comment->created_by_id );
             
         ?>
             <div class="comment-block <?=$extraClass?> comment-id-<?=$comment->comment_id?>">
                 <div class="comment-block-data">
                     <div class="comment-block-data-user">
-                        <div class="comment-block-data-user-pic"><img src="/template/img/_user-ava.png"></div>
-                        <div class="comment-block-data-user-name"> <a class="comment-block-data-user-name-link">Иван Петров</a></div>
+                        <div class="comment-block-data-user-pic"><img src="<?=$user->getProfile()->one()->getAvatarSrc();?>"></div>
+                        <div class="comment-block-data-user-name"> <a class="comment-block-data-user-name-link" href="<?=Yii::$app->urlManager->createUrl( ['personal/viewprofile','user_id' => $user->id])?>"><?=$user->getName();?></a></div>
                         
                     </div>
                     <div class="comment-block-data-content">
-                        <div class="comment-block-data-content-date">27.11.2010</div>
+                        <div class="comment-block-data-content-date"><?=date("d.m.Y H:i:s", strtotime($comment->date_created));?></div>
                         <div class="comment-block-data-content-content"><?=$comment->text?></div>
                         <div class="comment-block-controlls">
                             <sudo class="comment-block-controlls-response js-comment-makeresponse" data-id="<?=$comment->comment_id?>">Ответить</sudo>
@@ -70,16 +72,20 @@ class CommentComponent extends Component
         <?   
         }else{
 
+
+            $user = User::findOne( $comment->created_by_id );
+
+
              ?>
             <div class="comment-block  <?=$extraClass?>  comment-block-sub comment-id-<?=$comment->comment_id?>" data-parent_comment_id="<?=$comment->parent_comment_id?>">
                 <div class="comment-block-data">
                     <div class="comment-block-data-user">
-                        <div class="comment-block-data-user-pic"><img src="/template/img/_user-ava.png"></div>
-                        <div class="comment-block-data-user-name"> <a class="comment-block-data-user-name-link">Иван Петров</a></div>
+                        <div class="comment-block-data-user-pic"><img src="<?=$user->getProfile()->one()->getAvatarSrc();?>"></div>
+                        <div class="comment-block-data-user-name"> <a class="comment-block-data-user-name-link" href="<?=Yii::$app->urlManager->createUrl( ['personal/viewprofile','user_id' => $user->id])?>"><?=$user->getName();?></a></div>
                         
                     </div>
                     <div class="comment-block-data-content">
-                        <div class="comment-block-data-content-date">27.11.2010</div>
+                        <div class="comment-block-data-content-date"><?=date("d.m.Y H:i:s", strtotime($comment->date_created));?></div>
                         <div class="comment-block-data-content-content"><?=$comment->text?></div>
                        
 

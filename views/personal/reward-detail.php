@@ -1,6 +1,6 @@
 <?php
 /* @var $this yii\web\View */
-
+use amnah\yii2\user\models\User;
 echo $this->render('_panel.php');
 ?>
 
@@ -36,6 +36,42 @@ echo $this->render('_panel.php');
 										echo "+".$scale['points']." ".$scale['scale']->name;
 										 ?></b>
 									</p>
+
+
+								<?php 
+								$users = $badge->getAchievedUsers();
+								?>
+
+								<div class="questdetail-completeduser-list">
+									<h3>Награду получили (<?=count($users)?>): </h3>
+									<?php if(!empty($users)) { 
+
+										foreach ($users as $user_id) {
+
+											$user = User::findOne(  $user_id['user_id'] );
+											?>
+											<a class="questdetail-completeduser" href="<?=Yii::$app->urlManager->createUrl( ['personal/viewprofile','user_id' =>  $user_id['user_id'] ])?>">
+												<div class="questdetail-completeduser-img"><img src="<?=$user->getProfile()->one()->getAvatarSrc();?>"></div>
+												<div class="questdetail-completeduser-text"> <?=$user->getName();?> </div>
+											</a>
+											<? 
+																					# code...
+										}
+
+
+
+										}else{
+										?>
+										<p> Эту награду пока никто не получил. Станьте первым!</p>
+										<?
+										} ?>
+
+									
+								</div>
+
+
+
+
 								</div>
 
 								 

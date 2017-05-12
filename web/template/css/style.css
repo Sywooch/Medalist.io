@@ -26,6 +26,9 @@
 .comment-block-data-content,
 .comment-controll span,
 .form-add-comment-textarea,
+.questdetail-completeduser,
+.questdetail-completeduser-img,
+.questdetail-completeduser-text,
 .questblock-pic,
 .questblock-info,
 .questblock-info-info-list,
@@ -137,6 +140,8 @@
 }
 .dib_m,
 .header-logo,
+.questdetail-completeduser-img,
+.questdetail-completeduser-text,
 .userpanel-user-pic,
 .userpanel-user-info,
 .userpanel-info-level,
@@ -173,6 +178,7 @@
 .like-controll-minus,
 .like-controll-minus span,
 .comment-controll span,
+.questdetail-completeduser,
 .questblock-info-controlls-likes,
 .questblock-info-controlls-comments,
 .questblock-info-controlls-button,
@@ -643,6 +649,24 @@ a {
   width: 100%;
 }
 /* . comment end */
+/* questdetail */
+.questdetail-completeduser {
+  white-space: nowrap;
+  margin-right: 20px;
+  text-decoration: none;
+}
+.questdetail-completeduser-img {
+  width: 25px;
+  margin-right: 5px;
+}
+.questdetail-completeduser-img img {
+  max-width: 25px;
+}
+.questdetail-completeduser-list {
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+/* questdetail end */
 /* questblock */
 .quests-list {
   margin-top: 50px;

@@ -16,6 +16,8 @@ use app\models\GoalSubtask;
 use app\models\Follower;
 use app\models\Notification;
 use app\models\Interest;
+use app\models\Scale;
+use app\models\Category;
 use amnah\yii2\user\models\User;
 use Yii;
 
@@ -258,6 +260,77 @@ class PersonalController extends \yii\web\Controller
 
         return $this->render('quests', ['quests' => $quests, 'questsPending' => $questPendingTasks]);
     }
+
+
+
+
+
+
+
+
+    public function actionQuest()
+    {
+
+        $get = Yii::$app->request->get();
+
+        $q = Quest::findOne($get['quest_id']);
+
+
+        $rewards = $q->getRewards()->all();
+
+        $badge = false; 
+        $benefits = [];
+        foreach ($rewards as $rew ) {
+
+
+
+            if( !empty($rew->badge_id ) ) {
+                $badge = Badge::findOne( $rew->badge_id );
+            }
+
+            # code...
+        }
+
+
+        //Если есть шкала - юзаем ее, а если только награда - юзаем его
+
+        if( !empty($rewards[0]->scale_id )){
+     
+            $scale = Scale::findOne( $rewards[0]->scale_id );
+        }else{
+         
+            if( !empty($rewards[0]->badge_id ) ){
+             
+                $badge = Badge::findOne( $rewards[0]->badge_id );
+                $badgeScalePoints = $badge->getBadgeScalePoints( );
+                if( !empty($badgeScalePoints->scale_id)){
+                 
+                    $scale = Scale::findOne( $badgeScalePoints->scale_id );
+                }
+            }
+        }
+
+        
+
+        if( !empty($q->category_id)){
+            $category = Category::findOne( $q->category_id );
+        }
+
+
+        $achievements = $q->getAchievements();
+        $tA = array();
+        foreach ($achievements as $achievement) {
+            $tA[ $achievement->user_id ] = $achievement;
+        }
+        $achievements = $tA;
+
+
+         
+        return $this->render('quest', ['quest' => $q, 'category' => $category , 'badge' => $badge , 'achievements' => $achievements]);
+    }
+
+
+
 
 
 

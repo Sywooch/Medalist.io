@@ -146,5 +146,13 @@ class Badge extends \yii\db\ActiveRecord
         $row = $q->select(['count(*)'])->from('badge_balance')->where('badge_id = '.$this->badge_id)->one();
         return $row['count(*)'];
     }
+    /**
+    * Сколько человек получили этот бейдж
+    */
+    public function getAchievedUsers(){
+        $q = new Query();
+        $rows= $q->select(['user_id'])->from('badge_balance')->where('badge_id = '.$this->badge_id)->distinct()->all();
+        return $rows;
+    }
 
 }
