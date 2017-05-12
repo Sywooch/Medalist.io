@@ -29,16 +29,20 @@ echo $this->render('_panel.php');
                                 <img src="<?=$user->getProfile()->one()->getAvatarSrc();?>">
                             </div>
                             <div class="profileview-aside-follower">
-                                <?php if( !$isFollowed ) { ?>
-                                    <? Yii::$app->decor->button('Подписаться', '', 'js-follow-person', ['user_id' => $user->id]); ?>
-                                <? }else{ 
-                                    if ($user->id == Yii::$app->user->identity->id ){
-                                        Yii::$app->decor->button('Это ваша страница!', '', 'mdlst-button-disabled mdlst-button-smaller'); 
-                                    }else{
+                                <?php 
+                                if($user->id == Yii::$app->user->identity->id ) {  
+                                    
+                                        Yii::$app->decor->button('Это ваша страница!', '', 'mdlst-button-disabled mdlst-button-smaller');
 
-                                        Yii::$app->decor->button('Уже подписаны', '', 'mdlst-button-disabled mdlst-button-smaller'); 
+                                     }else{ 
 
-                                    }
+                                        if ( !$isFollowed  ){
+                                            Yii::$app->decor->button('Подписаться', '', 'js-follow-person', ['user_id' => $user->id]);  
+                                        }else{
+
+                                            Yii::$app->decor->button('Уже подписаны', '', 'mdlst-button-disabled mdlst-button-smaller'); 
+
+                                        }
                                 }?>
                             </div>
                         </div>
