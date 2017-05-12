@@ -4,6 +4,7 @@ use app\models\Goal;
 use app\models\Achievement;
 use app\models\ScalePointsBalance;
 use app\models\Level;
+use app\models\Notification;
 
 echo $this->render('_panel.php');
 ?>
@@ -80,6 +81,15 @@ echo $this->render('_panel.php');
                     </div>
 
 
+                    <br>
+                    <br>
+                    <?php 
+                        foreach($news as $new){
+
+                            //var_dump( $new );
+                            Notification::renderNotificationHTML( $new );
+                        }
+                    ?>
 
 
                    <div class="output-header">

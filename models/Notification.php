@@ -149,8 +149,13 @@ class Notification extends \yii\db\ActiveRecord
         $model = Yii::createObject([
           'class' => $className,
          ]);
+       
         $obj  = $model::findOne( $notification->entity_id );
+        
+        if( empty($obj )) { return false; }
 
+      //  if( $notification->notification_type_id == NotificationType::NT_NEW_FOLLOWER ){ var_dump( $obj->to_user_id ); return false; }
+    
         //Getiing User
         $userCreatedNew = User::find()->where('id = '.$notification->user_id)->one();
 
@@ -159,7 +164,7 @@ class Notification extends \yii\db\ActiveRecord
             <div class="newblock">
                 <div class="newblock-pic"><img src="<?=$userCreatedNew->getProfile()->one()->getAvatarSrc();?>"></div>
                 <div class="newblock-data">
-                    Пользователь <a href="<?=Yii::$app->urlManager->createUrl( ['profile/view','user_id' => $userCreatedNew->id])?>"><?=$userCreatedNew->getName()?></a>
+                    Пользователь <a href="<?=Yii::$app->urlManager->createUrl( ['personal/viewprofile','user_id' => $userCreatedNew->id])?>"><?=$userCreatedNew->getName()?></a>
 
                     <?php 
                         switch ($notification->notification_type_id) {
@@ -167,7 +172,7 @@ class Notification extends \yii\db\ActiveRecord
 
                                 //obj of User
                                 ?>
-                                подписался на обновления пользователя <a href="<?=Yii::$app->urlManager->createUrl( ['profile/view','user_id' => $obj->to_user_id])?>"><?=$obj->getUser()->getName()?></a>
+                                подписался на обновления пользователя <a href="<?=Yii::$app->urlManager->createUrl( ['personal/viewprofile','user_id' => $obj->to_user_id])?>"><?=$obj->getUser()->getName()?></a>
                                 <?
                                 break;
                             

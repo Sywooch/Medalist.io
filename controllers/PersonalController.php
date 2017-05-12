@@ -150,6 +150,9 @@ class PersonalController extends \yii\web\Controller
         arsort($scaleBalance);
 
 
+         $news = Notification::find()->where('user_id = '.$user->id)->all();
+
+
 
         return $this->render('profileview', [ 
             'user' => $user,  
@@ -158,6 +161,7 @@ class PersonalController extends \yii\web\Controller
             'followed' => $followed,
             'scaleBalance' => $scaleBalance,
             'scales' => $scales,
+            'news' => $news,
             'totalBalance' => $totalBalance,
             'isFollowed' => $isFollowed
          ]);
