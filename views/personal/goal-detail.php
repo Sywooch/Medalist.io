@@ -187,6 +187,7 @@ echo $this->render('_panel.php');
 
                                                             <? foreach ($subtasks_points as  $j => $subtask_point) {
                                                                 $p = $s . "p" . $subtask_point->goal_subtask_id;
+                                                              
                                                                 ?>
 
 

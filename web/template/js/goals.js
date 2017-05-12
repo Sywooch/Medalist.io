@@ -119,7 +119,7 @@ $(document).ready(function(){
 				data: {goal_subtask_id: goal_subtask_id},
 				dataType: 'json',
 				success: function(data){
-					$('[data-goal_subtask_id='+goal_subtask_id+']').find('[type=checkbox]').attr('checked', data.status);
+					$('[data-goal_subtask_id='+goal_subtask_id+']').find('[type=checkbox]').attr('checked', data.status==1?"checked":false);
 				 	$('[data-goal_subtask_id='+goal_subtask_id+']').find('.interests-selector-scale-track').css('margin-left', '-'+(100 - data.progress)+'%');
 				}
 			});
