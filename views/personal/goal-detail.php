@@ -31,7 +31,7 @@ echo $this->render('_panel.php');
                     <div class="output-content">
                         <div class="mygoals-name-div">
                             <div class="mygoals-name"><?= $goal->name ?></div>
-                            <div class="mygoals-name-button"><a class="goal-done-button mdlst-button" href="#">Выполнить
+                            <div class="mygoals-name-button"><a class="goal-done-button mdlst-button" href="<?=Yii::$app->urlManager->createUrl(['personal/achievement-add', 'goal_id'=> $goal->goal_id ])?>">Выполнить
                                     цель</a></div>
                         </div>
                         <div class="clear"></div>

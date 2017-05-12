@@ -108,7 +108,7 @@ echo $this->render('_panel.php');
 													<option value="q<?=$qpt->quest_id?>" <?=($quest_id==$qpt->getQuest()->one()->quest_id)?"selected":""?>><?=$qpt->getQuest()->one()->name?></option>
 													<? } ?>
 													<?php foreach($goals as $goal ) { ?>
-													<option value="q<?=$goal->goal_id?>"><?=$goal->name?></option>
+													<option value="g<?=$goal->goal_id?>"  <?=($goal_id==$goal->goal_id)?"selected":""?> ><?=$goal->name?></option>
 													<? } ?> 
 												</select>
 											</div>

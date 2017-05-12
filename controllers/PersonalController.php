@@ -51,6 +51,12 @@ class PersonalController extends \yii\web\Controller
             $predefinedText ="Вы выполнили квест ".$quest->name.". Опишите как это было? Сложно или не очень? Что запомнилось?";
             $difficult = true;
         }
+        if( !empty(Yii::$app->request->get()['goal_id']) ){
+            $goal = Goal::findOne( Yii::$app->request->get()['goal_id'] );
+            $predefinedTitle ="Выполна цель ".$goal->name;
+            $predefinedText ="Вы выполнили цель ".$goal->name.". Опишите как это было? Сложно или не очень? Глядя на вас, другие смогут стать лучше.";
+            $difficult = true;
+        }
 
         $difficult = (!empty($goal_id) || !empty($quest_id));
         

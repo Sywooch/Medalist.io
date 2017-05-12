@@ -22,6 +22,9 @@ class DecorComponent extends Component
  
         <?
     }
+
+
+
     public function button( $text, $url = '', $class = '' )
     {
 
@@ -41,12 +44,25 @@ class DecorComponent extends Component
     /**
     * style = plus-add plus-cross plus-edit
     */
-    public function plus($url = '', $class = '', $style = 'plus-add'){
+    public function plus($url = '', $class = '', $style = 'plus-add', $data = []){
         ?>
-         <a class="container-menu-list-meta-add margin-0 <?=$class?> <?=$style?> " href="<?=$url?>">
+         <a class="container-menu-list-meta-add margin-0 <?=$class?> <?=$style?> " href="<?=$url?>" <?php foreach($data as $k=>$v) { ?> data-<?=$k?>="<?=$v?>" <?} ?>>
                                                                 <span class="container-menu-list-meta-add-plus">+</span>
                                                             </a>
         <?
+    }
+
+
+    public function removeControll( $obj, $light= false){
+
+        $classname = get_class( $obj );
+        $classname = explode("\\",$classname);
+        $classname = $classname[count($classname) - 1];
+        $idVarName = strtolower($classname."_id");
+        $id = $obj->{$idVarName};
+
+
+        $this->plus('', 'js-remove-entity', $light?'plus-lightcross':'plus-cross', ['obj' => $classname, 'id' => $id]);
     }
 
 

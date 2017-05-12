@@ -48,7 +48,9 @@ echo $this->render('_panel.php');
 
                                     </label>
                                 </div>
-                                <div class=""></div>
+                                <div class="">
+                                 
+                                </div>
                             </div>
                             <div class="listGoals-left">
                                 <div class="clear"></div>
