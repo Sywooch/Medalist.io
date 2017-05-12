@@ -9,6 +9,16 @@ use yii\base\InvalidConfigException;
 class DecorComponent extends Component
 {
 
+
+    public function translateDateString( $date_string ){
+        $substitute = array('days' => 'дн.', 'weeks' => 'нед.');
+
+        foreach ($substitute as $key => $value) {
+            $date_string = str_replace($key, $value,  $date_string);
+        }
+        return $date_string;
+    }
+
     public function scale( $percent ){
 
         if( $percent > 1){

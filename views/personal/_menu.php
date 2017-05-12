@@ -9,10 +9,10 @@ $currentUrl = Url::current();
 							<div class="container-menu-mobile"></div>
 							<div class="container-menu-wrapper">
 								<ul class="container-menu-list">
-									<li class="container-menu-list-li">
+									<!--<li class="container-menu-list-li">
 										<a class="container-menu-list-link" href="<?=Yii::$app->urlManager->createUrl('personal/dashboard')?>">Дэшборд</a>
 										<div class="container-menu-list-meta"></div>
-									</li>
+									</li>-->
 									<li class="container-menu-list-li">
 										<a class="container-menu-list-link" href="<?=Yii::$app->urlManager->createUrl('personal/news')?>">Новости</a>
 										<div class="container-menu-list-meta">
@@ -53,10 +53,10 @@ $currentUrl = Url::current();
 										<a class="container-menu-list-link" href="<?=Yii::$app->urlManager->createUrl('personal/rewards')?>">Награды</a>
 										<div class="container-menu-list-meta"></div>
 									</li>
-									<li class="container-menu-list-li">
+									<!--<li class="container-menu-list-li">
 										<a class="container-menu-list-link" href="<?=Yii::$app->urlManager->createUrl('personal/development')?>">Моё развитие</a>
 										<div class="container-menu-list-meta"></div>
-									</li>
+									</li>-->
 								</ul>
 							</div>
 						</div>
