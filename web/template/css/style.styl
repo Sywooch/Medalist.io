@@ -1138,7 +1138,31 @@ a
             font-size 18px 
             font-weight bold
             width 80px
-            
+      
+
+/* profileview */  
+.profileview
+    @extends .simplebox
+    @extends .simplebox-padding
+    white-space nowrap
+    
+    &-aside 
+        @extends .dib_t          
+        white-space normal
+        margin-right 25px
+        width 150px    
+        &-follower 
+            margin-top 15px
+    &-content 
+        @extends .dib_t
+        white-space normal
+        position relative
+        width 550px
+        &-level 
+            position absolute
+            right -15px 
+            top -15px
+/* profileview end */            
         
     
 
@@ -1180,6 +1204,11 @@ a
         border none
         outline 0
         cursor pointer
+        white-space nowrap
+        &-disabled 
+            background-color rgba(CMain, 0.5) !important
+            color white
+            padding 13px 30px
         &-default 
             background-color CMain
             color white
@@ -1197,6 +1226,8 @@ a
             background-image url(../img/closer.png)
             margin-bottom -4px
             margin-left 5px 
+        &-smaller 
+            padding 7px 15px
         
     &-input
         border none 
@@ -1450,3 +1481,5 @@ a
         & .container-menu-list-meta-add-plus
             background-color rgba(CBlack, 0.2)
             
+
+

@@ -25,7 +25,7 @@ class DecorComponent extends Component
 
 
 
-    public function button( $text, $url = '', $class = '' )
+    public function button( $text, $url = '', $class = '', $data = [] )
     {
 
         if( empty($url)) {
@@ -35,7 +35,7 @@ class DecorComponent extends Component
         }
         
         ?>
-            <<?=$tag?> class="mdlst-button  <? if(!empty($url) ) { ?> href="<?=$url?>"<? }?> mdlst-button-default <?=$class?>"><?=$text?></<?=$tag?>>
+            <<?=$tag?> class="mdlst-button  <? if(!empty($url) ) { ?> href="<?=$url?>"<? }?> mdlst-button-default <?=$class?>" <?php foreach($data as $k=>$v) { ?> data-<?=$k?>="<?=$v?>" <?} ?>><?=$text?></<?=$tag?>>
  
         <?
     }

@@ -81,6 +81,8 @@
 .friend-list-block-achievements,
 .friend-list-block-points,
 .friend-list-block-level,
+.profileview-aside,
+.profileview-content,
 .input-check-inline,
 .mdlst-button-accent,
 .mdlst-button-closer,
@@ -126,6 +128,8 @@
 .achievement-block-content-col,
 .achievement-block-images-image,
 .possible-friends-block,
+.profileview-aside,
+.profileview-content,
 .mdlst-pan-icon,
 .mdlst-pan-text,
 .mdlst-status-icon {
@@ -213,7 +217,8 @@
 .simplebox,
 .achievement-block,
 .newblock,
-.friend-list-block {
+.friend-list-block,
+.profileview {
   box-shadow: 0 0 5px rgba(49,51,62,0.1);
   box-sizing: border-box;
   -webkit-border-radius: 4px;
@@ -226,9 +231,11 @@
 .achievement-block-padding,
 .newblock-padding,
 .friend-list-block-padding,
+.profileview-padding,
 .achievement-block-content,
 .newblock,
-.friend-list-block {
+.friend-list-block,
+.profileview {
   padding: 39px 36px;
 }
 /* 1280 */
@@ -1346,6 +1353,29 @@ a {
   font-weight: bold;
   width: 80px;
 }
+/* profileview */
+.profileview {
+  white-space: nowrap;
+}
+.profileview-aside {
+  white-space: normal;
+  margin-right: 25px;
+  width: 150px;
+}
+.profileview-aside-follower {
+  margin-top: 15px;
+}
+.profileview-content {
+  white-space: normal;
+  position: relative;
+  width: 550px;
+}
+.profileview-content-level {
+  position: absolute;
+  right: -15px;
+  top: -15px;
+}
+/* profileview end */
 /*system */
 .rangeslider {
   background-color: rgba(138,68,255,0.3) !important;
@@ -1386,6 +1416,12 @@ a {
   border: none;
   outline: 0;
   cursor: pointer;
+  white-space: nowrap;
+}
+.mdlst-button-disabled {
+  background-color: rgba(138,68,255,0.5) !important;
+  color: #fff;
+  padding: 13px 30px;
 }
 .mdlst-button-default {
   background-color: #8a44ff;
@@ -1404,6 +1440,9 @@ a {
   background-image: url("../img/closer.png");
   margin-bottom: -4px;
   margin-left: 5px;
+}
+.mdlst-button-smaller {
+  padding: 7px 15px;
 }
 .mdlst-input {
   border: none;

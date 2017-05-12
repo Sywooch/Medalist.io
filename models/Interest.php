@@ -3,7 +3,7 @@
 namespace app\models;
 
 use Yii;
-
+use yii\db\Query;
 /**
  * This is the model class for table "interest".
  *
@@ -54,6 +54,26 @@ class Interest extends \yii\db\ActiveRecord
         return new InterestQuery(get_called_class());
     }
 
+
+
+    public static function getUserInterests( $user_id ){
+        $query = new Query;
+        // compose the query
+
+        $query->select('interest_id')
+            ->from('user2interest')
+            ->where('user_id ='.$user_id);
+        // build and execute the query
+        $rows = $query->all();
+        $interest_ids =[];
+        foreach ($rows as $row ) {
+          
+            $interest_ids[] = $row['interest_id'];
+        }
+ 
+
+        return self::find()->where(['interest_id' => $interest_ids]);
+    }
 
  
 

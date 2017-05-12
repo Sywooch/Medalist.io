@@ -15,6 +15,8 @@ use app\models\Goal;
 use app\models\GoalSubtask;
 use app\models\Follower;
 use app\models\Notification;
+use app\models\Interest;
+use amnah\yii2\user\models\User;
 use Yii;
 
 class PersonalController extends \yii\web\Controller
@@ -98,6 +100,51 @@ class PersonalController extends \yii\web\Controller
         $possibleFriends = Follower::findAlikeUsers( Yii::$app->user->identity->id )->where(['NOT IN', 'id', $excluded])->all();
 
         return $this->render('friends', [ 'possibleFriends' => $possibleFriends, 'followed' => $followed ]);
+    }
+
+
+
+
+
+    public function actionViewprofile()
+    {
+
+        //Кто уже в друзьях
+        if( !empty(Yii::$app->request->get()['user_id'] )) {
+            $user = User::findOne( Yii::$app->request->get()['user_id']  );
+        }
+
+        $isFollowed = false;
+
+         //Кто уже в друзьях
+        $followed = Follower::find()->where(['user_id' => Yii::$app->user->identity->id])->all();
+
+        $excluded = [];
+        foreach ($followed as $follower) {
+
+            if ( !$isFollowed ) {
+                $isFollowed = $follower->to_user_id == $user->id;
+            }
+            $excluded[] = $follower->to_user_id;
+
+        }
+        $excluded[] = Yii::$app->user->identity->id;
+
+        $possibleFriends = Follower::findAlikeUsers( Yii::$app->user->identity->id )->where(['NOT IN', 'id', $excluded])->all();
+
+
+
+        $interests = Interest::getUserInterests( $user->id )->all() ;
+
+    
+
+        return $this->render('profileview', [ 
+            'user' => $user,  
+            'interests' => $interests,  
+            'possibleFriends' => $possibleFriends, 
+            'followed' => $followed,
+            'isFollowed' => $isFollowed
+         ]);
     }
 
 
