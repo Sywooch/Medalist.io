@@ -103,8 +103,8 @@ echo $this->render('_panel.php');
 											</ul>
 											<ul class="questblock-info-info-list-2">
 												<li class="questblock-info-info-list-li"><span class="mdlst-accent">Награда: Ночной житель</span></li>
-												<li class="questblock-info-info-list-li"><span class="mdlst-accent">Выполнили: 13 466</span></li>
-												<li class="questblock-info-info-list-li">Провалили: 241</li>
+												<li class="questblock-info-info-list-li"><span class="mdlst-accent">Выполнили: <?=$q->getAchievementsCount();?></span></li>
+												<li class="questblock-info-info-list-li">Провалили: <?=$q->getFailuresCount();?></li>
 											</ul>
 										</div>
 										<div class="questblock-info-controlls">

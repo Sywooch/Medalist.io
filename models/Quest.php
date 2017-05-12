@@ -108,11 +108,11 @@ class Quest extends \yii\db\ActiveRecord
     } 
 
     public function getAchievements(){
-        $achievements = Achievement::find()->where('quest_id = '.$this->quest_id.' and status = 1')->all();
+        $achievements = Achievement::find()->where('quest_id = '.$this->quest_id.' and status IN (0,1)')->all();
         return $achievements;
     }
     public function getAchievementsCount(){
-        $achievements = Achievement::find()->where('quest_id = '.$this->quest_id.' and status = 1')->count();
+        $achievements = Achievement::find()->where('quest_id = '.$this->quest_id.' and status IN (0,1)')->count();
         return $achievements;
     }
     public function getFailures(){

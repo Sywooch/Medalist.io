@@ -69,7 +69,7 @@ class QuestController extends \yii\web\Controller
                                     <div class="questpending-deadline">До '.$questPending->deadline.'</div>
                                     <div class="questpending-title">'.$quest->name.'</div>
                                     <div class="questpending-description">'.$quest->description.'</div>
-                                    <a href="'.Yii::$app->.'" class="questpending-done mdlst-button">Готово!</a>
+                                    <a href="'.Yii::$app->urlManager->createUrl(['personal/achievement-add', 'quest_id'=> $quest->quest_id ]).'" class="questpending-done mdlst-button">Готово!</a>
                             </div>';
 
         return json_encode(['html' => $html]);

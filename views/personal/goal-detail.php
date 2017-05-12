@@ -51,9 +51,11 @@ echo $this->render('_panel.php');
 
                                     ?>
                                 </div>
+                                <?php if(!empty($goal->deadline) ) { ?>
                                 <span class="mygoals-dead">Дедлайн</span>
                                 <span
                                     class="mygoals-dead <?php if( strtotime($goal->deadline) < time() ) { ?>color-red <?php } ?>"><? echo date("d.m.Y", strtotime($goal->deadline)) ?></span>
+                                    <? } ?>
 
                                 <?
                                 if ($goal->private) {
@@ -187,7 +189,7 @@ echo $this->render('_panel.php');
 
                                                             <? foreach ($subtasks_points as  $j => $subtask_point) {
                                                                 $p = $s . "p" . $subtask_point->goal_subtask_id;
-                                                              
+
                                                                 ?>
 
 
