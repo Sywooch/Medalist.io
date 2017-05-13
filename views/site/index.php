@@ -16,7 +16,7 @@ $this->title = 'My Yii Application';
          <h2>...каждый день</h2>
          <h3>Medalyst - сервис контроля достижений</h3>
          <p class="videoClick" >
-         <a href="http://www.hotelsafloat.com/home-away.php" class="mdlst-button mdlst-button-accent">Зарегистрироваться</a>
+         <a href="<?=Yii::$app->urlManager->createUrl(['user/register' ])?>" class="mdlst-button mdlst-button-accent">Зарегистрироваться</a>
          </p>
      </div>
      </div>
