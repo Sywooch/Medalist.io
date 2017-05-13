@@ -4,50 +4,35 @@
  
 $this->title = 'My Yii Application';
 ?>
-<div class="site-index">
+<div id="videoDiv">
+     <div id="videoBlock">
+        <div id="videoCurtain"></div>
+         <video preload="preload" id="video" autoplay="autoplay" loop="loop">
+        <source src="/template/video/medalyst_bg_01.webm" type="video/webm"></source>
+        <source src="/template/video/medalyst_bg_01.mp4" type="video/mp4"></source>
+     </video>
+     <div id="videoMessage">
+         <h1>Достигай успеха</h1>
+         <h2>...каждый день</h2>
+         <h3>Medalyst - сервис контроля достижений</h3>
+         <p class="videoClick" >
+         <a href="http://www.hotelsafloat.com/home-away.php" class="mdlst-button mdlst-button-accent">Зарегистрироваться</a>
+         </p>
+     </div>
+     </div>
+ </div>
 
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
-
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
-
-    <div class="body-content">
-
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
-        </div>
-
-    </div>
-</div>
+ <style>
+#videoDiv {width: 100%; height: 450px; position: relative; overflow: hidden; margin-top: -35px;}
+#videoCurtain { position: absolute; background-color: black; opacity: 0.4; width: 100%; height:  100%; left: 0; top: 0; }
+#video {width: 100%;  }
+#videoBlock,#videoMessage {width: 100%; height: 450px; position: absolute; top: 0; left: 0;}
+#videoMessage *{padding:0.4em; margin:0;}
+#videoMessage {text-shadow: 2px 2px 2px #000000; color:white;z-index:99;  padding-top: 50px ; }
+#videoMessage h1{font-size: 3em;color:#ffffff;text-align:center;}
+#videoMessage h2{font-size: 2.5em;color:#ffffff;text-align:center;}
+#videoMessage h3{font-size: 2.0em;color:#ffffff;text-align:center;}
+.videoClick {text-align:center}
+.videoClick a{color:white; font-size: 1.7em; text-shadow: none; cursor:pointer;cursor:hand; padding: 12px 35px !important;}
+</style>
