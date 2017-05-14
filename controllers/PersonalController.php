@@ -118,7 +118,7 @@ class PersonalController extends \yii\web\Controller
         if( !empty($post)  && !Yii::$app->user->isGuest ){
             $currentUser = User::findOne( Yii::$app->user->identity->id );
            // var_dump( $_FILES );
-            if( !empty($_FILES['image']) ){
+            if( !empty($_FILES['image']['tmp_name']) ){
                 $srcTmp = $_FILES['image']['tmp_name'];
                 $info = pathinfo( $_FILES['image']['name'] );
                 move_uploaded_file($srcTmp,'./uploads/u/'.$currentUser->id.".".$info['extension']);
@@ -129,12 +129,20 @@ class PersonalController extends \yii\web\Controller
                     $photo = new Photo;
                     $photo->entity_id =  Yii::$app->user->identity->id;
                     $photo->entity_class = 'User';
-                    $photo->date_created = date("Y-m-d H:i:s");
+                   
                 }
-
+                $photo->date_created = date("Y-m-d H:i:s");
                 $photo->filename = '/uploads/u/'.$currentUser->id.".".$info['extension'];
 
                 $photo->save();
+            }
+
+            if( !empty( $post['name'] ) ){
+                $profile = $currentUser->getProfile()->one();
+
+                $name = trim( $post['name'] );
+                $profile->full_name = $name;
+                $profile->save();
             }
            // if( !empty($_FILES['image']))
         }

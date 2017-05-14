@@ -95,7 +95,7 @@ $currentUser = $user->id == Yii::$app->user->identity->id ;
                             </div>
                             <?php if( $currentUser ){  ?>
                             <div class="profileview-edit" style="display: none;">
-                                <?=$this->render("_edit_profile.php") ?>
+                                <?=$this->render("_edit_profile.php", ['user'=>$user]) ?>
 
                             </div>
                             <? } ?>

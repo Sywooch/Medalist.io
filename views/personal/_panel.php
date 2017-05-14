@@ -2,13 +2,13 @@
 /* @var $this yii\web\View */
 //Temp
 //TODO Levels Model
-use Yii;
+
 use app\models\BadgeBalance;
 use app\models\BadgeCategory;
 use app\models\ScalePointsBalance;
 use app\models\Badge;
 use app\models\Level;
-
+use Yii;
 
 
 $level = Level::getUserLevel ( Yii::$app->user->identity->id );
@@ -18,8 +18,6 @@ $points = ScalePointsBalance::getUserPointsSum( Yii::$app->user->identity->id  )
 
 $avatarSrc = Yii::$app->user->identity->getProfile()->one()->getAvatarSrc();
  
-
-
 ?>
 	<!-- USERPANEL -->
 	 	<div id="userpanel" class="userpanel">
@@ -27,7 +25,7 @@ $avatarSrc = Yii::$app->user->identity->getProfile()->one()->getAvatarSrc();
 	 			<div class="userpanel-user">
 	 				<div class="userpanel-user-pic" style="background-image: url(<?=$avatarSrc?>)"></div>
 	 				<div class="userpanel-user-info">
-	 					<div class="userpanel-user-info-name"><?=Yii::$app->user->identity->email?></div>
+	 					<div class="userpanel-user-info-name"><?=Yii::$app->user->identity->getName();?></div>
 	 					<div class="userpanel-user-info-date">на сайте с <?=date("d.m.Y", strtotime(Yii::$app->user->identity->created_at));?></div>
 	 				</div>
 	 			</div>

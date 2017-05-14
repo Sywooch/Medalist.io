@@ -14,7 +14,7 @@ $currentUrl = Url::current();
 			</div>
 			<div class="editprofile-field">
 				<div class="editprofile-field-label">Ваше имя: </div>
-				<div class="editprofile-field-input"><input type="text" name="name"></div>
+				<div class="editprofile-field-input"><input type="text" name="name" value="<?=$user->getName();?>"></div>
 			</div>
 			<div class="mdlst-hr"></div>
 			<?php if(false) { ?>
