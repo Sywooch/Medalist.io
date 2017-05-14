@@ -65,7 +65,7 @@ echo $this->render('_panel.php');
 								 		<div class="achievement-block-content">
 								 			<div class="achievement-block-content-cols">
 								 				<div class="achievement-block-content-col achievement-block-content-col-1">
-								 					<div class="achievement-block-content-title"><?=$a->name?></div>
+								 					<div class="achievement-block-content-title"><a href="<?=Yii::$app->urlManager->createUrl(['personal/achievement','achievement_id' => $a->achievement_id])?>"><?=$a->name?></a></div>
 								 					<div class="achievement-block-content-info">
 								 						<div class="achievement-block-content-info-date"><?=date("d.m.Y H:i:s", strtotime($a->date_created))?></div>
 								 						<div class="achievement-block-content-info-status mdlst-status mdlst-status__pending"><span class="mdlst-status-icon"></span> Подтверждается</div>

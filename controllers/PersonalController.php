@@ -34,6 +34,19 @@ class PersonalController extends \yii\web\Controller
         $achievements = Achievement::find()->where('user_id = '.Yii::$app->user->identity->id)->orderBy([ 'date_created' => SORT_DESC])->all();
         return $this->render('achievements', ['achievements' =>$achievements]);
     }
+    public function actionAchievement()
+    {
+        $achievement = Achievement::findOne(Yii::$app->request->get()['achievement_id']);
+
+        $quest = false;
+        $goal = false;
+
+        return $this->render('achievement', [
+            'achievement' =>$achievement,
+            'quest' => $quest,
+            'goal' => $goal
+        ]);
+    }
     public function actionAchievementAdd()
     {
 
