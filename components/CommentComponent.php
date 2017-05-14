@@ -13,12 +13,12 @@ class CommentComponent extends Component
 
 
     
-    public function renderCommentCount( $num, $commentWrapperClass = false  )
+    public function renderCommentCount( $num, $commentWrapperClass = false , $long = false )
     {
 
      
         ?>
-            <div class="comment-controll js-get-comments" <?php if(!empty($commentWrapperClass) ) {  ?> data-class="<?=$commentWrapperClass?>" <? }?>><span></span><?=$num?></div>
+            <div class="comment-controll js-get-comments" <?php if(!empty($commentWrapperClass) ) {  ?> data-class="<?=$commentWrapperClass?>" <? }?>><span></span><?=$num?><?php if( $long ) { ?> комментариев<?} ?></div>
         <?
     }
 

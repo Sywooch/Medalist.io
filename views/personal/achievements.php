@@ -1,6 +1,8 @@
 <?php
 /* @var $this yii\web\View */
 use app\models\Achievement;
+use app\models\Like;
+use app\models\Comment;
 echo $this->render('_panel.php');
 ?>
 
@@ -65,7 +67,7 @@ echo $this->render('_panel.php');
 								 				<div class="achievement-block-content-col achievement-block-content-col-1">
 								 					<div class="achievement-block-content-title"><?=$a->name?></div>
 								 					<div class="achievement-block-content-info">
-								 						<div class="achievement-block-content-info-date">27.11.2010</div>
+								 						<div class="achievement-block-content-info-date"><?=date("d.m.Y H:i:s", strtotime($a->date_created))?></div>
 								 						<div class="achievement-block-content-info-status mdlst-status mdlst-status__pending"><span class="mdlst-status-icon"></span> Подтверждается</div>
 								 					</div>
 														
@@ -73,9 +75,19 @@ echo $this->render('_panel.php');
 
 								 					<div class="achievement-block-content-bar">
 								 						<!-- todo universa;-bar-->	
+								 						<?php 
+								 						$likesCount = Like::getLikesOfObjectCount ($a);
+								 						$dislikesCount = Like::getDislikesOfObjectCount ($a);
+								 						$totalLikes = $likesCount + $dislikesCount;
+								 						if( $totalLikes > 0  ){
+								 							$percent = $likesCount / $totalLikes;
+								 						}else{
+								 							$percent = 0;
+								 						}
+								 						?>
 														<div class="mdlst-progress mdlst-progress__smaller mdlst-progress__agressive">
 														 	<div class="mdlst-progress-viewport">
-														 		<div class="mdlst-progress-track" style="margin-left: -80%"></div>
+														 		<div class="mdlst-progress-track" style="margin-left: -<?=(1-$percent)*100?>%"></div>
 														 	</div>
 														 </div>
 
@@ -96,9 +108,9 @@ echo $this->render('_panel.php');
 										 				<div class="achievement-block-rewards-reward">
 										 					<div class="mdlst-rewardbadge mdlst-rewardbadge-small"><img src="img/_reward-small.png" alt=""></div>
 										 				</div>
-										 				<div class="achievement-block-rewards-reward">
+										 				<!--<div class="achievement-block-rewards-reward">
 										 					<div class="mdlst-lurm"><i></i> <b>+2</b></div>
-										 				</div>
+										 				</div>-->
 										 			</div>
 
 										 			<div class="achievement-block-images">
@@ -107,7 +119,7 @@ echo $this->render('_panel.php');
 										 				<div class="achievement-block-images-image"></div>
 										 			</div>
 										 			<div class="achievement-block-comments">
-									 					<div class="comment-controll"><span></span>94 комментария</div>
+									 					<?=Yii::$app->comment->renderCommentCount( count(Comment::getCommentsOfObject($a)->all() ) , false, true );?>
 										 			</div>
 
 								 				</div>
