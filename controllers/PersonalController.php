@@ -20,6 +20,7 @@ use app\models\Scale;
 use app\models\Category;
 use app\models\Photo;
 use amnah\yii2\user\models\User;
+use yii\db\Expression;
 use Yii;
 
 class PersonalController extends \yii\web\Controller
@@ -294,9 +295,39 @@ class PersonalController extends \yii\web\Controller
             $excludeIds[] = $pt->quest_id;
         }
 
-        $quests = Quest::find()->where(['not in', 'quest_id', $excludeIds])->all();
+        $quests = Quest::find()->where(['not in', 'quest_id', $excludeIds]);
 
-        return $this->render('quests', ['quests' => $quests, 'questsPending' => $questPendingTasks]);
+
+        $quests = $quests->limit(10);
+        $quests = $quests->orderBy(new Expression('rand()'));
+        
+
+        $post = Yii::$app->request->post();
+        $category_selected = 0;
+        $predefinedText = "";
+        if( !empty($post['category_id'])){
+            $category_selected = $post['category_id'];
+            $quests = $quests->andWhere(['category_id' => $post['category_id']]);
+             $quests = $quests->limit(false);
+        }
+       if( !empty($post['text'])){
+            $predefinedText = $post['text'];
+            $quests = $quests->andFilterWhere(['like', 'name', $post['text']]);
+            $quests = $quests->limit(false);
+        }/* */
+
+        $quests = $quests->all();
+
+
+        $cats = Category::find()->all();
+
+        return $this->render('quests', [
+            'quests' => $quests, 
+            'questsPending' => $questPendingTasks, 
+            'cats' => $cats, 
+            'category_selected' => $category_selected,
+            'predefinedText' => $predefinedText,
+        ]);
     }
 
 

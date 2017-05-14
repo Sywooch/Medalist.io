@@ -48,7 +48,8 @@ echo $this->render('_panel.php');
 
 							 
 
-
+							<form method="post" action="">
+							<input type="hidden" value="<?=Yii::$app->request->getCsrfToken()?>" placeholder="email" name="_csrf">
 							<div class="output-header">
 								<h2 class="mdlst-h2t-goals">Квесты</h2>
 								<div class="output-header-meta">
@@ -58,10 +59,13 @@ echo $this->render('_panel.php');
 											<div class="dropdown-select-block-text">Политика</div>
 											<div class="dropdown-select-block-arrow"></div>
 										</div>
-										<select name="" id="" class="dropdown-select-real">
-											<option value="">Политика</option>
-											<option value="">Спорт</option>
-											<option value="">Природа</option>
+										<select name="category_id" id="category_id" class="dropdown-select-real">
+											<option value="0">Выберите категорию</option>
+											<?php foreach($cats as $cat) {
+												?>
+												<option value="<?=$cat->category_id?>" <?php if( $category_selected == $cat->category_id) { ?> selected="selected" <? }?>><?=$cat->name?></option>
+												<?
+											 } ?>
 										</select>
 									</div>
 
@@ -69,10 +73,11 @@ echo $this->render('_panel.php');
 
 							</div>
 							<div class="output-controlls">
-								<div class="output-controlls-searchbox"><div class="searchbox"><input type="text" class="searchbox-inp"><div class="searchbox-icon"></div></div></div>
+								<div class="output-controlls-searchbox"><div class="searchbox"><input type="text" class="searchbox-inp" name="text" value="<?=$predefinedText?>"><div class="searchbox-icon"></div></div></div>
 								 
-								
+								<? Yii::$app->decor->button('Подобрать')?>
 							</div>
+							</form>
 							<div class="quests-list">
 								<?php foreach( $quests as $q ) { 
 									$rewards = $q->getRewards()->all();
@@ -92,7 +97,7 @@ echo $this->render('_panel.php');
 
 
 									//Если есть шкала - юзаем ее, а если только награда - юзаем его
-
+									$scale = false;
 									if( !empty($rewards[0]->scale_id )){
 								 
 										$scale = Scale::findOne( $rewards[0]->scale_id );
@@ -125,7 +130,7 @@ echo $this->render('_panel.php');
 									</div>
 									<div class="questblock-info">
 										<div class="questblock-info-meta">
-											<?php if(!empty($rewards[0]) ) { ?><div class="questblock-info-meta-points">+<?=$rewards[0]->points?> к <?=$scale->name;?></div> <? } ?>
+											<?php if(!empty($rewards[0]) && $scale !== false) { ?><div class="questblock-info-meta-points">+<?=$rewards[0]->points?> к <?=$scale->name;?></div> <? } ?>
 											 
 										</div>
 										<div class="questblock-info-title"><a href="<?=Yii::$app->urlManager->createUrl(['personal/quest', 'quest_id' => $q->quest_id])?>"><?=$q->name?></a></div>
