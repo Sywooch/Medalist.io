@@ -103,10 +103,10 @@ echo $this->render('_panel.php');
 								 					
 										 			<div class="achievement-block-rewards">
 										 				<div class="achievement-block-rewards-reward">
-										 					<div class="mdlst-rewardbadge mdlst-rewardbadge-small"><img src="img/_reward-small.png" alt=""></div>
+										 					 
 										 				</div>
 										 				<div class="achievement-block-rewards-reward">
-										 					<div class="mdlst-rewardbadge mdlst-rewardbadge-small"><img src="img/_reward-small.png" alt=""></div>
+										 					 
 										 				</div>
 										 				<!--<div class="achievement-block-rewards-reward">
 										 					<div class="mdlst-lurm"><i></i> <b>+2</b></div>
@@ -114,8 +114,7 @@ echo $this->render('_panel.php');
 										 			</div>
 
 										 			<div class="achievement-block-images">
-										 				<div class="achievement-block-images-image"><img src="img/_achievement_01.jpg" alt=""></div>
-										 				<div class="achievement-block-images-image"><img src="img/_achievement_02.jpg" alt=""></div>
+										 				 
 										 				<div class="achievement-block-images-image"></div>
 										 			</div>
 										 			<div class="achievement-block-comments">
