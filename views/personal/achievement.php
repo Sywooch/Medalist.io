@@ -29,7 +29,7 @@ echo $this->render('_panel.php');
 							<div class="simplebox simplebox-padding">
 
 								<div class="output-header">
-									<h2 class="mdlst-h2t-goals">Достижение <?=$achievement->name?></h2>
+									<h2 class="mdlst-h2t-goals" style="white-space: normal;">Достижение <?=$achievement->name?></h2>
 									<div class="output-header-meta">
 
 									 
