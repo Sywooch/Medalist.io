@@ -7,6 +7,12 @@ use app\models\Level;
 use app\models\Notification;
 
 echo $this->render('_panel.php');
+
+
+
+
+$currentUser = $user->id == Yii::$app->user->identity->id ;
+
 ?>
 <link rel="stylesheet" href="/template/css/goals.css">
 <!-- CONTENT -->
@@ -30,9 +36,10 @@ echo $this->render('_panel.php');
                             </div>
                             <div class="profileview-aside-follower">
                                 <?php 
-                                if($user->id == Yii::$app->user->identity->id ) {  
-                                    
+                                if( $currentUser ) {  
+
                                         Yii::$app->decor->button('Это ваша страница!', '', 'mdlst-button-disabled mdlst-button-smaller');
+                                        Yii::$app->decor->button('Изменить профиль', '', 'mdlst-button-default mdlst-button-smaller js-update-profile-show');
 
                                      }else{ 
 
@@ -49,45 +56,56 @@ echo $this->render('_panel.php');
 
 
                         <div class="profileview-content">
+                            <div  class="profileview-content-view">
+                                <div class="profileview-content-level">
+                                         <div class="userpanel-info-level">
+                                            <div class="userpanel-info-level-point" style="padding-top: 19px;"><?=Level::getUserLevel( $user->id )->level;?></div>
+                                        </div>
+                                </div>
+                                 
 
-                            <div class="profileview-content-level">
-                                     <div class="userpanel-info-level">
-                                        <div class="userpanel-info-level-point" style="padding-top: 19px;"><?=Level::getUserLevel( $user->id )->level;?></div>
+
+                             
+                        
+                               <div class="output-header">
+                                    <div class="mygoals-name-div">
+                                        <h2 class="mdlst-h2t-goals withButton"><?=$user->getName()?></h2>
+                                 
+                                        <div class="clear"></div>
                                     </div>
-                            </div>
-                             
+                                </div>
 
+                                <div>
+                                    <? foreach( $interests as $interest) {
+                                        Yii::$app->decor->button($interest->name, '', 'mdlst-button-smaller mdlst-button-interest');
 
-                         
-                    
-                           <div class="output-header">
-                                <div class="mygoals-name-div">
-                                    <h2 class="mdlst-h2t-goals withButton"><?=$user->getName()?></h2>
-                             
-                                    <div class="clear"></div>
+                                        } ?>
+
+                                </div>
+
+                                <div class="profileview-scales">
+                                    <?php foreach( $scaleBalance as $si => $sb ) {
+
+                                        ?>
+                                            <p><?=$scales[$si]->name?> (<?=$sb?>) </p>
+                                            <? Yii::$app->decor->scale($sb / $totalBalance) ;?>
+                                        <?  
+                                        }?>
                                 </div>
                             </div>
-
-                            <div>
-                                <? foreach( $interests as $interest) {
-                                    Yii::$app->decor->button($interest->name, '', 'mdlst-button-smaller mdlst-button-interest');
-
-                                    } ?>
+                            <?php if( $currentUser ){  ?>
+                            <div class="profileview-edit" style="display: none;">
+                                <?=$this->render("_edit_profile.php") ?>
 
                             </div>
-
-                            <div class="profileview-scales">
-                                <?php foreach( $scaleBalance as $si => $sb ) {
-
-                                    ?>
-                                        <p><?=$scales[$si]->name?> (<?=$sb?>) </p>
-                                        <? Yii::$app->decor->scale($sb / $totalBalance) ;?>
-                                    <?  
-                                    }?>
-                            </div>
+                            <? } ?>
 
 
                         </div>
+
+
+
+                       
                     </div>
                     <?
 

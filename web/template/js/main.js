@@ -569,4 +569,12 @@ $(document).ready(function(){
 		/* COMMENTS END ================== */
 
 
+		/* PROFILE UPDATE */
+		$(document).on('click', ".js-update-profile-show", function(){
+			$('.profileview-content-view').slideUp();
+			$('.profileview-edit').slideDown();
+		});
+		/* PROFILE UPDATE END */
+
+
 });

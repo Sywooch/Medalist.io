@@ -18,6 +18,7 @@ use app\models\Notification;
 use app\models\Interest;
 use app\models\Scale;
 use app\models\Category;
+use app\models\Photo;
 use amnah\yii2\user\models\User;
 use Yii;
 
@@ -110,6 +111,35 @@ class PersonalController extends \yii\web\Controller
 
     public function actionViewprofile()
     {
+
+
+        $post = Yii::$app->request->post();
+
+        if( !empty($post)  && !Yii::$app->user->isGuest ){
+            $currentUser = User::findOne( Yii::$app->user->identity->id );
+           // var_dump( $_FILES );
+            if( !empty($_FILES['image']) ){
+                $srcTmp = $_FILES['image']['tmp_name'];
+                $info = pathinfo( $_FILES['image']['name'] );
+                move_uploaded_file($srcTmp,'./uploads/u/'.$currentUser->id.".".$info['extension']);
+                
+                //$photo = new Photo;
+                $photo = Photo::find()->where(['entity_id' => Yii::$app->user->identity->id, 'entity_class' => 'User'  ])->one();
+                if( !$photo ){
+                    $photo = new Photo;
+                    $photo->entity_id =  Yii::$app->user->identity->id;
+                    $photo->entity_class = 'User';
+                    $photo->date_created = date("Y-m-d H:i:s");
+                }
+
+                $photo->filename = '/uploads/u/'.$currentUser->id.".".$info['extension'];
+
+                $photo->save();
+            }
+           // if( !empty($_FILES['image']))
+        }
+
+
 
         //Кто уже в друзьях
         if( !empty(Yii::$app->request->get()['user_id'] )) {

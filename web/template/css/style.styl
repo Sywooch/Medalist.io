@@ -1178,6 +1178,8 @@ a
         white-space normal
         margin-right 25px
         width 150px    
+        & img 
+            max-width 150px
         &-follower 
             margin-top 15px
     &-content 
@@ -1191,7 +1193,20 @@ a
             top -15px
 /* profileview end */            
         
-    
+/* profileedit */  
+.editprofile
+    @extends .simplebox
+    @extends .simplebox-padding
+    &-field 
+        white-space nowrap
+        margin-bottom 20px
+        &-label 
+            @extends .dib_t 
+            width 150px
+        &-input 
+            @extends .dib_t
+            width 250px
+/* profileedit end */    
 
             
 /*system */

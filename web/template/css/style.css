@@ -86,6 +86,8 @@
 .friend-list-block-level,
 .profileview-aside,
 .profileview-content,
+.editprofile-field-label,
+.editprofile-field-input,
 .input-check-inline,
 .mdlst-button-accent,
 .mdlst-button-closer,
@@ -133,6 +135,8 @@
 .possible-friends-block,
 .profileview-aside,
 .profileview-content,
+.editprofile-field-label,
+.editprofile-field-input,
 .mdlst-pan-icon,
 .mdlst-pan-text,
 .mdlst-status-icon {
@@ -224,7 +228,8 @@
 .achievement-block,
 .newblock,
 .friend-list-block,
-.profileview {
+.profileview,
+.editprofile {
   box-shadow: 0 0 5px rgba(49,51,62,0.1);
   box-sizing: border-box;
   -webkit-border-radius: 4px;
@@ -238,10 +243,12 @@
 .newblock-padding,
 .friend-list-block-padding,
 .profileview-padding,
+.editprofile-padding,
 .achievement-block-content,
 .newblock,
 .friend-list-block,
-.profileview {
+.profileview,
+.editprofile {
   padding: 39px 36px;
 }
 /* 1280 */
@@ -1392,6 +1399,9 @@ a {
   margin-right: 25px;
   width: 150px;
 }
+.profileview-aside img {
+  max-width: 150px;
+}
 .profileview-aside-follower {
   margin-top: 15px;
 }
@@ -1406,6 +1416,18 @@ a {
   top: -15px;
 }
 /* profileview end */
+/* profileedit */
+.editprofile-field {
+  white-space: nowrap;
+  margin-bottom: 20px;
+}
+.editprofile-field-label {
+  width: 150px;
+}
+.editprofile-field-input {
+  width: 250px;
+}
+/* profileedit end */
 /*system */
 .rangeslider {
   background-color: rgba(138,68,255,0.3) !important;
