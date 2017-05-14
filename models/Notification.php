@@ -202,7 +202,7 @@ class Notification extends \yii\db\ActiveRecord
 
                                 //obj of User
                                 ?>
-                               взял квест <a href="<?=Yii::$app->urlManager->createUrl( ['personal/quest-detail','quest_id' => $obj->quest_id])?>"><?=$obj->name?></a>
+                               взял квест <a href="<?=Yii::$app->urlManager->createUrl( ['personal/quest','quest_id' => $obj->quest_id])?>"><?=$obj->name?></a>
                                 <?
                                 break;
 
