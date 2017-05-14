@@ -180,7 +180,7 @@ class Notification extends \yii\db\ActiveRecord
 
                                 //obj of User
                                 ?>
-                                совершил новое достижение <a href="<?=Yii::$app->urlManager->createUrl( ['achievement/view','achievement_id' => $obj->achievement_id])?>"><?=$obj->name?></a>
+                                совершил новое достижение <a href="<?=Yii::$app->urlManager->createUrl( ['personal/achievement','achievement_id' => $obj->achievement_id])?>"><?=$obj->name?></a>
                                 <?
                                 break;
                             case NotificationType::NT_NEW_REWARD:
