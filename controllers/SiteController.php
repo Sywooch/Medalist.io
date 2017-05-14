@@ -65,6 +65,10 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+
+        if( !Yii::$app->user->isGuest ) {
+            $this->redirect(['personal/viewprofile', 'user_id' => Yii::$app->user->identity->id]);
+        }
         $tag = Tag::findOne(6);
 
         $interests = $tag->getInterests();
