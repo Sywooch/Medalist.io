@@ -42,6 +42,20 @@ echo $this->render('_panel.php');
 
 								<p><?=$achievement->description?></p>
 
+
+								<?php if(!empty($quest) || !empty($goal)) { 
+
+									?>
+									<div class="mdlst-hr"></div>
+
+									<?
+
+									if( !empty($quest) ){
+										?>
+										<p>Связанный квест: <a href="<?=Yii::$app->urlManager->createUrl(['personal/quest','quest_id' => $quest->quest_id])?>"><?=$quest->name;?></a></p>
+										<?
+									}
+								}?>
  
 
  

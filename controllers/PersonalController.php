@@ -38,7 +38,7 @@ class PersonalController extends \yii\web\Controller
     {
         $achievement = Achievement::findOne(Yii::$app->request->get()['achievement_id']);
 
-        $quest = false;
+        $quest = !empty($achievement->quest_id) ? Quest::findOne( $achievement->quest_id ) : false;
         $goal = false;
 
         return $this->render('achievement', [

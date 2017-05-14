@@ -18,7 +18,7 @@ class CommentComponent extends Component
 
      
         ?>
-            <div class="comment-controll js-get-comments" <?php if(!empty($commentWrapperClass) ) {  ?> data-class="<?=$commentWrapperClass?>" <? }?>><span></span><?=$num?><?php if( $long ) { ?> комментариев<?} ?></div>
+            <div class="comment-controll js-get-comments" <?php if(!empty($commentWrapperClass) ) {  ?> data-class="<?=$commentWrapperClass?>" <? }?>><span></span><?=$num?><?php if( $long ) { ?> коммент.<?} ?></div>
         <?
     }
 
