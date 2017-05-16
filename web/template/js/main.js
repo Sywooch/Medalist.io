@@ -317,6 +317,7 @@ $(document).ready(function(){
 		console.log($('[data-toggle="rangeslider"]').rangeslider({ polyfill: false }));
 		$('.addach-description-text-textarea').trumbowyg(  );
 		$('[data-toggle="datepicker"]').datepicker( {format: 'dd.mm.yyyy'});
+		$('[data-toggle="dropzone"]').dropzone({ url: 'http://' + window.location.hostname + "/index.php?r=site/ajax-upload-image" });
 		
 		console.log( $('[data-toggle="rangeslider"]').rangeslider('update', true) );
  
