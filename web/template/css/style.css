@@ -378,7 +378,7 @@ a {
 .container {
   padding-top: 20px;
   padding-bottom: 20px;
-  background-color: rgba(138,68,255,0.1);
+  background-color: rgba(138,68,255,0.06);
 }
 .container-cols {
   white-space: nowrap;

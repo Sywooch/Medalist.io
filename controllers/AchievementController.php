@@ -10,6 +10,7 @@ use app\models\Tag;
 use app\models\Category;
 use app\models\Notification;
 use app\models\NotificationType;
+use app\models\Photo;
 use Yii;
 
 class AchievementController extends \yii\web\Controller
@@ -86,6 +87,25 @@ class AchievementController extends \yii\web\Controller
                     $achievement->category_id = $category_id;
                     $achievement->save();
 
+                }
+
+
+
+                if( !empty($post['files']) ) {
+                   
+
+                   foreach ($post['files'] as $file) {
+                         $info = pathinfo( $file );
+                       move_uploaded_file( $file, '/var/www/medalyst.ok/basic/web/uploads/ajax_upload/a/'. $info['basename'] );
+
+                       $photo = new Photo;
+                       $photo->filename =  '/uploads/a/'. $info['basename'] ;
+                       $photo->entity_class  = 'Achievement';
+                       $photo->entity_id =  $achievement->achievement_id;
+                       $photo->date_created = date("Y-m-d H:i:s");
+                       $photo->save();
+                   }
+                    
                 }
 
 

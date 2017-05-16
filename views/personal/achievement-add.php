@@ -46,7 +46,7 @@ echo $this->render('_panel.php');
 			 								<textarea name="description" id="description" cols="30" rows="10" class="addach-description-text-textarea"><?=$predefinedText?></textarea>
 			 							</div>
 			 							<div class="addach-description-date"><span class="addach-description-date-icon"></span><input data-toggle="datepicker" class="addach-description-date-date mdlst-input-small" name="date_achieved"></div>
-			 							<div class="addach-description-photos"  id="uploadHolder" data-toggle="dropzone">
+			 							<div class="addach-description-photos "  id="uploadHolder" data-toggle="dropzone">
 			 								<a class="container-menu-list-meta-add addach-description-photos-icon" href="#">
 												<span class="container-menu-list-meta-add-plus">+</span>
 											</a>
