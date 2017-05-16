@@ -162,9 +162,16 @@ class Notification extends \yii\db\ActiveRecord
 
         ?>
             <div class="newblock">
-                <div class="newblock-pic"><img src="<?=$userCreatedNew->getProfile()->one()->getAvatarSrc();?>"></div>
+                <div class="newblock-pic">
+			<a href="<?=Yii::$app->urlManager->createUrl( ['personal/viewprofile','user_id' => $userCreatedNew->id])?>">
+	                        <img src="<?=$userCreatedNew->getProfile()->one()->getAvatarSrc();?>"/>
+				<br /><?=$userCreatedNew->getName()?>
+			</a>
+		</div>
+
+
                 <div class="newblock-data">
-                    Пользователь <a href="<?=Yii::$app->urlManager->createUrl( ['personal/viewprofile','user_id' => $userCreatedNew->id])?>"><?=$userCreatedNew->getName()?></a>
+                    <!--Пользователь <a href="<?=Yii::$app->urlManager->createUrl( ['personal/viewprofile','user_id' => $userCreatedNew->id])?>"><?=$userCreatedNew->getName()?></a> -->
 
                     <?php 
                         switch ($notification->notification_type_id) {
@@ -172,7 +179,15 @@ class Notification extends \yii\db\ActiveRecord
 
                                 //obj of User
                                 ?>
-                                подписался на обновления пользователя <a href="<?=Yii::$app->urlManager->createUrl( ['personal/viewprofile','user_id' => $obj->to_user_id])?>"><?=$obj->getUser()->getName()?></a>
+								<div class="newblock-data-text">
+                	                подписался на обновления пользователя 
+								</div>
+				                <div class="newblock-pic-user-to">
+									<a href="<?=Yii::$app->urlManager->createUrl( ['personal/viewprofile','user_id' => $obj->to_user_id])?>">
+	                        			<img src="<?=$obj->getUser()->getProfile()->one()->getAvatarSrc();?>"/>
+										<br /><?=$obj->getUser()->getName()?>
+									</a>
+								</div>
                                 <?
                                 break;
                             
@@ -180,14 +195,23 @@ class Notification extends \yii\db\ActiveRecord
 
                                 //obj of User
                                 ?>
-                                совершил новое достижение <a href="<?=Yii::$app->urlManager->createUrl( ['personal/achievement','achievement_id' => $obj->achievement_id])?>"><?=$obj->name?></a>
+                                <!--совершил новое достижение--><a href="<?=Yii::$app->urlManager->createUrl( ['personal/achievement','achievement_id' => $obj->achievement_id])?>"><?=$obj->name?></a>
+								<p> <?=$obj->description?></p>
                                 <?
                                 break;
                             case NotificationType::NT_NEW_REWARD:
 
                                 //obj of User
                                 ?>
-                                получил награду <a href="<?=Yii::$app->urlManager->createUrl( ['personal/reward-detail','badge_id' => $obj->badge_id])?>"><?=$obj->name?></a>
+								<div class="newblock-data-text">
+                	                получил награду <?=$obj->name?><br><?=$obj->description?>
+								</div>
+				                <div class="newblock-pic-user-to">
+									<a href="<?=Yii::$app->urlManager->createUrl( ['personal/reward-detail','badge_id' => $obj->badge_id])?>">
+		                        		<img src="<?=$obj->picture_small;?>"/>
+										<br /><?=$obj->name?>
+									</a>
+								</div>
                                 <?
                                 break;
                             case NotificationType::NT_NEW_LEVEL:

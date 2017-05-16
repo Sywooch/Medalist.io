@@ -33,9 +33,12 @@
 .questblock-info,
 .questblock-info-info-list,
 .questblock-info-info-list-2,
+.questblock-info-info-list-2-badge,
 .questblock-info-controlls-likes,
 .questblock-info-controlls-comments,
 .questblock-info-controlls-button,
+.questblock-pic-achievment,
+.questblock-descr-achievment,
 .questpending-description,
 .questpending-done,
 .pregister-socials-icons-i,
@@ -75,7 +78,9 @@
 .achievement-block-images-image,
 .newblock-pic,
 .newblock-data,
+.newblock-data-text,
 .newblock-icon,
+.newblock-pic-user-to,
 .possible-friends-block,
 .friend-list-header-block,
 .friend-list-block-pic,
@@ -112,6 +117,9 @@
 .questblock-info,
 .questblock-info-info-list,
 .questblock-info-info-list-2,
+.questblock-info-info-list-2-badge,
+.questblock-pic-achievment,
+.questblock-descr-achievment,
 .questpending-description,
 .questpending-done,
 .pregister-socials-icons-i,
@@ -132,6 +140,8 @@
 .achievement-block-content-info-status,
 .achievement-block-content-col,
 .achievement-block-images-image,
+.newblock-data-text,
+.newblock-pic-user-to,
 .possible-friends-block,
 .profileview-aside,
 .profileview-content,
@@ -249,7 +259,7 @@
 .friend-list-block,
 .profileview,
 .editprofile {
-  padding: 39px 36px;
+  padding: 29px 26px;
 }
 /* 1280 */
 /*col dimenstions*/
@@ -398,11 +408,14 @@ a {
   position: relative;
 }
 .container-menu-list-li-active {
-  background-color: #ffe212;
+  background-color: rgba(255,226,18,0.7);
+}
+.container-menu-list-li:hover {
+  background-color: rgba(138,68,255,0.3);
 }
 .container-menu-list-link {
   display: block;
-  padding: 25px;
+  padding: 15px;
   font-size: 18px;
   color: #31333e;
   text-decoration: none;
@@ -434,7 +447,7 @@ a {
   -webkit-border-radius: 22px;
   -moz-border-radius: 22px;
   border-radius: 22px;
-  margin: 13px 11px;
+  margin: 6px 11px;
   cursor: pointer;
 }
 .container-menu-list-meta-add:hover {
@@ -454,6 +467,9 @@ a {
 }
 /* . container end */
 /* output */
+.output H3 {
+  color: #8a44ff;
+}
 .output-header {
   white-space: nowrap;
   position: relative;
@@ -741,6 +757,12 @@ a {
   margin-bottom: 0;
   margin-left: 0;
 }
+.questblock-info-info-list-2-badge {
+  list-style: none;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-top: 10px;
+}
 .questblock-info-controlls {
   white-space: nowrap;
 }
@@ -753,6 +775,20 @@ a {
 .questblock-comments {
   background-color: rgba(49,51,62,0.02);
   padding: 25px;
+}
+.questblock-pic-achievment {
+  width: 340px;
+  min-height: 270px;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+.questblock-descr-achievment {
+  width: 340px;
+  min-height: 270px;
+  position: relative;
+  margin: 20px;
+  line-height: 1.3em;
 }
 /* questchallenge */
 /* .questchallenge end*/
@@ -1283,22 +1319,36 @@ a {
   white-space: nowrap;
 }
 .newblock-pic {
-  width: 50px;
+  width: 100px;
+  height: 100px;
   margin-right: 30px;
+  line-height: 1.3em;
 }
 .newblock-pic img {
-  max-width: 50px;
+  max-width: 100px;
 }
 .newblock-data {
   white-space: normal;
-  width: 550px;
-  line-height: 1.5em;
+  width: 570px;
+  line-height: 1.3em;
+}
+.newblock-data-text {
+  width: 430px;
 }
 .newblock-icon {
   margin-left: 30px;
 }
 .newblock-icon img {
   max-width: 50px;
+}
+.newblock-pic-user-to {
+  width: 100px;
+  height: 100px;
+  padding-left: 30px;
+  text-align: center;
+}
+.newblock-pic-user-to img {
+  max-width: 100px;
 }
 /* NEWS END */
 /* possible-frined */
@@ -1442,12 +1492,13 @@ a {
   color: #ff2d0b;
 }
 .mdlst-h2 {
-  font-size: 44px;
+  font-size: 32px;
   text-transform: uppercase;
   color: #ff2d0b;
 }
 .mdlst-h2t {
-  font-size: 44px;
+  font-size: 32px;
+  margin-top: 20px;
   color: #31333e;
 }
 .mdlst-h3 {

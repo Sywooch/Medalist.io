@@ -3,9 +3,10 @@ clear:both;
 }
 
 .mdlst-h2t-goals {
-  font-size: 36px;
+  font-size: 32px;
 	margin-top:20px;
 	margin-bottom:20px;
+	color: #31333e;
 }
 
 .mygoals-clock{

@@ -29,7 +29,8 @@ echo $this->render('_panel.php');
 							<div class="simplebox simplebox-padding">
 
 								<div class="output-header">
-									<h2 class="mdlst-h2t-goals" style="white-space: normal; line-height: 1.1em;">Достижение <?=$achievement->name?></h2>
+									<h2 class="mdlst-h2t-goals" style="white-space: normal; line-height: 1.1em;">Достижение</h2>
+									<h3> <?=$achievement->name?></h3>
 									<div class="output-header-meta">
 
 									 
@@ -38,10 +39,10 @@ echo $this->render('_panel.php');
 
 								</div>
 
-								
 
 								<p><?=$achievement->description?></p>
 
+	 							<?=Yii::$app->like->renderWidget($achievement);?>
 
 								<?php if(!empty($quest) || !empty($goal)) { 
 
@@ -53,6 +54,10 @@ echo $this->render('_panel.php');
 									if( !empty($quest) ){
 										?>
 										<p>Связанный квест: <a href="<?=Yii::$app->urlManager->createUrl(['personal/quest','quest_id' => $quest->quest_id])?>"><?=$quest->name;?></a></p>
+										<div>										
+											<div class="questblock-pic-achievment" style="background-image: url(<?=$quest->picture?>)"></div>
+											<div  class="questblock-descr-achievment"><?=$quest->description?></div>
+										</div>
 										<?
 									}
 								}?>
@@ -60,7 +65,6 @@ echo $this->render('_panel.php');
 
  
 
-	 							<?=Yii::$app->like->renderWidget($achievement);?>
 
  							</div>
 

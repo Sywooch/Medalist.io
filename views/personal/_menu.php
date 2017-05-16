@@ -13,19 +13,19 @@ $currentUrl = Url::current();
 										<a class="container-menu-list-link" href="<?=Yii::$app->urlManager->createUrl('personal/dashboard')?>">Дэшборд</a>
 										<div class="container-menu-list-meta"></div>
 									</li>-->
-									<li class="container-menu-list-li">
+									<li class="container-menu-list-li <?php if($currentUrl == Yii::$app->urlManager->createUrl('personal/news') ) {  ?> container-menu-list-li-active <? } ?>">
 										<a class="container-menu-list-link" href="<?=Yii::$app->urlManager->createUrl('personal/news')?>">Новости</a>
 										<div class="container-menu-list-meta">
 											<div class="container-menu-list-meta-counter"></div>
 										</div>
 									</li>
-									<li class="container-menu-list-li">
+									<li class="container-menu-list-li <?php if($currentUrl == Yii::$app->urlManager->createUrl(['personal/viewprofile', 'user_id' => Yii::$app->user->identity->id]) ) {  ?> container-menu-list-li-active <? } ?>">
 										<a class="container-menu-list-link" href="<?=Yii::$app->urlManager->createUrl(['personal/viewprofile', 'user_id' => Yii::$app->user->identity->id])?>">Моя страница</a>
 										<div class="container-menu-list-meta">
 										
 										</div>
 									</li>
-									<li class="container-menu-list-li">
+									<li class="container-menu-list-li <?php if($currentUrl == Yii::$app->urlManager->createUrl('personal/achievements') ) {  ?> container-menu-list-li-active <? } ?>">
 										<a class="container-menu-list-link" href="<?=Yii::$app->urlManager->createUrl('personal/achievements')?>">Достижения</a>
 										<div class="container-menu-list-meta">
 											<a class="container-menu-list-meta-add" href="<?=Yii::$app->urlManager->createUrl('personal/achievement-add')?>">
@@ -33,7 +33,7 @@ $currentUrl = Url::current();
 											</a>
 										</div>
 									</li>
-									<li class="container-menu-list-li">
+									<li class="container-menu-list-li <?php if($currentUrl == Yii::$app->urlManager->createUrl('personal/goals') ) {  ?> container-menu-list-li-active <? } ?>">
 										<a class="container-menu-list-link" href="<?=Yii::$app->urlManager->createUrl('personal/goals')?>">Цели</a>
 										<div class="container-menu-list-meta">
 											<a class="container-menu-list-meta-add" href="<?=Yii::$app->urlManager->createUrl('personal/goal-add')?>">
@@ -41,7 +41,7 @@ $currentUrl = Url::current();
 											</a>
 										</div>
 									</li>
-									<li class="container-menu-list-li">
+									<li class="container-menu-list-li <?php if($currentUrl == Yii::$app->urlManager->createUrl('personal/friends') ) {  ?> container-menu-list-li-active <? } ?>">
 										<a class="container-menu-list-link" href="<?=Yii::$app->urlManager->createUrl('personal/friends')?>">Мои друзья</a>
 										<div class="container-menu-list-meta"></div>
 									</li>

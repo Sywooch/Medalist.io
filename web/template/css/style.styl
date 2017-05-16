@@ -60,7 +60,7 @@ text-shadow(n)
     background-color white
     line-height 1em
     &-padding 
-        padding 39px 36px 
+        padding 29px 26px 
 /* 1280 */
 /*col dimenstions*/
 body, html
@@ -192,10 +192,12 @@ a
                 border-bottom 1px solid rgba(CBlack, 0.1)
                 position relative
                 &-active 
-                    background-color CSub
+                    background-color rgba(CSub, 0.7)
+                &:hover 
+                    background-color rgba(CMain, 0.3)
             &-link 
                 display block
-                padding 25px 
+                padding 15px 
                 font-size 18px 
                 color CBlack
                 text-decoration none
@@ -221,7 +223,7 @@ a
                     position relative
                     border 5px rgba(CMain, 0.2) solid
                     border-radius 22px
-                    margin 13px 11px
+                    margin 6px 11px
                     cursor pointer
                     &:hover
                         -webkit-transform scale(1.1)
@@ -243,6 +245,8 @@ a
 
 /* output */
 .output
+    & H3
+        color #8a44ff
     &-header 
         white-space nowrap
         position relative
@@ -526,6 +530,12 @@ a
                 list-style none
                 margin-bottom 0
                 margin-left 0
+            &-list-2-badge
+                @extends .dib_t
+                list-style none
+                margin-bottom 0
+                margin-left 0
+                margin-top 10px
         &-controlls
             white-space nowrap
             &-likes 
@@ -540,6 +550,22 @@ a
     &-comments 
         background-color rgba(CBlack, 0.02)
         padding 25px
+
+.questblock-pic-achievment
+        @extends .dib_t
+        width 340px
+        min-height 270px
+        background-position center
+        background-size cover
+        position relative
+
+.questblock-descr-achievment
+        @extends .dib_t
+        width 340px
+        min-height 270px
+        position relative
+        margin 20px
+        line-height 1.3em
 
 /* questchallenge */
 /* .questchallenge end*/
@@ -1059,20 +1085,33 @@ a
     white-space nowrap
     &-pic
         @extends .dib_m
-        width 50px 
+        width 100px 
+        height 100px
         margin-right 30px
+        line-height 1.3em
         & img 
-            max-width 50px
+            max-width 100px
     &-data
         @extends .dib_m
         white-space normal
-        width 550px 
-        line-height 1.5em
+        width 570px 
+        line-height 1.3em
+        &-text
+         @extends .dib_t
+         width 430px
     &-icon 
         @extends .dib_m
         margin-left 30px
         & img 
             max-width 50px
+    &-pic-user-to
+        @extends .dib_t
+        width 100px 
+        height 100px 
+        padding-left 30px
+        text-align center
+        & img 
+            max-width 100px
  
   
         
@@ -1224,12 +1263,12 @@ a
 
 .mdlst
     &-h2
-        font-size 44px 
+        font-size 32px 
         text-transform uppercase 
         color CAccent
     &-h2t
-        font-size 44px 
- 
+        font-size 32px 
+        margin-top 20px
         color CBlack
     &-h3
         font-size 18px
