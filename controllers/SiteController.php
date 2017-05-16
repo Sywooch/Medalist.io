@@ -58,6 +58,11 @@ class SiteController extends Controller
         ];
     }
 
+    public function beforeAction($action) {
+        $this->enableCsrfValidation = false;
+        return parent::beforeAction($action);
+    }
+
     /**
      * Displays homepage.
      *
@@ -79,6 +84,35 @@ class SiteController extends Controller
     
       
         return $this->render('index', ['interests' => '', 'interests2' => '']);
+    }
+
+    /**
+     * Displays homepage.
+     *
+     * @return string
+     */
+    public function actionAjaxUploadImage()
+    { 
+
+        $this->enableCsrfValidation = false;
+
+        $ds = DIRECTORY_SEPARATOR;  //1
+     
+        $storeFolder = '/var/www/medalyst.ok/basic/web/uploads/ajax_upload/';   //2
+         
+        if (!empty($_FILES)) {
+             
+            $tempFile = $_FILES['file']['tmp_name'];          //3             
+              
+            $targetPath = $storeFolder;  //4
+             
+            $targetFile =  $targetPath. $_FILES['file']['name'];  //5
+         
+            move_uploaded_file($tempFile,$targetFile); //6
+             
+        }
+      
+       
     }
 
     /**

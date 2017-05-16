@@ -26,6 +26,7 @@ AppAsset::register($this);
     <link rel="stylesheet" href="/template/js/datepicker/dist/datepicker.css">
     <link rel="stylesheet" href="/template/js/rangeslider/rangeslider.css">
      <link rel="stylesheet" href="/template/css/goals.css">
+     <link rel="stylesheet" href="/template/js/dropzone/dropzone.css">
 
     <script src="/template/js/jquery-3.2.0.min.js"></script>
     <script src="/template/js/datepicker/dist/datepicker.js"></script>
