@@ -317,7 +317,19 @@ $(document).ready(function(){
 		console.log($('[data-toggle="rangeslider"]').rangeslider({ polyfill: false }));
 		$('.addach-description-text-textarea').trumbowyg(  );
 		$('[data-toggle="datepicker"]').datepicker( {format: 'dd.mm.yyyy'});
-		$('[data-toggle="dropzone"]').dropzone({ url: 'http://' + window.location.hostname + "/index.php?r=site/ajax-upload-image" });
+
+		myDropzoneFiles = [];
+		myDropzone = new Dropzone(
+			'[data-toggle="dropzone"]',
+			{
+				url: 'http://' + window.location.hostname + "/index.php?r=site/ajax-upload-image",
+				success: function(file, response){
+					 
+					myDropzoneFiles[ myDropzoneFiles.length ]= response;
+				}
+			}
+		);
+		 
 		
 		console.log( $('[data-toggle="rangeslider"]').rangeslider('update', true) );
  
@@ -365,6 +377,7 @@ $(document).ready(function(){
 				data['date_achieved'] = date_achieved.val();
 				data['entity'] = entity.val();
 				data['interests'] =  tagWords;
+				data['files'] =  myDropzoneFiles;
 				data['_csrf'] = _csrf.val();
 				 
 		 	
@@ -380,6 +393,7 @@ $(document).ready(function(){
 							$('.addach').slideUp();
 							$('.addach-success').slideDown();
 						}
+						myDropzoneFiles = [];
 
 						EventEngine.registerEventFromRawAjax (data);
 					}

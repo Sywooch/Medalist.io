@@ -105,8 +105,12 @@ class SiteController extends Controller
             $tempFile = $_FILES['file']['tmp_name'];          //3             
               
             $targetPath = $storeFolder;  //4
+            $info = pathinfo( $_FILES['file']['name'] );
+            $newFilename = date("YmdHis").md5(time().rand(0,10000)).".".$info['extension'];
              
-            $targetFile =  $targetPath. $_FILES['file']['name'];  //5
+            $targetFile =  $targetPath. $newFilename ;  //5
+
+            echo $targetPath. $newFilename ;
          
             move_uploaded_file($tempFile,$targetFile); //6
              
