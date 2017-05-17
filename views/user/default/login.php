@@ -12,7 +12,68 @@ use yii\widgets\ActiveForm;
 $this->title = Yii::t('user', 'Login');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="user-default-login">
+
+<!-- LOGIN -->
+<div class="pregister">
+    <div class="wc wc-c">
+        <div class="pregister-img"><img src="/template/img/pic-register.png" alt=""></div>
+        <h2 class="mdlst-h2">Добро пожаловать на Медалист</h2>
+        <h3 class="mdlst-h3">Введите свои email и пароль</h3>
+
+    <?php $form = ActiveForm::begin([
+        'id' => 'login-form',
+        'options' => ['class' => 'form-horizontal'],
+        'fieldConfig' => [
+            'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-7\">{error}</div>",
+            'labelOptions' => ['class' => 'col-lg-2 control-label'],
+        ],
+
+    ]); ?>
+
+    <?= $form->field($model, 'email') ?>
+    <?= $form->field($model, 'password')->passwordInput() ?>
+    <?= $form->field($model, 'rememberMe', [
+        'template' => "{label}<div class=\"col-lg-offset-2 col-lg-3\">{input}</div>\n<div class=\"col-lg-7\">{error}</div>",
+    ])->checkbox() ?>
+
+    <div class="form-group">
+        <div class="col-lg-offset-2 col-lg-10">
+            <?= Html::submitButton(Yii::t('user', 'Login'), ['class' => 'btn btn-primary']) ?>
+
+            <br/><br/>
+            <?= Html::a(Yii::t("user", "Регистрация"), ["/user/register"]) ?> /
+            <?= Html::a(Yii::t("user", "Напомнить пароль") . "?", ["/user/forgot"]) ?> /
+            <?= Html::a(Yii::t("user", "Перевыслать подтверждение регистрации"), ["/user/resend"]) ?>
+        </div>
+    </div>
+
+            
+            <div class="pregister-socials">
+                <p>войти через социальные сети</p>
+                <div class="pregister-socials-icons">
+                    <div class="pregister-socials-icons-i pregister-socials-icons-i-vk "></div>
+                    <div class="pregister-socials-icons-i pregister-socials-icons-i-fb"></div>
+                    <div class="pregister-socials-icons-i pregister-socials-icons-i-tw"></div>
+                    <div class="pregister-socials-icons-i pregister-socials-icons-i-gp"></div>
+                </div>
+            </div>
+    <?php ActiveForm::end(); ?>
+    <?php if (Yii::$app->get("authClientCollection", false)): ?>
+        <div class="col-lg-offset-2 col-lg-10">
+            <?= yii\authclient\widgets\AuthChoice::widget([
+                'baseAuthUrl' => ['/user/auth/login']
+            ]) ?>
+        </div>
+    <?php endif; ?>
+
+    </div>
+</div>
+<!-- .LOGIN END-->
+
+
+<!--
+
+ <div class="user-default-login">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -45,6 +106,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php ActiveForm::end(); ?>
 
+
+
     <?php if (Yii::$app->get("authClientCollection", false)): ?>
         <div class="col-lg-offset-2 col-lg-10">
             <?= yii\authclient\widgets\AuthChoice::widget([
@@ -59,3 +122,4 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 
 </div>
+-->

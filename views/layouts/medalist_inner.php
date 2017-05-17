@@ -78,7 +78,7 @@ AppAsset::register($this);
             <nav class="header-menu">
                 <ul class="header-menu-list">
                     <li class="header-menu-list-li"><a href="#" class="header-menu-list-li-a">Последние достижения</a></li>
-                    <li class="header-menu-list-li"><a href="#" class="header-menu-list-li-a">Как это работает</a></li>
+                    <li class="header-menu-list-li"><a href="<?=Yii::$app->urlManager->createUrl(['site/howitworks' ])?>" class="header-menu-list-li-a">Как это работает</a></li>
                     <li class="header-menu-list-li"><a href="#" class="header-menu-list-li-a">Истории успеха</a></li>
                 </ul>
             </nav>

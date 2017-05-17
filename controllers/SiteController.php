@@ -174,4 +174,15 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+
+    /**
+     * Displays howitworks page.
+     *
+     * @return string
+     */
+    public function actionHowitworks()
+    {
+        return $this->render('howitworks');
+    }
+
 }
