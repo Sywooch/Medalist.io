@@ -96,7 +96,7 @@ class AchievementController extends \yii\web\Controller
 
                    foreach ($post['files'] as $file) {
                        $info = pathinfo( $file );
-                       $result2 = rename( $file, '/var/www/medalyst.ok/basic/web/uploads/a/'. $info['basename'] );
+                       $result2 = rename( $file, './uploads/a/'. $info['basename'] );
 
                        if ( $result2 ){
 

@@ -98,7 +98,7 @@ class SiteController extends Controller
 
         $ds = DIRECTORY_SEPARATOR;  //1
      
-        $storeFolder = '/var/www/medalyst.ok/basic/web/uploads/ajax_upload/';   //2
+        $storeFolder = './uploads/ajax_upload/';   //2
          
         if (!empty($_FILES)) {
              
