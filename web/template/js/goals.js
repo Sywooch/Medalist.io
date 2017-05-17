@@ -41,6 +41,7 @@ $(document).ready(function(){
 				data['difficulty'] = difficulty.val();
 				data['deadline'] = deadline.val();
 				data['interests'] =  tagWords;
+				data['files'] =  myDropzoneFiles;
 				data['_csrf'] = _csrf.val();
 				 
 		 	

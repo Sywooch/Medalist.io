@@ -13,6 +13,7 @@ use app\models\Tag;
 use app\models\Category;
 use app\models\Notification;
 use app\models\NotificationType;
+use app\models\Photo;
 /**
  * GoalController implements the CRUD actions for Goal model.
  */
@@ -138,6 +139,10 @@ class GoalController extends Controller
                     $result['goal_id'] = $goal->goal_id;
                     $result['posted'] = $post;
                     $result['success'] = true;
+
+
+
+
                 }else{
                     $result['errors'] = $goal->errors;
                 }
@@ -191,6 +196,29 @@ class GoalController extends Controller
                     }
 
                 
+
+
+                if( !empty($post['files']) ) {
+                   
+
+                   foreach ($post['files'] as $file) {
+                       $info = pathinfo( $file );
+                       $result2 = rename( $file, './uploads/g/'. $info['basename'] );
+
+                       if ( $result2 ){
+
+
+                           $photo = new Photo;
+                           $photo->filename =  '/uploads/g/'. $info['basename'] ;
+                           $photo->entity_class  = 'Goal';
+                           $photo->entity_id =  $post->goal_id;
+                           $photo->date_created = date("Y-m-d H:i:s");
+                           $photo->save();
+                        }
+                   }
+                    
+                }
+
 
 
                     $result['goal_id'] = $goal->goal_id;

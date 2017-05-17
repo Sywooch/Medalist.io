@@ -318,17 +318,21 @@ $(document).ready(function(){
 		$('.addach-description-text-textarea').trumbowyg(  );
 		$('[data-toggle="datepicker"]').datepicker( {format: 'dd.mm.yyyy'});
 
-		myDropzoneFiles = [];
-		myDropzone = new Dropzone(
-			'[data-toggle="dropzone"]',
-			{
-				url: 'http://' + window.location.hostname + "/index.php?r=site/ajax-upload-image",
-				success: function(file, response){
-					 
-					myDropzoneFiles[ myDropzoneFiles.length ]= response;
+
+		if( $('[data-toggle="dropzone"]').length > 0 ){
+			myDropzoneFiles = [];
+			myDropzone = new Dropzone(
+				'[data-toggle="dropzone"]',
+				{
+					url: 'http://' + window.location.hostname + "/index.php?r=site/ajax-upload-image",
+					success: function(file, response){
+						 
+						myDropzoneFiles[ myDropzoneFiles.length ]= response;
+					}
 				}
-			}
-		);
+			);
+
+		}
 		 
 		
 		console.log( $('[data-toggle="rangeslider"]').rangeslider('update', true) );

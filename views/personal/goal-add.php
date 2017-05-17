@@ -39,7 +39,7 @@ echo $this->render('_panel.php');
 			 								<textarea name="description" id="description" data-toggle="trumbowyg" cols="30" rows="10" class="addach-description-text-textarea"><?=$predefinedText?></textarea>
 			 							</div>
 			 							<div class="addach-description-date">Крайний срок до достижениея: <span class="addach-description-date-icon"></span><input data-toggle="datepicker" class="addach-description-date-date mdlst-input-small" name="deadline"></div>
-			 							<div class="addach-description-photos">
+			 							<div class="addach-description-photos" data-toggle="dropzone">
 			 								<a class="container-menu-list-meta-add addach-description-photos-icon" href="#">
 												<span class="container-menu-list-meta-add-plus">+</span>
 											</a>
