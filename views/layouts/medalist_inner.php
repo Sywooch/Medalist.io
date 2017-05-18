@@ -41,6 +41,7 @@ AppAsset::register($this);
 
             $ajaxUrls['takeQuest'] = Yii::$app->urlManager->createUrl('quest/ajax-take-quest');
             $ajaxUrls['getQuestPendingTaskHtml'] = Yii::$app->urlManager->createUrl('quest/ajax-get-quest-pending-task-html');
+            $ajaxUrls['questChallengeSend'] = Yii::$app->urlManager->createUrl('quest/ajax-quest-challenge-send');
             
             $ajaxUrls['addAchievement'] = Yii::$app->urlManager->createUrl('achievement/ajax-add-achievement');
 

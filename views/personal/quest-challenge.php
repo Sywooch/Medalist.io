@@ -95,7 +95,7 @@ echo $this->render('_panel.php');
                                                 <div class="friend-list-block-level"><?=$level->level?></div>
                                               
                                                 <div class="friend-list-block-level">
-                                                    <? Yii::$app->decor->button('Бросить вызов', '', 'mdlst-button-small', ['user_id' => $u->id]) ?>
+                                                    <? Yii::$app->decor->button('Бросить вызов', '', 'mdlst-button-smaller js-h-questchallenge-user js-questchallenge-select-user', ['user_id' => $u->id]) ?>
                                                 </div>
                                             </div>
                                             <?}?>
