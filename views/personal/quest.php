@@ -90,6 +90,12 @@ echo $this->render('_panel.php');
 									
 								</div>
 
+								<div class="questdetail-completeduser-list">
+									<h3>Бросить вызов: </h3>
+									 <? Yii::$app->decor->button('Бросить вызов вашим друзьям!',  Yii::$app->urlManager->createUrl( ['personal/quest-challenge','quest_id' => $quest->quest_id] ) ); ?>
+									
+								</div>
+
 	 							<?=Yii::$app->like->renderWidget($quest);?>
 
  							</div>
