@@ -101,7 +101,7 @@ echo $this->render('_panel.php');
                             </div>
                             <!--listGoals-left-->
                             <?php if(!empty($goal->getPhotos()[0])) {  ?>
-                            <div class="goals-picture-mid"><img src="uploads<?= $goal->getPhotos()[0]->filename ?>"
+                            <div class="goals-picture-mid"><img src="<?= $goal->getPhotos()[0]->filename ?>"
                                                                 alt=""/></div>
                             <?php } ?>
                             <div class="clear"></div>
