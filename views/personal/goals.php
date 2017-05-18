@@ -1,6 +1,8 @@
 <?php
 /* @var $this yii\web\View */
 use app\models\Goal;
+use app\models\Like;
+use app\models\Comment;
 
 echo $this->render('_panel.php');
 ?>
@@ -22,6 +24,9 @@ echo $this->render('_panel.php');
                         </div>
                     </div>
 
+		            <div class="achievement-list">
+
+
 
                 <?php if( !empty($goals) ) { ?>
 
@@ -30,9 +35,8 @@ echo $this->render('_panel.php');
                         ?>
 
 
-
-
-                        <div class="goal-content">
+                        <div class="goal-content achievement-block achievement-block--big">
+						<div class="achievement-block-content">
                             <div class="mygoals-name-div">
                                 <div class="input-check withList">
                                     <input <?= $goal->completed ? 'checked = "checked"' : ''; ?> type="checkbox"
@@ -94,9 +98,21 @@ echo $this->render('_panel.php');
                                         } ?>
                                     </div>
                                 </div>
-                                <div class="goalDescr goals-description">
-                                    <?= $goal->description ?>
-                                </div>
+                            <div class="clear"></div>
+
+
+													<div class="achievement-block-content-description"><?=$goal->description;?></div>
+
+													<div class="questblock-info-controlls">
+														<div class="questblock-info-controlls-likes">
+								 							<?=Yii::$app->like->renderWidget($goal);?>
+	        											</div>
+
+														<div class="questblock-info-controlls-comments">
+																<?=Yii::$app->comment->renderCommentCount( count(Comment::getCommentsOfObject($goal)->all() ) , false, true );?>
+        												</div>
+													</div>
+
                             </div>
                             <!--listGoals-left-->
 
@@ -109,6 +125,7 @@ echo $this->render('_panel.php');
                             <?=$this->render("_goal_subtask.php", ['goal' => $goal, 'g' =>$g]) ?>
 
                         </div>
+                </div>
                         <!--goal-content-->
                     <? } ?>
 
@@ -128,6 +145,7 @@ echo $this->render('_panel.php');
                     <? } ?>
 
                     <!--goal-content-->
+                </div>
                 </div>
                 <!--output-->
                 <!-- Списко целей-->

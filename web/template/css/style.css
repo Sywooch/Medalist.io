@@ -1251,6 +1251,8 @@ a {
 }
 .achievement-block-content-description {
   line-height: 1.65em;
+  margin-bottom: 30px;
+  margin-top: 30px;
 }
 .achievement-block-content-bar {
   width: 212px;
@@ -1292,6 +1294,8 @@ a {
 }
 .achievement-block--small .achievement-block-content-description {
   font-size: 14px;
+  margin-bottom: 30px;
+  margin-top: 30px;
 }
 .achievement-block--small .achievement-block-content-info {
   margin-bottom: 12px;
@@ -1844,8 +1848,8 @@ a {
 }
 .output-header-meta-goals {
   position: absolute;
-  right: 580px;
-  top: 14px;
+  right: 540px;
+  top: 0px;
   height: 30px;
 }
 .mygoals-process {
@@ -1945,7 +1949,7 @@ a {
   background-size: cover;
 }
 .goals-picture-mid {
-  width: 284px;
+  width: 238px;
   height: 227px;
   background-size: cover;
   float: right;
@@ -1953,7 +1957,7 @@ a {
 .goals-picture-small {
   float: left;
   margin-left: 18px;
-  width: 161px;
+  width: 18%;
   height: 128px;
   background-size: cover;
 }
@@ -2177,7 +2181,7 @@ ntainer {
   height: 30px;
   position: absolute;
   left: 363px;
-  top: 30px;
+  top: 29px;
 }
 #mygoals-name {
   color: #8a44ff;

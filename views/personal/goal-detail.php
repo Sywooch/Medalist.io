@@ -15,6 +15,7 @@ echo $this->render('_panel.php');
             <div class="container-col container-col-2">
                 <!-- Цель детально-->
                 <div class="output">
+                <div class="simplebox simplebox-padding">
                     <div class="output-header">
                         <h2 class="mdlst-h2t-goals">Цель</h2>
                         <div class="output-header-meta-goals">
@@ -242,6 +243,7 @@ echo $this->render('_panel.php');
                             </div>
                         </div>
                     </div>
+                </div>
                 </div>
                 <!-- Цель детально-->
             </div>

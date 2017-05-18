@@ -39,10 +39,61 @@ echo $this->render('_panel.php');
 
 								</div>
 
+                        <?php if(!empty($achievement->getPhotos()) ) { ?>
+                        <div class="goals-pictures">
+                            <div class="goals-picture-big" <?php if(!empty($achievement->getPhotos()[0]) ) { ?> style = "background-image: url(<?=$achievement->getPhotos()[0]->filename?>);"<? } ?>></div>
 
-								<p><?=$achievement->description?></p>
+                            <div class="goals-pictures-small">
 
-	 							<?=Yii::$app->like->renderWidget($achievement);?>
+                                <? $Photos = $achievement->getPhotos();
+                                for ($n = 1; $n < count($Photos); $n++) {?>
+	                            <div class="goals-picture-small" style = "background-image: url(<?=$Photos[$n]->filename?>);"></div>
+                                <? }
+                                ?>
+
+                            </div>
+                        </div>
+                        <? } ?>
+
+                        <div class="clear"></div>
+
+
+
+													<div class="achievement-block-content-description"><?=$achievement->description;?></div>
+
+								 					<div class="achievement-block-content-bar">
+								 						<!-- todo universa;-bar-->	
+								 						<?php 
+								 						$likesCount = Like::getLikesOfObjectCount ($achievement);
+								 						$dislikesCount = Like::getDislikesOfObjectCount ($achievement);
+								 						$totalLikes = $likesCount + $dislikesCount;
+								 						if( $totalLikes > 0  ){
+								 							$percent = $likesCount / $totalLikes;
+								 						}else{
+								 							$percent = 0;
+								 						}
+								 						?>
+														<div class="mdlst-progress mdlst-progress__smaller mdlst-progress__agressive">
+														 	<div class="mdlst-progress-viewport">
+														 		<div class="mdlst-progress-track" style="margin-left: -<?=(1-$percent)*100?>%"></div>
+														 	</div>
+														 </div>
+
+								 					</div>
+
+
+													<div class="questblock-info-controlls">
+														<div class="questblock-info-controlls-likes">
+	 														<?=Yii::$app->like->renderWidget($achievement);?>
+	        											</div>
+
+														<div class="questblock-info-controlls-comments">
+																<?=Yii::$app->comment->renderCommentCount( count(Comment::getCommentsOfObject($achievement)->all() ) , false, true );?>
+        												</div>
+													</div>
+
+								 		<!-- extra info --> 
+								 		<div class="achievement-block-info">Подождите, пока сообщество подтвердит ваше достижение. Чем больше лайков, тем больше шанс!</div>
 
 								<?php if(!empty($quest) || !empty($goal)) { 
 
@@ -66,7 +117,6 @@ echo $this->render('_panel.php');
  
 
 
- 							</div>
 
 							<div class="questblock-comments questblock-comments-quest-<?=$achievement->achievement_id?> comments-widget" data-obj="Achievement" data-id="<?=$achievement->achievement_id?>" >
 								<div class="questblock-comments-form"><?=Yii::$app->comment->renderResponseForm( $achievement  );?></div>
@@ -78,6 +128,7 @@ echo $this->render('_panel.php');
 
 					</div>
 
+				</div>
 
 				</div>
 			</div>
