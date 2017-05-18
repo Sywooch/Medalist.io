@@ -19,7 +19,7 @@ echo $this->render('_panel.php');
 						<div class="output">
 
 							<div class="output-header">
-								<h2 class="mdlst-h2t">Достижеия </h2>
+								<h2 class="mdlst-h2t">Достижеия (<?= count($achievements)?>)</h2>
 								<div class="output-header-meta">
 
 									 
@@ -92,10 +92,18 @@ echo $this->render('_panel.php');
 														 </div>
 
 								 					</div>
-								 					<div class="achievement-block-content-likes">
-								 						<?=Yii::$app->like->renderWidget($a);?>
-							 							
-								 					</div>
+
+
+													<div class="questblock-info-controlls">
+
+														<div class="questblock-info-controlls-likes">
+								 							<?=Yii::$app->like->renderWidget($a);?>
+	        											</div>
+
+														<div class="questblock-info-controlls-comments">
+																<?=Yii::$app->comment->renderCommentCount( count(Comment::getCommentsOfObject($a)->all() ) , false, true );?>
+        												</div>
+													</div>
 
 
 								 				</div>
@@ -114,11 +122,7 @@ echo $this->render('_panel.php');
 										 			</div>
 
 										 			<div class="achievement-block-images">
-										 				 
-										 				<div class="achievement-block-images-image"></div>
-										 			</div>
-										 			<div class="achievement-block-comments">
-									 					<?=Yii::$app->comment->renderCommentCount( count(Comment::getCommentsOfObject($a)->all() ) , false, true );?>
+				                            <div class="goals-picture-mid" <?php if(!empty($a->getPhotos()[0]) ) { ?> style = "background-image: url(<?=$a->getPhotos()[0]->filename?>);"<? } ?>></div>
 										 			</div>
 
 								 				</div>
