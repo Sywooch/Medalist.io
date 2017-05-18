@@ -4,7 +4,6 @@ use app\models\Goal;
 
 echo $this->render('_panel.php');
 ?>
-<link rel="stylesheet" href="/template/css/goals.css">
 <!-- CONTENT -->
 <div class="container">
     <div class="wc">
@@ -100,10 +99,10 @@ echo $this->render('_panel.php');
                                 </div>
                             </div>
                             <!--listGoals-left-->
-                            <?php if(!empty($goal->getPhotos()[0])) {  ?>
-                            <div class="goals-picture-mid"><img src="<?= $goal->getPhotos()[0]->filename ?>"
-                                                                alt=""/></div>
-                            <?php } ?>
+
+                            <div class="goals-picture-mid" <?php if(!empty($goal->getPhotos()[0]) ) { ?> style = "background-image: url(<?=$goal->getPhotos()[0]->filename?>);"<? } ?>></div>
+
+
                             <div class="clear"></div>
 
 

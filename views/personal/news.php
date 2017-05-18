@@ -8,7 +8,6 @@ use app\models\Notification;
 
 echo $this->render('_panel.php');
 ?>
-<link rel="stylesheet" href="/template/css/goals.css">
 <!-- CONTENT -->
 <div class="container">
     <div class="wc">

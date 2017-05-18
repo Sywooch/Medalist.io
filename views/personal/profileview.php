@@ -14,7 +14,6 @@ echo $this->render('_panel.php');
 $currentUser = $user->id == Yii::$app->user->identity->id ;
 
 ?>
-<link rel="stylesheet" href="/template/css/goals.css">
 <!-- CONTENT -->
 <div class="container">
     <div class="wc">

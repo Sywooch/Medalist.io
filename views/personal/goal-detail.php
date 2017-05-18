@@ -6,7 +6,6 @@ use app\models\Goal;
 
 echo $this->render('_panel.php');
 ?>
-<link rel="stylesheet" href="/template/css/goals.css">
 <!-- CONTENT -->
 <div class="container">
     <div class="wc">
@@ -79,13 +78,14 @@ echo $this->render('_panel.php');
 
                         <?php if(!empty($goal->getPhotos()) ) { ?>
                         <div class="goals-pictures">
-                            <div class="goals-picture-big"><?php if(!empty($goal->getPhotos()[0]) ) { ?><img src="uploads<?= $goal->getPhotos()[0]->filename ?>" alt=""/><? } ?></div>
+                            <div class="goals-picture-big" <?php if(!empty($goal->getPhotos()[0]) ) { ?> style = "background-image: url(<?=$goal->getPhotos()[0]->filename?>);"<? } ?>></div>
+
                             <div class="goals-pictures-small">
 
                                 <? $Photos = $goal->getPhotos();
-                                for ($n = 1; $n < count($Photos); $n++) {
-                                    echo '<div class="goals-picture-small"><img src="uploads' . $Photos[$n]->filename . '" alt=""/></div>';
-                                }
+                                for ($n = 1; $n < count($Photos); $n++) {?>
+	                            <div class="goals-picture-small" style = "background-image: url(<?=$Photos[$n]->filename?>);"></div>
+                                <? }
                                 ?>
 
                             </div>
