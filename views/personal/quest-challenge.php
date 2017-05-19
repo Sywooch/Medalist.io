@@ -100,7 +100,10 @@ echo $this->render('_panel.php');
                                             </div>
                                             <?}?>
 
+                                            <? Yii::$app->decor->_csrf() ?>
+                                            <input type="hidden" name="quest_id" value="<?=$quest->quest_id?>">
 
+                                    <? Yii::$app->decor->button('Бросить вызов выбранным друзьям', '', '  js-questchallenge-send' ) ?>
 
 
 

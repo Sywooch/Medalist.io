@@ -10,6 +10,13 @@ class DecorComponent extends Component
 {
 
 
+    public function _csrf(){
+
+        ?>
+            <input type="hidden" value="<?=Yii::$app->request->getCsrfToken()?>" name="_csrf">
+        <?
+    }
+
     public function translateDateString( $date_string ){
         $substitute = array('days' => 'дн.', 'weeks' => 'нед.');
 

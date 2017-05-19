@@ -430,19 +430,23 @@ $(document).ready(function(){
 		$(document).on('click', '.js-questchallenge-send', function(){
 			var selected = $('.js-h-questchallenge-user.checked'),
 				_csrf = $('[name=_csrf]'),
+				quest_id = $('[name=quest_id]'),
 				user_ids = [];
+
 
 				selected.each( function(i,e){
 					user_ids[user_ids.length] = $(e).data('user_id');
 				}); 
 
-				$({
+				console.log( user_ids );
+
+				$.ajax({
 					url: ajaxUrls['questChallengeSend'],
-					data: {user_ids : user_ids, _csrf: _csrf.val()},
+					data: {user_ids : user_ids, _csrf: _csrf.val(), quest_id: quest_id.val()},
 					type: 'post',
 					dataType: 'json',
 					success: function( data ){
-
+						console.log(data);
 					}
 				});
 		});

@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\Quest;
+use app\models\questChallenge;
 use app\models\QuestChallengeQuery;
 use app\models\QuestPendingTask;
 use app\models\Badge;
@@ -80,6 +81,30 @@ class QuestController extends \yii\web\Controller
     public function actionAjaxQuestChallengeSend(){
 
         $result = [];
+
+        $post = Yii::$app->request->get();
+
+        if ( !empty($post['users_ids'])  && !empty($post['quest_id']) ){
+             $result['users'] = [];
+            foreach ($post['users_ids'] as $uid) {
+
+                //TODO проверка друзья или нет (чтобы левым не кидать )
+
+                $result['users'] = $uid;
+                $questChallenge = new QuestChallenge;
+
+                $questChallenge->user_id = Yii::$app->user->identity->id;
+                $questChallenge->to_user_id = $uid;
+                $questChallenge->quest_id = $post['quest_id'];
+                $questChallenge->date_created = date("Y-m-d H:i:s");
+
+                if( $questChallenge->save() ){
+                     $result['success'] = true;
+                }
+
+            }
+
+        }
 
         return json_encode($result);
 
