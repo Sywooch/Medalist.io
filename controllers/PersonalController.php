@@ -32,7 +32,7 @@ class PersonalController extends \yii\web\Controller
 
     public function actionAchievements()
     {
-        $achievements = Achievement::find()->where('user_id = '.Yii::$app->user->identity->id)->orderBy([ 'date_created' => SORT_DESC])->all();
+        $achievements = Achievement::find()->where('user_id = '.Yii::$app->user->identity->id)->orderBy([ 'date_achieved' => SORT_DESC, 'date_created' => SORT_DESC ])->all();
         return $this->render('achievements', ['achievements' =>$achievements]);
     }
     public function actionAchievement()
@@ -233,7 +233,7 @@ class PersonalController extends \yii\web\Controller
     public function actionGoals()
     {
         //$id = Yii::$app->request->get()['goal_id'];
-        $goals = Goal::find()->where(['user_id' => Yii::$app->user->identity->id ])->all();
+        $goals = Goal::find()->where(['user_id' => Yii::$app->user->identity->id ])->orderBy(['goal_id' => SORT_DESC])->all();
         return $this->render('goals', ['goals' => $goals]);
     }
 
