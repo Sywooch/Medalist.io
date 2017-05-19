@@ -32,7 +32,7 @@ class QuestChallenge extends \yii\db\ActiveRecord
     {
         return [
             [['quest_id', 'user_id', 'to_user_id', 'date_created'], 'required'],
-            [['quest_id', 'user_id', 'to_user_id', 'refused'], 'integer'],
+            [['quest_id', 'user_id', 'to_user_id', 'status'], 'integer'],
             [['date_created'], 'safe'],
             [['comment'], 'string'],
         ];
@@ -49,7 +49,7 @@ class QuestChallenge extends \yii\db\ActiveRecord
             'user_id' => Yii::t('app', 'Created By ID'),
             'to_user_id' => Yii::t('app', 'To User ID'),
             'date_created' => Yii::t('app', 'Date Created'),
-            'refused' => Yii::t('app', 'Refused'),
+            'status' => Yii::t('app', 'status'),
             'comment' => Yii::t('app', 'Comment'),
         ];
     }
@@ -69,5 +69,5 @@ class QuestChallenge extends \yii\db\ActiveRecord
         return $this->hasOne( Quest::className(), ['quest_id' => 'quest_id'] );
     }
 
-    
+
 }

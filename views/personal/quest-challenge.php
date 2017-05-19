@@ -32,7 +32,7 @@ echo $this->render('_panel.php');
                         </div>
                     </div>
 
-                    <div class="simplebox simplebox-padding">
+                    <div class="simplebox simplebox-padding js-h-quest-sended">
                         
 
 
@@ -107,6 +107,10 @@ echo $this->render('_panel.php');
 
 
 
+                    </div>
+
+                    <div class="js-h-quest-sended-success" style="display: none;">
+                        <? Yii::$app->decor->infoPanel ('Выуспешно бросили вызов! Посмотрите ваши вызовы в разделе <a href="'.Yii::$app->urlManager->createUrl( ['personal/quests' ]).'">квесты</a>! '); ?>
                     </div>
 
 

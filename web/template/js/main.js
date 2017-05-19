@@ -447,6 +447,10 @@ $(document).ready(function(){
 					dataType: 'json',
 					success: function( data ){
 						console.log(data);
+						if( data.success ){
+							$('.js-h-quest-sended').slideUp();
+							$('.js-h-quest-sended-success').slideDown();
+						}
 					}
 				});
 		});
