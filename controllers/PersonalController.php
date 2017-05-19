@@ -10,6 +10,7 @@ use app\models\BadgeGroup;
 use app\models\ScalePointsBalance;
 use app\models\Badge;
 use app\models\Quest;
+use app\models\QuestChallenge;
 use app\models\QuestPendingTask;
 use app\models\Goal;
 use app\models\GoalSubtask;
@@ -306,6 +307,10 @@ class PersonalController extends \yii\web\Controller
 
         //Todo подбор интересных квестов
 
+        $questChallenges = QuestChallenge::find()->where('to_user_id = '.Yii::$app->user->identity->id.' AND status = 0')->all();
+
+
+
         $questPendingTasks = QuestPendingTask::find()->where('user_id = '.Yii::$app->user->identity->id.' AND status = 0')->all();
         $excludeIds = [];
         foreach($questPendingTasks as $pt ){
@@ -341,6 +346,7 @@ class PersonalController extends \yii\web\Controller
         return $this->render('quests', [
             'quests' => $quests, 
             'questsPending' => $questPendingTasks, 
+            'questChallenges' => $questChallenges, 
             'cats' => $cats, 
             'category_selected' => $category_selected,
             'predefinedText' => $predefinedText,

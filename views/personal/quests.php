@@ -21,7 +21,39 @@ echo $this->render('_panel.php');
 						<div class="output">
 
 
-							 
+
+
+	  <?php if( count($questChallenges) >0 ) { ?>
+
+							<div class="output-header">
+								<h2 class="mdlst-h2t-goals h-quest-pendint-tasks-title"  >Вам бросили вызов</h2>
+								 
+								
+							</div>
+
+
+							<div class="questpending-wrapper">
+							<?php foreach($questChallenges as $questChallenge ) {
+
+									$quest = $questChallenge->getQuest()->one();
+							 ?>
+
+							 <div class="questpending">
+								 	 
+								 	<div class="questpending-title"><?=$quest->name;?></div>
+								 	<div class="questpending-description"><?=$quest->description;?></div>
+								 	<? Yii::$app->decor->button('Принять вызов', '', 'js-quest-acceptchallenge', ['quest_id' => $quest->quest_id, 'quest_challenge_id' => $questChallenge->quest_challenge_id]) ?>
+								 	 
+							</div>
+
+							<?php } ?>
+							</div>
+
+
+
+<?} ?>
+
+		 
 
 							<div class="output-header">
 								<h2 class="mdlst-h2t-goals h-quest-pendint-tasks-title" <?php if( count($questsPending) == 0) { ?> style="display: none"<?} ?>>Вы участвуете в квестах</h2>
@@ -45,6 +77,17 @@ echo $this->render('_panel.php');
 
 							<?php } ?>
 							</div>
+
+
+
+
+
+
+
+
+
+
+
 
 							 
 
@@ -168,6 +211,16 @@ echo $this->render('_panel.php');
 								<?php  } ?>
 								 
 							</div>
+
+
+
+
+
+
+
+
+
+
 
 						</div>
 

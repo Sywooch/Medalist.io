@@ -47,19 +47,19 @@ echo $this->render('_panel.php');
 
 								<div class="questblock-info-info">
 
-											<ul class="questblock-info-info-list">
-												<li class="questblock-info-info-list-li">Участвует: <b>любой</b></li>
-												<li class="questblock-info-info-list-li">Дедлайн: <b><?=Yii::$app->decor->translateDateString($quest->deadline_period)?></b></li>
-												<li class="questblock-info-info-list-li">Даты старта: <b>нет</b></li>
-											</ul>
+									<ul class="questblock-info-info-list">
+										<li class="questblock-info-info-list-li">Участвует: <b>любой</b></li>
+										<li class="questblock-info-info-list-li">Дедлайн: <b><?=Yii::$app->decor->translateDateString($quest->deadline_period)?></b></li>
+										<li class="questblock-info-info-list-li">Даты старта: <b>нет</b></li>
+									</ul>
 
-											<ul class="questblock-info-info-list-2">
-												<?php if( $badge !== false ) { ?><li class="questblock-info-info-list-li"><img src="/template/img/_reward-small.png" style="max-width: 30px;position: relative;margin-left: -35px; margin-right: 3px; top: 6px;"><a class="mdlst-accent" href="<?=Yii::$app->urlManager->createUrl(['personal/reward-detail', 'badge_id' => $badge->badge_id])?>"><?=$badge->name?></a></li><? } ?>
-												<li class="questblock-info-info-list-li"><span class="mdlst-accent">Выполнили: <?=$quest->getAchievementsCount();?></span></li>
-												<li class="questblock-info-info-list-li">Провалили: <?=$quest->getFailuresCount();?></li>
-											</ul>
+									<ul class="questblock-info-info-list-2">
+										<?php if( $badge !== false ) { ?><li class="questblock-info-info-list-li"><img src="/template/img/_reward-small.png" style="max-width: 30px;position: relative;margin-left: -35px; margin-right: 3px; top: 6px;"><a class="mdlst-accent" href="<?=Yii::$app->urlManager->createUrl(['personal/reward-detail', 'badge_id' => $badge->badge_id])?>"><?=$badge->name?></a></li><? } ?>
+										<li class="questblock-info-info-list-li"><span class="mdlst-accent">Выполнили: <?=$quest->getAchievementsCount();?></span></li>
+										<li class="questblock-info-info-list-li">Провалили: <?=$quest->getFailuresCount();?></li>
+									</ul>
 
-										</div>
+								</div>
 
 
 

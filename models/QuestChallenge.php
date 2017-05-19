@@ -62,4 +62,12 @@ class QuestChallenge extends \yii\db\ActiveRecord
     {
         return new QuestChallengeQuery(get_called_class());
     }
+
+
+
+    public function getQuest(){
+        return $this->hasOne( Quest::className(), ['quest_id' => 'quest_id'] );
+    }
+
+    
 }

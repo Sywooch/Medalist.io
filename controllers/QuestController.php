@@ -38,7 +38,12 @@ class QuestController extends \yii\web\Controller
         Notification::addNotification( $questPendingTask->user_id,  NotificationType::NT_QUEST_TAKEN, $quest );
 
 
-
+        if( !empty($get['quest_challenge_id']) ){
+            //TODO NOTIFICATEION -- принял вызов
+            $questChallenge = QuestChallenge::findOne( $get['quest_challenge_id'] );
+            $questChallenge->status = 1;
+            $questChallenge->save();
+        }
 
         //New Event
         //Todo - by quest reward // some stuff
