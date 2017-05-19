@@ -70,4 +70,9 @@ class QuestChallenge extends \yii\db\ActiveRecord
     }
 
 
+    public function getQuestPendingTask(){
+        return $this->hasOne( QuestPendingTask::className(), ['quest_challenge_id' => 'quest_challenge_id'] );
+    }
+
+
 }

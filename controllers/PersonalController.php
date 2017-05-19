@@ -308,6 +308,7 @@ class PersonalController extends \yii\web\Controller
         //Todo подбор интересных квестов
 
         $questChallenges = QuestChallenge::find()->where('to_user_id = '.Yii::$app->user->identity->id.' AND status = 0')->all();
+        $questChallengesCreated = QuestChallenge::find()->where('user_id = '.Yii::$app->user->identity->id.' ')->all();
 
 
 
@@ -347,6 +348,7 @@ class PersonalController extends \yii\web\Controller
             'quests' => $quests, 
             'questsPending' => $questPendingTasks, 
             'questChallenges' => $questChallenges, 
+            'questChallengesCreated' => $questChallengesCreated, 
             'cats' => $cats, 
             'category_selected' => $category_selected,
             'predefinedText' => $predefinedText,

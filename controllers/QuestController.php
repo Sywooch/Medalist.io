@@ -39,6 +39,7 @@ class QuestController extends \yii\web\Controller
 
 
         if( !empty($get['quest_challenge_id']) ){
+            $questPendingTask->quest_challenge_id = $get['quest_challenge_id'];
             //TODO NOTIFICATEION -- принял вызов
             $questChallenge = QuestChallenge::findOne( $get['quest_challenge_id'] );
             $questChallenge->status = 1;
