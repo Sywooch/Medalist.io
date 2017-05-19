@@ -31,8 +31,8 @@ class QuestChallenge extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['quest_id', 'created_by_id', 'to_user_id', 'date_created'], 'required'],
-            [['quest_id', 'created_by_id', 'to_user_id', 'refused'], 'integer'],
+            [['quest_id', 'user_id', 'to_user_id', 'date_created'], 'required'],
+            [['quest_id', 'user_id', 'to_user_id', 'refused'], 'integer'],
             [['date_created'], 'safe'],
             [['comment'], 'string'],
         ];
@@ -46,7 +46,7 @@ class QuestChallenge extends \yii\db\ActiveRecord
         return [
             'quest_challenge_id' => Yii::t('app', 'Quest Challenge ID'),
             'quest_id' => Yii::t('app', 'Quest ID'),
-            'created_by_id' => Yii::t('app', 'Created By ID'),
+            'user_id' => Yii::t('app', 'Created By ID'),
             'to_user_id' => Yii::t('app', 'To User ID'),
             'date_created' => Yii::t('app', 'Date Created'),
             'refused' => Yii::t('app', 'Refused'),
