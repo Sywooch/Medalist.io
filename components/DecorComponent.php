@@ -59,7 +59,7 @@ class DecorComponent extends Component
         }
         
         ?>
-            <<?=$tag?> class="mdlst-button  <? if(!empty($url) ) { ?> href="<?=$url?>"<? }?> mdlst-button-default <?=$class?>" <?php foreach($data as $k=>$v) { ?> data-<?=$k?>="<?=$v?>" <?} ?>><?=$text?></<?=$tag?>>
+            <<?=$tag?> class="mdlst-button mdlst-button-default <?=$class?>"  <? if(!empty($url) ) { ?> href="<?=$url?>"<? }?>  <?php foreach($data as $k=>$v) { ?> data-<?=$k?>="<?=$v?>" <?} ?>><?=$text?></<?=$tag?>>
  
         <?
     }

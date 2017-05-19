@@ -77,4 +77,13 @@ class QuestController extends \yii\web\Controller
 
     }
 
+    public function actionAjaxQuestChallengeSend(){
+
+        $result = [];
+
+        return json_encode($result);
+
+
+    }
+
 }

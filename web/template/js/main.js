@@ -411,6 +411,46 @@ $(document).ready(function(){
 
 
 
+		/* бросить вызов */
+		$(document).on('click', '.js-questchallenge-select-user', function(){
+			var user_id = $(this).data('user_id');
+
+			if( $(this).hasClass('mdlst-button-disabled') ){
+				 $(this).removeClass('mdlst-button-disabled');
+				 $(this).removeClass('checked');
+				 $(this).text('Бросить вызов');
+			}else{
+				 $(this).addClass('mdlst-button-disabled');
+				 $(this).addClass('checked');
+				 
+				 $(this).text('Снять выбор');
+			}
+		});
+
+		$(document).on('click', '.js-questchallenge-send', function(){
+			var selected = $('.js-h-questchallenge-user.checked'),
+				_csrf = $('[name=_csrf]'),
+				user_ids = [];
+
+				selected.each( function(i,e){
+					user_ids[user_ids.length] = $(e).data('user_id');
+				}); 
+
+				$({
+					url: ajaxUrls['questChallengeSend'],
+					data: {user_ids : user_ids, _csrf: _csrf.val()},
+					type: 'post',
+					dataType: 'json',
+					success: function( data ){
+
+					}
+				});
+		});
+
+		/* бросить вызов end */
+
+
+
 		/* ACHIEVEMENT END */
 
 
