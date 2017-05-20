@@ -301,6 +301,40 @@ $(document).ready(function(){
  
 			
 		});
+
+
+
+
+		//Принять вызов
+		$(document).on('click', '.js-quest-acceptchallenge', function(){
+			var p = $(this).parents('.questssuggested-quests-quest'),
+				pp = $(this).parents('.questssuggested'),
+				quest_id = $(this).data('quest_id'),
+				quest_challenge_id = $(this).data('quest_challenge_id');
+				 
+		 	
+				$.ajax({
+					url: ajaxUrls['takeQuest'],
+					data: { quest_id : quest_id,  quest_challenge_id : quest_challenge_id },
+					dataType: 'json',
+					success: function(data){
+						//TODO Success
+						pushNewQuestPending( quest_id );
+						p.slideUp( function(){ p.remove(); 
+							if( pp.find('.questssuggested-quests-quest').length == 0 ){
+								pp.slideUp(function(){ pp.remove(); });
+							}
+						});
+
+						EventEngine.registerEventFromRawAjax (data);
+					}
+
+				});
+ 
+			
+		});
+
+
 		//Взять квест
 		$(document).on('click', '.rewardpopup-bg', function(){
 			var p = $(this).parents('.rewardpopup');
@@ -454,6 +488,11 @@ $(document).ready(function(){
 					}
 				});
 		});
+
+
+
+
+
 
 		/* бросить вызов end */
 

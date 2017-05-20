@@ -705,6 +705,9 @@ a {
   padding-top: 25px;
   border-top: 1px solid rgba(49,51,62,0.1);
 }
+.questssuggested-quests-quest {
+  margin-bottom: 40px;
+}
 .questssuggested-quests-quest-user {
   width: 100px;
   text-align: center;

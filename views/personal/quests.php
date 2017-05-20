@@ -5,6 +5,7 @@ use app\models\Comment;
 use app\models\Badge;
 use app\models\Scale;
 use app\models\Category;
+use amnah\yii2\user\models\User;
 echo $this->render('_panel.php');
 ?>
 
@@ -21,7 +22,7 @@ echo $this->render('_panel.php');
 						<div class="output">
 
 
-
+<?php if( count($questChallenges) >0 ) { ?>
 
 						<!-- QUEST CHALLENGE -->
 							<div class="questssuggested">
@@ -32,31 +33,148 @@ echo $this->render('_panel.php');
 
 								<div class="questssuggested-quests">
 
+									<?php foreach($questChallenges as $questChallenge ) {
 
+											$quest = $questChallenge->getQuest()->one();
+											$user = User::findOne( $questChallenge->user_id );
+											$profile = $user->getProfile()->one();
+									 ?>
+
+									 <!--<div class="questpending">
+										 	 
+										 	<div class="questpending-title"><?=$quest->name;?></div>
+										 	<div class="questpending-description"><?=$quest->description;?></div>
+										 	<? Yii::$app->decor->button('Принять вызов', '', 'js-quest-acceptchallenge', ['quest_id' => $quest->quest_id, 'quest_challenge_id' => $questChallenge->quest_challenge_id]) ?>
+										 	 
+									</div>-->
 
 									<div class="questssuggested-quests-quest">
 										<div class="questssuggested-quests-quest-user">
-											<div class="questssuggested-quests-quest-user-pic"><img src="/template/img/_achievement_02.jpg"></div>
-											<div class="questssuggested-quests-quest-user-name"><a href="#">Иван Сидоренко</a></div>
+											<div class="questssuggested-quests-quest-user-pic"><img src="<?=$profile->getAvatarSrc();?>"></div>
+											<div class="questssuggested-quests-quest-user-name"><a href="<?=Yii::$app->urlManager->createUrl(['personal/viewprofile', 'user_id' => $user->id])?>"><?=$user->getName();?></a></div>
 										</div>
 										<div class="questssuggested-quests-quest-quest">
-											<div class="questssuggested-quests-quest-quest-pic"><img src="/template/img/_achievement_02.jpg"></div>
+											<div class="questssuggested-quests-quest-quest-pic"><img src="<?=$quest->picture?>"></div>
 											<div class="questssuggested-quests-quest-quest-name">
-												<a href="#">Сшить пятнистый кандибобер.</a>
+												<a href="<?=Yii::$app->urlManager->createUrl(['personal/quest', 'quest_id' => $quest->quest_id])?>"><?=$quest->name;?></a>
 											</div>
 											
 										</div>
 										<div class="questssuggested-quests-quest-controlls">
-											<? Yii::$app->decor->button('Принять вызов');?>
-											<? Yii::$app->decor->button('Отказаться','', 'mdlst-button-gray-outline');?>
+											<? Yii::$app->decor->button('Принять вызов', '', 'js-quest-acceptchallenge', ['quest_id' => $quest->quest_id, 'quest_challenge_id' => $questChallenge->quest_challenge_id]);?>
+											<? Yii::$app->decor->button('Отказаться','', 'js-quest-refusechallenge  mdlst-button-gray-outline', ['quest_id' => $quest->quest_id, 'quest_challenge_id' => $questChallenge->quest_challenge_id]);?>
 										</div>
 									</div>
+
+
+
+									<?php } ?>
+
+									
 
 
 								</div>
 								
 							</div>
 						<!-- QUEST CHALLENGE END -->
+
+
+
+<?} ?>
+
+
+
+
+
+
+
+
+
+
+<?php if( count($questChallengesCreated) >0 ) { ?>
+
+						<!-- QUEST CHALLENGE -->
+							<div class="questssuggested">
+								<div class="questssuggested-header">
+									<div class="questssuggested-title">Вы бросили вызов!</div>
+									<div class="questssuggested-header-cross"></div>
+								</div>
+
+								<div class="questssuggested-quests">
+
+									<?php foreach($questChallengesCreated as $questChallenge ) {
+
+											$quest = $questChallenge->getQuest()->one();
+											$user = User::findOne( $questChallenge->to_user_id );
+											$profile = $user->getProfile()->one();
+
+
+
+												 
+											$questPendingTask = $questChallenge->getQuestPendingTask()->one();
+
+											switch ($questChallenge->status) {
+												case 1:
+													$statusText = '<b>Вызов принят!</b> Дедлайн'.$questPendingTask->deadline;
+													break;
+												
+												case 9:
+													$statusText = 'Пок-пок! Кто-то струсил!';
+													break;
+												
+												default:
+													$statusText = 'Пользователь рассматривает ваше предложение.';
+													break;
+											}
+
+
+									 ?>
+
+									 <!--<div class="questpending">
+										 	 
+										 	<div class="questpending-title"><?=$quest->name;?></div>
+										 	<div class="questpending-description"><?=$quest->description;?></div>
+										 	<? Yii::$app->decor->button('Принять вызов', '', 'js-quest-acceptchallenge', ['quest_id' => $quest->quest_id, 'quest_challenge_id' => $questChallenge->quest_challenge_id]) ?>
+										 	 
+									</div>-->
+
+									<div class="questssuggested-quests-quest">
+									
+										<div class="questssuggested-quests-quest-quest">
+											<div class="questssuggested-quests-quest-quest-pic"><img src="<?=$quest->picture?>"></div>
+											<div class="questssuggested-quests-quest-quest-name">
+												<a href="<?=Yii::$app->urlManager->createUrl(['personal/quest', 'quest_id' => $quest->quest_id])?>"><?=$quest->name;?></a>
+											</div>
+											
+										</div>
+										<div class="questssuggested-quests-quest-user">
+											<div class="questssuggested-quests-quest-user-pic"><img src="<?=$profile->getAvatarSrc();?>"></div>
+											<div class="questssuggested-quests-quest-user-name"><a href="<?=Yii::$app->urlManager->createUrl(['personal/viewprofile', 'user_id' => $user->id])?>"><?=$user->getName();?></a></div>
+										</div>
+										<div class="questssuggested-quests-quest-controlls">
+											 <?=$statusText?>
+										</div>
+									</div>
+
+
+
+									<?php } ?>
+
+									
+
+
+								</div>
+								
+							</div>
+						<!-- QUEST CHALLENGE END -->
+
+
+
+<?} ?>
+
+
+
+
 
 
 
@@ -105,38 +223,7 @@ echo $this->render('_panel.php');
 
 
 <?} ?>
-
-
-	  <?php if( count($questChallenges) >0 ) { ?>
-
-							<div class="output-header">
-								<h2 class="mdlst-h2t-goals h-quest-pendint-tasks-title"  >Вам бросили вызов</h2>
-								 
-								
-							</div>
-
-
-							<div class="questpending-wrapper">
-							<?php foreach($questChallenges as $questChallenge ) {
-
-									$quest = $questChallenge->getQuest()->one();
-							 ?>
-
-							 <div class="questpending">
-								 	 
-								 	<div class="questpending-title"><?=$quest->name;?></div>
-								 	<div class="questpending-description"><?=$quest->description;?></div>
-								 	<? Yii::$app->decor->button('Принять вызов', '', 'js-quest-acceptchallenge', ['quest_id' => $quest->quest_id, 'quest_challenge_id' => $questChallenge->quest_challenge_id]) ?>
-								 	 
-							</div>
-
-							<?php } ?>
-							</div>
-
-
-
-<?} ?>
-
+ 
 		 
 
 							<div class="output-header">
