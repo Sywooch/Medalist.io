@@ -23,6 +23,44 @@ echo $this->render('_panel.php');
 
 
 
+						<!-- QUEST CHALLENGE -->
+							<div class="questssuggested">
+								<div class="questssuggested-header">
+									<div class="questssuggested-title">Вам бросили вызов</div>
+									<div class="questssuggested-header-cross"></div>
+								</div>
+
+								<div class="questssuggested-quests">
+
+
+
+									<div class="questssuggested-quests-quest">
+										<div class="questssuggested-quests-quest-user">
+											<div class="questssuggested-quests-quest-user-pic"><img src="/template/img/_achievement_02.jpg"></div>
+											<div class="questssuggested-quests-quest-user-name"><a href="#">Иван Сидоренко</a></div>
+										</div>
+										<div class="questssuggested-quests-quest-quest">
+											<div class="questssuggested-quests-quest-quest-pic"><img src="/template/img/_achievement_02.jpg"></div>
+											<div class="questssuggested-quests-quest-quest-name">
+												<a href="#">Сшить пятнистый кандибобер.</a>
+											</div>
+											
+										</div>
+										<div class="questssuggested-quests-quest-controlls">
+											<? Yii::$app->decor->button('Принять вызов');?>
+											<? Yii::$app->decor->button('Отказаться','', 'mdlst-button-gray-outline');?>
+										</div>
+									</div>
+
+
+								</div>
+								
+							</div>
+						<!-- QUEST CHALLENGE END -->
+
+
+
+
 	  <?php if( count($questChallengesCreated) >0 ) { ?>
 
 							<div class="output-header">
