@@ -139,7 +139,7 @@ echo $this->render('_panel.php');
 									</div>-->
 
 									<div class="questssuggested-quests-quest">
-									
+
 										<div class="questssuggested-quests-quest-quest">
 											<div class="questssuggested-quests-quest-quest-pic"><img src="<?=$quest->picture?>"></div>
 											<div class="questssuggested-quests-quest-quest-name">
@@ -176,53 +176,6 @@ echo $this->render('_panel.php');
 
 
 
-
-
-
-	  <?php if( count($questChallengesCreated) >0 ) { ?>
-
-							<div class="output-header">
-								<h2 class="mdlst-h2t-goals h-quest-pendint-tasks-title"  >Вы бросили вызов</h2>
-								 
-								
-							</div>
-
-
-							<div class="questpending-wrapper">
-							<?php foreach($questChallengesCreated as $questChallenge ) {
-
-									$quest = $questChallenge->getQuest()->one();
-									$questPendingTask = $questChallenge->getQuestPendingTask()->one();
-
-									switch ($questChallenge->status) {
-										case 1:
-											$statusText = '<b>Вызов принят!</b> Дедлайн'.$questPendingTask->deadline;
-											break;
-										
-										case 9:
-											$statusText = 'Пок-пок! Кто-то струсил!';
-											break;
-										
-										default:
-											$statusText = 'Пользователь рассматривает ваше предложение.';
-											break;
-									}
-							 ?>
-
-							 <div class="questpending">
-								 	 
-								 	<div class="questpending-title"><?=$quest->name;?></div>
-								 	<div class="questpending-description"><?=$quest->description;?></div> 
-								 	<div class="questpending-description"><?=$statusText;?></div> 
-								 	 
-							</div>
-
-							<?php } ?>
-							</div>
-
-
-
-<?} ?>
  
 		 
 
