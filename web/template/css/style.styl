@@ -448,6 +448,65 @@ a
 /* . comment end */
 
 
+/* quest challenge */
+.questssuggested
+    @extends .simplebox
+    @extends .simplebox-padding
+    &-title 
+        font-size 24px 
+    &-header 
+        margin-bottom 10px
+        cursor pointer
+    &-quests 
+        margin-top 25px
+        padding-top 25px 
+        border-top 1px solid rgba(CBlack, 0.1)
+        &-quest 
+            @extends .simplebox
+            @extends .simplebox-padding
+            &-user 
+                width 100px
+                text-align center
+                margin-right 60px
+                @extends .dib_m
+                &-pic 
+                    width 100%
+                    & img 
+                        max-width 50px 
+                &-name 
+                    font-size 14px 
+                    margin-top 10px
+                    
+            &-quest 
+                @extends .dib_m
+                width 320px
+                white-space nowrap
+                margin-right 30px
+                &-pic 
+                    @extends .dib_m
+                    max-width 75px 
+                    max-height 75px 
+                    overflow hidden 
+                    border-radius 37.5px
+                    position relative
+                    border 2px solid #CCC
+                &-name 
+                    @extends .dib_m
+                    white-space normal
+                    position relative
+                    margin-left -25px
+                    z-index 10
+                    
+                    & a 
+                        padding 10px 
+                        background-color white
+                        border-radius 20px
+                        display inline-block
+            &-controlls 
+                @extends .dib_m
+                width 100px
+/* quest challenge end */
+
 /* questdetail */
 .questdetail
     &-completeduser
@@ -1303,7 +1362,18 @@ a
             margin-top 37px
             margin-bottom 50px
             background-color CAccent
-            color white             
+            color white   
+        &-gray 
+            @extends .dib_base
+            background-color CGrayText
+            color white     
+        &-gray-outline 
+            @extends .dib_base
+            background-color transparent
+            border-width 1px
+            border-color CGrayText
+            border-style solid
+            color CGrayText
         &-closer 
             @extends .dib_base
             width 17px 

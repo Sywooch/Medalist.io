@@ -26,6 +26,11 @@
 .comment-block-data-content,
 .comment-controll span,
 .form-add-comment-textarea,
+.questssuggested-quests-quest-user,
+.questssuggested-quests-quest-quest,
+.questssuggested-quests-quest-quest-pic,
+.questssuggested-quests-quest-quest-name,
+.questssuggested-quests-quest-controlls,
 .questdetail-completeduser,
 .questdetail-completeduser-img,
 .questdetail-completeduser-text,
@@ -95,6 +100,8 @@
 .editprofile-field-input,
 .input-check-inline,
 .mdlst-button-accent,
+.mdlst-button-gray,
+.mdlst-button-gray-outline,
 .mdlst-button-closer,
 .mdlst-switch-state,
 .mdlst-switch-text,
@@ -154,6 +161,11 @@
 }
 .dib_m,
 .header-logo,
+.questssuggested-quests-quest-user,
+.questssuggested-quests-quest-quest,
+.questssuggested-quests-quest-quest-pic,
+.questssuggested-quests-quest-quest-name,
+.questssuggested-quests-quest-controlls,
 .questdetail-completeduser-img,
 .questdetail-completeduser-text,
 .userpanel-user-pic,
@@ -212,6 +224,8 @@
 .friend-list-block-level,
 .input-check-inline,
 .mdlst-button-accent,
+.mdlst-button-gray,
+.mdlst-button-gray-outline,
 .mdlst-button-closer,
 .mdlst-switch-text,
 .mdlst-cattag,
@@ -235,6 +249,8 @@
   padding: 8px;
 }
 .simplebox,
+.questssuggested,
+.questssuggested-quests-quest,
 .achievement-block,
 .newblock,
 .friend-list-block,
@@ -249,11 +265,15 @@
   line-height: 1em;
 }
 .simplebox-padding,
+.questssuggested-padding,
+.questssuggested-quests-quest-padding,
 .achievement-block-padding,
 .newblock-padding,
 .friend-list-block-padding,
 .profileview-padding,
 .editprofile-padding,
+.questssuggested,
+.questssuggested-quests-quest,
 .achievement-block-content,
 .newblock,
 .friend-list-block,
@@ -672,6 +692,67 @@ a {
   width: 100%;
 }
 /* . comment end */
+/* quest challenge */
+.questssuggested-title {
+  font-size: 24px;
+}
+.questssuggested-header {
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.questssuggested-quests {
+  margin-top: 25px;
+  padding-top: 25px;
+  border-top: 1px solid rgba(49,51,62,0.1);
+}
+.questssuggested-quests-quest-user {
+  width: 100px;
+  text-align: center;
+  margin-right: 60px;
+}
+.questssuggested-quests-quest-user-pic {
+  width: 100%;
+}
+.questssuggested-quests-quest-user-pic img {
+  max-width: 50px;
+}
+.questssuggested-quests-quest-user-name {
+  font-size: 14px;
+  margin-top: 10px;
+}
+.questssuggested-quests-quest-quest {
+  width: 320px;
+  white-space: nowrap;
+  margin-right: 30px;
+}
+.questssuggested-quests-quest-quest-pic {
+  max-width: 75px;
+  max-height: 75px;
+  overflow: hidden;
+  -webkit-border-radius: 37.5px;
+  -moz-border-radius: 37.5px;
+  border-radius: 37.5px;
+  position: relative;
+  border: 2px solid #ccc;
+}
+.questssuggested-quests-quest-quest-name {
+  white-space: normal;
+  position: relative;
+  margin-left: -25px;
+  z-index: 10;
+}
+.questssuggested-quests-quest-quest-name a {
+  padding: 10px;
+  background-color: #fff;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  display: inline-block;
+}
+.questssuggested-quests-quest-controlls {
+  width: 100px;
+}
+/* quest challenge end */
 /* questdetail */
 .questdetail-completeduser {
   white-space: nowrap;
@@ -1540,6 +1621,17 @@ a {
   margin-bottom: 50px;
   background-color: #ff2d0b;
   color: #fff;
+}
+.mdlst-button-gray {
+  background-color: #9a9ba0;
+  color: #fff;
+}
+.mdlst-button-gray-outline {
+  background-color: transparent;
+  border-width: 1px;
+  border-color: #9a9ba0;
+  border-style: solid;
+  color: #9a9ba0;
 }
 .mdlst-button-closer {
   width: 17px;
