@@ -694,6 +694,9 @@ a {
 }
 /* . comment end */
 /* quest challenge */
+.questssuggested {
+  margin-bottom: 50px;
+}
 .questssuggested-title {
   font-size: 24px;
 }

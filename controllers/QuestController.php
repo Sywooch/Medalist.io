@@ -56,13 +56,46 @@ class QuestController extends \yii\web\Controller
             Notification::addNotification( Yii::$app->user->identity->id,  NotificationType::NT_NEW_REWARD, Badge::findOne(Badge::BDG_QUEST_TAKE_QUEST) );
 
 
-		  $result['eventName'] = 'newBadge';
-		  $result['eventParams'] =  ['badge_id' => Badge::BDG_QUEST_TAKE_QUEST];
+          $result['eventName'] = 'newBadge';
+          $result['eventParams'] =  ['badge_id' => Badge::BDG_QUEST_TAKE_QUEST];
         }
 
 
         return json_encode( $result );
     }
+
+
+    public function actionAjaxRefuseQuestChallenge()
+    {
+        $result = [];
+
+        $get = Yii::$app->request->get();
+
+        $quest_id = $get['quest_id'];
+        $quest_challenge_id = $get['quest_challenge_id'];
+
+        $questChallenge = QuestChallenge::findOne( $quest_challenge_id );
+
+        $result['success']= false;
+        if( $questChallenge ){
+            if ( $questChallenge->to_user_id == Yii::$app->user->identity->id){
+
+                $questChallenge->status = 9;
+                $questChallenge->save();
+
+                $result['success'] = false;
+            }
+        }
+       
+  
+
+        return json_encode( $result );
+    }
+
+
+
+
+
 
     public function actionAjaxGetQuestPendingTaskHtml(){
 
@@ -83,6 +116,9 @@ class QuestController extends \yii\web\Controller
 
 
     }
+
+
+
 
     public function actionAjaxQuestChallengeSend(){
 

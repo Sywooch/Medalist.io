@@ -40,6 +40,7 @@ AppAsset::register($this);
             $ajaxUrls['getBadgeInfo'] = Yii::$app->urlManager->createUrl('badge/ajax-get-info');
 
             $ajaxUrls['takeQuest'] = Yii::$app->urlManager->createUrl('quest/ajax-take-quest');
+            $ajaxUrls['refuseQuestChallenge'] = Yii::$app->urlManager->createUrl('quest/ajax-refuse-quest-challenge');
             $ajaxUrls['getQuestPendingTaskHtml'] = Yii::$app->urlManager->createUrl('quest/ajax-get-quest-pending-task-html');
             $ajaxUrls['questChallengeSend'] = Yii::$app->urlManager->createUrl('quest/ajax-quest-challenge-send');
             
