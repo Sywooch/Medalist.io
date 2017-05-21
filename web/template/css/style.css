@@ -109,7 +109,9 @@
 .mdlst-pan-text,
 .mdlst-status-icon,
 .mdlst-cattag,
-.mdlst-lurm i {
+.mdlst-lurm i,
+.share-widget-title,
+.share-widget-content {
   display: inline-block;
   *display: inline;
   zoom: 1;
@@ -181,7 +183,9 @@
 .newblock-data,
 .newblock-icon,
 .friend-list-block-pic,
-.mdlst-switch-state {
+.mdlst-switch-state,
+.share-widget-title,
+.share-widget-content {
   vertical-align: middle;
 }
 .dib_b {
@@ -1401,6 +1405,9 @@ a {
 .achievement-cols {
   white-space: nowrap;
 }
+.achievement-share {
+  padding: 25px;
+}
 /* . achievement list end */
 /* NEWS */
 .newblock {
@@ -1854,6 +1861,10 @@ a {
   width: 18px;
   height: 24px;
   background-image: url("../img/lurms.png");
+}
+.share-widget-title {
+  margin-right: 20px;
+  font-weight: bold;
 }
 .rewardpopup {
   position: fixed;

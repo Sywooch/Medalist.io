@@ -26,6 +26,7 @@ $(document).ready(function(){
 				description = p.find('textarea[name="description"]'),
 				difficulty = p.find('input[name="difficulty"]'),
 				deadline = p.find('[name="deadline"]'),
+				private = p.find('[name="private"]'),
 				tags = p.find('.addach-tags-w .addach-tags-tag'),
 				tagWords = [],
 				_csrf = p.find('input[name=_csrf]'),
@@ -40,6 +41,7 @@ $(document).ready(function(){
 				data['description'] = description.val();
 				data['difficulty'] = difficulty.val();
 				data['deadline'] = deadline.val();
+				data['private'] = (private.is(":checked"))?1:0;
 				data['interests'] =  tagWords;
 				data['files'] =  myDropzoneFiles;
 				data['_csrf'] = _csrf.val();

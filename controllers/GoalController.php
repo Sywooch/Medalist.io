@@ -167,6 +167,7 @@ class GoalController extends Controller
                 $goal->name = $post['name'];
                 $goal->difficulty = $post['difficulty'];
                 $goal->description = $post['description'];
+                $goal->private = !empty($post['private'])?1:0;
                 $goal->date_created = date("Y-m-d H:i:s");
                 $goal->deadline = date("Y-m-d H:i:s", strtotime($post['deadline']));
                 $goal->user_id = Yii::$app->user->identity->id;

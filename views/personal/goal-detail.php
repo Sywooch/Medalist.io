@@ -97,6 +97,13 @@ echo $this->render('_panel.php');
                         <div class="goals-description marginBottom30 marginTop30">
                             <?= $goal->description ?>
                         </div>
+
+
+                        <?php if( $goal->private != 1) { ?>
+                            <div class="goal-share"><? Yii::$app->decor->shareWidget(); ?></div>
+                        <? }?>
+
+
                         <div class="questblock-info-controlls">
                             <div class="questblock-info-controlls-likes">
                                  <?=Yii::$app->like->renderWidget($goal);?>

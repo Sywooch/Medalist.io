@@ -9,6 +9,33 @@ use yii\base\InvalidConfigException;
 class DecorComponent extends Component
 {
 
+    static $shareScriptsLoaded = false;
+
+    public function share( $data = [] ){
+        ?>
+        <?php if(! self::$shareScriptsLoaded) { 
+            self::$shareScriptsLoaded = true;
+            ?>
+<script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
+<script src="//yastatic.net/share2/share.js"></script>
+        <? } ?>
+<div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,moimir" data-counter="" <?php foreach($data as $param => $value){ ?> data-<?=$param?>="<?=$value?>" <? }?>></div>
+
+        <?
+    }
+
+
+    public function shareWidget( $data = [], $title = '', $class = '' ){
+        if( $title == '') { 
+            $title = 'Поделитесь в социальных сетях: '; 
+        }
+        ?>
+        <div class="share-widget <?=$class?>">
+            <div class="share-widget-title"><?=$title?></div>
+            <div class="share-widget-content"><? Yii::$app->decor->share($data) ?></div>
+        </div>
+        <?
+    }
 
     public function _csrf(){
 

@@ -95,6 +95,8 @@ echo $this->render('_panel.php');
 								 		<!-- extra info --> 
 								 		<div class="achievement-block-info">Подождите, пока сообщество подтвердит ваше достижение. Чем больше лайков, тем больше шанс!</div>
 
+								 		<div class="achievement-share"><? Yii::$app->decor->shareWidget(); ?></div>
+
 								<?php if(!empty($quest) || !empty($goal)) { 
 
 									?>
