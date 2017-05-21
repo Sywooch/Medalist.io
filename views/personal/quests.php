@@ -115,7 +115,7 @@ echo $this->render('_panel.php');
 
 											switch ($questChallenge->status) {
 												case 1:
-													$statusText = '<b>Вызов принят!</b> Дедлайн'.$questPendingTask->deadline;
+													$statusText = '<b>Вызов принят!</b> '.(!empty($questPendingTask))?'Дедлайн '.$questPendingTask->deadline:'';
 													break;
 												
 												case 9:
