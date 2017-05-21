@@ -163,11 +163,13 @@ class Notification extends \yii\db\ActiveRecord
         ?>
             <div class="newblock">
                 <div class="newblock-pic">
-			<a href="<?=Yii::$app->urlManager->createUrl( ['personal/viewprofile','user_id' => $userCreatedNew->id])?>">
-	                        <img src="<?=$userCreatedNew->getProfile()->one()->getAvatarSrc();?>"/>
-				<br /><?=$userCreatedNew->getName()?>
-			</a>
-		</div>
+        			<a href="<?=Yii::$app->urlManager->createUrl( ['personal/viewprofile','user_id' => $userCreatedNew->id])?>">
+        	                        <img src="<?=$userCreatedNew->getProfile()->one()->getAvatarSrc();?>"/>
+        				            <br />
+                                    <?=$userCreatedNew->getName()?>
+        			</a>
+
+		          </div>
 
 
                 <div class="newblock-data">
@@ -251,6 +253,9 @@ class Notification extends \yii\db\ActiveRecord
                                 break;
                         }
                     ?>
+
+                    <br />
+                    <?=$notification->date_created?>
                 </div>
 
 

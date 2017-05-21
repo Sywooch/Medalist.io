@@ -297,7 +297,7 @@ class PersonalController extends \yii\web\Controller
     public function actionNews()
     {
 
-        $news = Notification::getUserFeed ( Yii::$app->user->identity->id )->all();
+        $news = Notification::getUserFeed ( Yii::$app->user->identity->id, false, false )->orderBy(['date_created' => SORT_DESC])->all();
 
         return $this->render('news', ['news' => $news]);
     }
