@@ -255,7 +255,7 @@ class Notification extends \yii\db\ActiveRecord
                     ?>
 
                     <br />
-                    <?=date("d.m.Y H:i:s", strtotime($notification->date_created) );?>
+                    <?=date("d.m.Y", strtotime($notification->date_created) );?>
                 </div>
 
 

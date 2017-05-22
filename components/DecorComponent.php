@@ -11,6 +11,9 @@ class DecorComponent extends Component
 
     static $shareScriptsLoaded = false;
 
+    const DATE_FORMAT = 'd.m.Y H:i';
+    const DATE_FORMAT_SHORT = 'd.m.Y';
+
     public function share( $data = [] ){
         ?>
         <?php if(! self::$shareScriptsLoaded) { 

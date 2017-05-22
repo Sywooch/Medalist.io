@@ -75,7 +75,7 @@ echo $this->render('_panel.php');
                                         </div>
                                         <span class="mygoals-dead">Дедлайн</span>
                                         <span
-                                            class="mygoals-dead color-red"><? echo date("Y.m.d", strtotime($goal->deadline)) ?></span>
+                                            class="mygoals-dead color-red"><? echo date("d.m.Y", strtotime($goal->deadline)) ?></span>
                                         <?
                                         if ($goal->private) {
                                             echo '
