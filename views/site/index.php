@@ -14,21 +14,21 @@ $this->title = 'My Yii Application';
      <div id="videoMessage" >
         <div  class="owlslider" style="width: 50%; height: 100%; text-align: center; margin: 0 auto;">
 
-            <div style="display: inline-block;">
-             <h1>Достигай успеха</h1>
-             <h2>...каждый день</h2>
-             <h3>Medalyst - сервис контроля достижений</h3>
-             <p class="videoClick" >
-             <a href="<?=Yii::$app->urlManager->createUrl(['user/register' ])?>" class="mdlst-button mdlst-button-accent">Зарегистрироваться</a>
-             </p>
-             </div>
-            <div  style="display: inline-block;">
-             <h1>Достигай успеха</h1>
-             <h2>...каждый день</h2>
-             <h3>Medalyst - сервис контроля достижений</h3>
-             <p class="videoClick" >
-             <a href="<?=Yii::$app->urlManager->createUrl(['user/register' ])?>" class="mdlst-button mdlst-button-accent">Зарегистрироваться</a>
-             </p>
+            <div>
+                 <h1>Достигай успеха</h1>
+                 <h2>...каждый день</h2>
+                 <h3>Medalyst - сервис контроля достижений</h3>
+                 <p class="videoClick" >
+                 <a href="<?=Yii::$app->urlManager->createUrl(['user/register' ])?>" class="mdlst-button mdlst-button-accent">Зарегистрироваться</a>
+                 </p>
+                 </div>
+            <div>
+                 <h1>Достигай успеха</h1>
+                 <h2>...каждый день</h2>
+                 <h3>Medalyst - сервис контроля достижений</h3>
+                 <p class="videoClick" >
+                 <a href="<?=Yii::$app->urlManager->createUrl(['user/register' ])?>" class="mdlst-button mdlst-button-accent">Зарегистрироваться</a>
+                 </p>
              </div>
          </div>
         

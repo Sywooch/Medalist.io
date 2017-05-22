@@ -714,10 +714,7 @@ $(document).ready(function(){
 
 		/* OWL SLIDER */
 		$(".owlslider").owlCarousel({
-			items: 1,
-			
-			center: true,
-			autoplay: true
+			items: 1
 
 		});
 		/* OWL SLIDER END */
