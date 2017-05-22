@@ -184,10 +184,7 @@ echo $this->render('_panel.php');
 										 				<div class="achievement-block-images-image"><img src="img/_achievement_01.jpg" alt=""></div>
 										 		 
 										 			</div>
-										 			<div class="achievement-block-comments">
-									 					<?=Yii::$app->comment->renderCommentCount( count(Comment::getCommentsOfObject($a)->all() ) , false, true );?>
-										 			</div>
-
+										 			
 								 				</div>
 								 			</div>
 								 		</div>
