@@ -209,7 +209,7 @@ class PersonalController extends \yii\web\Controller
         arsort($scaleBalance);
 
 
-         $news = Notification::find()->where('user_id = '.$user->id)->all();
+         $news = Notification::find()->where('user_id = '.$user->id)->orderBy(['date_created' => SORT_DESC])->all();
 
 
 
