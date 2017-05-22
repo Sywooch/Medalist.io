@@ -11,15 +11,29 @@ $this->title = 'My Yii Application';
         <source src="/template/video/medalyst_bg_01.webm" type="video/webm"></source>
         <source src="/template/video/medalyst_bg_01.mp4" type="video/mp4"></source>
      </video>
-     <div id="videoMessage">
-         <h1>Достигай успеха</h1>
-         <h2>...каждый день</h2>
-         <h3>Medalyst - сервис контроля достижений</h3>
-         <p class="videoClick" >
-         <a href="<?=Yii::$app->urlManager->createUrl(['user/register' ])?>" class="mdlst-button mdlst-button-accent">Зарегистрироваться</a>
-         </p>
+     <div id="videoMessage" >
+        <div  class="owlslider" style="width: 50%; height: 100%; text-align: center; margin: 0 auto;">
+
+            <div style="display: inline-block;">
+             <h1>Достигай успеха</h1>
+             <h2>...каждый день</h2>
+             <h3>Medalyst - сервис контроля достижений</h3>
+             <p class="videoClick" >
+             <a href="<?=Yii::$app->urlManager->createUrl(['user/register' ])?>" class="mdlst-button mdlst-button-accent">Зарегистрироваться</a>
+             </p>
+             </div>
+            <div  style="display: inline-block;">
+             <h1>Достигай успеха</h1>
+             <h2>...каждый день</h2>
+             <h3>Medalyst - сервис контроля достижений</h3>
+             <p class="videoClick" >
+             <a href="<?=Yii::$app->urlManager->createUrl(['user/register' ])?>" class="mdlst-button mdlst-button-accent">Зарегистрироваться</a>
+             </p>
+             </div>
+         </div>
+        
      </div>
-     </div>
+      
  </div>
 
 

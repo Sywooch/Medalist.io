@@ -711,4 +711,15 @@ $(document).ready(function(){
 		/* PROFILE UPDATE END */
 
 
+
+		/* OWL SLIDER */
+		$(".owlslider").owlCarousel({
+			items: 1,
+			
+			center: true,
+			autoplay: true
+
+		});
+		/* OWL SLIDER END */
+
 });

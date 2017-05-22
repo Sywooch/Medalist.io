@@ -27,12 +27,14 @@ AppAsset::register($this);
     <link rel="stylesheet" href="/template/js/rangeslider/rangeslider.css">
 <!--     <link rel="stylesheet" href="/template/css/goals.css">-->
      <link rel="stylesheet" href="/template/js/dropzone/dropzone.css">
+     <link rel="stylesheet" href="/template/js/owl/owl.carousel.css">
 
     <script src="/template/js/jquery-3.2.0.min.js"></script>
     <script src="/template/js/datepicker/dist/datepicker.js"></script>
     <script src="/template/js/trumbowyg/dist/trumbowyg.js"></script>
     <script src="/template/js/rangeslider/rangeslider.js"></script>
     <script src="/template/js/dropzone/dropzone.js"></script>
+    <script src="/template/js/owl/owl.carousel.min.js"></script>
    
     <script type="text/javascript">
         var ajaxUrls = <?php 
