@@ -144,7 +144,7 @@ $currentUser = $user->id == Yii::$app->user->identity->id ;
                         <div class="possible-friends-block">
                             <div class="possible-friends-block-pic"><img src="<?=$avatarSrc?>"></div>
                             <div class="possible-friends-block-name">
-                                <a href="<?=Yii::$app->urlManager->createUrl( ['personal/viewprofile','user_id' => $user->id])?>" class="possible-friends-block-name-url"><?=$user->email?></a>
+                                <a href="<?=Yii::$app->urlManager->createUrl( ['personal/viewprofile','user_id' => $user->id])?>" class="possible-friends-block-name-url"><?=$user->getName();?></a>
                             </div>
                             <div class="possible-friends-block-follow js-follow-person mdlst-button mdlst-button-default" data-user_id="<?=$user->id?>">Подписаться</div>
                         </div>
