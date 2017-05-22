@@ -77,7 +77,7 @@ class PersonalController extends \yii\web\Controller
         }
         if( !empty(Yii::$app->request->get()['goal_id']) ){
             $goal = Goal::findOne( Yii::$app->request->get()['goal_id'] );
-            $predefinedTitle ="Выполна цель ".$goal->name;
+            $predefinedTitle ="Выполнена цель ".$goal->name;
             $predefinedText ="Вы выполнили цель ".$goal->name.". Опишите как это было? Сложно или не очень? Глядя на вас, другие смогут стать лучше.";
             $difficult = true;
         }
