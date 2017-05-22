@@ -140,18 +140,27 @@ echo $this->render('_panel.php');
 
 								 		}else{
 								 			//Todo partial render
+
+
+								 			$tags = $a->getTags();
+								 			$category = $a->getCategory();
+
+
+
 								 			?>
 
 
 								 	<!-- ACHIEVEMENT BLOCK SMALL-->
 								 	<div class="achievement-block achievement-block--small">
 								 		<!-- meta --> 
+								 		<?php if(!empty($category)) { ?>
 								 		<div class="achievement-block-meta">
 								 			<div class="achievement-block-category">
-								 				<div class="mdlst-cattag mdlst-cattag-2">Спорт</div>
+								 				<div class="mdlst-cattag mdlst-cattag-2"><?=$category->name;?></div>
 								 			</div> 
 
 								 		</div>
+								 		<?php } ?>
 
 								 		<!-- content --> 
 								 		<div class="achievement-block-content">
@@ -159,7 +168,7 @@ echo $this->render('_panel.php');
 								 				<div class="achievement-block-content-col achievement-block-content-col-1">
 								 					<div class="achievement-block-content-title"><?=$a->name?></div>
 								 					<div class="achievement-block-content-info">
-								 						<div class="achievement-block-content-info-date">27.11.2010</div>
+								 						<div class="achievement-block-content-info-date"><?=date("d.m.Y",  strtotime($a->date_achieved))?></div>
 								 					
 								 					</div>
 														
@@ -176,7 +185,7 @@ echo $this->render('_panel.php');
 										 		 
 										 			</div>
 										 			<div class="achievement-block-comments">
-									 					<div class="comment-controll"><span></span>94 комментария</div>
+									 					<?=Yii::$app->comment->renderCommentCount( count(Comment::getCommentsOfObject($a)->all() ) , false, true );?>
 										 			</div>
 
 								 				</div>
