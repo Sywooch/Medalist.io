@@ -713,10 +713,27 @@ $(document).ready(function(){
 
 
 		/* OWL SLIDER */
-		$(".owlslider").owlCarousel({
-			items: 1
+            $(document).ready(function() {
+              var owl = $('.owl-carousel');
+              owl.owlCarousel({
+                items: 1,
+                loop: true,
+                margin: 0,
+                autoplay: true,
+                autoplayTimeout: 10000,
+                autoplayHoverPause: false,
+				nav: false,
+				dots:false
+				
 
-		});
+              });
+              $('.play').on('click', function() {
+                owl.trigger('play.owl.autoplay', [10000])
+              })
+              $('.stop').on('click', function() {
+                owl.trigger('stop.owl.autoplay')
+              })
+            })
 		/* OWL SLIDER END */
 
 });

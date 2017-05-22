@@ -1636,6 +1636,10 @@ a {
   background-color: #ff2d0b;
   color: #fff;
 }
+.mdlst-button-accent-main {
+  margin: 0px;
+  background-color: #ff2d0b;
+}
 .mdlst-button-gray {
   background-color: #9a9ba0;
   color: #fff;
@@ -2343,3 +2347,6 @@ ntainer {
   zoom: 1;
 }
 /* GOALS END*/
+.text-align-center {
+  text-align: center;
+}
