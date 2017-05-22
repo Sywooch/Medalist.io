@@ -64,7 +64,7 @@ echo $this->render('_panel.php');
 			 						<div class="addach-extra ">
 			 							<div class="addach-extra-range">
 			 								<div class="addach-extra-range-text">Насколько это сложно?</div>
-			 								<div class="addach-extra-range-range"> <input type="range" data-toggle="rangeslider"  data-rangeslider min="1" max="100" step="1" value="50" name="difficulty"></div>
+			 								<div class="addach-extra-range-range"> <input type="range" data-toggle="rangeslider"  data-rangeslider min="1" max="100" step="1" value="50" name="difficulty"></div>  
 			 							</div>
 			 							 
 			 						</div>
