@@ -163,7 +163,7 @@ class Notification extends \yii\db\ActiveRecord
         ?>
             <div class="newblock">
                 <div class="newblock-pic">
-        			<a href="<?=Yii::$app->urlManager->createUrl( ['personal/viewprofile','user_id' => $userCreatedNew->id])?>">
+        			<a href="<?=Yii::$app->urlManager->createUrl( ['personal/viewprofile','user_id' => $userCreatedNew->id])?>" class="newblock-pic-userlink">
         	                        <img src="<?=$userCreatedNew->getProfile()->one()->getAvatarSrc();?>"/>
         				            <br />
                                     <?=$userCreatedNew->getName()?>
@@ -185,7 +185,7 @@ class Notification extends \yii\db\ActiveRecord
                 	                подписался на обновления пользователя 
 								</div>
 				                <div class="newblock-pic-user-to">
-									<a href="<?=Yii::$app->urlManager->createUrl( ['personal/viewprofile','user_id' => $obj->to_user_id])?>">
+									<a href="<?=Yii::$app->urlManager->createUrl( ['personal/viewprofile','user_id' => $obj->to_user_id])?>" class="newblock-pic-userlink">
 	                        			<img src="<?=$obj->getUser()->getProfile()->one()->getAvatarSrc();?>"/>
 										<br /><?=$obj->getUser()->getName()?>
 									</a>
@@ -197,7 +197,7 @@ class Notification extends \yii\db\ActiveRecord
 
                                 //obj of User
                                 ?>
-                                <!--совершил новое достижение--><a href="<?=Yii::$app->urlManager->createUrl( ['personal/achievement','achievement_id' => $obj->achievement_id])?>"><?=$obj->name?></a>
+                                совершил новое достижение<!----> <a href="<?=Yii::$app->urlManager->createUrl( ['personal/achievement','achievement_id' => $obj->achievement_id])?>"><?=$obj->name?></a>
 								<p> <?=$obj->description?></p>
                                 <?
                                 break;

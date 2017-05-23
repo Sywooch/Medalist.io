@@ -149,6 +149,8 @@
 .achievement-block-content-info-status,
 .achievement-block-content-col,
 .achievement-block-images-image,
+.newblock-pic,
+.newblock-data,
 .newblock-data-text,
 .newblock-pic-user-to,
 .possible-friends-block,
@@ -179,8 +181,6 @@
 .addach-extra-range-text,
 .addach-extra-range-range,
 .achievement-block-rewards-reward,
-.newblock-pic,
-.newblock-data,
 .newblock-icon,
 .friend-list-block-pic,
 .mdlst-switch-state,
@@ -1422,6 +1422,12 @@ a {
   height: 100px;
   margin-right: 30px;
   line-height: 1.3em;
+}
+.newblock-pic-userlink {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .newblock-pic img {
   max-width: 100px;

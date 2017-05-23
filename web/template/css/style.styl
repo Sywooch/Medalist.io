@@ -1153,15 +1153,20 @@ a
     text-decoration none
     white-space nowrap
     &-pic
-        @extends .dib_m
+        @extends .dib_t
         width 100px 
         height 100px
         margin-right 30px
         line-height 1.3em
+        &-userlink
+            display block
+            width 100%
+            overflow hidden
+            text-overflow ellipsis
         & img 
             max-width 100px
     &-data
-        @extends .dib_m
+        @extends .dib_t
         white-space normal
         width 570px 
         line-height 1.3em
