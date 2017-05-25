@@ -6,6 +6,8 @@ use app\models\ScalePointsBalance;
 use app\models\Level;
 use app\models\Notification;
 use app\models\Comment;
+use app\models\QuestPendingTask;
+use app\models\QuestChallenge;
 
 echo $this->render('_panel.php');
 
@@ -85,6 +87,11 @@ echo $this->render('_panel.php');
                                                 $points = ScalePointsBalance::getUserPointsSum( $u->id );
                                                 $level = Level::getUserLevel ( $u->id );
 
+                                                $pendingTask = QuestPendingTask::find()->where(['user_id' => $u->id])->andWhere([ 'quest_id' => $quest->quest_id ])->one();
+                                                $pendingChallenge = QuestChallenge::find()->where(['to_user_id' => $u->id])->andWhere([ 'quest_id' => $quest->quest_id ])->one();
+                                                 
+                                                $canMakeChallenge = empty( $pendingTask ) && empty( $pendingChallenge );
+
                                                 ?>
                                             <div class="friend-list-block" href="<?=Yii::$app->urlManager->createUrl( ['personal/viewprofile','user_id' => $u->id])?>">
                                                 <div class="friend-list-block-pic">
@@ -95,7 +102,20 @@ echo $this->render('_panel.php');
                                                 <div class="friend-list-block-level"><?=$level->level?></div>
                                               
                                                 <div class="friend-list-block-level">
-                                                    <? Yii::$app->decor->button('Бросить вызов', '', 'mdlst-button-smaller js-h-questchallenge-user js-questchallenge-select-user', ['user_id' => $u->id]) ?>
+                                                    <? 
+
+                                                    if( $canMakeChallenge ){
+
+                                                    Yii::$app->decor->button('Бросить вызов', '', 'mdlst-button-smaller js-h-questchallenge-user js-questchallenge-select-user', ['user_id' => $u->id]);
+
+                                                    }else{
+
+
+
+                                                        Yii::$app->decor->button('Пользователь уже участвовал', '', 'mdlst-button-smaller  mdlst-button-disabled', ['user_id' => $u->id]);
+                                                    } 
+
+                                                    ?>
                                                 </div>
                                             </div>
                                             <?}?>
