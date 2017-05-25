@@ -39,6 +39,11 @@ class PersonalController extends \yii\web\Controller
     {
         $achievement = Achievement::findOne(Yii::$app->request->get()['achievement_id']);
 
+        if( ! $achievement ){
+             throw new \yii\web\NotFoundHttpException();
+             return false;
+        }
+
         $quest = !empty($achievement->quest_id) ? Quest::findOne( $achievement->quest_id ) : false;
         $goal = false;
 
@@ -171,6 +176,10 @@ class PersonalController extends \yii\web\Controller
         //Кто уже в друзьях
         if( !empty(Yii::$app->request->get()['user_id'] )) {
             $user = User::findOne( Yii::$app->request->get()['user_id']  );
+
+            if ( ! $user ){
+                throw new \yii\web\NotFoundHttpException();
+            }
         }
 
         $isFollowed = false;
@@ -242,6 +251,9 @@ class PersonalController extends \yii\web\Controller
 
         $id = Yii::$app->request->get()['goal_id'];
         $goal = Goal::findOne( $id );
+        if( !$goal ){
+             throw new \yii\web\NotFoundHttpException();
+        }
         return $this->render('goal-detail', ['goal' => $goal]);
     }
 
@@ -370,6 +382,11 @@ class PersonalController extends \yii\web\Controller
         $q = Quest::findOne($get['quest_id']);
 
 
+        if( !$q ){
+             throw new \yii\web\NotFoundHttpException();
+             return false;
+        }
+
         $rewards = $q->getRewards()->all();
 
         $badge = false; 
@@ -432,6 +449,11 @@ class PersonalController extends \yii\web\Controller
         $get = Yii::$app->request->get();
 
         $q = Quest::findOne($get['quest_id']);
+
+        if( !$q ){
+             throw new \yii\web\NotFoundHttpException();
+             return false;
+        }
 
 
         $rewards = $q->getRewards()->all();
@@ -527,6 +549,11 @@ class PersonalController extends \yii\web\Controller
         $get = Yii::$app->request->get();
 
         $badge = Badge::findOne( $get['badge_id'] );
+
+        if( ! $badge ){
+             throw new \yii\web\NotFoundHttpException();
+             return false;
+        }
         
 
         return $this->render('reward-detail', ['badge' => $badge]);
