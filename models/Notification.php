@@ -163,17 +163,13 @@ class Notification extends \yii\db\ActiveRecord
         ?>
             <div class="newblock">
                 <div class="newblock-pic">
-        			<a href="<?=Yii::$app->urlManager->createUrl( ['personal/viewprofile','user_id' => $userCreatedNew->id])?>" class="newblock-pic-userlink">
-        	                        <img src="<?=$userCreatedNew->getProfile()->one()->getAvatarSrc();?>"/>
-        				            <br />
-                                    <?=$userCreatedNew->getName()?>
+     	             <a href="<?=Yii::$app->urlManager->createUrl( ['personal/viewprofile','user_id' => $userCreatedNew->id])?>" class="newblock-pic-name"><?=$userCreatedNew->getName()?></a> 
+        			<a href="<?=Yii::$app->urlManager->createUrl( ['personal/viewprofile','user_id' => $userCreatedNew->id])?>" class="newblock-pic-userlink" style="background-image: url(<?=$userCreatedNew->getProfile()->one()->getAvatarSrc();?>);">
         			</a>
 
 		          </div>
 
-
                 <div class="newblock-data">
-                    <!--Пользователь <a href="<?=Yii::$app->urlManager->createUrl( ['personal/viewprofile','user_id' => $userCreatedNew->id])?>"><?=$userCreatedNew->getName()?></a> -->
 
                     <?php 
                         switch ($notification->notification_type_id) {
@@ -181,15 +177,14 @@ class Notification extends \yii\db\ActiveRecord
 
                                 //obj of User
                                 ?>
-								<div class="newblock-data-text">
-                	                подписался на обновления пользователя 
-								</div>
-				                <div class="newblock-pic-user-to">
-									<a href="<?=Yii::$app->urlManager->createUrl( ['personal/viewprofile','user_id' => $obj->to_user_id])?>" class="newblock-pic-userlink">
-	                        			<img src="<?=$obj->getUser()->getProfile()->one()->getAvatarSrc();?>"/>
-										<br /><?=$obj->getUser()->getName()?>
-									</a>
-								</div>
+				<div class="newblock-data-text">
+		                    <span class="not-date"><?=date("d.m.Y", strtotime($notification->date_created) );?></span>
+					Подписка на обновления пользователя 
+				</div>
+		                <div class="newblock-pic-user-to">
+					<a href="<?=Yii::$app->urlManager->createUrl( ['personal/viewprofile','user_id' => $obj->to_user_id])?>" class="newblock-pic-name"><?=$obj->getUser()->getName()?></a>
+					<a href="<?=Yii::$app->urlManager->createUrl( ['personal/viewprofile','user_id' => $obj->to_user_id])?>" class="newblock-pic-userlink" style="background-image: url(<?=$obj->getUser()->getProfile()->one()->getAvatarSrc();?>);"></a>
+				</div>
                                 <?
                                 break;
                             
@@ -197,30 +192,40 @@ class Notification extends \yii\db\ActiveRecord
 
                                 //obj of User
                                 ?>
-                                совершил новое достижение<!----> <a href="<?=Yii::$app->urlManager->createUrl( ['personal/achievement','achievement_id' => $obj->achievement_id])?>"><?=$obj->name?></a>
-								<p> <?=$obj->description?></p>
+				<div class="newblock-data-text">
+					<span class="not-date"><?=date("d.m.Y", strtotime($obj->date_achieved) );?></span>
+					Новое достижение<!----> <a href="<?=Yii::$app->urlManager->createUrl( ['personal/achievement','achievement_id' => $obj->achievement_id])?>"><?=$obj->name?></a>
+					<p> <?=$obj->description?></p>
+				</div>
+		                <div class="newblock-pic-user-to">
+					<a href="<?=Yii::$app->urlManager->createUrl( ['personal/achievement','achievement_id' => $obj->achievement_id])?>" class="newblock-pic-name"><?=$obj->name?></a>
+					<a href="<?=Yii::$app->urlManager->createUrl( ['personal/achievement','achievement_id' => $obj->achievement_id])?>" class="newblock-pic-userlink" <?php if(!empty($obj->getPhotos()[0]) ) { ?> style = "background-image: url(<?=$obj->getPhotos()[0]->filename?>);"<? } ?>></a>
+				</div>
                                 <?
                                 break;
                             case NotificationType::NT_NEW_REWARD:
 
                                 //obj of User
                                 ?>
-								<div class="newblock-data-text">
-                	                получил награду <?=$obj->name?><br><?=$obj->description?>
-								</div>
-				                <div class="newblock-pic-user-to">
-									<a href="<?=Yii::$app->urlManager->createUrl( ['personal/reward-detail','badge_id' => $obj->badge_id])?>">
-		                        		<img src="<?=$obj->picture_small;?>"/>
-										<br /><?=$obj->name?>
-									</a>
-								</div>
+				<div class="newblock-data-text">
+		                    <span class="not-date"><?=date("d.m.Y", strtotime($notification->date_created) );?></span>
+        	       	                Новая награда <a href="<?=Yii::$app->urlManager->createUrl( ['personal/reward-detail','badge_id' => $obj->badge_id])?>"><?=$obj->name?></a>
+					<p> <?=$obj->description?></p>
+				</div>
+		                <div class="newblock-pic-user-to">
+					<a href="<?=Yii::$app->urlManager->createUrl( ['personal/reward-detail','badge_id' => $obj->badge_id])?>" class="newblock-pic-name"><?=$obj->name?></a>
+					<a href="<?=Yii::$app->urlManager->createUrl( ['personal/reward-detail','badge_id' => $obj->badge_id])?>" class="newblock-pic-userlink" <?php if(!empty($obj->picture_small) ) { ?> style = "background-size: 100px 75px; background-repeat: no-repeat; background-image: url(<?=$obj->picture_small;?>);"<? } ?>></a>
+				</div>
                                 <?
                                 break;
                             case NotificationType::NT_NEW_LEVEL:
 
                                 //obj of User
                                 ?>
-                                достиг уровня  <b><?=$obj->level?></b>
+				<div class="newblock-data-text">
+		                    <span class="not-date"><?=date("d.m.Y", strtotime($notification->date_created) );?></span>
+	                                Достижение нового уровня  <b><?=$obj->level?></b>
+				</div>
                                 <?
                                 break;
 
@@ -228,7 +233,16 @@ class Notification extends \yii\db\ActiveRecord
 
                                 //obj of User
                                 ?>
-                               взял квест <a href="<?=Yii::$app->urlManager->createUrl( ['personal/quest','quest_id' => $obj->quest_id])?>"><?=$obj->name?></a>
+				<div class="newblock-data-text">
+		                    <span class="not-date"><?=date("d.m.Y", strtotime($notification->date_created) );?></span>
+        	                      Взят квест <a href="<?=Yii::$app->urlManager->createUrl( ['personal/quest','quest_id' => $obj->quest_id])?>"><?=$obj->name?></a>
+					<p> <?=$obj->description?></p>
+				</div>
+		                <div class="newblock-pic-user-to">
+					<a href="<?=Yii::$app->urlManager->createUrl( ['personal/quest','quest_id' => $obj->quest_id])?>" class="newblock-pic-name"><?=$obj->name?></a>
+					<a href="<?=Yii::$app->urlManager->createUrl( ['personal/quest','quest_id' => $obj->quest_id])?>" class="newblock-pic-userlink" <?php if(!empty($obj->picture) ) { ?> style = "background-image: url(<?=$obj->picture?>);"<? } ?>></a>
+				</div>
+
                                 <?
                                 break;
 
@@ -236,7 +250,16 @@ class Notification extends \yii\db\ActiveRecord
 
                                 //obj of User
                                 ?>
-                                поставил себе цель <a href="<?=Yii::$app->urlManager->createUrl( ['personal/goal','goal_id' => $obj->goal_id])?>"><?=$obj->name?></a>
+				<div class="newblock-data-text">
+		                    <span class="not-date"><?=date("d.m.Y", strtotime($notification->date_created) );?></span>
+        	                        Новая цель <a href="<?=Yii::$app->urlManager->createUrl( ['personal/goal','goal_id' => $obj->goal_id])?>"><?=$obj->name?></a>
+					<p> <?=$obj->description?></p>
+				</div>
+		                <div class="newblock-pic-user-to">
+					<a href="<?=Yii::$app->urlManager->createUrl( ['personal/goal','goal_id' => $obj->goal_id])?>" class="newblock-pic-name"><?=$obj->name?></a>
+					<a href="<?=Yii::$app->urlManager->createUrl( ['personal/goal','goal_id' => $obj->goal_id])?>" class="newblock-pic-userlink" <?php if(!empty($obj->getPhotos()[0]) ) { ?> style = "background-image: url(<?=$obj->getPhotos()[0]->filename?>);"<? } ?>></a>
+				</div>
+
                                 <?
                                 break;
 
@@ -244,7 +267,15 @@ class Notification extends \yii\db\ActiveRecord
 
                                 //obj of User
                                 ?>
-                                выполнил квест <a href="<?=Yii::$app->urlManager->createUrl( ['personal/quest-detail','quest_id' => $obj->quest_id])?>"><?=$obj->name?></a>
+				<div class="newblock-data-text">
+		                    <span class="not-date"><?=date("d.m.Y", strtotime($notification->date_created) );?></span>
+	                                Выполнен квест <a href="<?=Yii::$app->urlManager->createUrl( ['personal/quest-detail','quest_id' => $obj->quest_id])?>"><?=$obj->name?></a>
+					<p> <?=$obj->description?></p>
+				</div>
+		                <div class="newblock-pic-user-to">
+					<a href="<?=Yii::$app->urlManager->createUrl( ['personal/quest','quest_id' => $obj->quest_id])?>" class="newblock-pic-name"><?=$obj->name?></a>
+					<a href="<?=Yii::$app->urlManager->createUrl( ['personal/quest','quest_id' => $obj->quest_id])?>" class="newblock-pic-userlink" <?php if(!empty($obj->picture) ) { ?> style = "background-image: url(<?=$obj->picture?>);"<? } ?>></a>
+				</div>
                                 <?
                                 break;
                             
@@ -255,7 +286,6 @@ class Notification extends \yii\db\ActiveRecord
                     ?>
 
                     <br />
-                    <?=date("d.m.Y", strtotime($notification->date_created) );?>
                 </div>
 
 
@@ -266,7 +296,7 @@ class Notification extends \yii\db\ActiveRecord
 
                                 //obj of User
                                 ?>
-                                <img src="/template/img/new-icon-follower.png">
+                                <img src="/template/img/new-icon-follower.png" alt="">
                                 <?
                                 break;
                             
@@ -274,7 +304,7 @@ class Notification extends \yii\db\ActiveRecord
 
                                 //obj of User
                                 ?>
-                                <img src="/template/img/new-icon-achievement.png">
+                                <img src="/template/img/new-icon-achievement.png" alt="">
                                 <?
                                 break;
                             
@@ -282,7 +312,7 @@ class Notification extends \yii\db\ActiveRecord
 
                                 //obj of User
                                 ?>
-                                <img src="/template/img/new-icon-goal.png">
+                                <img src="/template/img/new-icon-goal.png" alt="">
                                 <?
                                 break;
                          

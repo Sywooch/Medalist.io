@@ -728,7 +728,7 @@ a
             white-space normal
             width 100px 
             height 100px
-            background-position center 
+            //background-position center
             background-size cover 
             background-repeat no-repeat
             margin-right 34px
@@ -1143,6 +1143,7 @@ a
 
 
 /* NEWS */
+/*       height 100px */
 
 .newblock
     @extends .simplebox
@@ -1155,16 +1156,24 @@ a
     &-pic
         @extends .dib_t
         width 100px 
-        height 100px
         margin-right 30px
         line-height 1.3em
+        text-align center
         &-userlink
             display block
-            width 100%
+            width 100px
+            height 100px
             overflow hidden
             text-overflow ellipsis
+            background-size cover
         & img 
             max-width 100px
+        &-name
+           margin-bottom 7px
+           display block
+           white-space nowrap
+           overflow hidden
+           text-overflow ellipsis
     &-data
         @extends .dib_t
         white-space normal
@@ -1173,6 +1182,7 @@ a
         &-text
          @extends .dib_t
          width 430px
+         margin-top 25px
     &-icon 
         @extends .dib_m
         margin-left 30px
@@ -1186,8 +1196,13 @@ a
         text-align center
         & img 
             max-width 100px
+        &-name
+           margin-bottom 7px
+           display block
  
-  
+.not-date
+   color #9a9ba0
+
         
 /* NEWS END */
 
@@ -1196,24 +1211,30 @@ a
     &-block 
         @extends .dib_t 
         margin-bottom 25px
-        width 190px 
+        margin-right  5px
+        width 189px 
         text-align center 
-        &-pic 
-            width 100% 
-            margin-bottom 5px 
-            
-            & img 
-                max-width 100%
-        &-name 
-            font-size 16px 
-            margin-bottom 10px 
-            &-url 
-                text-decoration none
-        &-follow 
+        &-follow
             width 100px
-            margin 0 auto
+            margin 15px auto
             &.followed 
                 opacity 0.7
+        &-pic 
+          @extends .dib_t
+          width 100px 
+          margin-right 30px
+          line-height 1.3em
+          text-align center
+          &-userlink
+              display block
+              width 180px
+              height 180px
+              overflow hidden
+              text-overflow ellipsis
+              background-size cover
+          &-name
+             margin-bottom 7px
+             display block
 
 .friend-list 
     
@@ -2072,3 +2093,24 @@ ntainer
 
 .text-align-center
   text-align center
+
+.page
+    &-h1
+        font-size 32px 
+        text-transform uppercase 
+        color CAccent
+        text-align center
+    &-h2
+        font-size 19px 
+        text-transform uppercase 
+        color CAccent
+        text-align center
+    &-h3
+        font-size 20px
+        color C_Purple
+        font-weight normal
+        text-align center
+    &-accent 
+        color CMain
+    &-p
+        font-size 18px 
