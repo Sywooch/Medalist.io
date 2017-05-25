@@ -5,6 +5,16 @@ use app\models\Comment;
 use app\models\Goal;
 
 echo $this->render('_panel.php');
+
+
+
+if( Yii::$app->user->isGuest ){
+    $myGoal = false;
+}else{
+    $myGoal = (Yii::$app->user->identity->id == $goal->user_id);
+}
+
+
 ?>
 <!-- CONTENT -->
 <div class="container">
@@ -31,8 +41,8 @@ echo $this->render('_panel.php');
                     <div class="output-content">
                         <div class="mygoals-name-div">
                             <div class="mygoals-name"><?= $goal->name ?></div>
-                            <div class="mygoals-name-button"><a class="goal-done-button mdlst-button" href="<?=Yii::$app->urlManager->createUrl(['personal/achievement-add', 'goal_id'=> $goal->goal_id ])?>">Выполнить
-                                    цель</a></div>
+                            <?php if( $myGoal ) {?><div class="mygoals-name-button"><a class="goal-done-button mdlst-button" href="<?=Yii::$app->urlManager->createUrl(['personal/achievement-add', 'goal_id'=> $goal->goal_id ])?>">Выполнить
+                                    цель</a></div><? } ?>
                         </div>
                         <div class="clear"></div>
                         <div class="mygoals-stats-div">
@@ -131,9 +141,9 @@ echo $this->render('_panel.php');
 
                                         <!-- widget add subgoal -->
                            
-
+                                        <?php if( $myGoal ) {?>
                                         <?=$this->render('_goal_subtask_add.php', ['goal' => $goal]);?>
-                                       
+                                        <? } ?>
                                         <hr>
                                         <!-- widget add subgoal task -->
 
@@ -158,14 +168,25 @@ echo $this->render('_panel.php');
                                                     <li class="subtask-container">
                                                         <div class="subtask-top">
                                                             <div
-                                                                class="subtask-top-left <?= $subtask->completed ? 'subtask-done' : ''; ?> js-set-subtask-complete" data-goal_subtask_id="<?=$subtask->goal_subtask_id?>" data-goal_id="<?=$subtask->goal_id?>">
-                                                                <div class="input-check">
+                                                                class="subtask-top-left <?= $subtask->completed ? 'subtask-done' : ''; ?>  <?php if( $myGoal ) {?>js-set-subtask-complete<? }?>" data-goal_subtask_id="<?=$subtask->goal_subtask_id?>" data-goal_id="<?=$subtask->goal_id?>">
+
+                                                                 <?php if( $myGoal ) {?>
+                                                                 <div class="input-check">
                                                                     <input <?= $subtask->completed ? 'checked = "checked"' : ''; ?>
                                                                         type="checkbox" id="<?= $s; ?>"
                                                                         name="<?= $s; ?>" value="<?= $s; ?>"/>
                                                                     <label for="<?= $s; ?>"
                                                                            class="subtask-top-name"><?=($i+1)?>. <?= $subtask->name ?></label>
                                                                 </div>
+                                                                <? }else { 
+                                                                    ?>
+                                                                <div class="input-check">
+                                                                   
+                                                                    <label  class="subtask-top-name"><?=($i+1)?>. <?= $subtask->name ?></label>
+                                                                </div>
+                                                                    <?
+                                                                    }?>
+
                                                                 <div class="subtask-progress">
                                                                     <div
                                                                         class="interests-selector-scale-viewport userpanel-info-scale-scale subtask-progress-height">
@@ -203,9 +224,9 @@ echo $this->render('_panel.php');
                                                                 <li>
                                                                     <div
                                                                         class="input-check <?= $subtask_point->completed ? 'subtask-done' : ''; ?>">
-                                                                        <input <?= $subtask_point->completed ? 'checked = "checked"' : ''; ?>
+                                                                       <?php if( $myGoal ) {?> <input <?= $subtask_point->completed ? 'checked = "checked"' : ''; ?>
                                                                             type="checkbox" id="<?= $p ?>"
-                                                                            name="<?= $p ?>" value="<?= $p ?>"/>
+                                                                            name="<?= $p ?>" value="<?= $p ?>"/> <? } ?>
                                                                         <label for="<?= $p ?>" class="subtask-top-name"><?=($j+1)?>. <?= $subtask_point->name ?></label>
                                                                     </div>
                                                                     <div class="clear"></div>
