@@ -124,7 +124,7 @@ class PersonalController extends \yii\web\Controller
         }
         $excluded[] = Yii::$app->user->identity->id;
 
-        $possibleFriends = Follower::findAlikeUsers( Yii::$app->user->identity->id )->where(['NOT IN', 'id', $excluded])->all();
+        $possibleFriends = Follower::findAlikeUsers( Yii::$app->user->identity->id )->where(['NOT IN', 'id', $excluded])->andWhere(['status' => '1'])->all();
 
         return $this->render('friends', [ 'possibleFriends' => $possibleFriends, 'followed' => $followed ]);
     }
@@ -200,7 +200,7 @@ class PersonalController extends \yii\web\Controller
         }
         $excluded[] = Yii::$app->user->identity->id;
 
-        $possibleFriends = Follower::findAlikeUsers( Yii::$app->user->identity->id )->where(['NOT IN', 'id', $excluded])->all();
+        $possibleFriends = Follower::findAlikeUsers( Yii::$app->user->identity->id )->where(['NOT IN', 'id', $excluded])->andWhere(['status' => '1'])->all();
 
 
 
