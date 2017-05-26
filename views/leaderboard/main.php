@@ -45,6 +45,8 @@ echo $this->render('//personal/_panel.php');
 
                         $u = User::findOne( $row['user_id'] );
 
+                        if (!$u) { continue; }
+
                         $profile = $u->getProfile()->one();
                         $avatarSrc = $profile->getAvatarSrc();
 
