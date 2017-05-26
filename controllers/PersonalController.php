@@ -227,7 +227,7 @@ class PersonalController extends \yii\web\Controller
          //OG PARAMS
         $this->view->params['og_title'] = $user->name.': достижения, цели и стремления ';
         $this->view->params['og_description'] = 'Узнайте достижения '.$user->name.', бросьте ему вызов!';
-        $this->view->params['og_image'] = Yii::$app->homeUrl.$user->getProfile()->one()->getAvatarSrc();
+        $this->view->params['og_image'] = 'http://'.Yii::$app->request->serverName.$user->getProfile()->one()->getAvatarSrc();
 
 
         return $this->render('profileview', [ 
@@ -445,6 +445,13 @@ class PersonalController extends \yii\web\Controller
 
 
          
+
+         //OG PARAMS
+        $this->view->params['og_title'] = 'Квест '.$q->name." - пройди и получи баллы. Сможешь?";
+        $this->view->params['og_description'] = 'А вы сможете выполнить квест '.$q->name.'? Кое-кто уже доказал, что сможет.';
+        $this->view->params['og_image'] = 'http://'.Yii::$app->request->serverName.$q->picture;
+
+
         return $this->render('quest', ['quest' => $q, 'category' => $category , 'badge' => $badge , 'achievements' => $achievements]);
     }
 
@@ -562,6 +569,12 @@ class PersonalController extends \yii\web\Controller
              throw new \yii\web\NotFoundHttpException();
              return false;
         }
+
+
+         //OG PARAMS
+        $this->view->params['og_title'] = 'Награда '.$badge->name."! Узнай, как получить.";
+        $this->view->params['og_description'] = 'Выполняй квесты medalyst.online  и получай награды! Например, '.$badge->picture.'.';
+        $this->view->params['og_image'] = 'http://'.Yii::$app->request->serverName.$badge->picture;
         
 
         return $this->render('reward-detail', ['badge' => $badge]);

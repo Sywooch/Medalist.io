@@ -13,6 +13,10 @@ AppAsset::register($this);
 
 if ( empty($this->title) ){
     $this->title = 'Medalyst.online - система учёта достижений! Развивайся с нами';
+
+    if (!empty($this->params['og_title'])){
+          $this->title = $this->params['og_title'].' - medalyst.online!';
+    }
 }
 
 ?>
