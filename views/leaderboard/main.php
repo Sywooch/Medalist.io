@@ -60,7 +60,7 @@ echo $this->render('//personal/_panel.php');
                         }
 
                         ?>
-                    <a class="friend-list-block" href="<?=Yii::$app->urlManager->createUrl( ['personal/viewprofile','user_id' => $u->id])?>" <? if( $you ) { ?> style="background-color: ##00fff6;" <? }?>>
+                    <a class="friend-list-block" href="<?=Yii::$app->urlManager->createUrl( ['personal/viewprofile','user_id' => $u->id])?>" <? if( $you ) { ?> style="background-color: #00fff6;" <? }?>>
                         <div class="friend-list-block-pic">
                             <img class="friend-list-block-pic-img" src="<?=$avatarSrc?>">
                         </div>
