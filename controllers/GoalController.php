@@ -117,6 +117,7 @@ class GoalController extends Controller
         $result = [];
 
         $result['success'] = false;
+        $result['errors'] = [];
 
         if( !empty(Yii::$app->request->post() )){
             $post = Yii::$app->request->post();
@@ -146,7 +147,11 @@ class GoalController extends Controller
                 }else{
                     $result['errors'] = $goal->errors;
                 }
+            }else{
+                 $result['errors'][] = 'Вы не ввели имя';
             }
+        }else{
+                $result['errors'][] = 'Недостаточно данных';
         }
 
         return json_encode($result);
@@ -157,6 +162,7 @@ class GoalController extends Controller
         $result = [];
 
         $result['success'] = false;
+          $result['errors'] = [];
 
         if( !empty(Yii::$app->request->post() )){
             $post = Yii::$app->request->post();
@@ -227,7 +233,11 @@ class GoalController extends Controller
                 }else{
                     $result['errors'] = $goal->errors;
                 }
+            }else{
+                 $result['errors'][] = 'Нет названия цели';
             }
+        }else{
+            $result['errors'][] = 'Недостаточно данных';
         }
 
         return json_encode($result);

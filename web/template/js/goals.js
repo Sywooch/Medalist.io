@@ -58,6 +58,12 @@ $(document).ready(function(){
 						if( data.success ){
 							$('.addach').slideUp();
 							$('.addach-success').slideDown();
+						}else{
+							$('.addach-errors').slideDown();
+							$('.addach-errors-list').html('');
+							for( var k in data.errors ){
+									$('.addach-errors-list').append('<li>'+data.errors[k]+'</li>');
+							}
 						}
 
 						EventEngine.registerEventFromRawAjax (data);

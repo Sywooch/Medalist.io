@@ -59,7 +59,12 @@ echo $this->render('_panel.php');
 			 						</div>
 
 
-
+			 						<div class="addach-errors" style="margin-top: 20px; margin-bottom: 20px; background: rgba(255,0,0,0.05); padding: 10px 40px; display:none;">
+			 							<p class="addach-errors-text">Возникли незначительные ошибки при создании цели</p>
+			 							<ul class="addach-errors-list">
+			 								<li>Вы не заполнили имя</li>
+			 							</ul>
+			 						</div>
 
 			 						<div class="addach-extra ">
 			 							<div class="addach-extra-range">
