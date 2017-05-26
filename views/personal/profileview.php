@@ -110,7 +110,7 @@ $currentUser = $user->id == Yii::$app->user->identity->id ;
 
         if ($user->id == Yii::$app->user->identity->id ){
             echo "<br>";
-            Yii::$app->decor->infoPanel('Вы можете скинуть ссылку на эту страницу друзьям: <b>'.Yii::$app->getRequest()->serverName.Yii::$app->urlManager->createUrl( ['personal/viewprofile','user_id' => Yii::$app->user->identity->id]) .' </b>'); 
+            Yii::$app->decor->infoPanel('Поделиться в соцсетях: <b>'.Yii::$app->getRequest()->serverName.Yii::$app->urlManager->createUrl( ['personal/viewprofile','user_id' => Yii::$app->user->identity->id]) .' </b>'); 
         }
 
 
