@@ -136,6 +136,8 @@ class PersonalController extends \yii\web\Controller
     public function actionViewprofile()
     {
 
+        // OG  PARAMS
+
 
         $post = Yii::$app->request->post();
 
@@ -220,6 +222,12 @@ class PersonalController extends \yii\web\Controller
 
          $news = Notification::find()->where('user_id = '.$user->id)->orderBy(['date_created' => SORT_DESC])->all();
 
+
+
+         //OG PARAMS
+        $this->view->params['og_title'] = $user->name.': достижения, цели и стремления ';
+        $this->view->params['og_description'] = 'Узнайте достижения '.$user->name.', бросьте ему вызов!';
+        $this->view->params['og_image'] = Yii::$app->homeUrl.$user->getProfile()->one()->getAvatarSrc();
 
 
         return $this->render('profileview', [ 

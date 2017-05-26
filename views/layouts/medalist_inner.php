@@ -10,6 +10,11 @@ use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 
 AppAsset::register($this);
+
+if ( empty($this->title) ){
+    $this->title = 'Medalyst.online - система учёта достижений! Развивайся с нами';
+}
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -18,6 +23,15 @@ AppAsset::register($this);
   <head>
     <meta charset="utf-8">
      <title><?= Html::encode($this->title) ?></title>
+
+
+    <?php if(!empty( $this->params['og_title']) ){ ?><meta property="og:title" content="<?=$this->params['og_title']?>" /><? } ?>
+    <?php if(!empty( $this->params['og_image']) ){ ?><meta property="og:title" content="<?=$this->params['og_image']?>" /><? } ?>
+    <?php if(!empty( $this->params['og_description']) ){ ?><meta property="og:title" content="<?=$this->params['og_description']?>" /><? } ?>
+    <?php if(!empty( $this->params['og_video']) ){ ?><meta property="og:title" content="<?=$this->params['og_video']?>" /><? } ?>
+    <?php if(!empty( $this->params['og_url']) ){ ?><meta property="og:title" content="<?=$this->params['og_url']?>" /><? } ?>
+    <?php if(!empty( $this->params['og_type']) ){ ?><meta property="og:title" content="<?=$this->params['og_type']?>" /><? } ?>
+    
     
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="/template/css/system.css">
