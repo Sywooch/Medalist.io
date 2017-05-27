@@ -1230,11 +1230,13 @@ a
               width 180px
               height 180px
               overflow hidden
-              text-overflow ellipsis
               background-size cover
           &-name
-             margin-bottom 7px
-             display block
+           margin-bottom 7px
+           display block
+           white-space nowrap
+           overflow hidden
+           text-overflow ellipsis
 
 .friend-list 
     
@@ -2109,8 +2111,11 @@ ntainer
         font-size 20px
         color C_Purple
         font-weight normal
-        text-align center
+        text-align left
+        margin-top 20px
+        margin-bottom 10px
     &-accent 
         color CMain
     &-p
         font-size 18px 
+        margin 0
