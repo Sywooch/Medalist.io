@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use amnah\yii2\user\models\User;
 
 /**
  * This is the model class for table "achievement".
@@ -107,6 +108,11 @@ class Achievement extends \yii\db\ActiveRecord
         $interests->innerJoin('interest2entity', 'interest.interest_id = interest2entity.interest_id');
         $interests->where('interest2entity.entity_id = '.$this->achievement_id ." AND interest2entity.entity_class = 'Achievement'");
         return $interests->all();
+    }
+    public  function getUser(){
+        $user = User::findOne($this->user_id);
+      
+        return $user;
     }
 
 

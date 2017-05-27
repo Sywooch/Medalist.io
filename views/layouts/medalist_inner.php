@@ -99,7 +99,7 @@ if ( empty($this->title) ){
             <div class="header-logo"><a href="<?=Yii::$app->urlManager->createUrl(['site/index' ])?>"><img src="/template/img/logo-white.png"></a> </div>
             <nav class="header-menu">
                 <ul class="header-menu-list">
-                    <li class="header-menu-list-li"><a href="#" class="header-menu-list-li-a">Последние достижения</a></li>
+                    <li class="header-menu-list-li"><a href="<?=Yii::$app->urlManager->createUrl(['site/last-achievements' ])?>" class="header-menu-list-li-a">Последние достижения</a></li>
                     <li class="header-menu-list-li"><a href="<?=Yii::$app->urlManager->createUrl(['site/howitworks' ])?>" class="header-menu-list-li-a">Как это работает</a></li>
                     <li class="header-menu-list-li"><a href="#" class="header-menu-list-li-a">Истории успеха</a></li>
                 </ul>

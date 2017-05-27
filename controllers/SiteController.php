@@ -6,6 +6,8 @@ use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
+use app\models\Achievement;
+use app\models\Photo;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\Quest;
@@ -84,6 +86,26 @@ class SiteController extends Controller
     
       
         return $this->render('index', ['interests' => '', 'interests2' => '']);
+    }
+
+    /**
+     * Displays homepage.
+     *
+     * @return string
+     */
+    public function actionLastAchievements()
+    {
+        //$achievements = Achievement::find()->limit(5)->all();
+        $photos = Photo::find()->where("entity_class = 'Achievement'")->select('entity_id')->groupBy('entity_id')->distinct()->limit(10)->all();
+        $entity_ids = [];
+        foreach ($photos as $key => $photo) {
+           $entity_ids[] = $photo->entity_id;
+        }
+
+        $achievements = Achievement::find()->where(['achievement_id' => $entity_ids])->all();
+       
+      
+        return $this->render('last-achievements', ['achievements' =>  $achievements]);
     }
 
     /**

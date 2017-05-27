@@ -261,7 +261,8 @@
 .newblock,
 .friend-list-block,
 .profileview,
-.editprofile {
+.editprofile,
+.lastachievement {
   box-shadow: 0 0 5px rgba(49,51,62,0.1);
   box-sizing: border-box;
   -webkit-border-radius: 4px;
@@ -278,13 +279,15 @@
 .friend-list-block-padding,
 .profileview-padding,
 .editprofile-padding,
+.lastachievement-padding,
 .questssuggested,
 .questssuggested-quests-quest,
 .achievement-block-content,
 .newblock,
 .friend-list-block,
 .profileview,
-.editprofile {
+.editprofile,
+.lastachievement {
   padding: 29px 26px;
 }
 /* 1280 */
@@ -2409,3 +2412,15 @@ ntainer {
   font-size: 18px;
   margin: 0;
 }
+/* lastachievement */
+.lastachievement {
+  position: relative;
+  display: block;
+  min-height: 250px;
+  margin-bottom: 30px;
+}
+.lastachievement-wrapper {
+  width: 65%;
+  margin: 0 auto;
+}
+/* lastachievement end */
