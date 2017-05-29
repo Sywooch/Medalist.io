@@ -100,9 +100,11 @@ class SiteController extends Controller
         $entity_ids = [];
         foreach ($photos as $key => $photo) {
            $entity_ids[] = $photo->entity_id;
-        }
 
-        $achievements = Achievement::find()->where(['achievement_id' => $entity_ids])->all();
+        }
+       
+
+        $achievements = Achievement::find()->where(['achievement_id' => $entity_ids])->limit(10)->all();
        
       
         return $this->render('last-achievements', ['achievements' =>  $achievements]);

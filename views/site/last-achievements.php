@@ -21,15 +21,15 @@ $this->title = 'Медалист. Система хранения достиже
             $u = $achievement->getUser();
             $photo = $achievement->getPhotos()[0];
             ?>
-            <a class="lastachievement" style="background-image: url(<?=$photo->filename?>); background-size: cover; background-position:  center;">
+            <a class="lastachievement" style="background-image: url(<?=$photo->filename?>); background-size: cover; background-position:  center;" href="<?=Yii::$app->urlManager->createUrl( ['personal/achievement','achievement_id' => $achievement->achievement_id])?>">
                 <div class="lastachievement-info">
-                    <div class="lastachievement-info-pic">
-                        <img src="/template/img/">
-                    </div>
+                   
                     <div class="lastachievement-info-data">
-                        <div class="lastachievement-info-data-pic"><?=$u->getProfile()->one()->getAvatarSrc();?></div>
-                        <div class="lastachievement-info-data-name"><?=$u->getName();?></div>
-                        <div class="lastachievement-info-data-text"><?=$achievement->name;?></div>
+                        <div class="lastachievement-info-data-pic" style="background-image: url(<?=$u->getProfile()->one()->getAvatarSrc();?>)"></div>
+                        <div class="lastachievement-info-data-data" >
+                            <div class="lastachievement-info-data-name"><?=$u->getName();?></div>
+                            <div class="lastachievement-info-data-text"><?=$achievement->name;?></div>
+                        </div>
                     </div>
                 </div>
             </a>

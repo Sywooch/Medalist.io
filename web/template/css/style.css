@@ -112,7 +112,9 @@
 .mdlst-cattag,
 .mdlst-lurm i,
 .share-widget-title,
-.share-widget-content {
+.share-widget-content,
+.lastachievement-info-data-pic,
+.lastachievement-info-data-data {
   display: inline-block;
   *display: inline;
   zoom: 1;
@@ -162,7 +164,9 @@
 .editprofile-field-input,
 .mdlst-pan-icon,
 .mdlst-pan-text,
-.mdlst-status-icon {
+.mdlst-status-icon,
+.lastachievement-info-data-pic,
+.lastachievement-info-data-data {
   vertical-align: top;
 }
 .dib_m,
@@ -2418,9 +2422,57 @@ ntainer {
   display: block;
   min-height: 250px;
   margin-bottom: 30px;
+  text-decoration: none;
 }
 .lastachievement-wrapper {
   width: 65%;
   margin: 0 auto;
+}
+.lastachievement:before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  content: " ";
+  background-color: rgba(0,0,0,0.25);
+  z-index: 10;
+}
+.lastachievement-info {
+  position: absolute;
+  left: 150px;
+  width: 400px;
+  top: 50px;
+  z-index: 20;
+  color: #fff;
+}
+.lastachievement-info-data {
+  white-space: nowrap;
+}
+.lastachievement-info-data-pic {
+  width: 100px;
+  height: 100px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 2px solid #fff;
+}
+.lastachievement-info-data-pic img {
+  max-width: 100px;
+}
+.lastachievement-info-data-name {
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
+.lastachievement-info-data-text {
+  font-size: 24px;
+}
+.lastachievement-info-data-data {
+  white-space: normal;
+  padding-left: 20px;
 }
 /* lastachievement end */
