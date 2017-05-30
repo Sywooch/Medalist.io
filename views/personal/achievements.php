@@ -3,6 +3,7 @@
 use app\models\Achievement;
 use app\models\Like;
 use app\models\Comment;
+use amnah\yii2\user\models\User;
 echo $this->render('_panel.php');
 ?>
 
@@ -18,12 +19,35 @@ echo $this->render('_panel.php');
 					<div class="container-col container-col-2">
 						<div class="output">
 
+
+
+								<!-- user info -->
+								<?php 
+
+								if( $other !== false ){
+									
+								$user = User::findOne( $other );
+								$userProfile = $user->getProfile()->one();
+								?>
+								<div class="achievement-block-user">
+									<a class="achievement-block-user-link"  href="<?=Yii::$app->urlManager->createUrl(['personal/viewprofile','user_id' => $user->id])?>">
+										<div class="achievement-block-user-pic" style="background-image:  url(<?=$userProfile->getAvatarSrc();?>);"></div>
+										<div class="achievement-block-user-name"><?=$user->getName();?></div>
+									</a>
+									 
+								</div>
+								<? } ?>
+								<!-- user info end -->
+
+
+
+
 							<div class="output-header">
 								<h2 class="mdlst-h2t">Достижения (<?= count($achievements)?>)</h2>
 								<div class="output-header-meta">
 
 									 
-									 <a class="goal-done-button mdlst-button " href="<?=Yii::$app->urlManager->createUrl(['personal/achievement-add' ])?>">+ Добавить новое!</a>
+									 <?php if( $other !== false ) { ?><a class="goal-done-button mdlst-button " href="<?=Yii::$app->urlManager->createUrl(['personal/achievement-add' ])?>">+ Добавить новое!</a><? } ?>
 
 								</div>
 

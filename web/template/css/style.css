@@ -79,6 +79,10 @@
 .achievement-block-content-info-date,
 .achievement-block-content-info-status,
 .achievement-block-content-col,
+.achievement-block-user-link,
+.achievement-block-user-pic,
+.achievement-block-user-name,
+.achievement-block-user-allachievements,
 .achievement-block-rewards-reward,
 .achievement-block-images-image,
 .newblock-pic,
@@ -186,6 +190,10 @@
 .addach-description-photos-text,
 .addach-extra-range-text,
 .addach-extra-range-range,
+.achievement-block-user-link,
+.achievement-block-user-pic,
+.achievement-block-user-name,
+.achievement-block-user-allachievements,
 .achievement-block-rewards-reward,
 .newblock-icon,
 .friend-list-block-pic,
@@ -1318,6 +1326,7 @@ a {
 .achievement-block {
   position: relative;
   margin-bottom: 50px;
+/* achievement-block-user */
 /* SMALL INVARIATION */
 }
 .achievement-block-category {
@@ -1366,6 +1375,32 @@ a {
 }
 .achievement-block-content-col-2 {
   width: 240px;
+}
+.achievement-block-user {
+  white-space: nowrap;
+  color: #000;
+  text-decoration: none;
+}
+.achievement-block-user-link {
+  color: #000;
+  text-decoration: none;
+  width: 350px;
+}
+.achievement-block-user-pic {
+  width: 75px;
+  height: 75px;
+  -webkit-border-radius: 40px;
+  -moz-border-radius: 40px;
+  border-radius: 40px;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.achievement-block-user-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: 20px;
 }
 .achievement-block-comments {
   text-align: right;

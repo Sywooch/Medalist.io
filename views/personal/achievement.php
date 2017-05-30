@@ -24,9 +24,31 @@ echo $this->render('_panel.php');
 
 
 							 
+
  
  
 							<div class="simplebox simplebox-padding">
+
+
+
+								<!-- user info -->
+								<?php 
+								$user = $achievement->getUser();
+								$userProfile = $user->getProfile()->one();
+								?>
+								<div class="achievement-block-user">
+									<a class="achievement-block-user-link"  href="<?=Yii::$app->urlManager->createUrl(['personal/viewprofile','user_id' => $user->id])?>">
+										<div class="achievement-block-user-pic" style="background-image:  url(<?=$userProfile->getAvatarSrc();?>);"></div>
+										<div class="achievement-block-user-name"><?=$user->getName();?></div>
+									</a>
+									<a class="achievement-block-user-allachievements" href="<?=Yii::$app->urlManager->createUrl(['personal/achievements','user_id' => $user->id])?>">
+										&raquo; Смотреть все достижения
+									</a>
+								</div>
+								<!-- user info end -->
+
+								<div class="mdlst-hr"></div>
+
 
 								<div class="output-header">
 									<h2 class="mdlst-h2t-goals" style="white-space: normal; line-height: 1.1em;">Достижение</h2>
@@ -34,10 +56,11 @@ echo $this->render('_panel.php');
 									<div class="output-header-meta">
 
 									 
-
+									Подтверждается
 									</div>
 
 								</div>
+
 
                         <?php if(!empty($achievement->getPhotos()) ) { ?>
                         <div class="goals-pictures">

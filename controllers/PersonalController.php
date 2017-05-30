@@ -32,8 +32,17 @@ class PersonalController extends \yii\web\Controller
 
     public function actionAchievements()
     {
-        $achievements = Achievement::find()->where('user_id = '.Yii::$app->user->identity->id)->orderBy([ 'date_achieved' => SORT_DESC, 'date_created' => SORT_DESC ])->all();
-        return $this->render('achievements', ['achievements' =>$achievements]);
+        $userToFind = Yii::$app->user->identity->id;
+        $other = false;
+
+        if( !empty(Yii::$app->request->get()['user_id']) ){
+            $other = true;
+            $userToFind = Yii::$app->request->get()['user_id'];
+
+        }
+
+        $achievements = Achievement::find()->where('user_id = '.$userToFind)->orderBy([ 'date_achieved' => SORT_DESC, 'date_created' => SORT_DESC ])->all();
+        return $this->render('achievements', ['achievements' =>$achievements,  'other' =>  $other?$userToFind:false ]);
     }
     public function actionAchievement()
     {
