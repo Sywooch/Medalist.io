@@ -51,14 +51,26 @@ echo $this->render('_panel.php');
 
 
 								<div class="output-header">
-									<h2 class="mdlst-h2t-goals" style="white-space: normal; line-height: 1.1em;">Достижение</h2>
-									<h3> <?=$achievement->name?></h3>
-									<div class="output-header-meta">
+									<h2 class="mdlst-h2t-goals" style="white-space: normal; line-height: 1.1em; float:left;">Достижение</h2>
+				 					<div class="achievement-block-content-info" style="margin-top:36px; float:left; margin-left:60px;">
+				 						<div class="achievement-block-content-info-date"><?=date("d.m.Y H:i", strtotime($achievement->date_achieved))?></div>
+										<?if($achievement->status == 0){?>
+				 						<div class="achievement-block-content-info-status mdlst-status mdlst-status__pending"><span class="mdlst-status-icon"></span> Подтверждается</div>
+										<?}?>
+										<?if($achievement->status == 1){?>
+				 						<div class="achievement-block-content-info-status mdlst-status mdlst-status__pending"><span class="mdlst-status-icon"></span> Подтверждено</div>
+										<?}?>
+				 					</div>
 
-									 
+									<div class="clear"></div>
+									<h3> <?=$achievement->name?></h3>
+
+
+<!--
+									<div class="output-header-meta">
 									Подтверждается
 									</div>
-
+-->
 								</div>
 
 

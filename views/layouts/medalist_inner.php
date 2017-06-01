@@ -101,7 +101,7 @@ if ( empty($this->title) ){
                 <ul class="header-menu-list">
                     <li class="header-menu-list-li"><a href="<?=Yii::$app->urlManager->createUrl(['site/last-achievements' ])?>" class="header-menu-list-li-a">Последние достижения</a></li>
                     <li class="header-menu-list-li"><a href="<?=Yii::$app->urlManager->createUrl(['site/howitworks' ])?>" class="header-menu-list-li-a">Как это работает</a></li>
-                    <li class="header-menu-list-li"><a href="#" class="header-menu-list-li-a">Истории успеха</a></li>
+                    <li class="header-menu-list-li"><a href="<?=Yii::$app->urlManager->createUrl(['site/successstories' ])?>" class="header-menu-list-li-a">Истории успеха</a></li>
                 </ul>
             </nav>
             <div class="header-enter">
@@ -144,7 +144,7 @@ if ( empty($this->title) ){
                 Вы написали какой-то адский модуль или программу? Покажите её нам!  Уверены, многие программисты оценят ваши стремления. Что она делает и зачем? Не понятно... Но вы старались, и вот ваша награда!
             </div>
             
-            <div class="rewardpopup-form-pic"><img src="img/reward/reward-01.png" alt="" class="rewardpopup-form-pic-img"></div>
+            <div class="rewardpopup-form-pic"><img src="/template/img/reward/reward-01.png" alt="" class="rewardpopup-form-pic-img"></div>
             <div class="rewardpopup-form-btn-wrapper"><a class="rewardpopup-form-goto-reward rewardpopup-form-btn mdlst-button" href="<?=Yii::$app->urlManager->createUrl('personal/rewards')?>">+20 к  достижению</a></div>
 
             <!-- todo socials -->

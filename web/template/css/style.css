@@ -1,3 +1,5 @@
+@import "hint.min.css";
+@import "dropzone.css";
 /*CMain = CBlue*/
 .dib,
 .dib_t,
@@ -21,6 +23,8 @@
 .like-controll-plus span,
 .like-controll-minus,
 .like-controll-minus span,
+.like-controll-more,
+.like-controll-more span,
 .comment-block-data-user,
 .comment-block-data-user-pic,
 .comment-block-data-content,
@@ -50,6 +54,7 @@
 .userpanel-user,
 .userpanel-user-pic,
 .userpanel-user-info,
+.userpanel-user-notifications,
 .userpanel-info,
 .userpanel-info-level,
 .userpanel-info-scale,
@@ -62,6 +67,7 @@
 .addach-header-isdifficult,
 .addach-description-date-date,
 .addach-description-date-icon,
+.addach-description-photos-header,
 .addach-description-photos-icon,
 .addach-description-photos-text,
 .addach-extra-range,
@@ -94,6 +100,7 @@
 .possible-friends-block-pic,
 .friend-list-header-block,
 .friend-list-block-pic,
+.friend-list-block-pic2,
 .friend-list-block-name,
 .friend-list-block-goals,
 .friend-list-block-achievements,
@@ -101,6 +108,7 @@
 .friend-list-block-level,
 .profileview-aside,
 .profileview-content,
+.profileview-allachievements,
 .editprofile-field-label,
 .editprofile-field-input,
 .input-check-inline,
@@ -184,8 +192,10 @@
 .questdetail-completeduser-text,
 .userpanel-user-pic,
 .userpanel-user-info,
+.userpanel-user-notifications,
 .userpanel-info-level,
 .userpanel-info-scale,
+.addach-description-photos-header,
 .addach-description-photos-icon,
 .addach-description-photos-text,
 .addach-extra-range-text,
@@ -197,6 +207,8 @@
 .achievement-block-rewards-reward,
 .newblock-icon,
 .friend-list-block-pic,
+.friend-list-block-pic2,
+.profileview-allachievements,
 .mdlst-switch-state,
 .share-widget-title,
 .share-widget-content {
@@ -221,6 +233,8 @@
 .like-controll-plus span,
 .like-controll-minus,
 .like-controll-minus span,
+.like-controll-more,
+.like-controll-more span,
 .comment-controll span,
 .questdetail-completeduser,
 .questblock-info-controlls-likes,
@@ -630,6 +644,17 @@ a {
 .like-controll-active span {
   background-position: 0 -24px;
 }
+.like-controll-more span {
+  background-image: url("../img/goals/checkbox.png");
+  background-position: 0 -25px;
+  width: 26px;
+  height: 25px;
+  background-repeat: no-repeat;
+  position: relative;
+  top: 6px;
+  margin-left: 10px;
+  margin-right: 8px;
+}
 /* . like-controll end*/
 /* comment */
 .comment-block {
@@ -1015,6 +1040,14 @@ a {
   font-size: 18px;
   color: #a7a7a7;
 }
+.userpanel-user-notifications {
+  background-image: url("../img/important.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 50px;
+  height: 50px;
+  margin-left: 80px;
+}
 .userpanel-info {
   width: 540px;
   margin-top: 15px;
@@ -1041,6 +1074,42 @@ a {
   height: 100%;
   font-weight: bold;
   padding-top: 9px;
+}
+.userpanel-info-level-p1 {
+  background-color: #c7c8c4;
+}
+.userpanel-info-level-p2 {
+  background-color: #fec658;
+}
+.userpanel-info-level-p3 {
+  background-color: #f14d3a;
+}
+.userpanel-info-level-p4 {
+  background-color: #358156;
+}
+.userpanel-info-level-p5 {
+  background-color: #1f4b76;
+}
+.userpanel-info-level-p6 {
+  background-color: #4f487c;
+}
+.userpanel-info-l1 {
+  border: 6px rgba(199,200,196,0.5) solid;
+}
+.userpanel-info-l2 {
+  border: 6px rgba(254,198,88,0.5) solid;
+}
+.userpanel-info-l3 {
+  border: 6px rgba(241,77,58,0.5) solid;
+}
+.userpanel-info-l4 {
+  border: 6px rgba(53,129,86,0.5) solid;
+}
+.userpanel-info-l5 {
+  border: 6px rgba(31,75,118,0.5) solid;
+}
+.userpanel-info-l6 {
+  border: 6px rgba(79,72,124,0.5) solid;
 }
 .userpanel-info-scale-scale {
   margin: 0 !important;
@@ -1240,6 +1309,15 @@ a {
 .addach-description-photos {
   background-color: rgba(138,68,255,0.15);
   padding: 22px 15px;
+  z-index: 500;
+}
+.addach-description-photos-header {
+  color: #8a44ff;
+  font-size: 20px;
+  position: relative;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  z-index: 1;
 }
 .addach-description-photos-icon {
   display: inline-block !important;
@@ -1587,10 +1665,19 @@ a {
 .friend-list-block-pic-img {
   max-width: 50px;
 }
+.friend-list-block-pic2 {
+  margin-right: 30px;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background-size: cover;
+}
 .friend-list-block-name {
   font-size: 18px;
   margin-right: 25px;
-  width: 212px;
+  width: 162px;
+  text-overflow: ellipsis;
 }
 .friend-list-block-goals {
   color: #9a9ba0;
@@ -1637,6 +1724,10 @@ a {
   position: absolute;
   right: -15px;
   top: -15px;
+}
+.profileview-allachievements {
+  margin-top: 25px;
+  font-size: 20px;
 }
 /* profileview end */
 /* profileedit */

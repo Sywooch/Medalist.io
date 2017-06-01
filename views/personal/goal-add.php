@@ -21,7 +21,7 @@ echo $this->render('_panel.php');
 							<!-- ADDING ACHIEVEMENT -->
 							<?=$this->render('_icons.php') ?>
 		 					<div class="addach">
-		 						<form action="" name="addach" class="addgoal-form">
+		 						<form action="" name="addach" class="addgoal-form dropzone1">
 									<input type="hidden" value="<?=Yii::$app->request->getCsrfToken()?>" placeholder="email" name="_csrf">
 									<?php if($difficult ) { ?><input type="hidden" value="1" placeholder="" name="difficult"><?} ?>
 
@@ -39,11 +39,18 @@ echo $this->render('_panel.php');
 			 								<textarea name="description" id="description" data-toggle="trumbowyg" cols="30" rows="10" class="addach-description-text-textarea"><?=$predefinedText?></textarea>
 			 							</div>
 			 							<div class="addach-description-date">Крайний срок до достижениея: <span class="addach-description-date-icon"></span><input data-toggle="datepicker" class="addach-description-date-date mdlst-input-small" name="deadline"></div>
+
+				 						<div class="addach-description-photos-header">
+											Кликните в поле ниже для добавления фото
+			 							</div>
+
 			 							<div class="addach-description-photos" data-toggle="dropzone">
+<!--
 			 								<a class="container-menu-list-meta-add addach-description-photos-icon" href="#">
 												<span class="container-menu-list-meta-add-plus">+</span>
 											</a>
 											<div class="addach-description-photos-text">Перетащите сюда фотографии (до 3Мб)</div>
+-->
 			 							</div>
 			 						</div>
 

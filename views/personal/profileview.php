@@ -33,12 +33,13 @@ $currentUser = $user->id == Yii::$app->user->identity->id ;
                             <div class="profileview-aside-img">
                                 <img src="<?=$user->getProfile()->one()->getAvatarSrc();?>">
                             </div>
+
                             <div class="profileview-aside-follower">
                                 <?php 
                                 if( $currentUser ) {  
 
                                         Yii::$app->decor->button('Это ваша страница!', '', 'mdlst-button-disabled mdlst-button-smaller');
-                                        Yii::$app->decor->button('Изменить профиль', '', 'mdlst-button-default mdlst-button-smaller js-update-profile-show');
+                                        Yii::$app->decor->button('Изменить профиль', '', 'mdlst-button-default mdlst-button-smaller js-update-profile-show withNoButton');
 
                                      }else{ 
 
@@ -46,7 +47,7 @@ $currentUser = $user->id == Yii::$app->user->identity->id ;
                                             Yii::$app->decor->button('Подписаться', '', 'js-follow-person', ['user_id' => $user->id]);  
                                         }else{
 
-                                            Yii::$app->decor->button('Уже подписаны', '', 'mdlst-button-disabled mdlst-button-smaller'); 
+                                            Yii::$app->decor->button('Уже подписаны', '', 'mdlst-button-disabled mdlst-button-smaller withNoButton'); 
 
                                         }
                                 }?>
@@ -56,14 +57,15 @@ $currentUser = $user->id == Yii::$app->user->identity->id ;
 
                         <div class="profileview-content">
                             <div  class="profileview-content-view">
+
+
+				<?$level = Level::getUserLevel( $user->id )->level;?>
+
                                 <div class="profileview-content-level">
-                                         <div class="userpanel-info-level">
-                                            <div class="userpanel-info-level-point" style="padding-top: 19px;"><?=Level::getUserLevel( $user->id )->level;?></div>
-                                        </div>
-                                </div>
-                                 
-
-
+                                         <div class="userpanel-info-level userpanel-info-l<?=$level?>">
+                                       	    <div class="userpanel-info-level-point userpanel-info-level-p<?=$level;?>" style="padding-top: 19px;"><?=$level;?></div>
+                               	        </div>
+                	        </div>
                              
                         
                                <div class="output-header">
@@ -91,6 +93,13 @@ $currentUser = $user->id == Yii::$app->user->identity->id ;
                                         <?  
                                         }?>
                                 </div>
+
+								<!-- user info -->
+								<a class="profileview-allachievements" href="<?=Yii::$app->urlManager->createUrl(['personal/achievements','user_id' => $user->id])?>">
+									&raquo; Смотреть все достижения
+								</a>
+								<!-- user info end -->
+
                             </div>
                             <?php if( $currentUser ){  ?>
                             <div class="profileview-edit" style="display: none;">

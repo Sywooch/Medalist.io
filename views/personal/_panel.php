@@ -28,10 +28,16 @@ $avatarSrc = Yii::$app->user->identity->getProfile()->one()->getAvatarSrc();
 	 					<div class="userpanel-user-info-name"><?=Yii::$app->user->identity->getName();?></div>
 	 					<div class="userpanel-user-info-date">на сайте с <?=date("d.m.Y", strtotime(Yii::$app->user->identity->created_at));?></div>
 	 				</div>
+	 				<div class="userpanel-user-notifications">
+						
+	 				</div>
 	 			</div>
-	 			<div class="userpanel-info">
-	 				<div class="userpanel-info-level">
-	 					<div class="userpanel-info-level-point"><?=$level->level?></div>
+
+	 			<div class=" userpanel-info">
+		 			<div class=" hint hint--bottom-left hint--info" data-hint="Ваш уровень">
+		 				<div class="userpanel-info-level userpanel-info-l<?=$level->level?>">
+		 					<div class="userpanel-info-level-point userpanel-info-level-p<?=$level->level?>" ><span></span><?=$level->level?></div>
+	 					</div>
 	 				</div>
 	 				<div class="userpanel-info-scale">
 	 					<div class="interests-selector-scale-viewport userpanel-info-scale-scale">

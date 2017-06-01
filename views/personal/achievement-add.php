@@ -21,7 +21,7 @@ echo $this->render('_panel.php');
 							<!-- ADDING ACHIEVEMENT -->
 							<?=$this->render('_icons.php') ?>
 		 					<div class="addach">
-		 						<form action="" name="addach" class="addachievement-form">
+		 						<form action="" name="addach" class="addachievement-form dropzone1">
 									<input type="hidden" value="<?=Yii::$app->request->getCsrfToken()?>" placeholder="email" name="_csrf">
 									<?php if($difficult ) { ?><input type="hidden" value="1" placeholder="" name="difficult"><?} ?>
 
@@ -46,12 +46,30 @@ echo $this->render('_panel.php');
 			 								<textarea name="description" id="description" cols="30" rows="10" class="addach-description-text-textarea"><?=$predefinedText?></textarea>
 			 							</div>
 			 							<div class="addach-description-date"><span class="addach-description-date-icon"></span><input data-toggle="datepicker" class="addach-description-date-date mdlst-input-small" name="date_achieved"></div>
-			 							<div class="addach-description-photos "  id="uploadHolder" data-toggle="dropzone">
-			 								<a class="container-menu-list-meta-add addach-description-photos-icon" href="#">
+
+				 						<div class="addach-description-photos-header">
+										Кликните в поле ниже для добавления фото
+			 							</div>
+
+	 							<div class="addach-description-photos "  id="uploadHolder" data-toggle="dropzone">
+
+<!-- <div class="dz-message needsclick">
+    Drop files here or click to upload.<br />
+    <span class="note needsclick">(This is just a demo dropzone. Selected files are <strong>not</strong> actually uploaded.)</span>
+  </div>
+
+<!--
+ <div class="dz-message needsclick">
+										Кликните для добавления фото
+  </div>
+
+<!--			 								<a class="container-menu-list-meta-add addach-description-photos-icon" href="#">
 												<span class="container-menu-list-meta-add-plus">+</span>
 											</a>
 											<div class="addach-description-photos-text">Перетащите сюда фотографии (до 3Мб)</div>
+-->									
 			 							</div>
+
 			 						</div>
 
 

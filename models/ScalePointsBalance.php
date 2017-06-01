@@ -77,4 +77,24 @@ class ScalePointsBalance extends \yii\db\ActiveRecord
     {
         return new ScalePointsBalanceQuery(get_called_class());
     }
+
+/* Andrey */
+    public static function addBalance($user_id, $scale_id, $points, $attached_entity_class, $attached_entity_id){
+
+        $scalePointsBalance = ScalePointsBalance::find()->where(['user_id' => $user_id, 'attached_entity_class' => $attached_entity_class, 'attached_entity_id' => $attached_entity_id, 'scale_id' => $scale_id])->one();
+		if(empty($scalePointsBalance)){
+			$scalePointsBalance = new ScalePointsBalance;
+		}
+		$scalePointsBalance->user_id = $user_id;
+		$scalePointsBalance->attached_entity_class = $attached_entity_class;
+		$scalePointsBalance->attached_entity_id = $attached_entity_id;
+		$scalePointsBalance->date_created = date("Y-m-d H:i:s");
+		$scalePointsBalance->points = $points;
+		$scalePointsBalance->scale_id = $scale_id;
+		$scalePointsBalance->save();
+
+    }
+/* Andrey */
+
+
 }

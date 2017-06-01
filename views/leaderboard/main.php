@@ -63,10 +63,14 @@ echo $this->render('//personal/_panel.php');
 
                         ?>
                     <a class="friend-list-block" href="<?=Yii::$app->urlManager->createUrl( ['personal/viewprofile','user_id' => $u->id])?>" <? if( $you ) { ?> style="background-color: #00fff6;" <? }?>>
+
+	                <div class="friend-list-block-pic2"  style="background-image: url(<?=$avatarSrc?>)"></div>
+
+<!--
                         <div class="friend-list-block-pic">
                             <img class="friend-list-block-pic-img" src="<?=$avatarSrc?>">
                         </div>
-                        <div class="friend-list-block-name"><?=$u->getName()?></div>
+-->                        <div class="friend-list-block-name"><?=$u->getName()?></div>
                         <div class="friend-list-block-goals"><?=$goalsCount?></div>
                         <div class="friend-list-block-achievements"><?=$achievementsCount?></div>
                         <div class="friend-list-block-points"><?=$points?></div>

@@ -89,25 +89,26 @@ class Badge extends \yii\db\ActiveRecord
 
 
             //Adding Badge Balance
+			BadgeBalance::addBalance($user_id, $badge_id);
+
+/*
             $badgeBalance = new BadgeBalance; 
-            
             $badgeBalance->user_id = $user_id; 
             $badgeBalance->badge_id = $badge_id; 
             $badgeBalance->date_created = date("Y-m-d H:i:s"); 
             $badgeBalance->save();
-     
+*/     
 
             //Getting Scale Points 
 
             $q = new Query();
             $row = $q->select(['scale_id', 'points'])->from('badge_scale_points')->where('badge_id = '.$badge_id)->one();
 
-
-
-            
              
-
             //Adding Scale Points Balance
+			ScalePointsBalance::addBalance($user_id, $row['scale_id'], $row['points'], "Badge", (int)$badge_id);
+
+/*
             $scalePointsBalance = new ScalePointsBalance;
             $scalePointsBalance->scale_id = $row['scale_id'];
             $scalePointsBalance->points = $row['points'];
@@ -116,7 +117,7 @@ class Badge extends \yii\db\ActiveRecord
             $scalePointsBalance->attached_entity_class = "Badge";
             $scalePointsBalance->attached_entity_id =  (int)$badge_id;
             $scalePointsBalance->save();
-
+*/
             return true;
 
         }else{
@@ -128,13 +129,13 @@ class Badge extends \yii\db\ActiveRecord
     }
 
 
+
     /**
     * Сколько какой шкалы даётся за получение бейджа
     */
     public function getBadgeScalePoints(){
         $q = new Query();
         $row = $q->select(['scale_id', 'points'])->from('badge_scale_points')->where('badge_id = '.$this->badge_id)->one();
-
         return   array('points' => $row['points'], 'scale_id' => $row['scale_id'], 'scale' => Scale::findOne($row['scale_id']));
     }
 

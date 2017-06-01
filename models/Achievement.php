@@ -4,6 +4,8 @@ namespace app\models;
 
 use Yii;
 use amnah\yii2\user\models\User;
+use app\models\QuestReward;
+use app\models\Badge;
 
 /**
  * This is the model class for table "achievement".
@@ -142,5 +144,32 @@ class Achievement extends \yii\db\ActiveRecord
     public function getSuitableCategoryId () {
 
     }
+
+/* Andrey */
+    /**
+    *   Установить статус подтверждения
+    */
+    public function setStatusApproved($NewStatus){
+		$this->status = $NewStatus;
+		$this->save();
+
+		if(!empty($this->quest_id)){
+			$questReward = QuestReward::find()->where(['quest_id' => $this->quest_id])->one();
+			if(!empty($questReward)){
+				if(!empty($questReward->badge_id)){
+					Badge::addBadgeToUser($questReward->badge_id, $this->user_id );
+				}
+				else{
+					ScalePointsBalance::addBalance($this->user_id, $questReward->scale_id, $questReward->points, "Quest", $this->quest_id);
+				}
+			}
+			else{
+			/*Error quest without any reward*/
+			}
+		}
+
+    }
+/* Andrey */
+
 
 }

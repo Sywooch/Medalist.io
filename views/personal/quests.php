@@ -248,10 +248,12 @@ echo $this->render('_panel.php');
 							<div class="quests-list">
 								<?php foreach( $quests as $q ) { 
 									$rewards = $q->getRewards()->all();
-
 								 	$badge = false; 
 								 	$benefits = [];
+
+/*
 									foreach ($rewards as $rew ) {
+
 
 
 
@@ -261,22 +263,24 @@ echo $this->render('_panel.php');
 
 										# code...
 									}
-
-
+*/
 									//Если есть шкала - юзаем ее, а если только награда - юзаем его
 									$scale = false;
 									if( !empty($rewards[0]->scale_id )){
 								 
 										$scale = Scale::findOne( $rewards[0]->scale_id );
+										$points = $rewards[0]->points;
 									}else{
 									 
 										if( !empty($rewards[0]->badge_id ) ){
-										 
+							 
 											$badge = Badge::findOne( $rewards[0]->badge_id );
 											$badgeScalePoints = $badge->getBadgeScalePoints( );
-											if( !empty($badgeScalePoints->scale_id)){
+
+											if( !empty($badgeScalePoints['scale_id'])){
 											 
-												$scale = Scale::findOne( $badgeScalePoints->scale_id );
+												$scale = Scale::findOne( $badgeScalePoints['scale_id'] );
+												$points = $badgeScalePoints['points'];
 											}
 										}
 									}
@@ -297,7 +301,7 @@ echo $this->render('_panel.php');
 									</div>
 									<div class="questblock-info">
 										<div class="questblock-info-meta">
-											<?php if(!empty($rewards[0]) && $scale !== false) { ?><div class="questblock-info-meta-points">+<?=$rewards[0]->points?> к <?=$scale->name;?></div> <? } ?>
+											<?php if(!empty($rewards[0]) && $scale !== false) { ?><div class="questblock-info-meta-points">+<?=$points?> к <?=$scale->name;?></div> <? } ?>
 											 
 										</div>
 										<div class="questblock-info-title"><a href="<?=Yii::$app->urlManager->createUrl(['personal/quest', 'quest_id' => $q->quest_id])?>"><?=$q->name?></a></div>

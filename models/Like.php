@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use app\models\Achievement;
 
 /**
  * This is the model class for table "likes".
@@ -103,6 +104,22 @@ class Like extends \yii\db\ActiveRecord
                 $like->point = $point;
 
                 if( $like->save() ){
+
+/* Andrey */
+		   if(ucfirst($entity_class) == "Achievement")
+		   {
+		     $achievement = Achievement::findOne($entity_id);
+		     if(self::getLikesOfObjectCount($achievement) >= 3 && $achievement->status == 0)
+ 			{	
+		     		$achievement->setStatusApproved(1);
+			}
+		     elseif(self::getLikesOfObjectCount($achievement) < 3 && $achievement->status == 1)
+ 			{	
+		     		$achievement->setStatusApproved(0);
+			}
+		   }
+/* Andrey */
+
                     return $point;
                 }else{
                     return false;
@@ -115,7 +132,24 @@ class Like extends \yii\db\ActiveRecord
                 $like->created_by_id = Yii::$app->user->identity->id ;
                 $like->point = $point;
                 $like->date_created = date("Y-m-d H:i:s");
-                return $like->save();
+
+/* Andrey */
+		 $point = $like->save();
+		   if(ucfirst($entity_class) == "Achievement")
+		   {
+		     $achievement = Achievement::findOne($entity_id);
+		     if(self::getLikesOfObjectCount($achievement) >= 3 && $achievement->status == 0)
+ 			{	
+		     		$achievement->setStatusApproved(1);
+			}
+		     elseif(self::getLikesOfObjectCount($achievement) < 3 && $achievement->status == 1)
+ 			{	
+		     		$achievement->setStatusApproved(0);
+			}
+		   }
+                return $point;
+/* Andrey */
+
             }
         }else{
             return false;

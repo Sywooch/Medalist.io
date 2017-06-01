@@ -54,10 +54,11 @@ class AchievementApproval extends \yii\db\ActiveRecord
 
     /**
      * @inheritdoc
-     * @return AchievementApprovalQuery the active query used by this AR class.
      */
     public static function find()
     {
         return new AchievementApprovalQuery(get_called_class());
     }
+
+
 }

@@ -52,6 +52,20 @@ class LikeComponent extends Component
 <div class="like-controll <?=$class?>" data-obj="<?=$classname?>" data-id="<?=$id?>">
     <div class="like-controll-plus js-add-like <?=$class_active_plus?>" data-point="1" ><span></span><?=$plus?></div>
     <div class="like-controll-minus js-add-like <?=$class_active_minus?>"  data-point="-1" ><span></span><?=$minus?></div>
+<?if($classname == "Achievement"){?>
+	<?$moreLikes = 3-$plus+$minus;?>
+	<?if($moreLikes>0){?>
+		<div class="like-controll-more hint hint--bottom  hint--info" data-hint="Осталось набрать для подтверждения"><span></span><?=3-$plus+$minus?></div>
+	<?}
+	 elseif($moreLikes<=0){?>
+<!--		<div class="like-controll-more hint hint--bottom  hint--success" data-hint="Достижение подтверждено""><span></span></div>-->
+		<a class="status-icon  hint--bottom-left  hint--success" style="background:lightgreen; margin-left:10px; top:5px;" aria-label="Достижение подтверждено">
+			<svg style="width:24px;height:24px" viewBox="0 0 24 24">
+			<path fill="#ffffff" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"/>
+			</svg>
+		</a>
+	<?}?>
+<?}?>
 </div>
         <?
     }

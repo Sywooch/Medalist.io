@@ -65,4 +65,20 @@ class BadgeBalance extends \yii\db\ActiveRecord
     {
         return new BadgeBalanceQuery(get_called_class());
     }
+
+
+/* Andrey */
+    public static function addBalance($user_id, $badge_id){
+        $badgeBalance = BadgeBalance::find()->where(['user_id' => $user_id, 'badge_id' => $badge_id])->one();
+		if(empty($badgeBalance)){
+			$badgeBalance = new BadgeBalance;
+		}
+		$badgeBalance->user_id = $user_id;
+		$badgeBalance->badge_id = $badge_id;
+	    $badgeBalance->date_created = date("Y-m-d H:i:s");
+		$badgeBalance->save();
+    }
+/* Andrey */
+
+
 }
