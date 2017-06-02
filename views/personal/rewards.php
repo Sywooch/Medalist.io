@@ -76,12 +76,12 @@ echo $this->render('_panel.php');
 											$scale = $badge->getBadgeScalePoints();
 										 ?>
 										<!-- reward catalog block -->
-										<div class="rewards-catalog-block">
+										<a class="rewards-catalog-block" href="<?=Yii::$app->urlManager->createUrl(['personal/reward-detail', 'badge_id' => $badge->badge_id])?>">
 											<div class="rewards-catalog-block-extra" title="<?=$scale['scale']->name?>">+<?=$scale['points']?></div>
 											<div class="rewards-catalog-block-pic"><img src="<?=$badge->picture?>" alt="" style="max-width: 100%"></div>
 											<div class="rewards-catalog-block-text"><?=$badge->name?></div>
 											<div class="rewards-catalog-block-people"><span></span> <?=$badge->getAchievedUserCount();?></div>
-										</div>
+										</a>
 										<!-- . reward catalog block -->
 									<? } ?>
 										 

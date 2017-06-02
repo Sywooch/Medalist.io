@@ -150,6 +150,9 @@ class PersonalController extends \yii\web\Controller
 
         $post = Yii::$app->request->post();
 
+        $passwordChanged = false;
+
+        //CURRENT USER CHANGE FORM
         if( !empty($post)  && !Yii::$app->user->isGuest ){
             $currentUser = User::findOne( Yii::$app->user->identity->id );
            // var_dump( $_FILES );
@@ -178,6 +181,17 @@ class PersonalController extends \yii\web\Controller
                 $name = trim( $post['name'] );
                 $profile->full_name = $name;
                 $profile->save();
+            }
+
+            if( !empty( $post['password'] ) ){
+                
+                if( $post['password'] == $post['password_confirm']){
+                    $currentUser->setPassword(  $post['password'] );
+                    
+                    $currentUser->save();    
+                    $passwordChanged = true;
+                }
+                
             }
            // if( !empty($_FILES['image']))
         }
@@ -248,7 +262,8 @@ class PersonalController extends \yii\web\Controller
             'scales' => $scales,
             'news' => $news,
             'totalBalance' => $totalBalance,
-            'isFollowed' => $isFollowed
+            'isFollowed' => $isFollowed,
+            'passwordChanged' => $passwordChanged
          ]);
     }
 

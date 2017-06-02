@@ -138,15 +138,65 @@ echo $this->render('_panel.php');
 									<div class="mdlst-hr"></div>
 
 									<?
-
+									//ATTACHED QUEST
 									if( !empty($quest) ){
+
+										$questRewards = $quest->getRewards()->all();
+
+										//var_dump($questRewards);
+										//exit();
+
+
 										?>
-										<p>Связанный квест: <a href="<?=Yii::$app->urlManager->createUrl(['personal/quest','quest_id' => $quest->quest_id])?>"><?=$quest->name;?></a></p>
-										<div>										
-											<div class="questblock-pic-achievment" style="background-image: url(<?=$quest->picture?>)"></div>
-											<div  class="questblock-descr-achievment"><?=$quest->description?></div>
+										<p>Связанный квест:</p>
+										<div  style="background-image: url(<?=$quest->picture?>)" class="achievement-attachedquest-block">										
+											<div class="achievement-attachedquest-block-curtain"></div>
+											<div  class="  achievement-attachedquest-info">
+												<h3><a href="<?=Yii::$app->urlManager->createUrl(['personal/quest','quest_id' => $quest->quest_id])?>" class="achievement-attachedquest-info-link"><?=$quest->name;?></a></h3>
+												<?=$quest->description?>
+												
+											</div>
+											<div class="achievement-attachedquest-rewards">
+												<? 
+												if( !empty($questRewards) ){ 
+
+													?>
+													<p>Награды за квест:</p>
+													<ul class="achievement-attachedquest-rewards-list">
+														<?
+														foreach ($questRewards as $questReward ) {
+														 
+															$badge = $questReward->getBadge()->one();
+															if( !empty($badge) ){
+																?>
+																<li class="achievement-attachedquest-rewards-list-el"><a href="<?=Yii::$app->urlManager->createUrl(['personal/reward-detail', 'badge_id' => $badge->badge_id])?>" class="achievement-attachedquest-rewards-list-link">Награда &laquo;<?=$badge->name?>&raquo;</a></li>
+																<?
+															}
+
+															if( !empty($questReward->scale_id) && !empty($questReward->points) ){
+																$scale = $questReward->getScale()->one();
+																?>
+																	<li class="achievement-attachedquest-rewards-list-el">+<?=$questReward->points?> <?=$scale->name;?></li>
+																<?
+															}
+														}
+														?>
+													</ul>
+													<?
+
+												}
+												?>
+											</div>
 										</div>
 										<?
+
+
+									
+
+
+
+									
+									//ATTACHED QUEST END
 									}
 								}?>
  

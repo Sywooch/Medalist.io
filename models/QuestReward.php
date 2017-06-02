@@ -60,4 +60,11 @@ class QuestReward extends \yii\db\ActiveRecord
     {
         return new QuestRewardQuery(get_called_class());
     }
+
+    public function getBadge(){
+        return $this->hasOne(Badge::className(), ['badge_id' => 'badge_id']);
+    }
+    public function getScale(){
+        return $this->hasOne(Scale::className(), ['scale_id' => 'scale_id']);
+    }
 }

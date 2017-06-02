@@ -91,6 +91,8 @@
 .achievement-block-user-allachievements,
 .achievement-block-rewards-reward,
 .achievement-block-images-image,
+.achievement-attachedquest-info,
+.achievement-attachedquest-rewards,
 .newblock-pic,
 .newblock-data,
 .newblock-data-text,
@@ -164,6 +166,8 @@
 .achievement-block-content-info-status,
 .achievement-block-content-col,
 .achievement-block-images-image,
+.achievement-attachedquest-info,
+.achievement-attachedquest-rewards,
 .newblock-pic,
 .newblock-data,
 .newblock-data-text,
@@ -309,6 +313,7 @@
 .questssuggested,
 .questssuggested-quests-quest,
 .achievement-block-content,
+.achievement-attachedquest-block,
 .newblock,
 .friend-list-block,
 .profileview,
@@ -1529,6 +1534,39 @@ a {
 }
 .achievement-share {
   padding: 25px;
+}
+.achievement-attachedquest-block {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  min-height: 20px;
+}
+.achievement-attachedquest-block-curtain {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 10;
+}
+.achievement-attachedquest-info {
+  position: relative;
+  z-index: 20;
+  width: 340px;
+  margin-right: 20px;
+}
+.achievement-attachedquest-info-link {
+  color: #ffe212;
+}
+.achievement-attachedquest-rewards {
+  position: relative;
+  z-index: 21;
+  width: 200px;
+}
+.achievement-attachedquest-rewards-list-link {
+  color: #ffe212;
 }
 /* . achievement list end */
 /* NEWS */
