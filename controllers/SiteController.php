@@ -96,10 +96,12 @@ class SiteController extends Controller
     public function actionLastAchievements()
     {
         //$achievements = Achievement::find()->limit(5)->all();
-        $photos = Photo::find()->where("entity_class = 'Achievement'")->select('entity_id')->groupBy('entity_id')->distinct()->limit(10)->all();
+        //Берем 100 фоток, сортируем по дате
+        $photos = Photo::find()->where("entity_class = 'Achievement'")->select('entity_id, date_created')->orderBy(['date_created' => SORT_DESC])->distinct()->limit(100)->all();
         $entity_ids = [];
         foreach ($photos as $key => $photo) {
-           $entity_ids[] = $photo->entity_id;
+            //Оставляем только один энтити айди (если много фооток, чо)
+           $entity_ids[$photo->entity_id] = $photo->entity_id;
 
         }
        
