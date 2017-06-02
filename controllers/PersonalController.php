@@ -54,7 +54,7 @@ class PersonalController extends \yii\web\Controller
         }
 
         $quest = !empty($achievement->quest_id) ? Quest::findOne( $achievement->quest_id ) : false;
-        $goal = false;
+        $goal = !empty($achievement->goal_id) ? Goal::findOne( $achievement->goal_id ) : false;
 
         return $this->render('achievement', [
             'achievement' =>$achievement,

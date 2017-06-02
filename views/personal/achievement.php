@@ -143,10 +143,6 @@ echo $this->render('_panel.php');
 
 										$questRewards = $quest->getRewards()->all();
 
-										//var_dump($questRewards);
-										//exit();
-
-
 										?>
 										<p>Связанный квест:</p>
 										<div  style="background-image: url(<?=$quest->picture?>)" class="achievement-attachedquest-block">										
@@ -189,15 +185,50 @@ echo $this->render('_panel.php');
 											</div>
 										</div>
 										<?
-
-
-									
-
-
-
 									
 									//ATTACHED QUEST END
 									}
+
+
+									//ATTACHED GOAL
+									if( !empty($goal) ){
+
+									 
+
+										?>
+										<p>Связанная цель:</p>
+										<div    class="achievement-attachedquest-block" style="background-image: url(/template/img/_goal_achieved.jpg);  ">										
+											<div class="achievement-attachedquest-block-curtain"></div>
+											<div  class="  achievement-attachedquest-info">
+												<h3><a href="<?=Yii::$app->urlManager->createUrl(['personal/goal','goal_id' => $goal->goal_id])?>" class="achievement-attachedquest-info-link"><?=$goal->name;?></a></h3>
+												<?=$goal->description?>
+												
+											</div>
+											<div class="achievement-attachedquest-rewards">
+												<? 
+												if( !empty($questRewards) ){ 
+
+													?>
+													<p>Награды за квест:</p>
+													<ul class="achievement-attachedquest-rewards-list">
+														 
+													</ul>
+													<?
+
+												}
+												?>
+											</div>
+										</div>
+										<?
+									
+									//ATTACHED GOAL END
+									}
+
+
+
+
+
+
 								}?>
  
 
