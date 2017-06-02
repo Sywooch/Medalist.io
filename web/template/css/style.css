@@ -328,7 +328,6 @@ html {
   padding: 0;
   margin: 0;
   font-family: "Roboto", sans-serif;
-  width: 1264px;
 }
 a {
   color: #8a44ff;
@@ -1528,6 +1527,13 @@ a {
 .achievement-block--small .achievement-block-images {
   text-align: right;
   margin-bottom: 8px;
+}
+.achievement-block--small .achievement-block-images-picture-small {
+  background-size: cover;
+  float: right;
+  height: 150px;
+  width: 150px;
+  margin-top: 30px;
 }
 .achievement-cols {
   white-space: nowrap;
