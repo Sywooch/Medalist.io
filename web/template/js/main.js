@@ -473,6 +473,62 @@ $(document).ready(function(){
 
 
 
+		//Взять квест
+		$(document).on('click', '.js-update-achievement', function(){
+			var p = $(this).parents('.addachievement-form'),
+				name = p.find('input[name="name"]'),
+				description = p.find('textarea[name="description"]'),
+				difficulty = p.find('input[name="difficulty"]'),
+				difficult = p.find('input[name="addach-chk-isimportant"]'),
+				entity = p.find('[name="entity"]'),
+				date_achieved = p.find('[name="date_achieved"]'),
+				tags = p.find('.addach-tags-w .addach-tags-tag'),
+				tagWords = [],
+				_csrf = p.find('input[name=_csrf]'),
+				data = {}
+				;
+
+				tags.each(function(i,e){
+					tagWords[ tagWords.length ] = $(e).text();
+				});
+
+				data['name'] = name.val();
+				data['description'] = description.val();
+				data['difficulty'] = difficulty.val();
+				data['difficult'] = ( difficult.attr("checked") == 'checked' ?1:0);
+				data['date_achieved'] = date_achieved.val();
+				data['entity'] = entity.val();
+				data['interests'] =  tagWords;
+				data['files'] =  myDropzoneFiles;
+				data['_csrf'] = _csrf.val();
+				 
+		 	
+				$.ajax({
+					url: ajaxUrls['updateAchievement'],
+					data: data,
+					dataType: 'json',
+					type: 'post',
+					success: function(data){
+						console.log(data);
+
+						if( data.success ){
+							$('.addach').slideUp();
+							$('.addach-success').slideDown();
+						}
+						myDropzoneFiles = [];
+
+						EventEngine.registerEventFromRawAjax (data);
+					}
+
+				});
+
+				return false;
+ 
+			
+		});
+
+
+
 		/* бросить вызов */
 		$(document).on('click', '.js-questchallenge-select-user', function(){
 			var user_id = $(this).data('user_id');

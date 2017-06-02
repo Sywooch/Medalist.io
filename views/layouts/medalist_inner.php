@@ -65,6 +65,7 @@ if ( empty($this->title) ){
             $ajaxUrls['questChallengeSend'] = Yii::$app->urlManager->createUrl('quest/ajax-quest-challenge-send');
             
             $ajaxUrls['addAchievement'] = Yii::$app->urlManager->createUrl('achievement/ajax-add-achievement');
+            $ajaxUrls['updateAchievement'] = Yii::$app->urlManager->createUrl('achievement/ajax-update-achievement');
 
 
             $ajaxUrls['addGoal'] = Yii::$app->urlManager->createUrl('goal/ajax-add-goal');

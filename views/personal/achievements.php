@@ -132,7 +132,15 @@ echo $this->render('_panel.php');
 														<div class="questblock-info-controlls-comments">
 																<?=Yii::$app->comment->renderCommentCount( count(Comment::getCommentsOfObject($a)->all() ) , false, true );?>
         												</div>
+
+
 													</div>
+														<div style="margin-top: 30px;">
+													<? Yii::$app->decor->button(
+        													'Редактировать', 
+        													Yii::$app->urlManager->createUrl(['personal/achievement-edit','achievement_id' => $a->achievement_id]) 
+        												) ?>
+        												</div>
 
 
 								 				</div>

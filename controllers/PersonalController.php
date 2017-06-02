@@ -113,6 +113,38 @@ class PersonalController extends \yii\web\Controller
         ]);
     }
 
+    public function actionAchievementEdit()
+    {
+
+        $questPendingTasks = QuestPendingTask::find()->where('user_id = '.Yii::$app->user->identity->id.' AND status = 0')->all();
+        $goals = Goal::find()->where('user_id = '.Yii::$app->user->identity->id.' AND completed = 0')->all();
+
+        $quest = false;
+        $quest_id = !empty(Yii::$app->request->get()['quest_id']) ?  Yii::$app->request->get()['quest_id'] : 0;
+
+
+        $goal = false;
+        $goal_id = !empty(Yii::$app->request->get()['goal_id']) ?  Yii::$app->request->get()['goal_id'] : 0;
+
+        $achievement =  Achievement::findOne ( Yii::$app->request->get()['achievement_id'] );
+ 
+
+        return $this->render('achievement-edit', [
+            'goals' => $goals, 
+            'questPendingTasks' => $questPendingTasks,
+            'quest' => $quest,
+            'quest_id' => $quest_id,
+            'goal' => $goal,
+            'goal_id' => $goal_id,
+            'difficult' => $achievement->difficult,
+            'achievement' => $achievement,
+            
+
+            'predefinedTitle' => $achievement->name,
+            'predefinedText' => $achievement->description
+        ]);
+    }
+
     public function actionDashboard()
     {
         return $this->render('dashboard');
