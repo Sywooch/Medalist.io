@@ -477,6 +477,7 @@ $(document).ready(function(){
 		$(document).on('click', '.js-update-achievement', function(){
 			var p = $(this).parents('.addachievement-form'),
 				name = p.find('input[name="name"]'),
+				achievement_id = p.find('input[name="achievement_id"]'),
 				description = p.find('textarea[name="description"]'),
 				difficulty = p.find('input[name="difficulty"]'),
 				difficult = p.find('input[name="addach-chk-isimportant"]'),
@@ -498,6 +499,7 @@ $(document).ready(function(){
 				data['difficult'] = ( difficult.attr("checked") == 'checked' ?1:0);
 				data['date_achieved'] = date_achieved.val();
 				data['entity'] = entity.val();
+				data['achievement_id'] = achievement_id.val();
 				data['interests'] =  tagWords;
 				data['files'] =  myDropzoneFiles;
 				data['_csrf'] = _csrf.val();

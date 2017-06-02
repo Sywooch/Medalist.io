@@ -24,6 +24,7 @@ echo $this->render('_panel.php');
 		 						<form action="" name="addach" class="addachievement-form dropzone1">
 									<input type="hidden" value="<?=Yii::$app->request->getCsrfToken()?>" placeholder="email" name="_csrf">
 									<?php if($difficult ) { ?><input type="hidden" value="1" placeholder="" name="difficult"><?} ?>
+									<input type="hidden" value="<?=$achievement->achievement_id?>" placeholder="" name="achievement_id">
 
 			 						<div class="addach-header">
 			 							<div class="addach-header-inp-w">
@@ -81,9 +82,18 @@ echo $this->render('_panel.php');
 
 			 								<?php
 			 								//Get Tags
+			 								$tags = $achievement->getTags();
+
+
+			 								foreach ($tags as $tag) {
+			 									?>
+			 								 <div class="  mdlst-button mdlst-button-default addach-tags-tag"><?=$tag->name?><div class="mdlst-button-closer "></div></div>
+
+			 								 <?# code...
+			 								}
 			 								 ?>
 			 							 
-			 								 <div class="  mdlst-button mdlst-button-default addach-tags-tag">nfr<div class="mdlst-button-closer "></div></div>
+
 			 							</div>
 			 						</div>
 

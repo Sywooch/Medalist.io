@@ -290,9 +290,5 @@ class AchievementController extends \yii\web\Controller
         return $this->render('ajax-like-achievement');
     }
 
-    public function actionAjaxUpdateAchievement()
-    {
-        return $this->render('ajax-update-achievement');
-    }
 
 }
