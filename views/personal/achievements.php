@@ -151,7 +151,7 @@ echo $this->render('_panel.php');
 										 			</div>
 
 										 			<div class="achievement-block-images">
-				                            <div class="goals-picture-mid" <?php if(!empty($a->getPhotos()[0]) ) { ?> style = "background-image: url(<?=$a->getPhotos()[0]->filename?>);"<? } ?>></div>
+										                            <div class="goals-picture-mid" <?php if(!empty($a->getPhotos()[0]) ) { ?> style = "background-image: url(<?=$a->getPhotos()[0]->filename?>);"<? } ?>></div>
 										 			</div>
 
 								 				</div>
@@ -207,13 +207,12 @@ echo $this->render('_panel.php');
 
 								 				</div>
 								 				<div class="achievement-block-content-col achievement-block-content-col-2">
-								 					 
 
 										 			<div class="achievement-block-images">
-										 				<div class="achievement-block-images-image"><img src="img/_achievement_01.jpg" alt=""></div>
-										 		 
+										                            <div class="achievement-block-images-picture-small" <?php if(!empty($a->getPhotos()[0]) ) { ?> style = "background-image: url(<?=$a->getPhotos()[0]->filename?>);"<? } ?>></div>
 										 			</div>
-										 			
+								 					 
+									 			
 								 				</div>
 								 			</div>
 								 		</div>
