@@ -47,7 +47,7 @@ echo $this->render('_panel.php');
 								<div class="output-header-meta">
 
 									 
-									 <?php if( $other !== false ) { ?><a class="goal-done-button mdlst-button " href="<?=Yii::$app->urlManager->createUrl(['personal/achievement-add' ])?>">+ Добавить новое!</a><? } ?>
+									 <?php if( $other === false ) { ?><a class="goal-done-button mdlst-button " href="<?=Yii::$app->urlManager->createUrl(['personal/achievement-add' ])?>">+ Добавить новое!</a><? } ?>
 
 								</div>
 

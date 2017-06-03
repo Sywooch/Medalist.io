@@ -103,7 +103,7 @@ echo $this->render('_panel.php');
 			 						<div class="addach-extra js-addach-isdifficult">
 			 							<div class="addach-extra-range">
 			 								<div class="addach-extra-range-text">Насколько это было сложно?</div>
-			 								<div class="addach-extra-range-range"> <input type="range" data-toggle="rangeslider"  data-rangeslider min="1" max="100" step="1" value="50" name="difficulty"></div>
+			 								<div class="addach-extra-range-range"> <input type="range" data-toggle="rangeslider"  data-rangeslider min="1" max="100" step="1" value="<?=$achievement->difficulty?>" name="difficulty"></div>
 			 							</div>
 			 							 
 			 						</div>
@@ -138,7 +138,7 @@ echo $this->render('_panel.php');
 
 			 							</div>
 			 							<div class="addach-controlls-send">
-			 								<button class="mdlst-button  mdlst-button-default js-update-achievement">Добавить достижение</button>
+			 								<button class="mdlst-button  mdlst-button-default js-update-achievement">Обновить достижение</button>
 			 							</div>
 			 						</div>
 			 						<!-- add achievement CONTROLLS end -->
@@ -154,7 +154,7 @@ echo $this->render('_panel.php');
 		 					</div>
 
 		 					<div class="addach-success" style="display: none;">
-		 						<? Yii::$app->decor->infoPanel('Вы успешно добавили достижение! Посмотрите его в <a href="'.Yii::$app->urlManager->createUrl('personal/achievements').'">вашем списке достижений!', 'success'); ?>
+		 						<? Yii::$app->decor->infoPanel('Вы успешно обновили достижение! Посмотрите его в <a href="'.Yii::$app->urlManager->createUrl('personal/achievements').'">вашем списке достижений!', 'success'); ?>
 		 					</div>
 
 		 					<!-- . ADDING ACHIEVEMENT END -->
