@@ -54,6 +54,7 @@ $currentUser = $user->id == Yii::$app->user->identity->id ;
 
                                         }
                                 }?>
+										<a class="header-enter-button mdlst-button" href="<?=Yii::$app->urlManager->createUrl('personal/friends-find')?>">Поиск друзей</a>
                             </div>
                         </div>
 

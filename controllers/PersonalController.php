@@ -645,4 +645,100 @@ class PersonalController extends \yii\web\Controller
         return $this->render('settings');
     }
 
+
+    public function actionFriendsFind()
+    {
+
+
+       $post = Yii::$app->request->post();
+       $predefinedText = "";
+       if( !empty($post['text'])){
+            $predefinedText = $post['text'];
+			$users = User::findUsers($post['text']);
+        }
+		else{
+	        $users = User::find();
+
+	   	    $users = $users->limit(10);
+        	$users = $users->orderBy(new Expression('rand()'));
+	        $users = $users->all();
+
+
+		}
+
+        return $this->render('friends-find', [ 'users' => $users, 'predefinedText' => $predefinedText]);
+
+
+/*
+
+
+        //Todo подбор интересных квестов
+
+        $questChallenges = QuestChallenge::find()->where('to_user_id = '.Yii::$app->user->identity->id.' AND status = 0')->all();
+        $questChallengesCreated = QuestChallenge::find()->where('user_id = '.Yii::$app->user->identity->id.' ')->all();
+
+
+
+        $questPendingTasks = QuestPendingTask::find()->where('user_id = '.Yii::$app->user->identity->id.' AND status = 0')->all();
+        $excludeIds = [];
+        foreach($questPendingTasks as $pt ){
+            $excludeIds[] = $pt->quest_id;
+        }
+
+        $quests = Quest::find()->where(['not in', 'quest_id', $excludeIds]);
+
+
+        $quests = $quests->limit(10);
+        $quests = $quests->orderBy(new Expression('rand()'));
+        
+
+        $post = Yii::$app->request->post();
+        $category_selected = 0;
+        $predefinedText = "";
+        if( !empty($post['category_id'])){
+            $category_selected = $post['category_id'];
+            $quests = $quests->andWhere(['category_id' => $post['category_id']]);
+             $quests = $quests->limit(false);
+        }
+       if( !empty($post['text'])){
+            $predefinedText = $post['text'];
+            $quests = $quests->andFilterWhere(['like', 'name', $post['text']]);
+            $quests = $quests->limit(false);
+        }
+
+        $quests = $quests->all();
+
+
+        $cats = Category::find()->all();
+
+        return $this->render('quests', [
+            'quests' => $quests, 
+            'questsPending' => $questPendingTasks, 
+            'questChallenges' => $questChallenges, 
+            'questChallengesCreated' => $questChallengesCreated, 
+            'cats' => $cats, 
+            'category_selected' => $category_selected,
+            'predefinedText' => $predefinedText,
+        ]);
+
+
+
+        //Кто уже в друзьях
+        $followed = Follower::find()->where(['user_id' => Yii::$app->user->identity->id])->all();
+
+        $excluded = [];
+        foreach ($followed as $follower) {
+            $excluded[] = $follower->to_user_id;
+        }
+        $excluded[] = Yii::$app->user->identity->id;
+
+        $possibleFriends = Follower::findAlikeUsers( Yii::$app->user->identity->id )->where(['NOT IN', 'id', $excluded])->andWhere(['status' => '1'])->all();
+
+        return $this->render('friends-find', [ 'possibleFriends' => $possibleFriends, 'followed' => $followed ]);
+*/
+    }
+
+
+
+
 }

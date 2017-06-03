@@ -107,4 +107,36 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
     public function getInterests(){
         return $this->hasMany( Interest::className(), ['interest_id' => 'interest_id'] )->viaTable('user2interest', ['id' => 'user_id']);
     }    
+
+
+    public static function findUsers($string){
+
+		$query1 = (new \yii\db\Query())
+		    ->select("user_id")
+		    ->from('profile')
+		    ->where('LOWER(full_name) like LOWER("%'.$string.'%")')
+		    ->limit(10);
+
+		$query2 = (new \yii\db\Query())
+		    ->select('user_id')
+		    ->from('user2interest')
+		    ->limit(10);
+		$query2->innerJoin('interest', 'interest.interest_id = user2interest.interest_id')
+				->where('LOWER(name) like LOWER("%'.$string.'%")');
+
+		$query1->union($query2);
+
+
+        $rows = $query1->all();
+        $user_ids =[];
+        foreach ($rows as $row ) {
+          
+            $user_ids[] = $row['user_id'];
+        }
+ 
+
+        return User::find()->where(['id' => $user_ids])->all();
+
+    }    
+
 }
