@@ -23,6 +23,7 @@ echo $this->render('_panel.php');
 		 					<div class="addach">
 		 						<form action="" name="addach" class="addgoal-form dropzone1">
 									<input type="hidden" value="<?=Yii::$app->request->getCsrfToken()?>" placeholder="email" name="_csrf">
+									<input type="hidden" value="<?=$goal->goal_id?>" placeholder="email" name="goal_id">
 									<?php if($difficult ) { ?><input type="hidden" value="1" placeholder="" name="difficult"><?} ?>
 
 			 						<div class="addach-header">
