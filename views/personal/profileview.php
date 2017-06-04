@@ -44,7 +44,7 @@ $currentUser = $user->id == Yii::$app->user->identity->id ;
                                         Yii::$app->decor->button('Это ваша страница!', '', 'mdlst-button-disabled mdlst-button-smaller');
                                         Yii::$app->decor->button('Изменить профиль', '', 'mdlst-button-default mdlst-button-smaller js-update-profile-show withNoButton');
 
-                                     }else{ 
+                                 }else{ 
 
                                         if ( !$isFollowed  ){
                                             Yii::$app->decor->button('Подписаться', '', 'js-follow-person', ['user_id' => $user->id]);  
@@ -53,8 +53,12 @@ $currentUser = $user->id == Yii::$app->user->identity->id ;
                                             Yii::$app->decor->button('Уже подписаны', '', 'mdlst-button-disabled mdlst-button-smaller withNoButton'); 
 
                                         }
-                                }?>
-										<a class="header-enter-button mdlst-button" href="<?=Yii::$app->urlManager->createUrl('personal/friends-find')?>">Поиск друзей</a>
+                                } 
+
+
+                                  Yii::$app->decor->button('Поиск друзей', Yii::$app->urlManager->createUrl('personal/friends-find'), 'mdlst-button-accent mdlst-button-smaller withNoButton'); 
+                                ?>
+										 
                             </div>
                         </div>
 
@@ -82,7 +86,7 @@ $currentUser = $user->id == Yii::$app->user->identity->id ;
 
                                 <div>
                                     <? foreach( $interests as $interest) {
-                                        Yii::$app->decor->button($interest->name, '', 'mdlst-button-smaller mdlst-button-interest');
+                                        Yii::$app->decor->button($interest->name, '', 'mdlst-button-smaller mdlst-button-gray');
 
                                         } ?>
 
