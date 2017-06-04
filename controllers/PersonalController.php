@@ -325,38 +325,53 @@ class PersonalController extends \yii\web\Controller
     public function actionGoalAdd()
     {
 
-        $questPendingTasks = QuestPendingTask::find()->where('user_id = '.Yii::$app->user->identity->id.' AND status = 0')->all();
-        $goals = Goal::find()->where('user_id = '.Yii::$app->user->identity->id.' AND completed = 0')->all();
-
-        $quest = false;
-        $quest_id = !empty(Yii::$app->request->get()['quest_id']) ?  Yii::$app->request->get()['quest_id'] : 0;
-
-
-        $goal = false;
-        $goal_id = !empty(Yii::$app->request->get()['goal_id']) ?  Yii::$app->request->get()['goal_id'] : 0;
-
+     
+ 
 
 
         $predefinedTitle = "";
         $predefinedText = "";
-        if( !empty(Yii::$app->request->get()['quest_id']) ){
-            $quest = Quest::findOne( Yii::$app->request->get()['quest_id'] );
-            $predefinedTitle ="Выполнен квест ".$quest->name;
-            $predefinedText ="Вы выполнили квест ".$quest->name.". Опишите как это было? Сложно или не очень? Что запомнилось?";
-            $difficult = true;
-        }
+    
 
         $difficult = (!empty($goal_id) || !empty($quest_id));
         
 
         return $this->render('goal-add', [
-            'goals' => $goals, 
-            'questPendingTasks' => $questPendingTasks,
-            'quest' => $quest,
-            'quest_id' => $quest_id,
-            'goal' => $goal,
-            'goal_id' => $goal_id,
+           
             'difficult' => $difficult,
+
+            'predefinedTitle' => $predefinedTitle,
+            'predefinedText' => $predefinedText,
+        ]);
+    }
+
+
+
+
+
+    public function actionGoalUpdate()
+    {
+
+        $goal_id = Yii::$app->request->get()['goal_id'];
+
+        $goal = Goal::find()->where(['goal_id' => $goal_id, 'user_id' => Yii::$app->user->identity->id])->one();
+
+         if( !$goal ){
+             throw new \yii\web\ForbiddenHttpException();
+             return false;
+        }
+
+        $predefinedTitle = $goal->name;
+        $predefinedText = $goal->description;
+       
+        $difficult = (!empty($goal_id) || !empty($quest_id));
+        
+
+        return $this->render('goal-update', [
+        
+        
+            'difficult' => $difficult,
+            'goal' => $goal,
 
             'predefinedTitle' => $predefinedTitle,
             'predefinedText' => $predefinedText,

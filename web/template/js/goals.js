@@ -78,6 +78,67 @@ $(document).ready(function(){
 
 
 
+		//Взять квест
+		$(document).on('click', '.js-update-goal', function(){
+			var p = $(this).parents('.addgoal-form'),
+				name = p.find('input[name="name"]'),
+				goal_id = p.find('input[name="goal_id"]'),
+				description = p.find('textarea[name="description"]'),
+				difficulty = p.find('input[name="difficulty"]'),
+				deadline = p.find('[name="deadline"]'),
+				private = p.find('[name="private"]'),
+				tags = p.find('.addach-tags-w .addach-tags-tag'),
+				tagWords = [],
+				_csrf = p.find('input[name=_csrf]'),
+				data = {}
+				;
+
+				tags.each(function(i,e){
+					tagWords[ tagWords.length ] = $(e).text();
+				});
+
+				data['name'] = name.val();
+				data['description'] = description.val();
+				data['difficulty'] = difficulty.val();
+				data['deadline'] = deadline.val();
+				data['goal_id'] = goal_id.val();
+				data['private'] = (private.is(":checked"))?1:0;
+				data['interests'] =  tagWords;
+				data['files'] =  myDropzoneFiles;
+				data['_csrf'] = _csrf.val();
+				 
+		 	
+				$.ajax({
+					url: ajaxUrls['updateGoal'],
+					data: data,
+					dataType: 'json',
+					type: 'post',
+					success: function(data){
+						console.log(data);
+
+						if( data.success ){
+							$('.addach').slideUp();
+							$('.addach-success').slideDown();
+						}else{
+							$('.addach-errors').slideDown();
+							$('.addach-errors-list').html('');
+							for( var k in data.errors ){
+									$('.addach-errors-list').append('<li>'+data.errors[k]+'</li>');
+							}
+						}
+
+						EventEngine.registerEventFromRawAjax (data);
+					}
+
+				});
+
+				return false;
+ 
+			
+		});
+
+
+
 		$(document).on('click', '.js-add-subtask-showform', function(){
 			var p = $(this).parents('.goal-addsubtask'),
 				addTitle = p.find('.goal-addsubtask-controll')

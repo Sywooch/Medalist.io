@@ -244,6 +244,100 @@ class GoalController extends Controller
     }
 
 
+    public function actionAjaxUpdateGoal(){
+        $result = [];
+
+        $result['success'] = false;
+          $result['errors'] = [];
+
+        if( !empty(Yii::$app->request->post() )){
+            $post = Yii::$app->request->post();
+
+            if( !empty($post['name']) && !empty($post['goal_id'])){
+
+                $goal = Goal::find()->where([ 'goal_id' => $post['goal_id'], 'user_id' => Yii::$app->user->identity->id ])->one();
+
+                if( $goal ){
+
+                    $goal->name = $post['name'];
+                    $goal->difficulty = $post['difficulty'];
+                    $goal->description = $post['description'];
+                    $goal->private = !empty($post['private'])?1:0;
+                    //$goal->date_created = date("Y-m-d H:i:s");
+                    $goal->deadline = date("Y-m-d H:i:s", strtotime($post['deadline']));
+                    $goal->user_id = Yii::$app->user->identity->id;
+
+                    if( $goal->save() ){
+
+
+                        //NOTIFICATION - NEW ACHIEVEMENT 
+                        Notification::addNotification( $goal->user_id,  NotificationType::NT_NEW_GOAL,  $goal);
+
+
+                        if( !empty($post['interests']) ) {
+                            //Todo - attachTags
+                            Tag::attachTagsToObject( $goal, $post['interests'] );
+                            //Todo - attachInterests 
+
+                            //Todo - attachCategory 
+                            $tags = $goal->getTags();
+                            $tagIDs = [];
+                            foreach ($tags as $tag) {
+                                $tagIDs = $tag->tag_id;
+                            }
+                            $category_id = Category::getByTagIDs($tagIDs);
+                            $goal->category_id = $category_id;
+                            $goal->save();
+
+                        }
+
+                    
+
+
+                    if( !empty($post['files']) ) {
+                       
+
+                       foreach ($post['files'] as $file) {
+                           $info = pathinfo( $file );
+                           $result2 = rename( $file, './uploads/g/'. $info['basename'] );
+
+                           if ( $result2 ){
+
+
+                               $photo = new Photo;
+                               $photo->filename =  '/uploads/g/'. $info['basename'] ;
+                               $photo->entity_class  = 'Goal';
+                               $photo->entity_id =  $goal->goal_id;
+                               $photo->date_created = date("Y-m-d H:i:s");
+                               $photo->save();
+                            }
+                       }
+                        
+                    }
+
+
+
+                        $result['goal_id'] = $goal->goal_id;
+                        $result['success'] = true;
+                    }else{
+                        $result['errors'] = $goal->errors;
+                    }
+
+                }else{
+                     $result['errors'] = 'Такая цель не найдена';
+                }
+
+            }else{
+                 $result['errors'][] = 'Нет названия цели';
+            }
+        }else{
+            $result['errors'][] = 'Недостаточно данных';
+        }
+
+        return json_encode($result);
+    }
+
+
     public function actionAjaxCalcGoalProgress(){
         $result = [];
 

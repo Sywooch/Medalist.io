@@ -69,6 +69,7 @@ if ( empty($this->title) ){
 
 
             $ajaxUrls['addGoal'] = Yii::$app->urlManager->createUrl('goal/ajax-add-goal');
+            $ajaxUrls['updateGoal'] = Yii::$app->urlManager->createUrl('goal/ajax-update-goal');
             $ajaxUrls['addGoalSubtask'] = Yii::$app->urlManager->createUrl('goal/ajax-add-goal-subtask');
             $ajaxUrls['addGoalSubsubtask'] = Yii::$app->urlManager->createUrl('goal/ajax-add-goal-subsubtask');
             $ajaxUrls['renderGoalSubtaskHTML'] = Yii::$app->urlManager->createUrl('goal/ajax-render-goal-subtask-html');
