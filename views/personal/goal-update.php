@@ -24,7 +24,7 @@ echo $this->render('_panel.php');
 		 						<form action="" name="addach" class="addgoal-form dropzone1">
 									<input type="hidden" value="<?=Yii::$app->request->getCsrfToken()?>" placeholder="email" name="_csrf">
 									<input type="hidden" value="<?=$goal->goal_id?>" placeholder="email" name="goal_id">
-									<?php if($difficult ) { ?><input type="hidden" value="1" placeholder="" name="difficult"><?} ?>
+									<?php if($private ) { ?><input type="hidden" value="1" placeholder="" name="private"><?} ?>
 
 			 						<div class="addach-header">
 			 							<div class="addach-header-inp-w">
@@ -32,7 +32,7 @@ echo $this->render('_panel.php');
 			 							</div>
 
 
-			 							<?php Yii::$app->decor->controllSwitch('private', 'Приватная цель', 'addach-header-isdifficult', $difficult);?>
+			 							<?php Yii::$app->decor->controllSwitch('private', 'Приватная цель', 'addach-header-isdifficult', $private);?>
 			 						</div>
 
 			 						<div class="addach-description">

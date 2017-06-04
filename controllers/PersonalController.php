@@ -364,13 +364,13 @@ class PersonalController extends \yii\web\Controller
         $predefinedTitle = $goal->name;
         $predefinedText = $goal->description;
        
-        $difficult = (!empty($goal_id) || !empty($quest_id));
+        $private =  $goal->private;
         
 
         return $this->render('goal-update', [
         
         
-            'difficult' => $difficult,
+            'private' => $private,
             'goal' => $goal,
 
             'predefinedTitle' => $predefinedTitle,
