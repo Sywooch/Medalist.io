@@ -136,6 +136,23 @@ class Notification extends \yii\db\ActiveRecord
 
     }
 
+    public static function deleteNotificationsOfObj ( $obj ){
+        $classname = get_class( $obj );
+        $classname = explode("\\",$classname);
+        $classname = $classname[count($classname) - 1];
+        $idVarName = strtolower($classname."_id");
+        $id = $obj->{$idVarName};
+        
+
+        $notifications =  Notification::find()->where(['entity_class' => $classname,  'entity_id' => $id])->all();
+        foreach ($notifications as $n) {
+
+            $n->delete();
+            # code...
+        }
+  
+    }
+
 
     public static function renderNotificationHTML( $notification ){
 

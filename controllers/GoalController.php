@@ -126,6 +126,8 @@ class GoalController extends Controller
 
                 $goal->deleteSubtasks();
 
+                Notification::deleteNotificationsOfObj( $goal );
+
                 $goal->delete();
                 return $this->redirect(['personal/goals']);
             }else{

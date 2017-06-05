@@ -300,7 +300,7 @@ class AchievementController extends \yii\web\Controller
                     $photo->delete();
                 }
 
-              
+              Notification::deleteNotificationsOfObj( $achievement );
 
                 $achievement->delete();
                 return $this->redirect(['personal/achievements']);
