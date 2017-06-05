@@ -59,4 +59,9 @@ class Photo extends \yii\db\ActiveRecord
     {
         return new PhotoQuery(get_called_class());
     }
+
+
+    public function deleteFile(){
+        unlink(Yii::getAlias('@webroot').'/uploads'.$this->filename);
+    }
 }

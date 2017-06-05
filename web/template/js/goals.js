@@ -76,6 +76,14 @@ $(document).ready(function(){
 			
 		});
 
+		//Взять квест
+		$(document).on('click', '.js-delete-goal', function(){
+			if( confirm('Вы точно хотите удалит эту цель?') ){
+				document.location.href = $(this).data('delete_url');
+			}else{
+				return false;
+			}
+		});
 
 
 		//Взять квест

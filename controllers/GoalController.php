@@ -112,6 +112,32 @@ class GoalController extends Controller
     }
 
 
+    public function actionDeleteGoal (){
+        if(  !empty( Yii::$app->request->get()['goal_id'] ) && !Yii::$app->user->isGuest ){
+
+            $goal = Goal::find()->where(['goal_id' => Yii::$app->request->get()['goal_id'], 'user_id' => Yii::$app->user->identity->id ])->one();
+            if(  $goal ){
+
+                $photos = $goal->getPhotos();
+                foreach ($photos as $photo) {
+                    $photo->deleteFile();
+                    $photo->delete();
+                }
+
+                $goal->deleteSubtasks();
+
+                $goal->delete();
+                return $this->redirect(['personal/goals']);
+            }else{
+                return $this->redirect(['site/index']);
+            }
+
+        }else{
+            return $this->redirect(['site/index']);
+        }
+    }
+
+
 
     public function actionAjaxAddGoalSubtask(){
         $result = [];

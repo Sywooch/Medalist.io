@@ -121,6 +121,7 @@ echo $this->render('_panel.php');
 
                             <div class="clear"></div>
                             <? Yii::$app->decor->button( 'Редактировать цель',  Yii::$app->urlManager->createUrl(['personal/goal-update', 'goal_id' => $goal->goal_id]) );?>
+                            <? Yii::$app->decor->button( 'Удалить цель',  '', 'mdlst-button-accent js-delete-goal', ['delete_url' => Yii::$app->urlManager->createUrl(['goal/delete-goal', 'goal_id' => $goal->goal_id])] );?>
  
 
                             <? // $this->render("_goal_subtask.php", ['goal' => $goal, 'g' =>$g]) ?>

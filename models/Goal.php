@@ -145,6 +145,15 @@ class Goal extends \yii\db\ActiveRecord
         return $interests->all();
     }
 
+    public function deleteSubtasks(){
+        $subtasks = GoalSubtask::find()->where(" goal_id = ".$this->goal_id."")->all();
+
+        foreach ($subtasks as $subtask) {
+            $subtask->delete();
+        }
+
+    }
+
 
 
     public static function getUserGoalsById( $user_id ){
