@@ -531,6 +531,18 @@ $(document).ready(function(){
 
 
 
+		//Взять квест
+		$(document).on('click', '.js-delete-achievement', function(){
+			if( confirm('Вы точно хотите удалить это достижение?') ){
+				document.location.href = $(this).data('delete_url');
+			}else{
+				return false;
+			}
+		});
+
+
+
+
 		/* бросить вызов */
 		$(document).on('click', '.js-questchallenge-select-user', function(){
 			var user_id = $(this).data('user_id');

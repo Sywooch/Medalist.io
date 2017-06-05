@@ -62,6 +62,9 @@ class Photo extends \yii\db\ActiveRecord
 
 
     public function deleteFile(){
-        unlink(Yii::getAlias('@webroot').'/uploads'.$this->filename);
+        if( file_exists( Yii::getAlias('@webroot').'/uploads'.$this->filename )){
+            unlink(Yii::getAlias('@webroot').'/uploads'.$this->filename);
+        }
+        
     }
 }

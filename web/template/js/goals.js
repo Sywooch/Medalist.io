@@ -78,7 +78,7 @@ $(document).ready(function(){
 
 		//Взять квест
 		$(document).on('click', '.js-delete-goal', function(){
-			if( confirm('Вы точно хотите удалит эту цель?') ){
+			if( confirm('Вы точно хотите удалить эту цель?') ){
 				document.location.href = $(this).data('delete_url');
 			}else{
 				return false;

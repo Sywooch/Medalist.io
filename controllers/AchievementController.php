@@ -285,6 +285,34 @@ class AchievementController extends \yii\web\Controller
         return $this->render('ajax-comment-achievement');
     }
 
+
+
+    public function actionDeleteAchievement()
+    {
+         if(  !empty( Yii::$app->request->get()['achievement_id'] ) && !Yii::$app->user->isGuest ){
+
+            $achievement = Achievement::find()->where(['achievement_id' => Yii::$app->request->get()['achievement_id'], 'user_id' => Yii::$app->user->identity->id ])->one();
+            if(  $achievement ){
+
+                $photos = $achievement->getPhotos();
+                foreach ($photos as $photo) {
+                    $photo->deleteFile();
+                    $photo->delete();
+                }
+
+              
+
+                $achievement->delete();
+                return $this->redirect(['personal/achievements']);
+            }else{
+                return $this->redirect(['site/index']);
+            }
+
+        }else{
+            return $this->redirect(['site/index']);
+        }
+    }
+
     public function actionAjaxLikeAchievement()
     {
         return $this->render('ajax-like-achievement');
