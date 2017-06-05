@@ -153,8 +153,8 @@ class AchievementController extends \yii\web\Controller
         $result = [];
         $post = Yii::$app->request->post();
 
-        if( !empty($post) ){
-            $achievement = Achievement::findOne( $post['achievement_id'] );
+        if( !empty($post) && !Yii::$app->user->isGuest ){
+            $achievement = Achievement::find()->where( [ 'achievement_id' => $post['achievement_id'] , 'user_id'=> Yii::$app->user->identity->id ] )->one();
 
             //Entity of attachment 
             $ent = $post['entity'];
