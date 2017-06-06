@@ -135,7 +135,11 @@ echo $this->render('_panel.php');
 
 
 													</div>
+
+													 <?php if( $other === false ) { ?>
 														<div style="margin-top: 30px;">
+
+
 													<? Yii::$app->decor->button(
         													'Редактировать', 
         													Yii::$app->urlManager->createUrl(['personal/achievement-edit','achievement_id' => $a->achievement_id]) 
@@ -143,6 +147,8 @@ echo $this->render('_panel.php');
 
         												 <? Yii::$app->decor->button( 'Удалить достижение',  '', 'mdlst-button-accent   js-delete-achievement', ['delete_url' => Yii::$app->urlManager->createUrl(['achievement/delete-achievement', 'achievement_id' => $a->achievement_id])] );?>
         												</div>
+
+        												<? } ?>
 
 
 								 				</div>
