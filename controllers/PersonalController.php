@@ -242,22 +242,26 @@ class PersonalController extends \yii\web\Controller
         $isFollowed = false;
 
          //Кто уже в друзьях
-        $followed = Follower::find()->where(['user_id' => Yii::$app->user->identity->id])->all();
+        $followed = [];
+        $possibleFriends = [];
 
-        $excluded = [];
-        foreach ($followed as $follower) {
+        if( !Yii::$app->user->isGuest ) {
+            $followed = Follower::find()->where(['user_id' => Yii::$app->user->identity->id])->all();
 
-            if ( !$isFollowed ) {
-                $isFollowed = $follower->to_user_id == $user->id;
+            $excluded = [];
+            foreach ($followed as $follower) {
+
+                if ( !$isFollowed ) {
+                    $isFollowed = $follower->to_user_id == $user->id;
+                }
+                $excluded[] = $follower->to_user_id;
+
             }
-            $excluded[] = $follower->to_user_id;
+            $excluded[] = Yii::$app->user->identity->id;
+
+            $possibleFriends = Follower::findAlikeUsers( Yii::$app->user->identity->id )->where(['NOT IN', 'id', $excluded])->andWhere(['status' => '1'])->all();
 
         }
-        $excluded[] = Yii::$app->user->identity->id;
-
-        $possibleFriends = Follower::findAlikeUsers( Yii::$app->user->identity->id )->where(['NOT IN', 'id', $excluded])->andWhere(['status' => '1'])->all();
-
-
 
         $interests = Interest::getUserInterests( $user->id )->all() ;
 
@@ -625,6 +629,30 @@ class PersonalController extends \yii\web\Controller
         $badgeTotal = Badge::find()->all();
 
         return $this->render('rewards', ['badges' => $badges, 'badgeGroups' => $badgeGroups, 'badgeTotal' => $badgeTotal]);
+    }
+
+    public function actionMyRewards()
+    {
+        if( !empty(Yii::$app->request->get()['user_id'])) {
+            $user_id = Yii::$app->request->get()['user_id'];
+            $user = User::findOne($user_id);
+
+            $badgeBalance = BadgeBalance::find()->where('user_id = '.$user_id)->all();
+            $badges = [];
+            foreach( $badgeBalance as $bb ){
+                $badges[] = $bb;
+
+            }
+
+            $badgeGroups = BadgeGroup::find()->all();
+            $badgeTotal = Badge::find()->all();
+
+            return $this->render('my-rewards', ['badges' => $badges, 'badgeGroups' => $badgeGroups, 'badgeTotal' => $badgeTotal, 'user' => $user]);    
+        }else{
+            $this->redirect(['site/index']);
+        }
+
+        
     }
 
     

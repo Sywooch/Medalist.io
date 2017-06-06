@@ -15,7 +15,7 @@ echo $this->render('_panel.php');
 					<div class="container-col container-col-2">
 						<div class="output">
 							<div class="output-header">
-								<h2 class="mdlst-h2t">Мои награды</h2>
+								<h2 class="mdlst-h2t">Награды <a href="<?=Yii::$app->urlManager->createUrl(['personal/viewprofile', 'user_id' => $user->id])?>"><?=$user->getName()?></a></h2>
 								<div class="output-header-meta">
 
 									 
@@ -27,8 +27,6 @@ echo $this->render('_panel.php');
 							<div class="output-content">
 								
 								<p>Награды подтверждают выдающиеся достижения. У нас есть обширный каталог наград, а есть и секретные, о которых никто не знает.</p>
-
-								<? Yii::$app->decor->infoPanel('Ссылка на вашу страницу: <b>'.Yii::$app->getRequest()->serverName.Yii::$app->urlManager->createUrl(['personal/my-rewards', 'user_id' => Yii::$app->user->id]).'</b>'); ?>
 
 								<div class="myrewards-list">
 									<?php foreach($badges as $badge) { ?> 

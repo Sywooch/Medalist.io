@@ -227,8 +227,9 @@ echo $this->render('_panel.php');
 										 			<div class="achievement-block-images">
 										                            <div class="achievement-block-images-picture-small" <?php if(!empty($a->getPhotos()[0]) ) { ?> style = "background-image: url(<?=$a->getPhotos()[0]->filename?>);"<? } ?>></div>
 										 			</div>
-
+														<?php if( $other === false ) { ?>
 										 			 <? Yii::$app->decor->button( 'Удалить достижение',  '', 'mdlst-button-accent mdlst-button-small js-delete-achievement', ['delete_url' => Yii::$app->urlManager->createUrl(['achievement/delete-achievement', 'achievement_id' => $a->achievement_id])] );?>
+										 			 	<?php } ?>
  
 								 					 
 									 			

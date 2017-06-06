@@ -13,6 +13,10 @@ $currentUrl = Url::current();
 										<a class="container-menu-list-link" href="<?=Yii::$app->urlManager->createUrl('personal/dashboard')?>">Дэшборд</a>
 										<div class="container-menu-list-meta"></div>
 									</li>-->
+									<?php   
+
+										if( !Yii::$app->user->isGuest ) {
+									 ?> 
 									<li class="container-menu-list-li <?php if($currentUrl == Yii::$app->urlManager->createUrl('leaderboard/main') ) {  ?> container-menu-list-li-active <? } ?>">
 										<a class="container-menu-list-link" href="<?=Yii::$app->urlManager->createUrl('leaderboard/main')?>">Зал славы</a>
 										<div class="container-menu-list-meta">
@@ -59,6 +63,16 @@ $currentUrl = Url::current();
 										<a class="container-menu-list-link" href="<?=Yii::$app->urlManager->createUrl('personal/rewards')?>">Награды</a>
 										<div class="container-menu-list-meta"></div>
 									</li>
+
+									<? }else{
+										?>
+									<li class="container-menu-list-li  <?php if($currentUrl == Yii::$app->urlManager->createUrl('user/login') ) {  ?> container-menu-list-li-active <? } ?>">
+										<a class="container-menu-list-link" href="<?=Yii::$app->urlManager->createUrl('user/login')?>">Регистрация/авторизация</a>
+										<div class="container-menu-list-meta"></div>
+									</li>
+										<?
+
+									 }?>
 									<!--<li class="container-menu-list-li">
 										<a class="container-menu-list-link" href="<?=Yii::$app->urlManager->createUrl('personal/development')?>">Моё развитие</a>
 										<div class="container-menu-list-meta"></div>

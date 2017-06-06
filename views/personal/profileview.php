@@ -9,9 +9,13 @@ use app\models\Notification;
 echo $this->render('_panel.php');
 
 
+if ( !Yii::$app->user->isGuest ){
+    $currentUser = $user->id == Yii::$app->user->identity->id ;    
+}else{
+    $currentUser = false;
+}
 
 
-$currentUser = $user->id == Yii::$app->user->identity->id ;
 
 ?>
 <!-- CONTENT -->
@@ -120,8 +124,11 @@ $currentUser = $user->id == Yii::$app->user->identity->id ;
                                         }?>
                                 </div>
 -->								<!-- user info -->
-								<a class="profileview-allachievements" href="<?=Yii::$app->urlManager->createUrl(['personal/achievements','user_id' => $user->id])?>">
-									&raquo; Смотреть все достижения
+                                <a class="profileview-allachievements" href="<?=Yii::$app->urlManager->createUrl(['personal/achievements','user_id' => $user->id])?>">
+                                    &raquo; Смотреть все достижения
+                                </a>
+								<a class="profileview-allachievements" href="<?=Yii::$app->urlManager->createUrl(['personal/my-rewards','user_id' => $user->id])?>">
+									&raquo; Смотреть все награды
 								</a>
 								<!-- user info end -->
 
@@ -144,7 +151,8 @@ $currentUser = $user->id == Yii::$app->user->identity->id ;
                     </div>
                     <?
 
-        if ($user->id == Yii::$app->user->identity->id ){
+
+        if ( $currentUser ){
             echo "<br>";
             Yii::$app->decor->infoPanel('Поделиться в соцсетях: <b>'.Yii::$app->getRequest()->serverName.Yii::$app->urlManager->createUrl( ['personal/viewprofile','user_id' => Yii::$app->user->identity->id]) .' </b>'); 
         }
