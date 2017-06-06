@@ -74,13 +74,16 @@ echo $this->render('_panel.php');
 								</div>
 
 
-                        <?php if(!empty($achievement->getPhotos()) ) { ?>
+                        <?php if(!empty($achievement->getPhotos()) ) { 
+                        	$Photos = $achievement->getPhotos();
+                        	
+                        	?>
                         <div class="goals-pictures">
                             <a class="goals-picture-big" href="<?=$Photos[$n]->filename?>" <?php if(!empty($achievement->getPhotos()[0]) ) { ?> style = "background-image: url(<?=$achievement->getPhotos()[0]->filename?>);"<? } ?>  data-fancybox="group" ></a>
 
                             <div class="goals-pictures-small">
 
-                                <? $Photos = $achievement->getPhotos();
+                                <? 
                                 for ($n = 1; $n < count($Photos); $n++) {?>
 	                            <a class="goals-picture-small" href="<?=$Photos[$n]->filename?>" style = "background-image: url(<?=$Photos[$n]->filename?>);"  data-fancybox="group" ></a>
                                 <? }
