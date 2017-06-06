@@ -286,7 +286,7 @@ class Notification extends \yii\db\ActiveRecord
                                 ?>
 				<div class="newblock-data-text">
 		                    <span class="not-date"><?=date("d.m.Y", strtotime($notification->date_created) );?></span>
-	                                Выполнен квест <a href="<?=Yii::$app->urlManager->createUrl( ['personal/quest-detail','quest_id' => $obj->quest_id])?>"><?=$obj->name?></a>
+	                                Выполнен квест <a href="<?=Yii::$app->urlManager->createUrl( ['personal/quest','quest_id' => $obj->quest_id])?>"><?=$obj->name?></a>
 					<p> <?=$obj->description?></p>
 				</div>
 		                <div class="newblock-pic-user-to">
