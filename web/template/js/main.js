@@ -388,8 +388,8 @@ $(document).ready(function(){
 				{
 					url: 'http://' + window.location.hostname + "/index.php?r=site/ajax-upload-image",
 				        success: function(file, response) {
-							myDropzoneFiles[ myDropzoneFiles.length ] = response;
 							file.fid = myDropzoneFiles.length;
+							myDropzoneFiles[ myDropzoneFiles.length ] = response;
 					        if (file.previewElement) {
 					          return file.previewElement.classList.add("dz-success");
 					        }
@@ -397,7 +397,15 @@ $(document).ready(function(){
 
 				      removedfile: function(file) {
 				        var _ref;
-						myDropzoneFiles.splice(file.fid-1,1);
+
+						myDropzoneFiles[file.fid] = "";
+
+alert(file.fid);
+				 alert(myDropzoneFiles[0]);
+				 alert(myDropzoneFiles[1]);
+				 alert(myDropzoneFiles[2]);
+				 alert(myDropzoneFiles[3]);
+
 
 				        if (file.previewElement) {
 				          if ((_ref = file.previewElement) != null) {
@@ -462,7 +470,10 @@ $(document).ready(function(){
 				data['interests'] =  tagWords;
 				data['files'] =  myDropzoneFiles;
 				data['_csrf'] = _csrf.val();
-				 
+				 alert(myDropzoneFiles[0]);
+				 alert(myDropzoneFiles[1]);
+				 alert(myDropzoneFiles[2]);
+				 alert(myDropzoneFiles[3]);
 		 	
 				$.ajax({
 					url: ajaxUrls['addAchievement'],
