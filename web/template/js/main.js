@@ -463,10 +463,6 @@ $(document).ready(function(){
 				data['interests'] =  tagWords;
 				data['files'] =  myDropzoneFiles;
 				data['_csrf'] = _csrf.val();
-				 alert(myDropzoneFiles[0]);
-				 alert(myDropzoneFiles[1]);
-				 alert(myDropzoneFiles[2]);
-				 alert(myDropzoneFiles[3]);
 		 	
 				$.ajax({
 					url: ajaxUrls['addAchievement'],
