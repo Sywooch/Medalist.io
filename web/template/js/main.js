@@ -400,13 +400,6 @@ $(document).ready(function(){
 
 						myDropzoneFiles[file.fid] = "";
 
-alert(file.fid);
-				 alert(myDropzoneFiles[0]);
-				 alert(myDropzoneFiles[1]);
-				 alert(myDropzoneFiles[2]);
-				 alert(myDropzoneFiles[3]);
-
-
 				        if (file.previewElement) {
 				          if ((_ref = file.previewElement) != null) {
 				            _ref.parentNode.removeChild(file.previewElement);
