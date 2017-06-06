@@ -94,11 +94,15 @@ echo $this->render('_panel.php');
 
                                                 ?>
                                             <div class="friend-list-block" href="<?=Yii::$app->urlManager->createUrl( ['personal/viewprofile','user_id' => $u->id])?>">
+					<a  href="<?=Yii::$app->urlManager->createUrl( ['personal/viewprofile','user_id' => $u->id])?>">
+						<div class="friend-list-block-pic2"  style="background-image: url(<?=$avatarSrc?>)"></div>
+<!--
                                                 <div class="friend-list-block-pic">
                                                     <img class="friend-list-block-pic-img" src="<?=$avatarSrc?>">
                                                 </div>
+-->
                                                 <div class="friend-list-block-name"><?=$u->getName()?></div>
-                                              
+</a>                                              
                                                 <div class="friend-list-block-level"><?=$level->level?></div>
                                               
                                                 <div class="friend-list-block-level">

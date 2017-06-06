@@ -387,10 +387,13 @@ $(document).ready(function(){
 				'[data-toggle="dropzone"]',
 				{
 					url: 'http://' + window.location.hostname + "/index.php?r=site/ajax-upload-image",
-					success: function(file, response){
-						 
+				        success: function(file, response) {
 						myDropzoneFiles[ myDropzoneFiles.length ]= response;
-					}
+
+					        if (file.previewElement) {
+					          return file.previewElement.classList.add("dz-success");
+					        }			
+				      }
 				}
 			);
 

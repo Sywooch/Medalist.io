@@ -141,7 +141,6 @@ class SiteController extends Controller
             move_uploaded_file($tempFile,$targetFile); //6
              
         }
-      
        
     }
 
