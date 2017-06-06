@@ -5,6 +5,7 @@ C_Red = #ff2d0b
 C_Blue = #04a9f4
 C_Purple = #8a44ff
 C_Yell = #ffe212
+/*C_Purple = #6534ac*/
 
 /*CMain = CBlue*/
 CMain = C_Purple
@@ -799,30 +800,31 @@ a
                 height 100%
                 font-weight bold
                 padding-top 9px
+                line-height	39px
             &-p1
-                background-color WhiteBelt
+                background-color WhiteBelt !important
             &-p2
-                background-color YellowBelt
+                background-color YellowBelt !important
             &-p3
-                background-color OrangeBelt
+                background-color OrangeBelt !important
             &-p4
-                background-color GreenBelt
+                background-color GreenBelt !important
             &-p5
-                background-color BlueBelt
+                background-color BlueBelt !important
             &-p6
-                background-color PurpleBelt
+                background-color PurpleBelt !important
         &-l1
-            border 6px rgba(WhiteBelt, 0.5) solid
+            border 6px rgba(WhiteBelt, 0.5) solid !important
         &-l2
-            border 6px rgba(YellowBelt, 0.5) solid
+            border 6px rgba(YellowBelt, 0.5) solid !important
         &-l3
-            border 6px rgba(OrangeBelt, 0.5) solid
+            border 6px rgba(OrangeBelt, 0.5) solid !important
         &-l4
-            border 6px rgba(GreenBelt, 0.5) solid
+            border 6px rgba(GreenBelt, 0.5) solid !important
         &-l5
-            border 6px rgba(BlueBelt, 0.5) solid
+            border 6px rgba(BlueBelt, 0.5) solid !important
         &-l6
-            border 6px rgba(PurpleBelt, 0.5) solid
+            border 6px rgba(PurpleBelt, 0.5) solid !important
 
         &-scale
             @extends .dib_m
@@ -1457,9 +1459,12 @@ a
         white-space normal
         margin-right 25px
         width 150px    
-        & img 
-            max-width 150px
-        &-follower 
+        &-img
+            width 160px
+            height 190px
+            background-position center
+            background-size cover
+         &-follower 
             margin-top 15px
     &-content 
         @extends .dib_t
@@ -1467,13 +1472,57 @@ a
         position relative
         width 550px
         &-level 
-            position absolute
-            right -15px 
-            top -15px
+          margin-left -12px
+          padding-top 151px
+        &-view
+          font-size 20px
+          line-height 1.4em
+          & p
+            margin-top 20px
+            margin-bottom 0px
+            color CGray
+          & a
+            font-size 16px
     &-allachievements
         @extends .dib_m
-        margin-top 25px
-        font-size 20px
+        margin-top 20px
+        font-size 20px !important
+    &-level
+        @extends .dib_m
+        width 50px
+        height 50px
+        box-sizing border-box
+        border 6px rgba(CAccent, 0.5) solid
+        position relative
+        overflow hidden
+        border-radius 25px
+        &-point 
+           position absolute
+           background-color CAccent
+           font-size 22px 
+           color white 
+           text-align center
+           width 100%
+           height 100%
+           font-weight bold
+           line-height	39px
+    &-h1
+       color CBlack
+       font-size 32px
+       margin-bottom 20px
+       margin-top 5px
+    &-leaderboard-link
+      font-size 20px !important
+    &-mainscale
+       padding-top 5px
+       padding-bottom 5px
+    &-stats
+       line-height 1.4em
+       &-interests
+          line-height 1.3em
+          & a
+            font-size 15px
+
 /* profileview end */            
         
 /* profileedit */  
@@ -1541,7 +1590,7 @@ a
         &-accent 
             @extends .dib_base
             margin-top 37px
-            margin-bottom 50px
+            /*margin-bottom 50px*/
             background-color CAccent
             color white
             &-main

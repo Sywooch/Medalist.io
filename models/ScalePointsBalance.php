@@ -94,7 +94,58 @@ class ScalePointsBalance extends \yii\db\ActiveRecord
 		$scalePointsBalance->save();
 
     }
+
+    public static function getRatingPosition($user_id, $Rating = 'main'){
+
+	$points = ScalePointsBalance::getUserPointsSum( $user_id );
+
+	/*SELECT COUNT(t.user_id)+1 FROM (SELECT user_id, sum(points) AS sumPoints FROM `scale_points_balance` GROUP BY user_id HAVING  sum(points) > 57 ) AS t*/
+
+	$subQuery = (new \yii\db\Query())
+		->select('user_id')
+		->from('scale_points_balance')
+		->groupBy('user_id')
+		->having('sum(points) >'.$points);
+
+	$query = (new \yii\db\Query())
+		    ->select('COUNT(user_id)+1 AS place')
+		    ->from(['u'=>$subQuery]);
+
+        $rows = $query->all();
+     
+	$place = 0;
+	foreach ($rows as $row ) {
+		$place = $row['place'];
+	}
+
+	$query = (new \yii\db\Query())
+		->select('user_id, sum(points) AS maxPoints')
+		->from('scale_points_balance')
+		->groupBy('user_id')
+		->orderBy('sum(points) DESC');
+
+        $rows = $query->all();
+	$maxPoints = 0;
+	foreach ($rows as $row ) {
+		$maxPoints = $row['maxPoints'];
+		break;
+	}
+
+	
+
+	return array(
+		"points" => $points,
+		"place" => $place,
+		"maxPoints" => $maxPoints
+		);
+
+
+
+    }
+
 /* Andrey */
+
+
 
 
 }

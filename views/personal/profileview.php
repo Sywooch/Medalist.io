@@ -33,15 +33,24 @@ $currentUser = $user->id == Yii::$app->user->identity->id ;
                     <div class="profileview">
 
                         <div class="profileview-aside">
-                            <div class="profileview-aside-img">
-                                <img src="<?=$user->getProfile()->one()->getAvatarSrc();?>">
+	                           <div class="profileview-aside-img" style="background-image: url(<?=$user->getProfile()->one()->getAvatarSrc();?>);">
+								<?$level = Level::getUserLevel( $user->id )->level;?>
+
+                                <div class="profileview-content-level">
+                                    <div class="profileview-level userpanel-info-l<?=$level?>">
+                               	    <div class="profileview-level-point userpanel-info-level-p<?=$level;?>"><?=$level;?></div>
+
+                       	        </div>
+                	        </div>
+
+
                             </div>
 
                             <div class="profileview-aside-follower">
                                 <?php 
                                 if( $currentUser ) {  
 
-                                        Yii::$app->decor->button('Это ваша страница!', '', 'mdlst-button-disabled mdlst-button-smaller');
+/*                                        Yii::$app->decor->button('Это ваша страница!', '', 'mdlst-button-disabled mdlst-button-smaller');*/
                                         Yii::$app->decor->button('Изменить профиль', '', 'mdlst-button-default mdlst-button-smaller js-update-profile-show withNoButton');
 
                                  }else{ 
@@ -67,31 +76,40 @@ $currentUser = $user->id == Yii::$app->user->identity->id ;
                             <div  class="profileview-content-view">
 
 
-				<?$level = Level::getUserLevel( $user->id )->level;?>
-
-                                <div class="profileview-content-level">
-                                         <div class="userpanel-info-level userpanel-info-l<?=$level?>">
-                                       	    <div class="userpanel-info-level-point userpanel-info-level-p<?=$level;?>" style="padding-top: 19px;"><?=$level;?></div>
-                               	        </div>
-                	        </div>
-                             
+                           
                         
-                               <div class="output-header">
                                     <div class="mygoals-name-div">
-                                        <h2 class="mdlst-h2t-goals withButton"><?=$user->getName()?></h2>
+                                        <h1 class="profileview-h1"><?=$user->getName()?></h1>
                                  
                                         <div class="clear"></div>
                                     </div>
+
+                                <div class="profileview-stats">
+					<p class="profileview-stats-interests">Интересы: 
+	                                    	<? $delimeter = ',&nbsp; '; 
+							$links = Array();
+							foreach( $interests as $interest) {
+								array_push($links, '<a href="#">'.$interest->name.'</a>');
+							 } 
+							$links = implode($delimeter, $links);
+						?>
+						<?=$links;?>
+					</p>
+					<p>Статистика: <br/></p>
+								
+						<? 
+							 $stats = ScalePointsBalance::getRatingPosition($user->id);
+                        			?>
+						Заработано <?=$stats['points']?> баллов, <?=$stats['place']?> место в <a class="profileview-leaderboard-link" href="<?=Yii::$app->urlManager->createUrl(['leaderboard/main'])?>#u<?=$user->id?>">общем рейтинге</a>
+
+		                                <div class="profileview-mainscale">
+							<? Yii::$app->decor->scale($stats['points'] / $stats['maxPoints']) ;?>
+		                                </div>
+						Отставание от лидера: <?=$stats['maxPoints'] - $stats['points']?> баллов
+
+
                                 </div>
-
-                                <div>
-                                    <? foreach( $interests as $interest) {
-                                        Yii::$app->decor->button($interest->name, '', 'mdlst-button-smaller mdlst-button-gray');
-
-                                        } ?>
-
-                                </div>
-
+<!--
                                 <div class="profileview-scales">
                                     <?php foreach( $scaleBalance as $si => $sb ) {
 
@@ -101,8 +119,7 @@ $currentUser = $user->id == Yii::$app->user->identity->id ;
                                         <?  
                                         }?>
                                 </div>
-
-								<!-- user info -->
+-->								<!-- user info -->
 								<a class="profileview-allachievements" href="<?=Yii::$app->urlManager->createUrl(['personal/achievements','user_id' => $user->id])?>">
 									&raquo; Смотреть все достижения
 								</a>
