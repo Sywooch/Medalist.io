@@ -11,6 +11,8 @@ use app\models\Level;
 use Yii;
 
 
+if( !Yii::$app->user->isGuest ) {
+
 $level = Level::getUserLevel ( Yii::$app->user->identity->id );
 $levelProgress = Level::getUserCurrentLevelProgress( Yii::$app->user->identity->id  );
 $levelPointsLeft = Level::getUserNextLevelPointsLeft( Yii::$app->user->identity->id  );
@@ -49,3 +51,5 @@ $avatarSrc = Yii::$app->user->identity->getProfile()->one()->getAvatarSrc();
 	 		</div>
 	 	</div>
 		<!-- .USERPANEL END-->
+
+	<? } ?>

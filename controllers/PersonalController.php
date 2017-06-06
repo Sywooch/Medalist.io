@@ -627,6 +627,30 @@ class PersonalController extends \yii\web\Controller
         return $this->render('rewards', ['badges' => $badges, 'badgeGroups' => $badgeGroups, 'badgeTotal' => $badgeTotal]);
     }
 
+    public function actionMyRewards()
+    {
+        if( !empty(Yii::$app->request->get()['user_id'])) {
+            $user_id = Yii::$app->request->get()['user_id'];
+            $user = User::findOne($user_id);
+
+            $badgeBalance = BadgeBalance::find()->where('user_id = '.$user_id)->all();
+            $badges = [];
+            foreach( $badgeBalance as $bb ){
+                $badges[] = $bb;
+
+            }
+
+            $badgeGroups = BadgeGroup::find()->all();
+            $badgeTotal = Badge::find()->all();
+
+            return $this->render('my-rewards', ['badges' => $badges, 'badgeGroups' => $badgeGroups, 'badgeTotal' => $badgeTotal, 'user' => $user]);    
+        }else{
+            $this->redirect(['site/index']);
+        }
+
+        
+    }
+
     
 
     public function actionRewardDetail()
