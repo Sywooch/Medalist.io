@@ -89,13 +89,13 @@ if( Yii::$app->user->isGuest ){
 
                         <?php if(!empty($goal->getPhotos()) ) { ?>
                         <div class="goals-pictures">
-                            <div class="goals-picture-big" <?php if(!empty($goal->getPhotos()[0]) ) { ?> style = "background-image: url(<?=$goal->getPhotos()[0]->filename?>);"<? } ?>></div>
+                            <a class="goals-picture-big"   data-fancybox="group"  href="<?=$goal->getPhotos()[0]->filename?>" <?php if(!empty($goal->getPhotos()[0]) ) { ?> style = "background-image: url(<?=$goal->getPhotos()[0]->filename?>);"<? } ?>></a>
 
                             <div class="goals-pictures-small">
 
                                 <? $Photos = $goal->getPhotos();
                                 for ($n = 1; $n < count($Photos); $n++) {?>
-	                            <div class="goals-picture-small" style = "background-image: url(<?=$Photos[$n]->filename?>);"></div>
+	                            <a class="goals-picture-small" data-fancybox="group"  style = "background-image: url(<?=$Photos[$n]->filename?>);" href="<?=$Photos[$n]->filename?>"></a>
                                 <? }
                                 ?>
 
