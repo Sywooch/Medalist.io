@@ -76,10 +76,10 @@ echo $this->render('_panel.php');
 
                         <?php if(!empty($achievement->getPhotos()) ) { 
                         	$Photos = $achievement->getPhotos();
-                        	
+
                         	?>
                         <div class="goals-pictures">
-                            <a class="goals-picture-big" href="<?=$Photos[$n]->filename?>" <?php if(!empty($achievement->getPhotos()[0]) ) { ?> style = "background-image: url(<?=$achievement->getPhotos()[0]->filename?>);"<? } ?>  data-fancybox="group" ></a>
+                            <a class="goals-picture-big" href="<?=$Photos[0]->filename?>" <?php if(!empty($achievement->getPhotos()[0]) ) { ?> style = "background-image: url(<?=$achievement->getPhotos()[0]->filename?>);"<? } ?>  data-fancybox="group" ></a>
 
                             <div class="goals-pictures-small">
 
