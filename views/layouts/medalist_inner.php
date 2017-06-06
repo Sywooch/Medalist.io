@@ -46,6 +46,7 @@ if ( empty($this->title) ){
 <!--     <link rel="stylesheet" href="/template/css/goals.css">-->
      <link rel="stylesheet" href="/template/js/dropzone/dropzone.css">
      <link rel="stylesheet" href="/template/js/owl/owl.carousel.css">
+     <link rel="stylesheet" href="/template/js/fancybox/dist/jquery.fancybox.min.css">
 
     <script src="/template/js/jquery-3.2.0.min.js"></script>
     <script src="/template/js/datepicker/dist/datepicker.js"></script>
@@ -53,6 +54,7 @@ if ( empty($this->title) ){
     <script src="/template/js/rangeslider/rangeslider.js"></script>
     <script src="/template/js/dropzone/dropzone.js"></script>
     <script src="/template/js/owl/owl.carousel.min.js"></script>
+    <script src="/template/js/fancybox/dist/jquery.fancybox.min.js"></script>
    
     <script type="text/javascript">
         var ajaxUrls = <?php 
