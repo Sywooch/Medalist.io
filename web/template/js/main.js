@@ -388,12 +388,26 @@ $(document).ready(function(){
 				{
 					url: 'http://' + window.location.hostname + "/index.php?r=site/ajax-upload-image",
 				        success: function(file, response) {
-						myDropzoneFiles[ myDropzoneFiles.length ]= response;
-
+							myDropzoneFiles[ myDropzoneFiles.length ] = response;
+							file.fid = myDropzoneFiles.length;
 					        if (file.previewElement) {
 					          return file.previewElement.classList.add("dz-success");
-					        }			
+					        }
+				      },
+
+				      removedfile: function(file) {
+				        var _ref;
+						myDropzoneFiles.splice(file.fid-1,1);
+
+				        if (file.previewElement) {
+				          if ((_ref = file.previewElement) != null) {
+				            _ref.parentNode.removeChild(file.previewElement);
+				          }
+				        }
+				        return this._updateMaxFilesReachedClass();
 				      }
+
+
 				}
 			);
 
