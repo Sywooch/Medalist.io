@@ -15,7 +15,7 @@ echo $this->render('_panel.php');
 					<div class="container-col container-col-2">
 						<div class="output">
 							<div class="output-header">
-								<h2 class="mdlst-h2t">Награды <?=$user->getName()?></h2>
+								<h2 class="mdlst-h2t">Награды <a href="<?=Yii::$app->urlManager->createUrl(['personal/viewprofile', 'user_id' => $user->id])?>"><?=$user->getName()?></a></h2>
 								<div class="output-header-meta">
 
 									 

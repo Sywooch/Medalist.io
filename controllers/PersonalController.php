@@ -242,22 +242,26 @@ class PersonalController extends \yii\web\Controller
         $isFollowed = false;
 
          //Кто уже в друзьях
-        $followed = Follower::find()->where(['user_id' => Yii::$app->user->identity->id])->all();
+        $followed = [];
+        $possibleFriends = [];
 
-        $excluded = [];
-        foreach ($followed as $follower) {
+        if( !Yii::$app->user->isGuest ) {
+            $followed = Follower::find()->where(['user_id' => Yii::$app->user->identity->id])->all();
 
-            if ( !$isFollowed ) {
-                $isFollowed = $follower->to_user_id == $user->id;
+            $excluded = [];
+            foreach ($followed as $follower) {
+
+                if ( !$isFollowed ) {
+                    $isFollowed = $follower->to_user_id == $user->id;
+                }
+                $excluded[] = $follower->to_user_id;
+
             }
-            $excluded[] = $follower->to_user_id;
+            $excluded[] = Yii::$app->user->identity->id;
+
+            $possibleFriends = Follower::findAlikeUsers( Yii::$app->user->identity->id )->where(['NOT IN', 'id', $excluded])->andWhere(['status' => '1'])->all();
 
         }
-        $excluded[] = Yii::$app->user->identity->id;
-
-        $possibleFriends = Follower::findAlikeUsers( Yii::$app->user->identity->id )->where(['NOT IN', 'id', $excluded])->andWhere(['status' => '1'])->all();
-
-
 
         $interests = Interest::getUserInterests( $user->id )->all() ;
 
