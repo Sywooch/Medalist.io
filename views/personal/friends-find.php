@@ -32,7 +32,7 @@ echo $this->render('_panel.php');
 							</form>
 
 
-
+<!--
 
                     <div class="friend-list-header">
                         <div class="friend-list-header-block-goals friend-list-header-block">Цели</div>
@@ -73,11 +73,11 @@ echo $this->render('_panel.php');
                     </a>
                     <?}?>
                     </div>
-
+-->
 
                    <div class="output-header">
                         <div class="mygoals-name-div">
-                            <h2 class="mdlst-h2t-goals withButton">Вы можете их знать</h2>
+                            <h2 class="mdlst-h2t-goals withButton">Результаты поиска</h2>
                       
                             <div class="clear"></div>
                         </div>
