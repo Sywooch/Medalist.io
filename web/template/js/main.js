@@ -807,7 +807,7 @@ $(document).ready(function(){
                 loop: true,
                 margin: 0,
                 autoplay: true,
-                autoplayTimeout: 7000,
+                autoplayTimeout: 15000,
                 autoplayHoverPause: false,
 				nav: false,
 				dots:false
@@ -815,7 +815,7 @@ $(document).ready(function(){
 
               });
               $('.play').on('click', function() {
-                owl.trigger('play.owl.autoplay', [7000])
+                owl.trigger('play.owl.autoplay', [15000])
               })
               $('.stop').on('click', function() {
                 owl.trigger('stop.owl.autoplay')
