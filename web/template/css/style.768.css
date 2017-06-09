@@ -124,6 +124,23 @@
   .friend-list-header-block-level {
     width: 60px;
   }
+  .newblock-pic {
+    width: 80px;
+  }
+  .newblock-pic img {
+    width: 80px;
+    height: 80px;
+  }
+  .newblock-pic-userlink {
+    width: 80px;
+    height: 80px;
+  }
+  .newblock-data {
+    width: 380px;
+  }
+  .newblock-data-text {
+    width: 230px;
+  }
   .lastachievement-info {
     left: 50px;
   }
