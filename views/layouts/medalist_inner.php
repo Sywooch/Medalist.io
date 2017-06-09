@@ -40,6 +40,7 @@ if ( empty($this->title) ){
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="/template/css/system.css">
     <link rel="stylesheet" href="/template/css/style.css">
+    <link rel="stylesheet" href="/template/css/style.768.css">
     <link rel="stylesheet" href="/template/js/trumbowyg/dist/ui/trumbowyg.css">
     <link rel="stylesheet" href="/template/js/datepicker/dist/datepicker.css">
     <link rel="stylesheet" href="/template/js/rangeslider/rangeslider.css">
