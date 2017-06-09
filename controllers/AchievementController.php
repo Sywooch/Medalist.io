@@ -99,13 +99,19 @@ class AchievementController extends \yii\web\Controller
 							continue;
 						}
                        $info = pathinfo( $file );
-                       $result2 = rename( $file, './uploads/a/'. $info['basename'] );
+					   $targetFile = './uploads/a/'. $info['basename'];
+                       $result2 = rename( $file, $targetFile);
+
+
+						$newFilename_tb = './uploads/a/'. $info['filename'].'_tb.'.$info['extension'];
+						Yii::$app->decor->createThumbnail($targetFile, $newFilename_tb, 431, 285);
+
 
                        if ( $result2 ){
 
 
                            $photo = new Photo;
-                           $photo->filename =  '/uploads/a/'. $info['basename'] ;
+                           $photo->filename =  $targetFile;
                            $photo->entity_class  = 'Achievement';
                            $photo->entity_id =  $achievement->achievement_id;
                            $photo->date_created = date("Y-m-d H:i:s");

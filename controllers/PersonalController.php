@@ -44,9 +44,18 @@ class PersonalController extends \yii\web\Controller
         $achievements = Achievement::find()->where('user_id = '.$userToFind)->orderBy([ 'date_achieved' => SORT_DESC, 'date_created' => SORT_DESC ])->all();
         return $this->render('achievements', ['achievements' =>$achievements,  'other' =>  $other?$userToFind:false ]);
     }
+
+
     public function actionAchievement()
     {
         $achievement = Achievement::findOne(Yii::$app->request->get()['achievement_id']);
+
+        $other = true;
+
+        if( Yii::$app->user->identity->id == $achievement->user_id ){
+	        $other = false;
+        }
+
 
         if( ! $achievement ){
              throw new \yii\web\NotFoundHttpException();
@@ -59,7 +68,8 @@ class PersonalController extends \yii\web\Controller
         return $this->render('achievement', [
             'achievement' =>$achievement,
             'quest' => $quest,
-            'goal' => $goal
+            'goal' => $goal,
+		    'other' =>  $other
         ]);
     }
 

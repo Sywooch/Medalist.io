@@ -86,7 +86,7 @@ if( Yii::$app->user->isGuest ){
                         </div>
                         <div class="clear"></div>
 
-
+<!--
                         <?php if(!empty($goal->getPhotos()) ) { ?>
                         <div class="goals-pictures">
                             <a class="goals-picture-big"   data-fancybox="group"  href="<?=$goal->getPhotos()[0]->filename?>" <?php if(!empty($goal->getPhotos()[0]) ) { ?> style = "background-image: url(<?=$goal->getPhotos()[0]->filename?>);"<? } ?>></a>
@@ -102,6 +102,30 @@ if( Yii::$app->user->isGuest ){
                             </div>
                         </div>
                         <? } ?>
+
+-->
+						<?php 
+                       	$photos = $goal->getPhotos();
+                        if(!empty($photos) ) { 
+							$thumbs = Yii::$app->decor->getThumbnails($photos);
+                        	?>
+                        <div class="goals-pictures">
+                            <a class="goals-picture-big" href="<?=$photos[0]->filename?>" <?php if(!empty($thumbs[0])) { ?> style = "background-image: url(<?=$thumbs[0]?>);"<? } ?>  data-fancybox="group" ></a>
+
+                            <div class="goals-pictures-small">
+
+                                <? 
+                                for ($n = 1; $n < count($photos); $n++) {?>
+	                            <a class="goals-picture-small" href="<?=$photos[$n]->filename?>" style = "background-image: url(<?=$thumbs[$n]?>);"  data-fancybox="group" ></a>
+                                <? }
+                                ?>
+
+                            </div>
+                        </div>
+                        <? } ?>
+
+
+
 
                         <div class="clear"></div>
                         <div class="goals-description marginBottom30 marginTop30">

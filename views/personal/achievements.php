@@ -165,10 +165,17 @@ echo $this->render('_panel.php');
 										 					<div class="mdlst-lurm"><i></i> <b>+2</b></div>
 										 				</div>-->
 										 			</div>
+					
+												 	<?php
+			                					       	$photos = $a->getPhotos();
+						            	        	    if(!empty($photos) ) { 
+														$thumbs = Yii::$app->decor->getThumbnails($photos);
+    	                					    	?>
 
 										 			<div class="achievement-block-images">
-										                            <div class="goals-picture-mid" <?php if(!empty($a->getPhotos()[0]) ) { ?> style = "background-image: url(<?=$a->getPhotos()[0]->filename?>);"<? } ?>></div>
+										                    <div class="goals-picture-mid" <?php if(!empty($photos[0]) ) { ?> style = "background-image: url(<?=$thumbs[0]?>);"<? } ?>></div>
 										 			</div>
+						                    	    <? } ?>
 
 								 				</div>
 								 			</div>
@@ -224,9 +231,19 @@ echo $this->render('_panel.php');
 								 				</div>
 								 				<div class="achievement-block-content-col achievement-block-content-col-2">
 
+
+												 	<?php
+			                					       	$photos = $a->getPhotos();
+						            	        	    if(!empty($photos) ) { 
+														$thumbs = Yii::$app->decor->getThumbnails($photos);
+    	                					    	?>
+
 										 			<div class="achievement-block-images">
-										                            <div class="achievement-block-images-picture-small" <?php if(!empty($a->getPhotos()[0]) ) { ?> style = "background-image: url(<?=$a->getPhotos()[0]->filename?>);"<? } ?>></div>
+										                            <div class="achievement-block-images-picture-small" <?php if(!empty($photos[0]) ) { ?> style = "background-image: url(<?=$thumbs[0]?>);"<? } ?>></div>
 										 			</div>
+						                    	    <? } ?>
+
+
 														<?php if( $other === false ) { ?>
 										 			 <? Yii::$app->decor->button( 'Удалить достижение',  '', 'mdlst-button-accent mdlst-button-small js-delete-achievement', ['delete_url' => Yii::$app->urlManager->createUrl(['achievement/delete-achievement', 'achievement_id' => $a->achievement_id])] );?>
 										 			 	<?php } ?>
