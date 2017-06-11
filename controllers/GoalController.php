@@ -238,13 +238,17 @@ class GoalController extends Controller
 
                    foreach ($post['files'] as $file) {
                        $info = pathinfo( $file );
-                       $result2 = rename( $file, './uploads/g/'. $info['basename'] );
+					   $targetFile = './uploads/g/'. $info['basename'];
+                       $result2 = rename( $file, $targetFile);
+
+						$newFilename_tb = './uploads/g/'. $info['filename'].'_tb.'.$info['extension'];
+						Yii::$app->decor->createThumbnail($targetFile, $newFilename_tb, 431, 285);
 
                        if ( $result2 ){
 
 
                            $photo = new Photo;
-                           $photo->filename =  '/uploads/g/'. $info['basename'] ;
+                           $photo->filename =  $targetFile;
                            $photo->entity_class  = 'Goal';
                            $photo->entity_id =  $goal->goal_id;
                            $photo->date_created = date("Y-m-d H:i:s");

@@ -116,7 +116,19 @@ echo $this->render('_panel.php');
                             </div>
                             <!--listGoals-left-->
 
-                            <div class="goals-picture-mid" <?php if(!empty($goal->getPhotos()[0]) ) { ?> style = "background-image: url(<?=$goal->getPhotos()[0]->filename?>);"<? } ?>></div>
+
+							 	<?php
+           					       	$photos = $goal->getPhotos();
+	            	        	    if(!empty($photos) ) { 
+									$thumbs = Yii::$app->decor->getThumbnails($photos);
+        					    	?>
+    				 			<div class="achievement-block-images">
+				                    <div class="goals-picture-mid" <?php if(!empty($photos[0]) ) { ?> style = "background-image: url(<?=$thumbs[0]?>);"<? } ?>></div>
+					 			</div>
+		                  	    <? } ?>
+
+
+<!--                            <div class="goals-picture-mid" <?php if(!empty($goal->getPhotos()[0]) ) { ?> style = "background-image: url(<?=$goal->getPhotos()[0]->filename?>);"<? } ?>></div>-->
 
 
                             <div class="clear"></div>

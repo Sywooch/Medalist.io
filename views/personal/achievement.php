@@ -72,20 +72,19 @@ echo $this->render('_panel.php');
 									</div>
 -->
 								</div>
-
-
-                        <?php if(!empty($achievement->getPhotos()) ) { 
-                        	$Photos = $achievement->getPhotos();
-
+						<?php 
+                       	$photos = $achievement->getPhotos();
+                        if(!empty($photos) ) { 
+							$thumbs = Yii::$app->decor->getThumbnails($photos);
                         	?>
                         <div class="goals-pictures">
-                            <a class="goals-picture-big" href="<?=$Photos[0]->filename?>" <?php if(!empty($achievement->getPhotos()[0]) ) { ?> style = "background-image: url(<?=$achievement->getPhotos()[0]->filename?>);"<? } ?>  data-fancybox="group" ></a>
+                            <a class="goals-picture-big" href="<?=$photos[0]->filename?>" <?php if(!empty($thumbs[0])) { ?> style = "background-image: url(<?=$thumbs[0]?>);"<? } ?>  data-fancybox="group" ></a>
 
                             <div class="goals-pictures-small">
 
                                 <? 
-                                for ($n = 1; $n < count($Photos); $n++) {?>
-	                            <a class="goals-picture-small" href="<?=$Photos[$n]->filename?>" style = "background-image: url(<?=$Photos[$n]->filename?>);"  data-fancybox="group" ></a>
+                                for ($n = 1; $n < count($photos); $n++) {?>
+	                            <a class="goals-picture-small" href="<?=$photos[$n]->filename?>" style = "background-image: url(<?=$thumbs[$n]?>);"  data-fancybox="group" ></a>
                                 <? }
                                 ?>
 
@@ -98,6 +97,10 @@ echo $this->render('_panel.php');
 
 
 													<div class="achievement-block-content-description"><?=$achievement->description;?></div>
+
+
+
+
 
 								 					<div class="achievement-block-content-bar">
 								 						<!-- todo universa;-bar-->	
@@ -132,6 +135,20 @@ echo $this->render('_panel.php');
 
 								 		<!-- extra info --> 
 								 		<div class="achievement-block-info">Подождите, пока сообщество подтвердит ваше достижение. Чем больше лайков, тем больше шанс!</div>
+
+													 <?php if( $other === false ) { ?>
+														<div style="margin-top: 30px;">
+
+
+													<? Yii::$app->decor->button(
+        													'Редактировать', 
+        													Yii::$app->urlManager->createUrl(['personal/achievement-edit','achievement_id' => $achievement->achievement_id]) 
+        												) ?>
+
+        												 <? Yii::$app->decor->button( 'Удалить достижение',  '', 'mdlst-button-accent   js-delete-achievement', ['delete_url' => Yii::$app->urlManager->createUrl(['achievement/delete-achievement', 'achievement_id' => $achievement->achievement_id])] );?>
+        												</div>
+
+        												<? } ?>
 
 								 		<div class="achievement-share"><? Yii::$app->decor->shareWidget(); ?></div>
 
