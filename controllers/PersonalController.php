@@ -52,10 +52,15 @@ class PersonalController extends \yii\web\Controller
 
         $other = true;
 
-        if( Yii::$app->user->identity->id == $achievement->user_id ){
-	        $other = false;
-        }
+        if( !Yii::$app->user->isGuest ){
+            if( Yii::$app->user->identity->id == $achievement->user_id ){
+                $other = false;
+            }
 
+        }else{
+             $other = true;
+        }
+     
 
         if( ! $achievement ){
              throw new \yii\web\NotFoundHttpException();
