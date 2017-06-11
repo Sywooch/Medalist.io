@@ -1,9 +1,13 @@
-@media all and (min-width: 801px) and (max-width: 1270px) {
+@media all and (max-width: 800px) {
+  body {
+    width: 100%;
+    overflow-x: hidden;
+  }
   .simplebox-padding {
-    padding: 20px 20px;
+    padding: 10px 10px;
   }
   .wc {
-    width: 768px;
+    width: 320px;
     margin: 0 auto;
     position: relative;
   }
@@ -11,36 +15,75 @@
     text-align: center;
   }
   .container-col-1 {
-    width: 200px;
+    width: 320px;
   }
   .container-col-2 {
-    width: 570px;
+    width: 320px;
+  }
+  .container-cols {
+    white-space: normal;
+  }
+  .container-col-1 {
+    width: 100%;
+  }
+  .container-col-2 {
+    width: 100%;
   }
   .mdlst-button {
     padding: 8px 20px;
   }
+  .mdlst-h2t,
   .mdlst-h2t-goals {
-    font-size: 24px;
+    font-size: 18px;
+    white-space: normal;
+  }
+  .footer-wrapper {
+    white-space: normal;
+  }
+  .footer-menu {
+    width: 100%;
+  }
+  .footer-copy {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  .mdlst-pan-text {
+    font-size: 14px;
+  }
+  .output-header {
+    white-space: normal;
   }
   .output-controlls-searchbox,
   .questblock-info {
-    width: 373px;
+    width: 100%;
+  }
+  .myrewards-list,
+  .rewards-catalog-list {
+    text-align: center;
+  }
+  .myrewards-block {
+    margin-right: 0;
+    margin-bottom: 45px;
   }
   .header-menu {
-    width: 431px;
+    display: none;
   }
   .header-menu-list-li-a {
     font-size: 13px;
   }
   .header-logo {
-    width: 182px;
+    width: 120px;
+  }
+  .header-logo img {
+    max-width: 100px;
+    margin-top: 5px;
   }
   .header-enter-link {
     font-size: 14px;
     margin-right: 20px;
   }
   .userpanel-user {
-    width: 300px;
+    width: 100%;
   }
   .userpanel-user-pic {
     width: 60px;
@@ -48,7 +91,7 @@
     margin-right: 14px;
   }
   .userpanel-info {
-    width: 450px;
+    width: 100%;
     margin-top: 5px;
   }
   .userpanel-user-info-name {
@@ -70,7 +113,7 @@
     padding-top: 0px;
   }
   .profileview-content {
-    width: 320px;
+    width: 100%;
   }
   .profileview-aside-img {
     width: 100px;
@@ -128,29 +171,57 @@
   .friend-list-header-block-level {
     width: 60px;
   }
+  .newblock {
+    white-space: normal;
+    position: relative;
+  }
   .newblock-pic {
-    width: 80px;
+    width: 100%;
+    margin-right: 10px;
+  }
+  .newblock-pic-name {
+    float: right;
+    text-align: left;
+    width: 70%;
+  }
+  .newblock-pic-user-to {
+    display: none;
   }
   .newblock-pic img {
     width: 80px;
     height: 80px;
   }
   .newblock-pic-userlink {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
   }
   .newblock-data {
-    width: 380px;
+    width: 100%;
   }
   .newblock-data-text {
-    width: 230px;
+    width: 250px;
+  }
+  .newblock-data-text .not-date {
+    display: block;
+    font-size: 12px;
+  }
+  .newblock-icon {
+    position: absolute;
+    right: 0;
+    top: 110px;
+  }
+  .newblock-desc {
+    display: none;
+  }
+  .questblock {
+    white-space: normal;
   }
   .questblock-pic {
-    width: 190px;
+    width: 100%;
   }
   .questblock-info-title {
-    width: 340px;
-    font-size: 20px;
+    width: 300px;
+    font-size: 17px;
   }
   .questblock-info-info-list-li {
     font-size: 12px;
@@ -159,11 +230,19 @@
     left: 50px;
   }
   .lastachievement-info-data-data {
-    width: 300px;
+    width: 100%;
     line-height: 1.5em;
   }
+  .questblock-info-controlls-likes {
+    margin-right: 15px;
+    font-size: 14px;
+  }
+  .questblock-info-controlls-comments {
+    margin-right: 10px;
+    font-size: 14px;
+  }
   .achievement-block-user-link {
-    width: 270px;
+    width: 100%;
   }
   .achievement-block-user-pic {
     width: 55px;
@@ -174,9 +253,25 @@
     margin-left: 10px;
   }
   .goals-picture-big {
-    width: 291px;
+    width: 100%;
   }
   .addach-tags-w {
-    width: 465px;
+    width: 100%;
+  }
+  .achievement-block-user {
+    white-space: normal;
+  }
+  .achievement-block-user-allachievements {
+    padding-left: 60px;
+    box-sizing: border-box;
+  }
+  .achievement-block-content-info {
+    margin: 0 !important;
+  }
+  .footer-menu-list-li {
+    margin-left: 10px;
+  }
+  .footer-menu-list-li-a {
+    font-size: 12px;
   }
 }

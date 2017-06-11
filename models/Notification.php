@@ -212,7 +212,7 @@ class Notification extends \yii\db\ActiveRecord
 				<div class="newblock-data-text">
 					<span class="not-date"><?=date("d.m.Y", strtotime($obj->date_achieved) );?></span>
 					Новое достижение<!----> <a href="<?=Yii::$app->urlManager->createUrl( ['personal/achievement','achievement_id' => $obj->achievement_id])?>"><?=$obj->name?></a>
-					<p> <?=$obj->description?></p>
+					<p class="newblock-desc"> <?=$obj->description?></p>
 				</div>
 		                <div class="newblock-pic-user-to">
 					<a href="<?=Yii::$app->urlManager->createUrl( ['personal/achievement','achievement_id' => $obj->achievement_id])?>" class="newblock-pic-name"><?=$obj->name?></a>
@@ -227,7 +227,7 @@ class Notification extends \yii\db\ActiveRecord
 				<div class="newblock-data-text">
 		                    <span class="not-date"><?=date("d.m.Y", strtotime($notification->date_created) );?></span>
         	       	                Новая награда <a href="<?=Yii::$app->urlManager->createUrl( ['personal/reward-detail','badge_id' => $obj->badge_id])?>"><?=$obj->name?></a>
-					<p> <?=$obj->description?></p>
+					<p class="newblock-desc"> <?=$obj->description?></p>
 				</div>
 		                <div class="newblock-pic-user-to">
 					<a href="<?=Yii::$app->urlManager->createUrl( ['personal/reward-detail','badge_id' => $obj->badge_id])?>" class="newblock-pic-name"><?=$obj->name?></a>
@@ -253,7 +253,7 @@ class Notification extends \yii\db\ActiveRecord
 				<div class="newblock-data-text">
 		                    <span class="not-date"><?=date("d.m.Y", strtotime($notification->date_created) );?></span>
         	                      Взят квест <a href="<?=Yii::$app->urlManager->createUrl( ['personal/quest','quest_id' => $obj->quest_id])?>"><?=$obj->name?></a>
-					<p> <?=$obj->description?></p>
+					<p class="newblock-desc"> <?=$obj->description?></p>
 				</div>
 		                <div class="newblock-pic-user-to">
 					<a href="<?=Yii::$app->urlManager->createUrl( ['personal/quest','quest_id' => $obj->quest_id])?>" class="newblock-pic-name"><?=$obj->name?></a>
@@ -270,7 +270,7 @@ class Notification extends \yii\db\ActiveRecord
 				<div class="newblock-data-text">
 		                    <span class="not-date"><?=date("d.m.Y", strtotime($notification->date_created) );?></span>
         	                        Новая цель <a href="<?=Yii::$app->urlManager->createUrl( ['personal/goal','goal_id' => $obj->goal_id])?>"><?=$obj->name?></a>
-					<p> <?=$obj->description?></p>
+					<p class="newblock-desc"> <?=$obj->description?></p>
 				</div>
 		                <div class="newblock-pic-user-to">
 					<a href="<?=Yii::$app->urlManager->createUrl( ['personal/goal','goal_id' => $obj->goal_id])?>" class="newblock-pic-name"><?=$obj->name?></a>
@@ -287,7 +287,7 @@ class Notification extends \yii\db\ActiveRecord
 				<div class="newblock-data-text">
 		                    <span class="not-date"><?=date("d.m.Y", strtotime($notification->date_created) );?></span>
 	                                Выполнен квест <a href="<?=Yii::$app->urlManager->createUrl( ['personal/quest','quest_id' => $obj->quest_id])?>"><?=$obj->name?></a>
-					<p> <?=$obj->description?></p>
+					<p class="newblock-desc"> <?=$obj->description?></p>
 				</div>
 		                <div class="newblock-pic-user-to">
 					<a href="<?=Yii::$app->urlManager->createUrl( ['personal/quest','quest_id' => $obj->quest_id])?>" class="newblock-pic-name"><?=$obj->name?></a>
