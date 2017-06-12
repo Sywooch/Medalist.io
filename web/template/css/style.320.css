@@ -183,7 +183,7 @@
     width: 110px;
   }
   .friend-list-block-points {
-    width: 80px;
+    width: 50px;
   }
   .friend-list-header-block-level {
     width: 60px;
@@ -302,10 +302,28 @@
     width: 280px;
     height: 190px;
   }
+  .editprofile-field {
+    white-space: normal;
+  }
   .mobile_menu_toggle {
     display: none;
   }
   .mobile_menu_toggle.mobile_menu_toggle__active {
     display: block;
+  }
+  .friend-list-header-block-goals,
+  .friend-list-header-block-achievements,
+  .friend-list-block-goals,
+  .friend-list-block-achievements {
+    display: none;
+  }
+  .friend-list-block {
+    white-space: nowrap;
+  }
+  .friend-list-block-name {
+    white-space: normal;
+  }
+  .friend-list-header-block-points {
+    margin-left: 150px;
   }
 }
