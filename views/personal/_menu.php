@@ -5,9 +5,18 @@ $currentUrl = Url::current();
  ?>
 <!-- menu -->
 					<div class="container-col container-col-1">
-						<div class="container-menu">
-							<div class="container-menu-mobile"></div>
-							<div class="container-menu-wrapper">
+						<div class="container-menu"   style="margin-bottom: 20px">
+							<div class="container-menu-mobile mobile_only">
+								<ul class="container-menu-list">
+									 
+								 
+									<li class="container-menu-list-li js-toggle-mobilemenu" >
+										<div class="container-menu-list-link"  >Меню</div>
+										<div class="container-menu-list-meta"><img src="/template/img/1497314682_menu-24.png" style="padding-right: 17px;padding-top: 11px;"></div>
+									</li>
+								</ul>
+							</div>
+							<div class="container-menu-wrapper mobile_menu_toggle">
 								<ul class="container-menu-list">
 									<!--<li class="container-menu-list-li">
 										<a class="container-menu-list-link" href="<?=Yii::$app->urlManager->createUrl('personal/dashboard')?>">Дэшборд</a>

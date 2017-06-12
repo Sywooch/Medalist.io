@@ -1,7 +1,15 @@
+.mobile_only
+    display none
 @media all and (max-width 800px)
     body
         width 100%
         overflow-x hidden
+    .mobile_only
+        display block
+        &-inline-block
+            display inline-block
+        &-inline 
+            display inline
     .simplebox    
         &-padding 
             padding 10px 10px 
@@ -95,6 +103,8 @@
         font-size 14px
     .userpanel-user-notifications
         margin-left 20px
+    .userpanel-info-scale
+        width 250px
         
     .userpanel-info-level
         width 50px
@@ -114,13 +124,15 @@
     .possible-friends-block-pic-userlink
         width 150px
         height 150px
+        margin 0 auto
     .profileview-content-level
-        padding-top  60px
+        padding-top  154px
 
     .profileview-h1
         font-size 22px
     .possible-friends-block
-        width 159px
+        width 100%
+        text-align center
         
     .editprofile-field-label
         width  120px
@@ -229,6 +241,7 @@
     .goals-picture-big
         width  100%
         
+        
     /* */
     .addach-tags-w
         width  100%      
@@ -244,3 +257,20 @@
         margin-left 10px
     .footer-menu-list-li-a
         font-size 12px
+        
+
+    /* */
+    .profileview
+        white-space normal
+    .profileview-aside
+        width 100%
+        margin-bottom 30px
+    .profileview-aside-img
+        width 280px
+        height 190px
+        
+
+    .mobile_menu_toggle
+        display none
+        &.mobile_menu_toggle__active 
+            display block

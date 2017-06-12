@@ -35,7 +35,15 @@ blinkNew = function( className ){
 $(document).ready(function(){
 
 
-
+	/* MOBILE */
+	$('.js-toggle-mobilemenu').click(function(){
+		if( $('.mobile_menu_toggle').hasClass('mobile_menu_toggle__active') ){
+			$('.mobile_menu_toggle').removeClass('mobile_menu_toggle__active');
+		}else{
+			$('.mobile_menu_toggle').addClass('mobile_menu_toggle__active');
+		}
+	});
+		/* MOBILE END*/
 
 	/*effects end */
 
