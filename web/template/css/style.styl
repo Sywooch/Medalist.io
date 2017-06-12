@@ -1133,7 +1133,11 @@ a
                 color CMain
                 font-weight bold
                 margin-bottom 17px
-                line-height 1.1em
+                line-height 1.3em
+                width 640px
+            &-nav-serv
+                @extends .dib_t
+                float right
             &-info
                 color CGrayText
                 font-size 12px
@@ -2371,3 +2375,76 @@ ntainer
                 @extends .dib_t
     
 /* lastachievement end */
+
+
+
+
+#nav-serv,#nav-serv li ul{
+margin:0px;
+padding:0px;
+list-style:none;
+}
+
+
+#nav-serv > li{
+float:left;
+width:40px;
+height:20px;
+background: url(../img/3points.gif) no-repeat;
+background-position : center
+}
+
+#nav-serv li ul{
+display:none;
+position:absolute;
+z-index:100;
+width:145px;
+left:592px;
+margin-top: 23px !important; 
+}
+
+#nav-serv li:hover ul{
+display:block
+}
+
+#nav-serv > li{
+background-color:#F5F5F5;
+text-align:center;
+padding:3px 0px 3px 0px;
+border-top:1px solid #E8E8E8;
+border-right:1px solid #E8E8E8;
+}
+
+#nav-serv > li:hover{background-color:#E8E8E8;}
+
+#nav-serv > li > a{
+/*font:14px "Geargia";*/
+color:#000000;
+text-decoration:none;
+text-transform:uppercase;
+}
+
+
+#nav-serv li ul{
+margin-top:0px;
+background-color:#ffffff;
+border:1px solid #E8E8E8;
+}
+
+#nav-serv li ul li{
+text-align:left;
+padding:5px 5px 5px 15px;
+}
+
+#nav-serv li ul li a{
+/*font:14px "Geargia";*/
+color:#000000;
+text-decoration:none;
+}
+
+#nav-serv li ul li a:hover{
+/*font:14px "Geargia";*/
+color:#553CCF;
+text-decoration:none;
+}
+
