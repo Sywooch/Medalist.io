@@ -326,4 +326,10 @@
   .friend-list-header-block-points {
     margin-left: 150px;
   }
+  .achievement-block-content-col-1 {
+    width: 100%;
+  }
+  .output-header-meta {
+    top: 0;
+  }
 }
