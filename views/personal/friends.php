@@ -49,7 +49,8 @@ echo $this->render('_panel.php');
                         ?>
                     <a class="friend-list-block" href="<?=Yii::$app->urlManager->createUrl( ['personal/viewprofile','user_id' => $u->id])?>">
 
-	                <div class="friend-list-block-pic2"  style="background-image: url(<?=$avatarSrc?>)"></div>
+	                <div class="friend-list-block-pic2"  style="background-image: url(<?=Yii::$app->decor->getThumbnail($avatarSrc);?>)"></div>
+
 <!--
                         <div class="friend-list-block-pic">
                             <img class="friend-list-block-pic-img" src="<?=$avatarSrc?>">

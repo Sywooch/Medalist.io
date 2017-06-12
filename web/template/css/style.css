@@ -83,9 +83,11 @@
 .addach-controlls-isgoal,
 .achievement-block-category,
 .achievement-block-tags,
+.achievement-block-content-nav-serv,
 .achievement-block-content-info-date,
 .achievement-block-content-info-status,
 .achievement-block-content-col,
+.achievement-block-content-header-col,
 .achievement-block-user-link,
 .achievement-block-user-pic,
 .achievement-block-user-name,
@@ -164,9 +166,11 @@
 .addach-tags-tags,
 .addach-controlls-send,
 .addach-controlls-isgoal,
+.achievement-block-content-nav-serv,
 .achievement-block-content-info-date,
 .achievement-block-content-info-status,
 .achievement-block-content-col,
+.achievement-block-content-header-col,
 .achievement-block-images-image,
 .achievement-attachedquest-info,
 .achievement-attachedquest-rewards,
@@ -1434,7 +1438,8 @@ a {
   color: #8a44ff;
   font-weight: bold;
   margin-bottom: 17px;
-  line-height: 1.1em;
+  line-height: 1.3em;
+/*width 640px*/
 }
 .achievement-block-content-info {
   color: #9a9ba0;
@@ -1453,6 +1458,9 @@ a {
 .achievement-block-content-bar {
   width: 212px;
 }
+.achievement-block-content-cols {
+  white-space: nowrap;
+}
 .achievement-block-content-col {
   white-space: normal;
 }
@@ -1462,6 +1470,19 @@ a {
 }
 .achievement-block-content-col-2 {
   width: 240px;
+}
+.achievement-block-content-header-cols {
+  white-space: nowrap;
+}
+.achievement-block-content-header-col {
+  white-space: normal;
+}
+.achievement-block-content-header-col-1 {
+  width: 90%;
+  margin-right: 20px;
+}
+.achievement-block-content-header-col-2 {
+  width: 50%;
 }
 .achievement-block-user {
   white-space: nowrap;
@@ -1538,9 +1559,6 @@ a {
   height: 150px;
   width: 150px;
   margin-top: 30px;
-}
-.achievement-cols {
-  white-space: nowrap;
 }
 .achievement-share {
   padding: 25px;
@@ -2709,3 +2727,59 @@ ntainer {
   padding-left: 20px;
 }
 /* lastachievement end */
+#nav-serv,
+#nav-serv li ul {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+#nav-serv > li {
+  float: left;
+  width: 40px;
+  height: 20px;
+  background: url("../img/3points.gif") no-repeat;
+  background-position: center;
+}
+#nav-serv li ul {
+  display: none;
+  position: absolute;
+  z-index: 100;
+  width: 145px;
+  left: 592px;
+  margin-top: 23px !important;
+}
+#nav-serv li:hover ul {
+  display: block;
+}
+#nav-serv > li {
+  background-color: #f5f5f5;
+  text-align: center;
+  padding: 3px 0px 3px 0px;
+  border-top: 1px solid #e8e8e8;
+  border-right: 1px solid #e8e8e8;
+}
+#nav-serv > li:hover {
+  background-color: #e8e8e8;
+}
+#nav-serv > li > a {
+  color: #000;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+#nav-serv li ul {
+  margin-top: 0px;
+  background-color: #fff;
+  border: 1px solid #e8e8e8;
+}
+#nav-serv li ul li {
+  text-align: left;
+  padding: 5px 5px 5px 15px;
+}
+#nav-serv li ul li a {
+  color: #000;
+  text-decoration: none;
+}
+#nav-serv li ul li a:hover {
+  color: #553ccf;
+  text-decoration: none;
+}

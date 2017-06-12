@@ -206,7 +206,12 @@ class PersonalController extends \yii\web\Controller
             if( !empty($_FILES['image']['tmp_name']) ){
                 $srcTmp = $_FILES['image']['tmp_name'];
                 $info = pathinfo( $_FILES['image']['name'] );
-                move_uploaded_file($srcTmp,'./uploads/u/'.$currentUser->id.".".$info['extension']);
+
+				$targetFile = './uploads/u/'.$currentUser->id.".".strtolower($info['extension']);
+                move_uploaded_file($srcTmp,$targetFile);
+
+				$newFilename_tb = './uploads/u/'.$currentUser->id."_tb.".strtolower($info['extension']);
+				Yii::$app->decor->createThumbnail($targetFile, $newFilename_tb, 160, 190);
                 
                 //$photo = new Photo;
                 $photo = Photo::find()->where(['entity_id' => Yii::$app->user->identity->id, 'entity_class' => 'User'  ])->one();

@@ -51,8 +51,12 @@ echo $this->render('_panel.php');
 
 
 								<div class="output-header">
+
+								<div class="achievement-block-content-cols">
+				 				<div class="achievement-block-content-header-col achievement-block-content-header-col-1">
+
 									<h2 class="mdlst-h2t-goals" style="white-space: normal; line-height: 1.1em; float:left;">Достижение</h2>
-				 					<div class="achievement-block-content-info" style="margin-top:36px; float:left; margin-left:60px;">
+				 					<div class="achievement-block-content-info" style="margin-top:36px; float:left; margin-left:30px;">
 				 						<div class="achievement-block-content-info-date"><?=date("d.m.Y H:i", strtotime($achievement->date_achieved))?></div>
 										<?if($achievement->status == 0){?>
 				 						<div class="achievement-block-content-info-status mdlst-status mdlst-status__pending"><span class="mdlst-status-icon"></span> Подтверждается</div>
@@ -61,6 +65,27 @@ echo $this->render('_panel.php');
 				 						<div class="achievement-block-content-info-status mdlst-status mdlst-status__pending"><span class="mdlst-status-icon"></span> Подтверждено</div>
 										<?}?>
 				 					</div>
+
+												</div>
+							 				
+
+											 <?php if( $other === false ) { ?>
+											<div class="achievement-block-content-header-col achievement-block-content-header-col-2">
+												<div class="achievement-block-content-nav-serv">
+													<ul id="nav-serv">
+													  <li><a href="#"></a>
+													    <ul>
+													      <li><a href="<?=Yii::$app->urlManager->createUrl(['personal/achievement-edit','achievement_id' => $achievement->achievement_id]) ?>">Редактировать</a></li>
+													      <li><a href="<?=Yii::$app->urlManager->createUrl(['achievement/delete-achievement', 'achievement_id' => $achievement->achievement_id]) ?>">Удалить</a></li>
+													    </ul>
+													  </li>
+													</ul>
+												</div>
+											</div>
+											<? } ?>
+
+											</div>
+
 
 									<div class="clear"></div>
 									<h3> <?=$achievement->name?></h3>
@@ -134,8 +159,14 @@ echo $this->render('_panel.php');
 													</div>
 
 								 		<!-- extra info --> 
-								 		<div class="achievement-block-info">Подождите, пока сообщество подтвердит ваше достижение. Чем больше лайков, тем больше шанс!</div>
+										<?if($achievement->status == 0){?>
+									 		<div class="achievement-block-info">Подождите, пока сообщество подтвердит ваше достижение. Чем больше лайков, тем больше шанс!</div>
+										<?}?>
+										<?if($achievement->status == 1){?>
+									 		<div class="achievement-block-info">Ваше достижение подтверждено!</div>
+										<?}?>
 
+<!--
 													 <?php if( $other === false ) { ?>
 														<div style="margin-top: 30px;">
 
@@ -149,7 +180,7 @@ echo $this->render('_panel.php');
         												</div>
 
         												<? } ?>
-
+-->
 								 		<div class="achievement-share"><? Yii::$app->decor->shareWidget(); ?></div>
 
 								<?php if(!empty($quest) || !empty($goal)) { 

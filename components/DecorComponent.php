@@ -221,6 +221,15 @@ class DecorComponent extends Component
 		return $thumbs;
 
 	}
+
+	public static function getThumbnail($photo) {
+		if(strpos($photo, 'http://gravatar.com') !== FALSE){
+			return '';
+		}
+
+       	$info = pathinfo( $photo );
+		return $info['dirname'].'/'.$info['filename'].'_tb.'.$info['extension'];
+	}
  
  
 }
