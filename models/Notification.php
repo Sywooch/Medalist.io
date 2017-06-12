@@ -181,7 +181,7 @@ class Notification extends \yii\db\ActiveRecord
             <div class="newblock">
                 <div class="newblock-pic">
      	             <a href="<?=Yii::$app->urlManager->createUrl( ['personal/viewprofile','user_id' => $userCreatedNew->id])?>" class="newblock-pic-name"><?=$userCreatedNew->getName()?></a> 
-        			<a href="<?=Yii::$app->urlManager->createUrl( ['personal/viewprofile','user_id' => $userCreatedNew->id])?>" class="newblock-pic-userlink" style="background-image: url(<?=$userCreatedNew->getProfile()->one()->getAvatarSrc();?>);">
+        			<a href="<?=Yii::$app->urlManager->createUrl( ['personal/viewprofile','user_id' => $userCreatedNew->id])?>" class="newblock-pic-userlink" style="background-image: url(<?=Yii::$app->decor->getThumbnail($userCreatedNew->getProfile()->one()->getAvatarSrc());?>);">
         			</a>
 
 		          </div>
@@ -200,7 +200,7 @@ class Notification extends \yii\db\ActiveRecord
 				</div>
 		                <div class="newblock-pic-user-to">
 					<a href="<?=Yii::$app->urlManager->createUrl( ['personal/viewprofile','user_id' => $obj->to_user_id])?>" class="newblock-pic-name"><?=$obj->getUser()->getName()?></a>
-					<a href="<?=Yii::$app->urlManager->createUrl( ['personal/viewprofile','user_id' => $obj->to_user_id])?>" class="newblock-pic-userlink" style="background-image: url(<?=$obj->getUser()->getProfile()->one()->getAvatarSrc();?>);"></a>
+					<a href="<?=Yii::$app->urlManager->createUrl( ['personal/viewprofile','user_id' => $obj->to_user_id])?>" class="newblock-pic-userlink" style="background-image: url(<?=Yii::$app->decor->getThumbnail($obj->getUser()->getProfile()->one()->getAvatarSrc());?>);"></a>
 				</div>
                                 <?
                                 break;
@@ -216,7 +216,7 @@ class Notification extends \yii\db\ActiveRecord
 				</div>
 		                <div class="newblock-pic-user-to">
 					<a href="<?=Yii::$app->urlManager->createUrl( ['personal/achievement','achievement_id' => $obj->achievement_id])?>" class="newblock-pic-name"><?=$obj->name?></a>
-					<a href="<?=Yii::$app->urlManager->createUrl( ['personal/achievement','achievement_id' => $obj->achievement_id])?>" class="newblock-pic-userlink" <?php if(!empty($obj->getPhotos()[0]) ) { ?> style = "background-image: url(<?=$obj->getPhotos()[0]->filename?>);"<? } ?>></a>
+					<a href="<?=Yii::$app->urlManager->createUrl( ['personal/achievement','achievement_id' => $obj->achievement_id])?>" class="newblock-pic-userlink" <?php if(!empty($obj->getPhotos()[0]) ) { ?> style = "background-image: url(<?=Yii::$app->decor->getThumbnail($obj->getPhotos()[0]->filename)?>);"<? } ?>></a>
 				</div>
                                 <?
                                 break;
@@ -274,7 +274,7 @@ class Notification extends \yii\db\ActiveRecord
 				</div>
 		                <div class="newblock-pic-user-to">
 					<a href="<?=Yii::$app->urlManager->createUrl( ['personal/goal','goal_id' => $obj->goal_id])?>" class="newblock-pic-name"><?=$obj->name?></a>
-					<a href="<?=Yii::$app->urlManager->createUrl( ['personal/goal','goal_id' => $obj->goal_id])?>" class="newblock-pic-userlink" <?php if(!empty($obj->getPhotos()[0]) ) { ?> style = "background-image: url(<?=$obj->getPhotos()[0]->filename?>);"<? } ?>></a>
+					<a href="<?=Yii::$app->urlManager->createUrl( ['personal/goal','goal_id' => $obj->goal_id])?>" class="newblock-pic-userlink" <?php if(!empty($obj->getPhotos()[0]) ) { ?> style = "background-image: url(<?=Yii::$app->decor->getThumbnail($obj->getPhotos()[0]->filename)?>);"<? } ?>></a>
 				</div>
 
                                 <?
