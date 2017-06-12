@@ -302,9 +302,7 @@ class GoalController extends Controller
                     if( $goal->save() ){
 
 
-                        //NOTIFICATION - NEW ACHIEVEMENT 
-                        Notification::addNotification( $goal->user_id,  NotificationType::NT_NEW_GOAL,  $goal);
-
+                     
 
                         if( !empty($post['interests']) ) {
                             //Todo - attachTags
