@@ -32,6 +32,7 @@ class PersonalController extends \yii\web\Controller
 
     public function actionAchievements()
     {
+
         $userToFind = Yii::$app->user->identity->id;
         $other = false;
 
@@ -330,8 +331,18 @@ class PersonalController extends \yii\web\Controller
     public function actionGoals()
     {
         //$id = Yii::$app->request->get()['goal_id'];
-        $goals = Goal::find()->where(['user_id' => Yii::$app->user->identity->id ])->orderBy(['goal_id' => SORT_DESC])->all();
-        return $this->render('goals', ['goals' => $goals]);
+        $userToFind = Yii::$app->user->identity->id;
+
+        $other = false;
+
+        if( !empty(Yii::$app->request->get()['user_id']) ){
+            $other = true;
+            $userToFind = Yii::$app->request->get()['user_id'];
+        }
+
+
+        $goals = Goal::find()->where('user_id = '.$userToFind)->orderBy(['goal_id' => SORT_DESC])->all();
+        return $this->render('goals', ['goals' => $goals,  'other' =>  $other?$userToFind:false ]);
     }
 
     public function actionGoal()

@@ -135,7 +135,7 @@ echo $this->render('_panel.php');
 								 						$dislikesCount = Like::getDislikesOfObjectCount ($a);
 								 						$totalLikes = $likesCount + $dislikesCount;
 								 						if( $totalLikes > 0  ){
-								 							$percent = $likesCount / $totalLikes;
+								 							$percent = $totalLikes / 3;
 								 						}else{
 								 							$percent = 0;
 								 						}

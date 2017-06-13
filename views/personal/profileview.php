@@ -125,10 +125,13 @@ if ( !Yii::$app->user->isGuest ){
                                 </div>
 -->								<!-- user info -->
                                 <a class="profileview-allachievements" href="<?=Yii::$app->urlManager->createUrl(['personal/achievements','user_id' => $user->id])?>">
-                                    &raquo; Смотреть все достижения
+                                    &raquo; Достижения
                                 </a>
+								<a class="profileview-allachievements" href="<?=Yii::$app->urlManager->createUrl(['personal/goals','user_id' => $user->id])?>">
+									&raquo; Цели
+								</a>
 								<a class="profileview-allachievements" href="<?=Yii::$app->urlManager->createUrl(['personal/my-rewards','user_id' => $user->id])?>">
-									&raquo; Смотреть все награды
+									&raquo; Награды
 								</a>
 								<!-- user info end -->
 
