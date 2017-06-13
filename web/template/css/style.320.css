@@ -332,4 +332,17 @@
   .output-header-meta {
     top: 0;
   }
+  .achievement-block-content-header-col-1 {
+    width: 75%;
+  }
+  .achievement-block-content-header-col-2 {
+    width: 25%;
+  }
+  .achievement-block-info {
+    margin-top: 30px;
+  }
+  .share-widget-title {
+    font-size: 13px;
+    margin-bottom: 3px;
+  }
 }
