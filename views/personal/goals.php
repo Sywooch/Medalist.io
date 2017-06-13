@@ -102,7 +102,7 @@ echo $this->render('_panel.php');
 													  <li><a href="#"></a>
 													    <ul>
 													      <li><a href="<?=Yii::$app->urlManager->createUrl(['personal/goal-update','goal_id' => $a->goal_id]) ?>">Редактировать</a></li>
-													      <li><a href="<?=Yii::$app->urlManager->createUrl(['goal/delete-goal', 'goal_id' => $a->goal_id]) ?>">Удалить</a></li>
+													      <li><a class="js-delete-goal" href="<?=Yii::$app->urlManager->createUrl(['goal/delete-goal', 'goal_id' => $a->goal_id]) ?>">Удалить</a></li>
 													    </ul>
 													  </li>
 													</ul>

@@ -76,7 +76,7 @@ echo $this->render('_panel.php');
 													  <li><a href="#"></a>
 													    <ul>
 													      <li><a href="<?=Yii::$app->urlManager->createUrl(['personal/achievement-edit','achievement_id' => $achievement->achievement_id]) ?>">Редактировать</a></li>
-													      <li><a href="<?=Yii::$app->urlManager->createUrl(['achievement/delete-achievement', 'achievement_id' => $achievement->achievement_id]) ?>">Удалить</a></li>
+													      <li><a class="js-delete-achievement" href="<?=Yii::$app->urlManager->createUrl(['achievement/delete-achievement', 'achievement_id' => $achievement->achievement_id]) ?>">Удалить</a></li>
 													    </ul>
 													  </li>
 													</ul>

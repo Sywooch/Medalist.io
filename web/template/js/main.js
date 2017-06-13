@@ -556,7 +556,7 @@ $(document).ready(function(){
 
 
 
-		//Взять квест
+		//Удалить достижение
 		$(document).on('click', '.js-delete-achievement', function(){
 			if( confirm('Вы точно хотите удалить это достижение?') ){
 				document.location.href = $(this).data('delete_url');
@@ -565,7 +565,14 @@ $(document).ready(function(){
 			}
 		});
 
-
+		//Удалить цель
+		$(document).on('click', '.js-delete-goal', function(){
+			if( confirm('Вы точно хотите удалить эту цель?') ){
+				document.location.href = $(this).data('delete_url');
+			}else{
+				return false;
+			}
+		});
 
 
 		/* бросить вызов */
