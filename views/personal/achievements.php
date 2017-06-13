@@ -89,16 +89,16 @@ echo $this->render('_panel.php');
 								 		<div class="achievement-block-content">
 								 			<div class="achievement-block-content-cols">
 
-												<div class="achievement-block-content-cols">
+											<div class="achievement-block-content-cols">
 
-								 				<div class="achievement-block-content-col achievement-block-content-col-1">
+								 				<div class="achievement-block-content-header-col achievement-block-content-header-col-1">
 
 								 					<div class="achievement-block-content-title"><a href="<?=Yii::$app->urlManager->createUrl(['personal/achievement','achievement_id' => $a->achievement_id])?>"><?=$a->name?></a></div>
 												</div>
 							 				
 
 											 <?php if( $other === false ) { ?>
-											<div class="achievement-block-content-col achievement-block-content-col-2">
+											<div class="achievement-block-content-col achievement-block-content-header-col-2">
 												<div class="achievement-block-content-nav-serv">
 													<ul id="nav-serv">
 													  <li><a href="#"></a>

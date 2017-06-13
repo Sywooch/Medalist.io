@@ -1134,10 +1134,10 @@ a
                 font-weight bold
                 margin-bottom 17px
                 line-height 1.3em
-                width 640px
+                /*width 640px*/
             &-nav-serv
                 @extends .dib_t
-                float right
+                /*float right*/
             &-info
                 color CGrayText
                 font-size 12px
@@ -1154,6 +1154,8 @@ a
                 margin-top 30px
             &-bar 
                 width 212px
+            &-cols 
+                white-space nowrap
             &-col 
                 @extends .dib_t
                 white-space normal
@@ -1162,6 +1164,17 @@ a
                     margin-right 20px
                 &-2
                     width 240px
+            &-header
+                &-cols 
+                    white-space nowrap
+                &-col 
+                    @extends .dib_t
+                    white-space normal
+                    &-1 
+                       width 90%
+                       margin-right 20px
+                    &-2
+                       width 50%
         
         /* achievement-block-user */
         &-user 
@@ -1238,8 +1251,6 @@ a
                    height 150px
                    width 150px
                    margin-top 30px
-    &-cols 
-        white-space nowrap
         
     &-share
         padding 25px
@@ -1277,8 +1288,7 @@ a
             &-list 
                 &-link 
                     color CSub
-
-        
+       
 /* . achievement list end */
 
 
@@ -2418,7 +2428,6 @@ border-right:1px solid #E8E8E8;
 #nav-serv > li:hover{background-color:#E8E8E8;}
 
 #nav-serv > li > a{
-/*font:14px "Geargia";*/
 color:#000000;
 text-decoration:none;
 text-transform:uppercase;
@@ -2437,13 +2446,11 @@ padding:5px 5px 5px 15px;
 }
 
 #nav-serv li ul li a{
-/*font:14px "Geargia";*/
 color:#000000;
 text-decoration:none;
 }
 
 #nav-serv li ul li a:hover{
-/*font:14px "Geargia";*/
 color:#553CCF;
 text-decoration:none;
 }
