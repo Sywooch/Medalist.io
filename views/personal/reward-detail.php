@@ -79,11 +79,12 @@ echo $this->render('_panel.php');
 									$questIds[]= $questReward->quest_id;
 								}
 								$quests = Quest::find()->where(['quest_id' => $questIds])->all();
+								if(!empty($quests)) { 
 								?>
 
 								<div class="questdetail-completeduser-list">
 									<h3>За что можно получить (<?=count($quests)?>): </h3>
-									<?php if(!empty($quests)) { 
+									<?php 
 
 										foreach ($quests as $quest) {
 
@@ -98,15 +99,12 @@ echo $this->render('_panel.php');
 										}
 
 
-
-										}else{
 										?>
-										 
-										<?
-										} ?>
 
 									
 								</div>
+								<? 
+										}  ?>
 
 
 								<?php 
