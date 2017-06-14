@@ -65,4 +65,13 @@ class Alarm extends \yii\db\ActiveRecord
     {
         return new AlarmQuery(get_called_class());
     }
+
+
+    public function getUserFrom(){
+        return User::find()->where(['id' => $this->from_user_id]);
+    }
+
+    public function getUserTo(){
+        return User::find()->where(['id' => $this->to_user_id]);
+    }
 }
