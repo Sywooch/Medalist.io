@@ -68,6 +68,11 @@ echo $this->render('_panel.php');
 												} ?>
 											<div class="mdlst-hr"></div>
 										<?
+
+										Yii::$app->decor->shareWidget();
+										?>
+											<div class="mdlst-hr"></div>
+										<?
 									}
 									?>
 
