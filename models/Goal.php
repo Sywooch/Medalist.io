@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use amnah\yii2\user\models\User;
 
 /**
  * This is the model class for table "goal".
@@ -163,4 +164,12 @@ class Goal extends \yii\db\ActiveRecord
     public static function getSubtasksById( $goal_id ){
         return GoalSubtask::find()->where(" goal_id = ".$goal_id." and goal_subtask_parent_id = 0")->all();
     }
+
+    public  function getUser(){
+        $user = User::findOne($this->user_id);
+      
+        return $user;
+    }
+
+
 }

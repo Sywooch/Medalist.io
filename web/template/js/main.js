@@ -565,15 +565,6 @@ $(document).ready(function(){
 			}
 		});
 
-		//Удалить цель
-		$(document).on('click', '.js-delete-goal', function(){
-			if( confirm('Вы точно хотите удалить эту цель?') ){
-				document.location.href = $(this).data('delete_url');
-			}else{
-				return false;
-			}
-		});
-
 
 		/* бросить вызов */
 		$(document).on('click', '.js-questchallenge-select-user', function(){
