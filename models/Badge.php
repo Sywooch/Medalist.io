@@ -77,7 +77,7 @@ class Badge extends \yii\db\ActiveRecord
     /**
     *
     */
-    public static function addBadgeToUser( $badge_id, $user_id ){
+    public static function addBadgeToUser( $badge_id, $user_id, $entity_class = false, $entity_id = false ){
 
         $badge = self::findOne( $badge_id );
 
@@ -89,7 +89,7 @@ class Badge extends \yii\db\ActiveRecord
 
 
             //Adding Badge Balance
-			BadgeBalance::addBalance($user_id, $badge_id);
+			BadgeBalance::addBalance($user_id, $badge_id, $entity_class  , $entity_id );
 
 /*
             $badgeBalance = new BadgeBalance; 

@@ -1,6 +1,8 @@
 <?php
 /* @var $this yii\web\View */
 use amnah\yii2\user\models\User;
+use app\models\Quest;
+use app\models\QuestReward;
 echo $this->render('_panel.php');
 ?>
 
@@ -36,6 +38,75 @@ echo $this->render('_panel.php');
 										echo "+".$scale['points']." ".$scale['scale']->name;
 										 ?></b>
 									</p>
+
+									<?php
+									if( !empty($badgeBalance) ){
+										$user = User::findOne( $badgeBalance->user_id ); 
+										?>
+										<a class="questdetail-completeduser" href="<?=Yii::$app->urlManager->createUrl( ['personal/viewprofile','user_id' =>  $user->id ])?>">
+												<div class="questdetail-completeduser-img"><img src="<?=$user->getProfile()->one()->getAvatarSrc();?>"></div>
+												<div class="questdetail-completeduser-text"> <?=$user->getName();?> </div>
+											</a>
+
+											<?php if( !empty($badgeBalance->entity_class) && !empty($badgeBalance->entity_id)){
+												?>
+												<p>Награда получена за <?
+												switch ($badgeBalance->entity_class) {
+													case 'Quest':
+														$obj = Quest::findOne( $badgeBalance->entity_id );
+														?> квест <a href="<?=Yii::$app->urlManager->createUrl( ['personal/quest','quest_id' =>  $badgeBalance->entity_id  ])?>"><?=$obj->name ?></a><?
+														break;
+													
+													default:
+														# code...
+														break;
+												}
+												?> 
+
+												</p>
+												<?
+												} ?>
+											<div class="mdlst-hr"></div>
+										<?
+									}
+									?>
+
+
+								<?php 
+								$questIds = [];
+								$questRewards = QuestReward::find()->where(['badge_id' => $badge->badge_id])->all();
+								foreach ($questRewards as $questReward) {
+									$questIds[]= $questReward->quest_id;
+								}
+								$quests = Quest::find()->where(['quest_id' => $questIds])->all();
+								?>
+
+								<div class="questdetail-completeduser-list">
+									<h3>За что можно получить (<?=count($quests)?>): </h3>
+									<?php if(!empty($quests)) { 
+
+										foreach ($quests as $quest) {
+
+											
+											?>
+											<a class="questdetail-completeduser" href="<?=Yii::$app->urlManager->createUrl( ['personal/quest','quest_id' =>  $quest->quest_id ])?>">
+												<div class="questdetail-completeduser-img"><img src="<?=$quest->picture;?>"></div>
+												<div class="questdetail-completeduser-text"> <?=$quest->name;?> </div>
+											</a>
+											<? 
+																					# code...
+										}
+
+
+
+										}else{
+										?>
+										 
+										<?
+										} ?>
+
+									
+								</div>
 
 
 								<?php 

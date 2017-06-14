@@ -50,7 +50,7 @@ class QuestController extends \yii\web\Controller
         //New Event
         //Todo - by quest reward // some stuff
         //Badge Added
-        if( Badge::addBadgeToUser( Badge::BDG_QUEST_TAKE_QUEST, Yii::$app->user->identity->id) ){
+        if( Badge::addBadgeToUser( Badge::BDG_QUEST_TAKE_QUEST, Yii::$app->user->identity->id, 'Quest', $quest_id) ){
 
 
             //NOTIFICATION - NEW ACHIEVEMENT 

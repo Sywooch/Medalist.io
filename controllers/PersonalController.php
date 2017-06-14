@@ -700,6 +700,12 @@ class PersonalController extends \yii\web\Controller
              return false;
         }
 
+        $badgeBalance = false;
+
+        if( !empty($get['badge_balance_id']) ){
+            $badgeBalance = BadgeBalance::findOne( $get['badge_balance_id'] );
+        }
+
 
          //OG PARAMS
         $this->view->params['og_title'] = 'Награда '.$badge->name."! Узнай, как получить.";
@@ -707,7 +713,7 @@ class PersonalController extends \yii\web\Controller
         $this->view->params['og_image'] = 'http://'.Yii::$app->request->serverName.$badge->picture;
         
 
-        return $this->render('reward-detail', ['badge' => $badge]);
+        return $this->render('reward-detail', ['badge' => $badge, 'badgeBalance' => $badgeBalance]);
     }
 
 
