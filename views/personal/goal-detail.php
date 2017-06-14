@@ -25,6 +25,27 @@ if( Yii::$app->user->isGuest ){
             <div class="container-col container-col-2">
                 <!-- Цель детально-->
                 <div class="output">
+
+
+		<!-- user info -->
+		<?php 
+		$user = $goal->getUser();
+		$userProfile = $user->getProfile()->one();
+		?>
+		<div class="achievement-block-user">
+			<a class="achievement-block-user-link"  href="<?=Yii::$app->urlManager->createUrl(['personal/viewprofile','user_id' => $user->id])?>">
+				<div class="achievement-block-user-pic" style="background-image:  url(<?=$userProfile->getAvatarSrc();?>);"></div>
+				<div class="achievement-block-user-name"><?=$user->getName();?></div>
+			</a>
+			<a class="achievement-block-user-allachievements" href="<?=Yii::$app->urlManager->createUrl(['personal/goals','user_id' => $user->id])?>">
+				&raquo; Смотреть все цели
+			</a>
+			</div>
+			<!-- user info end -->
+        		<div class="mdlst-hr"></div>
+
+
+
                 <div class="simplebox simplebox-padding">
                     <div class="output-header">
                         <h2 class="mdlst-h2t-goals">Цель</h2>
