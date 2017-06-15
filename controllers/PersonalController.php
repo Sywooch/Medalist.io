@@ -76,6 +76,18 @@ class PersonalController extends \yii\web\Controller
         $quest = !empty($achievement->quest_id) ? Quest::findOne( $achievement->quest_id ) : false;
         $goal = !empty($achievement->goal_id) ? Goal::findOne( $achievement->goal_id ) : false;
 
+
+         //OG PARAMS
+        $this->view->params['og_title'] = $achievement->getUser()->name.': Достижение: '.$achievement->name;
+        $this->view->params['og_description'] = $achievement->description;
+
+      	$photos = $achievement->getPhotos();
+   	    if(!empty($photos) ) { 
+			$thumbs = Yii::$app->decor->getThumbnails($photos);
+
+	        $this->view->params['og_image'] = 'http://'.Yii::$app->request->serverName.$thumbs[0];
+		}
+
         return $this->render('achievement', [
             'achievement' =>$achievement,
             'quest' => $quest,
@@ -358,16 +370,28 @@ class PersonalController extends \yii\web\Controller
         if( !$goal ){
              throw new \yii\web\NotFoundHttpException();
         }
+
+
+
+         //OG PARAMS
+        $this->view->params['og_title'] = $goal->getUser()->name.': Цель: '.$goal->name;
+        $this->view->params['og_description'] = $goal->description;
+
+      	$photos = $goal->getPhotos();
+   	    if(!empty($photos) ) { 
+			$thumbs = Yii::$app->decor->getThumbnails($photos);
+
+	        $this->view->params['og_image'] = 'http://'.Yii::$app->request->serverName.$thumbs[0];
+		}
+
+
+
         return $this->render('goal-detail', ['goal' => $goal]);
     }
 
 
     public function actionGoalAdd()
     {
-
-     
- 
-
 
         $predefinedTitle = "";
         $predefinedText = "";

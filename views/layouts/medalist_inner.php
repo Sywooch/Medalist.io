@@ -29,12 +29,12 @@ if ( empty($this->title) ){
      <title><?= Html::encode($this->title) ?></title>
 
 
-    <?php if(!empty( $this->params['og_title']) ){ ?><meta property="og:title" content="<?=$this->params['og_title']?>" /><? } ?>
-    <?php if(!empty( $this->params['og_image']) ){ ?><meta property="og:title" content="<?=$this->params['og_image']?>" /><? } ?>
-    <?php if(!empty( $this->params['og_description']) ){ ?><meta property="og:title" content="<?=$this->params['og_description']?>" /><? } ?>
-    <?php if(!empty( $this->params['og_video']) ){ ?><meta property="og:title" content="<?=$this->params['og_video']?>" /><? } ?>
-    <?php if(!empty( $this->params['og_url']) ){ ?><meta property="og:title" content="<?=$this->params['og_url']?>" /><? } ?>
-    <?php if(!empty( $this->params['og_type']) ){ ?><meta property="og:title" content="<?=$this->params['og_type']?>" /><? } ?>
+    <?php if(!empty( $this->params['og_title']) ){ ?><meta property="og:title" content="<?=strip_tags($this->params['og_title'])?>" /><? } ?>
+    <?php if(!empty( $this->params['og_image']) ){ ?><meta property="og:image" content="<?=$this->params['og_image']?>" /><? } ?>
+    <?php if(!empty( $this->params['og_description']) ){ ?><meta property="og:description" content="<?/*=strip_tags($this->params['og_description'])*/?>" /><? } ?>
+    <?php if(!empty( $this->params['og_video']) ){ ?><meta property="og:video" content="<?=$this->params['og_video']?>" /><? } ?>
+    <?php if(!empty( $this->params['og_url']) ){ ?><meta property="og:url" content="<?=$this->params['og_url']?>" /><? } ?>
+    <?php if(!empty( $this->params['og_type']) ){ ?><meta property="og:type" content="<?=$this->params['og_type']?>" /><? } ?>
     
     
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
