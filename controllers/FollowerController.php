@@ -6,6 +6,7 @@ use Yii;
 use app\models\Follower;
 use app\models\Notification;
 use app\models\NotificationType;
+use app\models\Alarm;
 
 class FollowerController extends \yii\web\Controller
 {
@@ -30,6 +31,8 @@ class FollowerController extends \yii\web\Controller
 	        		if( $follower->save() ){
 	        			$result['success'] = true;
 	        			Notification::addNotification( $follower->user_id, NotificationType::NT_NEW_FOLLOWER , $follower);
+                        Alarm::addAlarm(Yii::$app->user->identity->id, $get['user_id'], Alarm::TYPE_YOU_ARE_FOLLOWED);    
+
 	        		}       			
         		}
 

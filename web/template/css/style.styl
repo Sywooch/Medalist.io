@@ -775,6 +775,7 @@ a
             width 50px
             height 50px
             margin-left 80px
+            position relative
             
     &-info 
         @extends .dib_t
@@ -2386,6 +2387,44 @@ ntainer
                 @extends .dib_t
     
 /* lastachievement end */
+
+
+.notifications
+    @extends .simplebox
+    @extends .simplebox-padding
+    position absolute
+    z-index 500
+    width 300px
+    margin-left -150px
+    background-color white
+    border 1px solid #EEE
+    top 100%
+    white-space normal
+    &-block 
+        box-sizing border-box 
+        padding 6px 
+        margin-bottom 15px
+        white-space nowrap
+        &__new 
+            background-color rgba(CMain, 0.06)
+        &-user
+            @extends .dib_t
+            width 50px
+            margin-right 5px
+            &-pic 
+                border-radius 40px 
+                overflow hidden
+                background-size cover 
+                background-repeat no-repeat
+                background-position center
+                width 50px 
+                height 50px
+        &-text 
+            @extends .dib_t
+            font-size 12px
+            width 180px
+            white-space normal
+            line-height 1.35em
 
 
 

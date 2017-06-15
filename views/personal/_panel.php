@@ -31,7 +31,7 @@ $avatarSrc = Yii::$app->user->identity->getProfile()->one()->getAvatarSrc();
 	 					<div class="userpanel-user-info-date">на сайте с <?=date("d.m.Y", strtotime(Yii::$app->user->identity->created_at));?></div>
 	 				</div>
 	 				<div class="userpanel-user-notifications">
-						
+						<?=$this->render("_panel_notifications.php")?>
 	 				</div>
 	 			</div>
 
