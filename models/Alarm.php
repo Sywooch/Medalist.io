@@ -39,7 +39,7 @@ class Alarm extends \yii\db\ActiveRecord
     {
         return [
             [['from_user_id', 'to_user_id', 'date_created', 'alarm_type'], 'required'],
-            [['from_user_id', 'to_user_id', 'alarm_type', 'status', 'entity_id'], 'integer'],
+            [['from_user_id', 'to_user_id', 'alarm_type', 'status', 'traced', 'entity_id'], 'integer'],
             [['date_created'], 'safe'],
             [['text'], 'string', 'max' => 1024],
             [['entity_class'], 'string', 'max' => 255],
@@ -74,6 +74,12 @@ class Alarm extends \yii\db\ActiveRecord
     }
 
     public static function addAlarm( $userFrom, $userTo, $alarmType, $text = false, $entity_class = false, $entity_id = false ){
+
+        //No alarms to yourself 
+        if( $userFrom === $userTo ){
+            return false;
+        }
+
         $alarm = new Alarm;
         $alarm->from_user_id = $userFrom;
         $alarm->to_user_id = $userTo;
@@ -89,6 +95,7 @@ class Alarm extends \yii\db\ActiveRecord
             $alarm->entity_id = $entity_id; 
         }
         $alarm->status = 0;
+        $alarm->traced = 0;
         $alarm->date_created = date("Y-m-d H:i:s");
         if( $alarm->save() ){
             return true;    
