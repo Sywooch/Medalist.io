@@ -33,8 +33,13 @@ class PersonalController extends \yii\web\Controller
     public function actionAchievements()
     {
 
-        $userToFind = Yii::$app->user->identity->id;
+
         $other = false;
+
+        if( !Yii::$app->user->isGuest ){
+            $userToFind = Yii::$app->user->identity->id;
+        }
+        
 
         if( !empty(Yii::$app->request->get()['user_id']) ){
             $other = true;

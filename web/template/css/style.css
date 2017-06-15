@@ -132,7 +132,9 @@
 .share-widget-title,
 .share-widget-content,
 .lastachievement-info-data-pic,
-.lastachievement-info-data-data {
+.lastachievement-info-data-data,
+.notifications-block-user,
+.notifications-block-text {
   display: inline-block;
   *display: inline;
   zoom: 1;
@@ -188,7 +190,9 @@
 .mdlst-pan-text,
 .mdlst-status-icon,
 .lastachievement-info-data-pic,
-.lastachievement-info-data-data {
+.lastachievement-info-data-data,
+.notifications-block-user,
+.notifications-block-text {
   vertical-align: top;
 }
 .dib_m,
@@ -299,7 +303,8 @@
 .friend-list-block,
 .profileview,
 .editprofile,
-.lastachievement {
+.lastachievement,
+.notifications {
   box-shadow: 0 0 5px rgba(49,51,62,0.1);
   box-sizing: border-box;
   -webkit-border-radius: 4px;
@@ -317,6 +322,7 @@
 .profileview-padding,
 .editprofile-padding,
 .lastachievement-padding,
+.notifications-padding,
 .questssuggested,
 .questssuggested-quests-quest,
 .achievement-block-content,
@@ -325,7 +331,8 @@
 .friend-list-block,
 .profileview,
 .editprofile,
-.lastachievement {
+.lastachievement,
+.notifications {
   padding: 29px 26px;
 }
 /* 1280 */
@@ -1059,6 +1066,7 @@ a {
   width: 50px;
   height: 50px;
   margin-left: 80px;
+  position: relative;
 }
 .userpanel-info {
   width: 540px;
@@ -2728,6 +2736,46 @@ ntainer {
   padding-left: 20px;
 }
 /* lastachievement end */
+.notifications {
+  position: absolute;
+  z-index: 500;
+  width: 300px;
+  margin-left: -150px;
+  background-color: #fff;
+  border: 1px solid #eee;
+  top: 100%;
+  white-space: normal;
+}
+.notifications-block {
+  box-sizing: border-box;
+  padding: 6px;
+  margin-bottom: 15px;
+  white-space: nowrap;
+}
+.notifications-block__new {
+  background-color: rgba(138,68,255,0.06);
+}
+.notifications-block-user {
+  width: 50px;
+  margin-right: 5px;
+}
+.notifications-block-user-pic {
+  -webkit-border-radius: 40px;
+  -moz-border-radius: 40px;
+  border-radius: 40px;
+  overflow: hidden;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 50px;
+  height: 50px;
+}
+.notifications-block-text {
+  font-size: 12px;
+  width: 180px;
+  white-space: normal;
+  line-height: 1.35em;
+}
 #nav-serv,
 #nav-serv li ul {
   margin: 0px;

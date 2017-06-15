@@ -4,7 +4,10 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Like;
-
+use app\models\Alarm;
+use app\models\Achievement;
+use app\models\Comment;
+use app\models\Goal;
 class LikeController extends \yii\web\Controller
 {
     public function actionAjaxAddLike()
@@ -27,6 +30,20 @@ class LikeController extends \yii\web\Controller
                 if( $res !== false ){
                     $result['step3'] = true;
                     $result['success'] = true;
+
+
+                    $className = "app\\models\\".Yii::$app->request->get()['entity_class'];
+
+                    $obj = $className::findOne(Yii::$app->request->get()['entity_id']); 
+
+
+
+                    if( !empty($obj) ){
+                        Alarm::addAlarm(Yii::$app->user->identity->id, $obj->user_id, Alarm::TYPE_LIKE, false, Yii::$app->request->get()['entity_class'], Yii::$app->request->get()['entity_id']);    
+                    }
+                    
+
+
 
                  
                 }

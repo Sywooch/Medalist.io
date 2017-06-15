@@ -833,4 +833,28 @@ $(document).ready(function(){
             })
 		/* OWL SLIDER END */
 
+
+
+
+		/* ALARMS */
+		$('.userpanel-user-notifications').click(function(){
+			var notifications = $(this).find("#notifications");
+
+			notifications.fadeIn();
+		});
+
+
+		$(document).mouseup(function(e) 
+		{
+			var container = $("#notifications");
+
+			// if the target of the click isn't the container nor a descendant of the container
+			if (!container.is(e.target) && container.has(e.target).length === 0) 
+			{
+				container.fadeOut();
+			}
+		});
+
+		/* ALARMS END */
+
 });

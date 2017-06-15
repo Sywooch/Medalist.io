@@ -2,8 +2,13 @@
 
 namespace app\controllers;
 
-use Yii;
+use app\models\Achievement;
 use app\models\Comment;
+use app\models\Alarm;
+
+use app\models\Goal;
+use Yii;
+
 
 class CommentController extends \yii\web\Controller
 {
@@ -20,12 +25,24 @@ class CommentController extends \yii\web\Controller
               
 
                 $res = Comment::addCommentToObject( Yii::$app->request->get()['entity_class'], Yii::$app->request->get()['entity_id'], Yii::$app->request->get()['text'],  Yii::$app->request->get()['parent_comment_id']);
+
+
                   
                 if( $res !== false ){
                     $result['step3'] = true;
                     $result['success'] = true;
                     $result['comment_id'] = $res;
                     $result['parent_comment_id'] = (int)Yii::$app->request->get()['parent_comment_id'];
+                    $className = "app\\models\\".Yii::$app->request->get()['entity_class'];
+
+                    $obj = $className::findOne(Yii::$app->request->get()['entity_id']); 
+
+
+
+                    if( !empty($obj) ){
+                        Alarm::addAlarm(Yii::$app->user->identity->id, $obj->user_id, Alarm::TYPE_COMMENT, false, Yii::$app->request->get()['entity_class'], Yii::$app->request->get()['entity_id']);    
+                    }
+                    
 
                  
                 }
