@@ -302,6 +302,10 @@ $(document).ready(function(){
 						pushNewQuestPending( id );
 						p.slideUp();
 
+							$('.addach').slideUp();
+							$('.addach-success').slideDown();
+
+
 						EventEngine.registerEventFromRawAjax (data);
 					}
 
@@ -386,7 +390,7 @@ $(document).ready(function(){
 		$('.js-addach-isdifficult').hide();
 		console.log($('[data-toggle="rangeslider"]').rangeslider({ polyfill: false }));
 		$('.addach-description-text-textarea').trumbowyg(  );
-		$('[data-toggle="datepicker"]').datepicker( {format: 'dd.mm.yyyy'});
+		$('[data-toggle="datepicker"]').datepicker( {format: 'dd.mm.yyyy'}).datepicker("setDate", "0");
 
 
 		if( $('[data-toggle="dropzone"]').length > 0 ){

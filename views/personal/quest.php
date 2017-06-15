@@ -25,6 +25,7 @@ echo $this->render('_panel.php');
 
 							 
  
+						<div class="questblock">
  
 							<div class="simplebox simplebox-padding">
 
@@ -90,6 +91,10 @@ echo $this->render('_panel.php');
 									
 								</div>
 
+											<div class="questblock-info-controlls-button">
+												<a href="#" class="mdlst-button mdlst-button-default js-quest-takequest" data-id="<?=$quest->quest_id?>">Взять квест</a>
+											</div>
+
 								<div class="questdetail-completeduser-list">
 									<h3>Бросить вызов: </h3>
 									 <? Yii::$app->decor->button('Бросить вызов вашим друзьям!',  Yii::$app->urlManager->createUrl( ['personal/quest-challenge','quest_id' => $quest->quest_id] ) ); ?>
@@ -109,7 +114,12 @@ echo $this->render('_panel.php');
 						</div>
 
 					</div>
+		 					<div class="addach-success" style="display: none;">
+		 					 	<? Yii::$app->decor->infoPanel('Вы взяли квест! Посмотрите его в <a href="'.Yii::$app->urlManager->createUrl('personal/quests').'">вашем списке квестов!', 'success'); ?>
+		 						
+		 					</div>
 
+				</div>
 
 				</div>
 			</div>

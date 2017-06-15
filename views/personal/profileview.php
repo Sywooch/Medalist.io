@@ -149,22 +149,29 @@ if ( !Yii::$app->user->isGuest ){
                         </div>
 
 
+                    <? if ( $currentUser ){?>
+
+			 		<div class="achievement-share"><? Yii::$app->decor->shareWidget(); ?></div>
+
+                       <?}?>
+
 
                        
                     </div>
-                    <?
+
+<!--
 
 
-        if ( $currentUser ){
+
+                    <? if ( $currentUser ){
             echo "<br>";
             Yii::$app->decor->infoPanel('Поделиться в соцсетях: <b>'.Yii::$app->getRequest()->serverName.Yii::$app->urlManager->createUrl( ['personal/viewprofile','user_id' => Yii::$app->user->identity->id]) .' </b>'); 
         }
 
 
                              ?>
-
-                    <br>
-                    <br>
+-->
+<br>
                     <?php 
                         foreach($news as $new){
 

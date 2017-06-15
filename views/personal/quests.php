@@ -194,7 +194,7 @@ echo $this->render('_panel.php');
 
 							 <div class="questpending">
 								 	<div class="questpending-deadline">До <?=$questPending->deadline?></div>
-								 	<div class="questpending-title"><?=$quest->name;?></div>
+								 	<div class="questpending-title"><a href="<?=Yii::$app->urlManager->createUrl(['personal/quest', 'quest_id' => $quest->quest_id])?>"><?=$quest->name;?></a></div>
 								 	<div class="questpending-description"><?=$quest->description;?></div>
 								 	<a href="<?=Yii::$app->urlManager->createUrl(['personal/achievement-add', 'quest_id' => $quest->quest_id])?>" class="questpending-done mdlst-button">Готово!</a>
 							</div>
@@ -340,6 +340,10 @@ echo $this->render('_panel.php');
 								 
 							</div>
 
+		 					<div class="addach-success" style="display: none;">
+		 					 	<? Yii::$app->decor->infoPanel('Вы взяли квест! Посмотрите его в <a href="'.Yii::$app->urlManager->createUrl('personal/quests').'">вашем списке квестов!', 'success'); ?>
+		 						
+		 					</div>
 
 
 
