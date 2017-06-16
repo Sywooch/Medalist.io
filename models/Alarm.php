@@ -198,6 +198,9 @@ class Alarm extends \yii\db\ActiveRecord
 
                             }?>
 
+                        <?php if($big) { 
+                                echo "<br><span style='color: gray'>".date("d.m.Y в H:i:s", strtotime($alarm->date_created))."</span>";
+                         }?>
                     
                     </div>
                 </div> 

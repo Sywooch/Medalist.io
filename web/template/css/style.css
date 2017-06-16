@@ -1417,6 +1417,9 @@ a {
   margin-top: 25px;
 }
 /* . add achievement end */
+.notificationslist-block-text {
+  width: 600px;
+}
 /* achievement list */
 .achievement-list {
   color: inherit;
