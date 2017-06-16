@@ -61,6 +61,9 @@ if ( empty($this->title) ){
     <script type="text/javascript">
         var ajaxUrls = <?php 
             $ajaxUrls = [];
+            $ajaxUrls['alarmCheckNew'] = Yii::$app->urlManager->createUrl('alarm/ajax-alarm-check-new');
+
+            
             $ajaxUrls['getBadgeInfo'] = Yii::$app->urlManager->createUrl('badge/ajax-get-info');
 
             $ajaxUrls['takeQuest'] = Yii::$app->urlManager->createUrl('quest/ajax-take-quest');

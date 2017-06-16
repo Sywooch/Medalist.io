@@ -32,6 +32,27 @@ blinkNew = function( className ){
 };
 
 
+checkAlarms = function(){
+	$.ajax({
+		url: ajaxUrls['alarmCheckNew'],
+		type: 'get',
+		success: function(html){
+			if( $('#notifications').length > 0 ){
+				$('#notifications .notifications-blocks').append( html );
+
+
+				if( html != ''){
+					window.scrollTo(0, 0);
+					 $('#notifications').fadeIn();
+				}
+			}
+		}
+	});
+};
+
+setInterval(checkAlarms, 5000);
+
+
 $(document).ready(function(){
 
 
