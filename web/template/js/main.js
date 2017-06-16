@@ -44,6 +44,7 @@ checkAlarms = function(){
 				if( html != ''){
 					window.scrollTo(0, 0);
 					 $('#notifications').fadeIn();
+					 $('.userpanel-user-notifications').addClass('active');
 				}
 			}
 		}

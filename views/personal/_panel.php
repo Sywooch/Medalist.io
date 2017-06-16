@@ -8,6 +8,7 @@ use app\models\BadgeCategory;
 use app\models\ScalePointsBalance;
 use app\models\Badge;
 use app\models\Level;
+use app\models\Alarm;
 use Yii;
 
 
@@ -30,7 +31,10 @@ $avatarSrc = Yii::$app->user->identity->getProfile()->one()->getAvatarSrc();
 	 					<div class="userpanel-user-info-name"><?=Yii::$app->user->identity->getName();?></div>
 	 					<div class="userpanel-user-info-date">на сайте с <?=date("d.m.Y", strtotime(Yii::$app->user->identity->created_at));?></div>
 	 				</div>
-	 				<div class="userpanel-user-notifications">
+	 				<?
+	 				$alarmsNotViewed = Alarm::find()->where(['status' => 0, 'to_user_id' => Yii::$app->user->identity->id])->all();
+	 				?>
+	 				<div class="userpanel-user-notifications <? if( count($alarmsNotViewed) > 0 ) { ?> active <?}  ?>">
 						<?=$this->render("_panel_notifications.php")?>
 	 				</div>
 	 			</div>

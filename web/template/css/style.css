@@ -1075,6 +1075,9 @@ a {
   margin-left: 80px;
   position: relative;
 }
+.userpanel-user-notifications.active {
+  background-image: url("../img/important.png");
+}
 .userpanel-info {
   width: 540px;
   margin-top: 15px;

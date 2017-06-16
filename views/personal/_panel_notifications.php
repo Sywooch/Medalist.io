@@ -15,7 +15,7 @@ use amnah\yii2\user\models\User;
 use Yii;
 
 
-$alarms = Alarm::find()->where(['to_user_id' => Yii::$app->user->identity->id])->limit(2)->orderBy(['date_created' => SORT_DESC])->all();
+$alarms = Alarm::find()->where(['to_user_id' => Yii::$app->user->identity->id])->limit(2)->orderBy(['status' => SORT_ASC, 'date_created' => SORT_DESC])->all();
 ?>
 	<!-- notifications -->
 	 	<div id="notifications" class="notifications" style="display: none;">
