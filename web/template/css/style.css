@@ -134,7 +134,9 @@
 .lastachievement-info-data-pic,
 .lastachievement-info-data-data,
 .notifications-block-user,
-.notifications-block-text {
+.notifications-block-text,
+.notificationslist-block-user,
+.notificationslist-block-text {
   display: inline-block;
   *display: inline;
   zoom: 1;
@@ -192,7 +194,9 @@
 .lastachievement-info-data-pic,
 .lastachievement-info-data-data,
 .notifications-block-user,
-.notifications-block-text {
+.notifications-block-text,
+.notificationslist-block-user,
+.notificationslist-block-text {
   vertical-align: top;
 }
 .dib_m,
@@ -304,7 +308,8 @@
 .profileview,
 .editprofile,
 .lastachievement,
-.notifications {
+.notifications,
+.notificationslist {
   box-shadow: 0 0 5px rgba(49,51,62,0.1);
   box-sizing: border-box;
   -webkit-border-radius: 4px;
@@ -323,6 +328,7 @@
 .editprofile-padding,
 .lastachievement-padding,
 .notifications-padding,
+.notificationslist-padding,
 .questssuggested,
 .questssuggested-quests-quest,
 .achievement-block-content,
@@ -332,7 +338,8 @@
 .profileview,
 .editprofile,
 .lastachievement,
-.notifications {
+.notifications,
+.notificationslist {
   padding: 29px 26px;
 }
 /* 1280 */
@@ -2773,6 +2780,41 @@ ntainer {
 .notifications-block-text {
   font-size: 12px;
   width: 180px;
+  white-space: normal;
+  line-height: 1.35em;
+}
+.notificationslist {
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #eee;
+  white-space: normal;
+}
+.notificationslist-block {
+  box-sizing: border-box;
+  padding: 15px;
+  margin-bottom: 15px;
+  white-space: nowrap;
+}
+.notificationslist-block__new {
+  background-color: rgba(138,68,255,0.06);
+}
+.notificationslist-block-user {
+  width: 60px;
+  margin-right: 15px;
+}
+.notificationslist-block-user-pic {
+  -webkit-border-radius: 40px;
+  -moz-border-radius: 40px;
+  border-radius: 40px;
+  overflow: hidden;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 60px;
+  height: 60px;
+}
+.notificationslist-block-text {
+  font-size: 14px;
   white-space: normal;
   line-height: 1.35em;
 }

@@ -20,6 +20,7 @@ use app\models\Interest;
 use app\models\Scale;
 use app\models\Category;
 use app\models\Photo;
+use app\models\Alarm;
 use amnah\yii2\user\models\User;
 use yii\db\Expression;
 use Yii;
@@ -201,6 +202,20 @@ class PersonalController extends \yii\web\Controller
         $possibleFriends = Follower::findAlikeUsers( Yii::$app->user->identity->id )->where(['NOT IN', 'id', $excluded])->andWhere(['status' => '1'])->all();
 
         return $this->render('friends', [ 'possibleFriends' => $possibleFriends, 'followed' => $followed ]);
+    }
+
+
+
+
+    public function actionAlarms()
+    {
+
+        //Кто уже в друзьях
+        $alarms = Alarm::find()->where(['to_user_id' => Yii::$app->user->identity->id])->orderBy(['date_created' => SORT_DESC])->all();
+
+        
+
+        return $this->render('alarms', [ 'alarms' => $alarms  ]);
     }
 
 

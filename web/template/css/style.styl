@@ -2426,6 +2426,41 @@ ntainer
             white-space normal
             line-height 1.35em
 
+.notificationslist
+    @extends .simplebox
+    @extends .simplebox-padding
+    
+    width 100%
+     
+    background-color white
+    border 1px solid #EEE
+    
+    white-space normal
+    &-block 
+        box-sizing border-box 
+        padding 15px 
+        margin-bottom 15px
+        white-space nowrap
+        &__new 
+            background-color rgba(CMain, 0.06)
+        &-user
+            @extends .dib_t
+            width 60px
+            margin-right 15px
+            &-pic 
+                border-radius 40px 
+                overflow hidden
+                background-size cover 
+                background-repeat no-repeat
+                background-position center
+                width 60px 
+                height 60px
+        &-text 
+            @extends .dib_t
+            font-size 14px
+            white-space normal
+            line-height 1.35em
+
 
 
 

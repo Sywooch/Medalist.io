@@ -3,7 +3,10 @@
 namespace app\models;
 
 use Yii;
-
+use amnah\yii2\user\models\User;
+use app\models\Achievement;
+use app\models\Goal;
+use app\models\Follower;
 /**
  * This is the model class for table "alarm".
  *
@@ -39,7 +42,7 @@ class Alarm extends \yii\db\ActiveRecord
     {
         return [
             [['from_user_id', 'to_user_id', 'date_created', 'alarm_type'], 'required'],
-            [['from_user_id', 'to_user_id', 'alarm_type', 'status', 'entity_id'], 'integer'],
+            [['from_user_id', 'to_user_id', 'alarm_type', 'status', 'traced', 'entity_id'], 'integer'],
             [['date_created'], 'safe'],
             [['text'], 'string', 'max' => 1024],
             [['entity_class'], 'string', 'max' => 255],
@@ -74,6 +77,12 @@ class Alarm extends \yii\db\ActiveRecord
     }
 
     public static function addAlarm( $userFrom, $userTo, $alarmType, $text = false, $entity_class = false, $entity_id = false ){
+
+        //No alarms to yourself 
+        if( $userFrom === $userTo ){
+            return false;
+        }
+
         $alarm = new Alarm;
         $alarm->from_user_id = $userFrom;
         $alarm->to_user_id = $userTo;
@@ -89,6 +98,7 @@ class Alarm extends \yii\db\ActiveRecord
             $alarm->entity_id = $entity_id; 
         }
         $alarm->status = 0;
+        $alarm->traced = 0;
         $alarm->date_created = date("Y-m-d H:i:s");
         if( $alarm->save() ){
             return true;    
@@ -104,6 +114,97 @@ class Alarm extends \yii\db\ActiveRecord
 
     public function getUserTo(){
         return User::find()->where(['id' => $this->to_user_id]);
+    }
+
+
+
+    public static function renderAlarmBlockHTML( $alarmId, $big = false){
+
+        if( !is_object($alarmId) ){
+            $alarm = Alarm::findOne($alarmId);    
+        }else{
+            $alarm =  $alarmId;  
+        }
+        
+
+        $class = ($big == true )?"notificationslist":"notifications";
+         
+
+        $fromUser = $alarm->getUserFrom()->one();
+
+        if(!$fromUser){ return ''; }
+                    ?>
+                <div class="<?=$class?>-block <? if($alarm->status == 0 ) { ?><?=$class?>-block__new <? } ?> h-alarm-block" data-alarm_id="<?=$alarm->alarm_id?>">
+                    <div class="<?=$class?>-block-user">
+                        <div class="<?=$class?>-block-user-pic" style="background-image: url(<?=$fromUser->getProfile()->one()->getAvatarSrc()?>)"></div>
+                        
+                    </div>
+                    <div class="<?=$class?>-block-text">
+
+                        <a href="<?=Yii::$app->urlManager->createUrl(['personal/viewprofile', 'user_id' => $fromUser->id]);?>"><?=$fromUser->getName();?></a> 
+
+
+                        <?php switch($alarm->alarm_type) {
+                                case 1:
+                                ?>
+                                        оценил 
+                                        <? switch( $alarm->entity_class) {
+
+                                            case "Achievement":
+                                                $obj = Achievement::findOne( $alarm->entity_id);
+                                                ?>
+                                                    ваше достижение <a href="<?=Yii::$app->urlManager->createUrl(['personal/achievement', 'achievement_id' => $alarm->entity_id]);?>"><?=$obj->name?></a>
+                                                <?
+                                            break;
+                                            case "Goal":
+                                                $obj = Goal::findOne( $alarm->entity_id);
+                                                ?>
+                                                    вашу цель <a href="<?=Yii::$app->urlManager->createUrl(['personal/goal', 'goal_id' => $alarm->entity_id]);?>"><?=$obj->name?></a>
+                                                <?
+                                            break;
+
+
+                                            } ?>
+                                <?
+                                break;
+                                case 2:
+                                ?>
+                                        прокомментировал 
+                                        <? switch( $alarm->entity_class) {
+
+                                            case "Achievement":
+                                                $obj = Achievement::findOne( $alarm->entity_id);
+                                                ?>
+                                                    ваше достижение <a href="<?=Yii::$app->urlManager->createUrl(['personal/achievement', 'achievement_id' => $alarm->entity_id]);?>"><?=$obj->name?></a>
+                                                <?
+                                            break;
+                                            case "Goal":
+                                                $obj = Goal::findOne( $alarm->entity_id);
+                                                ?>
+                                                    вашу цель <a href="<?=Yii::$app->urlManager->createUrl(['personal/goal', 'goal_id' => $alarm->entity_id]);?>"><?=$obj->name?></a>
+                                                <?
+                                            break;
+
+
+                                            } ?>
+                                <?
+                                break;
+                                case 4:
+                                ?>
+                                        подписался на ваши обновления 
+                                         
+                                <?
+                                break;
+
+                            }?>
+
+                    
+                    </div>
+                </div> 
+              
+
+
+        <?
     }
 
 
