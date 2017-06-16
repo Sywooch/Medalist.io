@@ -418,7 +418,28 @@ $(document).ready(function(){
 				          }
 				        }
 				        return this._updateMaxFilesReachedClass();
-				      }
+				      },
+
+					init: function() {
+						var thisDropzone = this;
+						var data = $('#uploadHolder').attr('data-preloadedPhotos');
+						if( typeof data != 'undefined'){	
+							if( data.length > 0 ){
+								var mas = data.split(',');
+					           		$.each(mas, function(key,value){ //loop through it
+									var nameSize = value.split('|');
+			        				        var mockFile = { name: nameSize[0], size: nameSize[2] }; // here we get the file name and size as response 
+		
+					                		thisDropzone.options.addedfile.call(thisDropzone, mockFile);
+							    		thisDropzone.emit('complete', mockFile);
+		                                		        thisDropzone.files.push(mockFile); 
+									thisDropzone.createThumbnailFromUrl(mockFile, nameSize[1]);
+					            		});
+					          	};
+						}
+					}
+
+
 
 
 				}

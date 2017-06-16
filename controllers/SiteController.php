@@ -129,10 +129,45 @@ class SiteController extends Controller
         if (!empty($_FILES)) {
              
             $tempFile = $_FILES['file']['tmp_name'];          //3             
+
+
+		    list($original_width, $original_height, $original_type) = getimagesize($tempFile);
+
+
+		    if ($original_type === 1) {
+	    	    $imgcreatefrom = "ImageCreateFromGIF";
+		    } else if ($original_type === 2) {
+		        $imgcreatefrom = "ImageCreateFromJPEG";
+		    } else if ($original_type === 3) {
+		        $imgcreatefrom = "ImageCreateFromPNG";
+		    } else {
+		   	    return false;
+		    }
+
+    		$image = $imgcreatefrom($tempFile);
+
+	    	if ($original_type === 2) {
+				$exif = exif_read_data($tempFile);
+				if(!empty($exif['Orientation'])) {
+				    switch($exif['Orientation']) {
+			        case 8:
+			            $image = imagerotate($image,90,0);
+		        	    break;
+	    		    case 3:
+			            $image = imagerotate($image,180,0);
+	        		    break;
+			        case 6:
+	        		    $image = imagerotate($image,-90,0);
+			            break;
+			    	}
+			    }
+			}
+
+       	    ImageJPEG($image, $tempFile);
               
             $targetPath = $storeFolder;  //4
             $info = pathinfo( $_FILES['file']['name'] );
-            $newFilename = date("YmdHis").md5(time().rand(0,10000)).".".strtolower($info['extension']);
+            $newFilename = date("YmdHis").md5(time().rand(0,10000)).".jpg";
              
             $targetFile =  $targetPath. $newFilename ;  //5
 
