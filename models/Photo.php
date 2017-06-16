@@ -67,4 +67,13 @@ class Photo extends \yii\db\ActiveRecord
         }
         
     }
+
+    public function deleteObjectPhotos($entity_class, $entity_id){
+        $photos = Photo::find()->where(['entity_class' => $entity_class, 'entity_id' => $entity_id] )->all();
+
+        foreach ($photos as $photo) {
+            $photo->deleteFile();
+            $photo->delete();
+        }
+    }
 }
