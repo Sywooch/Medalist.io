@@ -52,24 +52,10 @@ echo $this->render('_panel.php');
 										Кликните в поле ниже для добавления фото
 			 							</div>
 
-	 							<div class="addach-description-photos "  id="uploadHolder" data-toggle="dropzone">
 
-<!-- <div class="dz-message needsclick">
-    Drop files here or click to upload.<br />
-    <span class="note needsclick">(This is just a demo dropzone. Selected files are <strong>not</strong> actually uploaded.)</span>
-  </div>
+	 							<div class="addach-description-photos "  id="uploadHolder" data-toggle="dropzone" data-preloadedPhotos = "<?=$achievement->getPhotosFilenames();?>">
 
-<!--
- <div class="dz-message needsclick">
-										Кликните для добавления фото
-  </div>
-
-<!--			 								<a class="container-menu-list-meta-add addach-description-photos-icon" href="#">
-												<span class="container-menu-list-meta-add-plus">+</span>
-											</a>
-											<div class="addach-description-photos-text">Перетащите сюда фотографии (до 3Мб)</div>
--->									
-			 							</div>
+				 							</div>
 
 			 						</div>
 

@@ -95,23 +95,22 @@ class AchievementController extends \yii\web\Controller
                    
 
                    foreach ($post['files'] as $file) {
-						if ($file == ""){
-							continue;
-						}
+			if ($file == ""){
+				continue;
+			}
                        $info = pathinfo( $file );
-					   $targetFile = './uploads/a/'. $info['basename'];
+		       $targetFile = './uploads/a/'. $info['filename'].'.jpg';
                        $result2 = rename( $file, $targetFile);
 
-
-						$newFilename_tb = './uploads/a/'. $info['filename'].'_tb.'.$info['extension'];
-						Yii::$app->decor->createThumbnail($targetFile, $newFilename_tb, 431, 285);
+			$newFilename_tb = './uploads/a/'. $info['filename'].'_tb'.'.jpg';
+			Yii::$app->decor->createThumbnail($targetFile, $newFilename_tb, 431, 285, [255,255,255]);
 
 
                        if ( $result2 ){
 
 
                            $photo = new Photo;
-                           $photo->filename =  $targetFile;
+                           $photo->filename =  '/uploads/a/'. $info['filename'].'.jpg';
                            $photo->entity_class  = 'Achievement';
                            $photo->entity_id =  $achievement->achievement_id;
                            $photo->date_created = date("Y-m-d H:i:s");
@@ -226,7 +225,7 @@ class AchievementController extends \yii\web\Controller
                 }
 
 
-
+/*
                 if( !empty($post['files']) ) {
                    
 
@@ -247,6 +246,38 @@ class AchievementController extends \yii\web\Controller
                    }
                     
                 }
+*/
+
+
+                if( !empty($post['files']) ) {
+                   
+
+                   foreach ($post['files'] as $file) {
+			if ($file == ""){
+				continue;
+			}
+                       $info = pathinfo( $file );
+		       $targetFile = './uploads/a/'. $info['filename'].'.jpg';
+                       $result2 = rename( $file, $targetFile);
+
+			$newFilename_tb = './uploads/a/'. $info['filename'].'_tb'.'.jpg';
+			Yii::$app->decor->createThumbnail($targetFile, $newFilename_tb, 431, 285, [255,255,255]);
+
+
+                       if ( $result2 ){
+
+
+                           $photo = new Photo;
+                           $photo->filename =  '/uploads/a/'. $info['filename'].'.jpg';
+                           $photo->entity_class  = 'Achievement';
+                           $photo->entity_id =  $achievement->achievement_id;
+                           $photo->date_created = date("Y-m-d H:i:s");
+                           $photo->save();
+                        }
+                   }
+                    
+                }
+
 
 
 

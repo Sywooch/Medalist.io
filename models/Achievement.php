@@ -96,6 +96,22 @@ class Achievement extends \yii\db\ActiveRecord
     public  function getPhotos(){
         return Photo::find()->where("entity_class = 'Achievement' and entity_id = ".$this->achievement_id)->all();
     }
+
+    public  function getPhotosFilenames(){
+        $myitemfiles = Photo::find()->where("entity_class = 'Achievement' and entity_id = ".$this->achievement_id)->all();
+
+		$output = Array();
+		foreach($myitemfiles as $file){ //get an array which has the names of all the files and loop through it 
+
+	                $info = pathinfo($file->filename);
+			array_push($output, $info['filename'].'|'.$file->filename.'|'.filesize('../web'.$file->filename));
+//echo($file->filename.'\n');
+	    }
+		return implode(',', $output);
+
+    }
+
+
     public  function getTags(){
         $tags = Tag::find();
         $tags->multiple = true;
