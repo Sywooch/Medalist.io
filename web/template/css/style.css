@@ -111,6 +111,7 @@
 .friend-list-block-achievements,
 .friend-list-block-points,
 .friend-list-block-level,
+.friend-list-block-but,
 .profileview-aside,
 .profileview-content,
 .profileview-allachievements,
@@ -273,6 +274,7 @@
 .friend-list-block-achievements,
 .friend-list-block-points,
 .friend-list-block-level,
+.friend-list-block-but,
 .input-check-inline,
 .mdlst-button-accent,
 .mdlst-button-gray,
@@ -1740,6 +1742,9 @@ a {
 .friend-list-header-block-level {
   width: 100px;
 }
+.friend-list-header-block-but {
+  width: 100px;
+}
 .friend-list-block {
   box-shadow: 0 0 5px rgba(49,51,62,0.1);
   display: block;
@@ -1783,6 +1788,12 @@ a {
   text-align: center;
 }
 .friend-list-block-level {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  width: 80px;
+}
+.friend-list-block-but {
   text-align: center;
   font-size: 18px;
   font-weight: bold;

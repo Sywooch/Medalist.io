@@ -98,7 +98,7 @@ echo $this->render('_panel.php');
 							 				
 
 											 <?php if( $other === false ) { ?>
-											<div class="achievement-block-content-col achievement-block-content-header-col-2">
+											<div class="achievement-block-content-col ">
 												<div class="achievement-block-content-nav-serv">
 													<ul id="nav-serv">
 													  <li><a href="#"></a>

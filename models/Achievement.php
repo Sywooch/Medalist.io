@@ -108,12 +108,6 @@ class Achievement extends \yii\db\ActiveRecord
         return implode(',', $output);
 
 
-	                $info = pathinfo($file->filename);
-			array_push($output, $info['filename'].'|'.$file->filename.'|'.filesize('../web'.$file->filename));
-//echo($file->filename.'\n');
-	    }
-		return implode(',', $output);
-
     }
 
     public  function getTags(){
