@@ -76,4 +76,29 @@ class Photo extends \yii\db\ActiveRecord
             $photo->delete();
         }
     }
+
+    public function deleteNotActualObjectPhotos($entity_class, $entity_id, $newPhotos){
+        $photos = Photo::find()->where(['entity_class' => $entity_class, 'entity_id' => $entity_id] )->all();
+
+        foreach ($photos as $photo) {
+			$found = false;
+			foreach ($newPhotos as $newPhoto) {
+				$newFile = pathinfo( $newPhoto );
+				$oldFile = pathinfo( $photo->filename );
+
+
+				if($oldFile['basename'] == $newFile['basename']){
+					$found = true;
+					break;
+				}
+
+			}
+    	    if(!$found){
+			   $photo->deleteFile();
+        	   $photo->delete();
+	       }
+		}
+    }
+
+
 }

@@ -101,7 +101,12 @@ class Achievement extends \yii\db\ActiveRecord
         $myitemfiles = Photo::find()->where("entity_class = 'Achievement' and entity_id = ".$this->achievement_id)->all();
 
 		$output = Array();
-		foreach($myitemfiles as $file){ //get an array which has the names of all the files and loop through it 
+        foreach($myitemfiles as $file){ //get an array which has the names of all the files and loop through it 
+            $info = pathinfo($file->filename);
+            array_push($output, $info['basename'].'|'.$file->filename.'|'.filesize('../web'.$file->filename));
+        }
+        return implode(',', $output);
+
 
 	                $info = pathinfo($file->filename);
 			array_push($output, $info['filename'].'|'.$file->filename.'|'.filesize('../web'.$file->filename));
@@ -110,7 +115,6 @@ class Achievement extends \yii\db\ActiveRecord
 		return implode(',', $output);
 
     }
-
 
     public  function getTags(){
         $tags = Tag::find();
@@ -195,3 +199,4 @@ class Achievement extends \yii\db\ActiveRecord
 
 
 }
+

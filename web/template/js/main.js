@@ -439,6 +439,8 @@ $(document).ready(function(){
 				            _ref.parentNode.removeChild(file.previewElement);
 				          }
 				        }
+//					alert(myDropzoneFiles);
+
 				        return this._updateMaxFilesReachedClass();
 				      },
 
@@ -450,15 +452,18 @@ $(document).ready(function(){
 								var mas = data.split(',');
 					           		$.each(mas, function(key,value){ //loop through it
 									var nameSize = value.split('|');
-			        				        var mockFile = { name: nameSize[0], size: nameSize[2] }; // here we get the file name and size as response 
+			        				        var mockFile = { name: nameSize[0], size: nameSize[2], fid:  myDropzoneFiles.length}; // here we get the file name and size as response 
 		
 					                		thisDropzone.options.addedfile.call(thisDropzone, mockFile);
 							    		thisDropzone.emit('complete', mockFile);
 		                                		        thisDropzone.files.push(mockFile); 
 									thisDropzone.createThumbnailFromUrl(mockFile, nameSize[1]);
+							myDropzoneFiles[ myDropzoneFiles.length ] = nameSize[0];
+
 					            		});
 					          	};
 						}
+//					alert(myDropzoneFiles);
 					}
 
 
