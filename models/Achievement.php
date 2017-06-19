@@ -102,15 +102,12 @@ class Achievement extends \yii\db\ActiveRecord
 
 		$output = Array();
 		foreach($myitemfiles as $file){ //get an array which has the names of all the files and loop through it 
-
-	                $info = pathinfo($file->filename);
-			array_push($output, $info['filename'].'|'.$file->filename.'|'.filesize('../web'.$file->filename));
-//echo($file->filename.'\n');
+            $info = pathinfo($file->filename);
+			array_push($output, $info['basename'].'|'.$file->filename.'|'.filesize('../web'.$file->filename));
 	    }
 		return implode(',', $output);
 
     }
-
 
     public  function getTags(){
         $tags = Tag::find();

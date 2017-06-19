@@ -249,36 +249,36 @@ class AchievementController extends \yii\web\Controller
 */
 
 
-                if( !empty($post['files']) ) {
-                   
+            if( !empty($post['files']) ) {
+ 
+//				Photo::deleteObjectPhotos('Achievement', $achievement->achievement_id);
+				Photo::deleteNotActualObjectPhotos('Achievement', $achievement->achievement_id, $post['files']);
+				foreach ($post['files'] as $file) {
 
-                   foreach ($post['files'] as $file) {
-			if ($file == ""){
-				continue;
-			}
-                       $info = pathinfo( $file );
-		       $targetFile = './uploads/a/'. $info['filename'].'.jpg';
-                       $result2 = rename( $file, $targetFile);
+					if ($file == ""){
+						continue;
+					}
 
-			$newFilename_tb = './uploads/a/'. $info['filename'].'_tb'.'.jpg';
-			Yii::$app->decor->createThumbnail($targetFile, $newFilename_tb, 431, 285, [255,255,255]);
+					$info = pathinfo( $file );
+					$targetFile = './uploads/a/'. $info['filename'].'.jpg';
+				    if (!file_exists($targetFile)) {
+						$result2 = rename( $file, $targetFile);
 
-
-                       if ( $result2 ){
+						$newFilename_tb = './uploads/a/'. $info['filename'].'_tb'.'.jpg';
+						Yii::$app->decor->createThumbnail($targetFile, $newFilename_tb, 431, 285, [255,255,255]);
 
 
+                   	   if ( $result2 ){
                            $photo = new Photo;
                            $photo->filename =  '/uploads/a/'. $info['filename'].'.jpg';
                            $photo->entity_class  = 'Achievement';
-                           $photo->entity_id =  $achievement->achievement_id;
+   	                       $photo->entity_id =  $achievement->achievement_id;
                            $photo->date_created = date("Y-m-d H:i:s");
                            $photo->save();
                         }
-                   }
-                    
+                    }
                 }
-
-
+			}
 
 
                 //Unset Quest
