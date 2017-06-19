@@ -169,11 +169,17 @@ class Achievement extends \yii\db\ActiveRecord
 		$this->status = $NewStatus;
 		$this->save();
 
+        if( $NewStatus == 1){
+            Alarm::addAlarm(false, $this->user_id, Alarm::TYPE_ACHIEVEMENT_APPROVED, false, 'Achievement', $this->achievement_id);
+        }
+        
+
 		if(!empty($this->quest_id)){
 			$questReward = QuestReward::find()->where(['quest_id' => $this->quest_id])->one();
 			if(!empty($questReward)){
 				if(!empty($questReward->badge_id)){
 					Badge::addBadgeToUser($questReward->badge_id, $this->user_id );
+
 				}
 				else{
 					ScalePointsBalance::addBalance($this->user_id, $questReward->scale_id, $questReward->points, "Quest", $this->quest_id);

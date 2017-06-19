@@ -26,6 +26,7 @@ class Alarm extends \yii\db\ActiveRecord
     const TYPE_COMMENT = 2;
     const TYPE_QUEST_CHALLENGE = 3;
     const TYPE_YOU_ARE_FOLLOWED = 4;
+    const TYPE_ACHIEVEMENT_APPROVED = 5;
 
     /**
      * @inheritdoc
@@ -41,7 +42,7 @@ class Alarm extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['from_user_id', 'to_user_id', 'date_created', 'alarm_type'], 'required'],
+            [['to_user_id', 'date_created', 'alarm_type'], 'required'],
             [['from_user_id', 'to_user_id', 'alarm_type', 'status', 'traced', 'entity_id'], 'integer'],
             [['date_created'], 'safe'],
             [['text'], 'string', 'max' => 1024],
@@ -76,7 +77,7 @@ class Alarm extends \yii\db\ActiveRecord
         return new AlarmQuery(get_called_class());
     }
 
-    public static function addAlarm( $userFrom, $userTo, $alarmType, $text = false, $entity_class = false, $entity_id = false ){
+    public static function addAlarm( $userFrom = false, $userTo = false, $alarmType = false, $text = false, $entity_class = false, $entity_id = false ){
 
         //No alarms to yourself 
         if( $userFrom === $userTo ){
@@ -116,6 +117,10 @@ class Alarm extends \yii\db\ActiveRecord
         return User::find()->where(['id' => $this->to_user_id]);
     }
 
+    protected static function anonymAlarms(){
+        return [5];
+    }
+
 
 
     public static function renderAlarmBlockHTML( $alarmId, $big = false){
@@ -130,19 +135,24 @@ class Alarm extends \yii\db\ActiveRecord
         $class = ($big == true )?"notificationslist":"notifications";
          
 
-        $fromUser = $alarm->getUserFrom()->one();
+         if( !empty($alarm->from_user_id) ){
+             $fromUser = $alarm->getUserFrom()->one();
+         }
+
+       
 
         if(!$fromUser){ return ''; }
                     ?>
                 <div class="<?=$class?>-block <? if($alarm->status == 0 ) { ?><?=$class?>-block__new <? } ?> h-alarm-block" data-alarm_id="<?=$alarm->alarm_id?>">
                     <div class="<?=$class?>-block-user">
+                        <?php if ($fromUser) { ?>
                         <div class="<?=$class?>-block-user-pic" style="background-image: url(<?=$fromUser->getProfile()->one()->getAvatarSrc()?>)"></div>
-                        
+                        <? } ?>
                     </div>
                     <div class="<?=$class?>-block-text">
-
+                         <?php if ($fromUser) { ?>
                         <a href="<?=Yii::$app->urlManager->createUrl(['personal/viewprofile', 'user_id' => $fromUser->id]);?>"><?=$fromUser->getName();?></a> 
-
+                        <? } ?>
 
                         <?php switch($alarm->alarm_type) {
                                 case 1:
@@ -192,6 +202,22 @@ class Alarm extends \yii\db\ActiveRecord
                                 case 4:
                                 ?>
                                         подписался на ваши обновления 
+                                         
+                                <?
+                                break;
+                                case 5:
+                                ?>
+                                      <? switch( $alarm->entity_class) {
+
+                                            case "Achievement":
+                                                $obj = Achievement::findOne( $alarm->entity_id);
+                                                ?>
+                                                   Ваше достижение <a href="<?=Yii::$app->urlManager->createUrl(['personal/achievement', 'achievement_id' => $alarm->entity_id]);?>"><?=$obj->name?></a> подтверждено
+                                                <?
+                                            break; 
+
+
+                                            } ?>
                                          
                                 <?
                                 break;
