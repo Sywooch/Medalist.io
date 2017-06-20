@@ -459,7 +459,6 @@ $(document).ready(function(){
 		                                		        thisDropzone.files.push(mockFile); 
 									thisDropzone.createThumbnailFromUrl(mockFile, nameSize[1]);
 							myDropzoneFiles[ myDropzoneFiles.length ] = nameSize[0];
-
 					            		});
 					          	};
 						}

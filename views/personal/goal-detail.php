@@ -48,15 +48,42 @@ if( Yii::$app->user->isGuest ){
 
                 <div class="simplebox simplebox-padding">
                     <div class="output-header">
-                        <h2 class="mdlst-h2t-goals">Цель</h2>
-                        <div class="output-header-meta-goals">
-                            <?
-                            if ($goal->active) {
-                                echo '
-                     <div class="mygoals-clock"><img src="/template/img/goals/clock.png" alt=""></div>
-                     <span class="mygoals-process">В процессе</span>';
-                            } ?>
+								<div class="achievement-block-content-cols">
+				 				<div class="achievement-block-content-header-col achievement-block-content-header-col-1">
+
+			                        <h2 class="mdlst-h2t-goals">Цель</h2>
+            			            <div class="output-header-meta-goals">
+                        		    <?
+			                            if ($goal->active) {
+		                                echo '
+					                     <div class="mygoals-clock"><img src="/template/img/goals/clock.png" alt=""></div>
+					                     <span class="mygoals-process">В процессе</span>';
+			                            } ?>
+								</div>
+								</div>
+							 				
+											 <?php if( $other === false ) { ?>
+											<div class="achievement-block-content-col achievement-block-content-header-col-2">
+												<div class="achievement-block-content-nav-serv">                              
+													<ul id="nav-serv">
+													  <li><a href="#"></a>
+													    <ul>
+													      <li><a href="<?=Yii::$app->urlManager->createUrl(['personal/goal-update','goal_id' => $goal->goal_id]) ?>">Редактировать</a></li>
+													      <li><a class="js-delete-goal" href="<?=Yii::$app->urlManager->createUrl(['goal/delete-goal', 'goal_id' => $goal->goal_id]) ?>">Удалить</a></li>
+													    </ul>
+													  </li>
+													</ul>
+												</div>
+											</div>
+											<? } ?>
+
+
+
+
+
                         </div>
+
+
                         <div class="clear"></div>
                     </div>
                     <div class="output-content">
@@ -105,6 +132,8 @@ if( Yii::$app->user->isGuest ){
                             </div>
                             <!--<div class="mygoals-edit-button"><a class="goal-edit-button mdlst-button" href="#">Редактировать</a></div>-->
                         </div>
+
+
                         <div class="clear"></div>
 
 <!--

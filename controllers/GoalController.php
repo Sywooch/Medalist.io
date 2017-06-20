@@ -323,7 +323,7 @@ class GoalController extends Controller
 
                     
 
-
+/*
                     if( !empty($post['files']) ) {
                        
 
@@ -344,6 +344,40 @@ class GoalController extends Controller
                        }
                         
                     }
+
+  */
+
+
+            if( !empty($post['files']) ) {
+ 
+//				Photo::deleteObjectPhotos('Achievement', $achievement->achievement_id);
+				Photo::deleteNotActualObjectPhotos('Goal', $goal->goal_id, $post['files']);
+				foreach ($post['files'] as $file) {
+
+					if ($file == ""){
+						continue;
+					}
+
+					$info = pathinfo( $file );
+					$targetFile = './uploads/g/'. $info['filename'].'.jpg';
+				    if (!file_exists($targetFile)) {
+						$result2 = rename( $file, $targetFile);
+
+						$newFilename_tb = './uploads/g/'. $info['filename'].'_tb'.'.jpg';
+						Yii::$app->decor->createThumbnail($targetFile, $newFilename_tb, 431, 285, [255,255,255]);
+
+
+                   	   if ( $result2 ){
+                           $photo = new Photo;
+                           $photo->filename =  '/uploads/g/'. $info['filename'].'.jpg';
+                           $photo->entity_class  = 'Goal';
+   	                       $photo->entity_id =  $goal->goal_id;
+                           $photo->date_created = date("Y-m-d H:i:s");
+                           $photo->save();
+                        }
+                    }
+                }
+			}
 
 
 

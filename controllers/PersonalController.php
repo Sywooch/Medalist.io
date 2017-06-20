@@ -388,6 +388,19 @@ class PersonalController extends \yii\web\Controller
 
 
 
+        $other = true;
+
+        if( !Yii::$app->user->isGuest ){
+            if( Yii::$app->user->identity->id == $goal->user_id ){
+                $other = false;
+            }
+
+        }else{
+             $other = true;
+        }
+
+
+
          //OG PARAMS
         $this->view->params['og_title'] = $goal->getUser()->name.': Цель: '.$goal->name;
         $this->view->params['og_description'] = $goal->description;
@@ -401,7 +414,7 @@ class PersonalController extends \yii\web\Controller
 
 
 
-        return $this->render('goal-detail', ['goal' => $goal]);
+        return $this->render('goal-detail', ['goal' => $goal, 'other' => $other]);
     }
 
 

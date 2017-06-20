@@ -101,6 +101,19 @@ class Goal extends \yii\db\ActiveRecord
     }
 
 
+    public  function getPhotosFilenames(){
+        $myitemfiles = Photo::find()->where("entity_class = 'Goal' and entity_id = ".$this->goal_id)->all();
+
+		$output = Array();
+        foreach($myitemfiles as $file){ //get an array which has the names of all the files and loop through it 
+            $info = pathinfo($file->filename);
+            array_push($output, $info['basename'].'|'.$file->filename.'|'.filesize('../web'.$file->filename));
+        }
+        return implode(',', $output);
+
+    }
+
+
     //Процент выполнения цели.
 
     public function getProgressPercent(){
