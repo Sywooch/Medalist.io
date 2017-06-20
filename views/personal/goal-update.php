@@ -45,13 +45,7 @@ echo $this->render('_panel.php');
 											Кликните в поле ниже для добавления фото
 			 							</div>
 
-			 							<div class="addach-description-photos" data-toggle="dropzone">
-<!--
-			 								<a class="container-menu-list-meta-add addach-description-photos-icon" href="#">
-												<span class="container-menu-list-meta-add-plus">+</span>
-											</a>
-											<div class="addach-description-photos-text">Перетащите сюда фотографии (до 3Мб)</div>
--->
+			 							<div class="addach-description-photos" id="uploadHolder" data-toggle="dropzone" data-preloadedPhotos = "<?=$goal->getPhotosFilenames();?>">
 			 							</div>
 			 						</div>
 
