@@ -38,7 +38,7 @@ echo $this->render('_panel.php');
 			 							<div class="addach-description-text">
 			 								<textarea name="description" id="description" data-toggle="trumbowyg" cols="30" rows="10" class="addach-description-text-textarea"><?=$predefinedText?></textarea>
 			 							</div>
-			 							<div class="addach-description-date">Крайний срок до достижениея: <span class="addach-description-date-icon"></span><input data-toggle="datepicker" class="addach-description-date-date mdlst-input-small" name="deadline"></div>
+			 							<div class="addach-description-date">Крайний срок: <span class="addach-description-date-icon"></span><input data-toggle="datepicker" class="addach-description-date-date mdlst-input-small" name="deadline"></div>
 
 				 						<div class="addach-description-photos-header">
 											Кликните в поле ниже для добавления фото

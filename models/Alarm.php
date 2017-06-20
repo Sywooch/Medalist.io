@@ -27,6 +27,8 @@ class Alarm extends \yii\db\ActiveRecord
     const TYPE_QUEST_CHALLENGE = 3;
     const TYPE_YOU_ARE_FOLLOWED = 4;
     const TYPE_ACHIEVEMENT_APPROVED = 5;
+    const TYPE_QUEST_CHALLENGE_ACCEPTED = 6;
+    const TYPE_QUEST_CHALLENGE_REFUSED = 7;
 
     /**
      * @inheritdoc
@@ -199,6 +201,20 @@ class Alarm extends \yii\db\ActiveRecord
                                             } ?>
                                 <?
                                 break;
+                                case 3:
+                                ?>
+                                        бросил вам вызов в квесте 
+                                        <?  
+                                                $obj = Quest::findOne( $alarm->entity_id);
+                                                ?>
+                                                   <a href="<?=Yii::$app->urlManager->createUrl(['personal/quest', 'quest_id' => $alarm->entity_id]);?>"><?=$obj->name?></a>
+                                                <?
+                                            
+
+
+                                              ?>
+                                <?
+                                break;
                                 case 4:
                                 ?>
                                         подписался на ваши обновления 
@@ -219,6 +235,39 @@ class Alarm extends \yii\db\ActiveRecord
 
                                             } ?>
                                          
+                                <?
+                                break;
+
+
+                                case 6:
+                                ?>
+                                        СОГЛАСИЛСЯ участвовать в квесте 
+                                        <?  
+                                                $obj = Quest::findOne( $alarm->entity_id);
+                                                ?>
+                                                   <a href="<?=Yii::$app->urlManager->createUrl(['personal/quest', 'quest_id' => $alarm->entity_id]);?>"><?=$obj->name?></a>
+                                                <?
+                                            
+
+
+                                              ?>
+                                <?
+                                break;
+
+
+
+                                case 7:
+                                ?>
+                                       ОТКАЗАЛСЯ участвовать в квесте 
+                                        <?  
+                                                $obj = Quest::findOne( $alarm->entity_id);
+                                                ?>
+                                                   <a href="<?=Yii::$app->urlManager->createUrl(['personal/quest', 'quest_id' => $alarm->entity_id]);?>"><?=$obj->name?></a>
+                                                <?
+                                            
+
+
+                                              ?>
                                 <?
                                 break;
 

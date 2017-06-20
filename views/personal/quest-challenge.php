@@ -105,7 +105,7 @@ echo $this->render('_panel.php');
 </a>                                              
                                                 <div class="friend-list-block-level"><?=$level->level?></div>
                                               
-                                                <div class="friend-list-block-level">
+                                                <div class="friend-list-block-but">
                                                     <? 
 
                                                     if( $canMakeChallenge ){

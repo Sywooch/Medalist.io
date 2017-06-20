@@ -9,6 +9,7 @@ use app\models\QuestPendingTask;
 use app\models\Badge;
 use app\models\Notification;
 use app\models\NotificationType;
+use app\models\Alarm;
 use Yii;
 
 
@@ -45,6 +46,11 @@ class QuestController extends \yii\web\Controller
             $questChallenge = QuestChallenge::findOne( $get['quest_challenge_id'] );
             $questChallenge->status = 1;
             $questChallenge->save();
+
+              //Reversed because it is response
+                Alarm::addAlarm( $questChallenge->to_user_id  ,  $questChallenge->user_id , Alarm::TYPE_QUEST_CHALLENGE_ACCEPTED, false , 'Quest', $questChallenge->quest_id );
+
+
         }
 
         //New Event
@@ -83,8 +89,10 @@ class QuestController extends \yii\web\Controller
 
                 $questChallenge->status = 9;
                 $questChallenge->save();
+                //Reversed because it is response
+                Alarm::addAlarm( $questChallenge->to_user_id  ,  $questChallenge->user_id , Alarm::TYPE_QUEST_CHALLENGE_REFUSED, false , 'Quest', $questChallenge->quest_id );
 
-                $result['success'] = false;
+                $result['success'] = true;
             }
         }
        
@@ -147,6 +155,8 @@ class QuestController extends \yii\web\Controller
                 $questChallenge->date_created = date("Y-m-d H:i:s");
 
                 if( $questChallenge->save() ){
+
+                     Alarm::addAlarm( $questChallenge->user_id ,  $questChallenge->to_user_id  , Alarm::TYPE_QUEST_CHALLENGE, false , 'Quest', $questChallenge->quest_id );
                      $result['success'] = true;
                 }
 

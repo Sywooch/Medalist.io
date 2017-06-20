@@ -488,7 +488,7 @@ class PersonalController extends \yii\web\Controller
             $excludeIds[] = $pt->quest_id;
         }
 
-        $quests = Quest::find()->where(['not in', 'quest_id', $excludeIds])->andWhere(['active' => 1]);
+        $quests = Quest::find()->where(['not in', 'quest_id', $excludeIds])->andWhere(['active' => 1, 'deleted' => 0]);
 
 
         $quests = $quests->limit(10);
