@@ -37,7 +37,7 @@ class QuestController extends \yii\web\Controller
 
 
           //BaseAchievement
-        ScalePointsBalance::addBalance($this->user_id, ScalePointsBalance::BASE_QUEST_TAKEN_SCALE, ScalePointsBalance::BASE_QUEST_TAKEN_POINTS, "Quest", $questPendingTask->achievement_id);
+        ScalePointsBalance::addBalance($questPendingTask->user_id, ScalePointsBalance::BASE_QUEST_TAKEN_SCALE, ScalePointsBalance::BASE_QUEST_TAKEN_POINTS, "Quest", $questPendingTask->quest_id);
 
 
         //NOTIFICATION - NEW ACHIEVEMENT 
