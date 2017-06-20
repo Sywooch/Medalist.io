@@ -739,6 +739,17 @@ $(document).ready(function(){
 						console.log(data);
 						p.find('.js-add-like').removeClass('like-controll-active');
 						$(that).addClass('like-controll-active');
+
+						$.ajax({
+							url: ajaxUrls['getLikes'],
+							data: { entity_class : className, entity_id: classId },
+							type: 'get',
+							dataType: 'json',
+							success: function(data){
+							 p.find('.like-controll-plus').html('<span></span>'+data.likes);
+							 p.find('.like-controll-minus').html('<span></span>'+data.dislikes);
+							}
+						});
 					}
 
 				})
@@ -782,6 +793,19 @@ $(document).ready(function(){
 
 
 		
+		$(document).on('click', '.js-clear-parent-comment', function(){
+
+			p = $(this).parents('.form-add-comment'),
+				className = p.data('obj'),
+				whome = p.find('.form-add-comment-towhome'),
+				classId = p.data('id'),
+				inp =p.find('.parent_comment_id');
+
+
+			whome.slideUp();
+			inp.val(0);
+
+		});
 		$(document).on('click', '.js-add-comment', function(){
 			var p = $(this).parents('.form-add-comment'),
 				className = p.data('obj'),
@@ -832,10 +856,16 @@ $(document).ready(function(){
 
 		$(document).on('click', '.js-comment-makeresponse', function(){
 			var p = $(this).parents('.comments-widget'),
-				form = p.find('.form-add-comment');
+				curComment = $(this).parents('.comment-block-data'),
+				name = curComment.find('.comment-block-data-user-name-link').text(),
+				form = p.find('.form-add-comment'),
+				whome = form.find('.form-add-comment-towhome');
 
 				form.find('.parent_comment_id').val( $(this).data('id') );
 				form.find('textarea').focus();
+
+				whome.slideDown();
+				whome.find('.form-add-comment-towhome-response-name').text(name);
 
 				//TODO - add label that "Your answer too..."
 

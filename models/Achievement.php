@@ -185,7 +185,12 @@ class Achievement extends \yii\db\ActiveRecord
 			else{
 			/*Error quest without any reward*/
 			}
-		}
+		}else{
+
+            //BaseAchievement
+            ScalePointsBalance::addBalance($this->user_id, ScalePointsBalance::BASE_ACHIEVEMENT_SCALE, ScalePointsBalance::BASE_ACHIEVEMENT_POINTS, "Achievement", $this->achievement_id);
+
+        }
 
     }
 /* Andrey */

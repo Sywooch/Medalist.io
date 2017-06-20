@@ -38,7 +38,7 @@ class LikeController extends \yii\web\Controller
 
 
 
-                    if( !empty($obj) ){
+                    if( !empty($obj) && !empty($obj->user_id)){
                         Alarm::addAlarm(Yii::$app->user->identity->id, $obj->user_id, Alarm::TYPE_LIKE, false, Yii::$app->request->get()['entity_class'], Yii::$app->request->get()['entity_id']);    
                     }
                     
@@ -55,7 +55,32 @@ class LikeController extends \yii\web\Controller
 
     public function actionAjaxGetLikes()
     {
-        return $this->render('ajax-get-likes');
+       
+       $result = [];
+       $result['success'] = false;
+
+       if( !empty(Yii::$app->request->get())  ){
+            $result['step1'] = true;
+            if (!empty(Yii::$app->request->get()['entity_class']) && !empty(Yii::$app->request->get()['entity_id'])){
+                
+        
+                    $className = "app\\models\\".Yii::$app->request->get()['entity_class'];
+
+                    $obj = $className::findOne(Yii::$app->request->get()['entity_id']); 
+
+                    $likes = Like::getLikesOfObjectCount($obj);
+                    $dislikes = Like::getDislikesOfObjectCount($obj);
+
+                    $result['likes'] = $likes;
+                    $result['dislikes'] = $dislikes;
+                    $result['success'] = true;
+
+
+ 
+            }
+        }
+
+         echo json_encode($result);
     }
 
 }

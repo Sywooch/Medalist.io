@@ -125,6 +125,9 @@ class CommentComponent extends Component
         }else{
             ?>
             <form class="form-add-comment" data-obj="<?=$classname?>" data-id="<?=$id?>">
+                <div class="form-add-comment-towhome" style="display: none"  >
+                    <span class="form-add-comment-towhome-response">Ответ на комментарий <span class="form-add-comment-towhome-response-name">John Gliackman</span><span  class="form-add-comment-towhome-response-cross js-clear-parent-comment">X</span></span>
+                </div>
                 <textarea class="form-add-comment-textarea" ></textarea>
                 <input type="hidden" name="parent_comment_id" class="parent_comment_id parent_comment_id-<?=$classname?>-<?=$id?>" value="0">
                 <div class="form-add-comment-error" style="display: none;">Введите комментарий</div>

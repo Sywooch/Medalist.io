@@ -63,7 +63,7 @@ if ( empty($this->title) ){
             $ajaxUrls = [];
             $ajaxUrls['alarmCheckNew'] = Yii::$app->urlManager->createUrl('alarm/ajax-alarm-check-new');
 
-            
+
             $ajaxUrls['getBadgeInfo'] = Yii::$app->urlManager->createUrl('badge/ajax-get-info');
 
             $ajaxUrls['takeQuest'] = Yii::$app->urlManager->createUrl('quest/ajax-take-quest');
@@ -84,6 +84,7 @@ if ( empty($this->title) ){
             $ajaxUrls['setGoalSubtaskComplete'] = Yii::$app->urlManager->createUrl('goal/ajax-set-goal-subtask-complete');
 
             $ajaxUrls['addLike'] = Yii::$app->urlManager->createUrl('like/ajax-add-like');
+            $ajaxUrls['getLikes'] = Yii::$app->urlManager->createUrl('like/ajax-get-likes');
 
 
             $ajaxUrls['addFollower'] = Yii::$app->urlManager->createUrl('follower/ajax-follow');

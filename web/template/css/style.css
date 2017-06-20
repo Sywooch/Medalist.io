@@ -30,6 +30,7 @@
 .comment-block-data-user-pic,
 .comment-block-data-content,
 .comment-controll span,
+.form-add-comment-towhome-response-cross,
 .form-add-comment-textarea,
 .questssuggested-quests-quest-user,
 .questssuggested-quests-quest-quest,
@@ -202,6 +203,7 @@
 }
 .dib_m,
 .header-logo,
+.form-add-comment-towhome-response-cross,
 .questssuggested-quests-quest-user,
 .questssuggested-quests-quest-quest,
 .questssuggested-quests-quest-quest-pic,
@@ -753,6 +755,21 @@ a {
   width: 100%;
   margin-top: 5px;
   margin-bottom: 25px;
+}
+.form-add-comment-towhome {
+  display: block;
+  padding: 10px;
+  position: relative;
+  width: 100%;
+}
+.form-add-comment-towhome-response {
+  font-size: 12px;
+}
+.form-add-comment-towhome-response-cross {
+  cursor: pointer;
+  color: #ff2d0b;
+  font-weight: bold;
+  margin-left: 5px;
 }
 .form-add-comment-textarea {
   width: 100%;

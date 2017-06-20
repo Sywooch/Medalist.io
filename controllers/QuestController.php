@@ -9,6 +9,7 @@ use app\models\QuestPendingTask;
 use app\models\Badge;
 use app\models\Notification;
 use app\models\NotificationType;
+use app\models\ScalePointsBalance;
 use app\models\Alarm;
 use Yii;
 
@@ -33,6 +34,10 @@ class QuestController extends \yii\web\Controller
         $questPendingTask->user_id = Yii::$app->user->identity->id;
 
         $questPendingTask->save();
+
+
+          //BaseAchievement
+        ScalePointsBalance::addBalance($this->user_id, ScalePointsBalance::BASE_QUEST_TAKEN_SCALE, ScalePointsBalance::BASE_QUEST_TAKEN_POINTS, "Quest", $questPendingTask->achievement_id);
 
 
         //NOTIFICATION - NEW ACHIEVEMENT 

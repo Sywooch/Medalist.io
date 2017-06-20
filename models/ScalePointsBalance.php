@@ -17,6 +17,11 @@ use Yii;
  */
 class ScalePointsBalance extends \yii\db\ActiveRecord
 {
+    //todo refactor
+    const BASE_ACHIEVEMENT_SCALE = 1;
+    const BASE_ACHIEVEMENT_POINTS = 9;
+    const BASE_QUEST_TAKEN_SCALE = 1;
+    const BASE_QUEST_TAKEN_POINTS = 3;
     /**
      * @inheritdoc
      */
