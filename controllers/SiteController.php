@@ -106,7 +106,7 @@ class SiteController extends Controller
         }
        
 
-        $achievements = Achievement::find()->where(['achievement_id' => $entity_ids])->limit(10)->all();
+        $achievements = Achievement::find()->where(['achievement_id' => $entity_ids])->orderBy(['date_achieved' => SORT_DESC])->limit(30)->all();
        
       
         return $this->render('last-achievements', ['achievements' =>  $achievements]);
