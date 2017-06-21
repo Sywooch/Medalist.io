@@ -87,7 +87,10 @@ class Alarm extends \yii\db\ActiveRecord
         }
 
         $alarm = new Alarm;
-        $alarm->from_user_id = $userFrom;
+        if( !empty($userFrom) ){
+            $alarm->from_user_id = $userFrom;    
+        }
+        
         $alarm->to_user_id = $userTo;
         $alarm->alarm_type = $alarmType;
 

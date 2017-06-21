@@ -5,6 +5,7 @@ namespace app\models;
 use Yii;
 use amnah\yii2\user\models\User;
 use app\models\QuestReward;
+use app\models\Alarm;
 use app\models\Badge;
 
 /**

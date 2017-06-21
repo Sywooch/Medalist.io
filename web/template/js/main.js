@@ -38,7 +38,7 @@ checkAlarms = function(){
 		type: 'get',
 		success: function(html){
 			if( $('#notifications').length > 0 ){
-				$('#notifications .notifications-blocks').append( html );
+				$('#notifications .notifications-blocks').prepend( html );
 
 
 				if( html != ''){
