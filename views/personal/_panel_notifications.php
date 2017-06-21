@@ -25,6 +25,9 @@ $alarms = Alarm::find()->where(['to_user_id' => Yii::$app->user->identity->id])-
 				<?php foreach($alarms as $alarm){ 
 
 						Alarm::renderAlarmBlockHTML($alarm);
+
+						$alarm->traced = 1;
+						$alarm->save();
   					 } ?>
 
 
