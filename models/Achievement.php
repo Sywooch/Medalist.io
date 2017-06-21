@@ -30,6 +30,7 @@ use app\models\Badge;
  */
 class Achievement extends \yii\db\ActiveRecord
 {
+    const LIKES_TO_CONFIRM = 1;
     /**
      * @inheritdoc
      */
@@ -163,7 +164,7 @@ class Achievement extends \yii\db\ActiveRecord
     /**
     *   Установить статус подтверждения
     */
-    public function setStatusApproved($NewStatus){
+    public function setStatusApproved($NewStatus = 1){
 		$this->status = $NewStatus;
 		$this->save();
 

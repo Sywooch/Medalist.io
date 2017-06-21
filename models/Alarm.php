@@ -139,14 +139,12 @@ class Alarm extends \yii\db\ActiveRecord
 
         $class = ($big == true )?"notificationslist":"notifications";
          
-
+        $fromUser = false;
          if( !empty($alarm->from_user_id) ){
              $fromUser = $alarm->getUserFrom()->one();
          }
 
-       
-
-        if(!$fromUser){ return ''; }
+        
                     ?>
                 <div class="<?=$class?>-block <? if($alarm->status == 0 ) { ?><?=$class?>-block__new <? } ?> h-alarm-block" data-alarm_id="<?=$alarm->alarm_id?>">
                     <div class="<?=$class?>-block-user">

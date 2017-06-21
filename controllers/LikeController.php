@@ -36,11 +36,20 @@ class LikeController extends \yii\web\Controller
 
                     $obj = $className::findOne(Yii::$app->request->get()['entity_id']); 
 
-
+                    if( Yii::$app->request->get()['entity_class'] == "Achievement" ){
+                        $likeCount = Like::getLikesOfObjectCount($obj);
+                        $dislikeCount = Like::getDislikesOfObjectCount($obj);
+                        if( ($likeCount - $dislikeCount) >= Achievement::LIKES_TO_CONFIRM ){
+                            $obj->setStatusApproved(1);
+                        }
+                    }
+                    
 
                     if( !empty($obj) && !empty($obj->user_id)){
                         Alarm::addAlarm(Yii::$app->user->identity->id, $obj->user_id, Alarm::TYPE_LIKE, false, Yii::$app->request->get()['entity_class'], Yii::$app->request->get()['entity_id']);    
                     }
+
+
                     
 
 

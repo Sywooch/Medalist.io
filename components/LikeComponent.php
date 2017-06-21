@@ -6,6 +6,7 @@ use Yii;
 use yii\base\Component;
 use yii\base\InvalidConfigException;
 use app\models\Like;
+use app\models\Achievement;
  
 class LikeComponent extends Component
 {
@@ -53,7 +54,7 @@ class LikeComponent extends Component
     <div class="like-controll-plus js-add-like <?=$class_active_plus?>" data-point="1" ><span></span><?=$plus?></div>
     <div class="like-controll-minus js-add-like <?=$class_active_minus?>"  data-point="-1" ><span></span><?=$minus?></div>
 <?if($classname == "Achievement"){
-	$likesToConfirm = 1;
+	$likesToConfirm = Achievement::LIKES_TO_CONFIRM;
 	$moreLikes = $likesToConfirm -$plus+$minus;
 	if($moreLikes>0){?>
 		<div class="like-controll-more hint hint--bottom  hint--info" data-hint="Осталось набрать для подтверждения"><span></span><?=$likesToConfirm -$plus+$minus?></div>
