@@ -17,7 +17,7 @@ class AlarmController extends \yii\web\Controller
 
 		$big = !empty(Yii::$app->request->get()['big']) ;
     	 
-    	$alarms = Alarm::find()->where(['to_user_id' => Yii::$app->user->identity->id, 'traced' => 0])->orderBy(['date_created' => SORT_DESC])->limit(5)->all();
+    	$alarms = Alarm::find()->where(['to_user_id' => Yii::$app->user->identity->id, 'traced' => 0])->orderBy(['date_created' => SORT_DESC, 'traced' => SORT_ASC])->limit(5)->all();
 
     	foreach ($alarms as $alarm) {
     		Alarm::renderAlarmBlockHTML($alarm, $big)	;
