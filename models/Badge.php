@@ -89,7 +89,7 @@ class Badge extends \yii\db\ActiveRecord
 
 
             //Adding Badge Balance
-			BadgeBalance::addBalance($user_id, $badge_id, $entity_class  , $entity_id );
+			$bb = BadgeBalance::addBalance($user_id, $badge_id, $entity_class  , $entity_id );
 
 /*
             $badgeBalance = new BadgeBalance; 
@@ -107,6 +107,9 @@ class Badge extends \yii\db\ActiveRecord
              
             //Adding Scale Points Balance
 			ScalePointsBalance::addBalance($user_id, $row['scale_id'], $row['points'], "Badge", (int)$badge_id);
+
+            //Adding Alarm
+            Alarm::addAlarm( false, $user_id, Alarm::TYPE_REWARD, '', 'BadgeBalance',  $bb->badge_balance_id);
 
 /*
             $scalePointsBalance = new ScalePointsBalance;

@@ -20,8 +20,23 @@ class ScalePointsBalance extends \yii\db\ActiveRecord
     //todo refactor
     const BASE_ACHIEVEMENT_SCALE = 1;
     const BASE_ACHIEVEMENT_POINTS = 9;
+
     const BASE_QUEST_TAKEN_SCALE = 1;
     const BASE_QUEST_TAKEN_POINTS = 3;
+
+    const BASE_QUEST_FINISHED_SCALE = 1;
+    const BASE_QUEST_FINISHED_POINTS = 9; //MUST BE TAKEN FROM QUEST REWARD
+
+    const BASE_GOAL_CREATED_SCALE = 1;
+    const BASE_GOAL_CREATED_POINTS = 3;
+
+    const BASE_GOAL_FINISHED_SCALE = 1;
+    const BASE_GOAL_FINISHED_POINTS = 10;
+
+
+    const BASE_SHARE_SCALE = 1;
+    const BASE_SHARE_POINTS = 10;
+
     /**
      * @inheritdoc
      */
@@ -99,6 +114,16 @@ class ScalePointsBalance extends \yii\db\ActiveRecord
 		$scalePointsBalance->save();
 
     }
+
+
+
+
+
+
+
+
+
+
 
     public static function getRatingPosition($user_id, $Rating = 'main'){
 

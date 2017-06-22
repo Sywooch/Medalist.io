@@ -2,6 +2,9 @@
 @import "dropzone.css";
 /*C_Purple = #6534ac*/
 /*CMain = CBlue*/
+.js-hidden {
+  display: none;
+}
 .dib,
 .dib_t,
 .dib_m,

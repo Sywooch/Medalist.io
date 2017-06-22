@@ -189,8 +189,19 @@ class Achievement extends \yii\db\ActiveRecord
 			}
 		}else{
 
-            //BaseAchievement
-            ScalePointsBalance::addBalance($this->user_id, ScalePointsBalance::BASE_ACHIEVEMENT_SCALE, ScalePointsBalance::BASE_ACHIEVEMENT_POINTS, "Achievement", $this->achievement_id);
+
+            if( !empty($this->goal_id) ){
+
+                //BaseAchievement
+                ScalePointsBalance::addBalance($this->user_id, ScalePointsBalance::BASE_GOAL_FINISHED_SCALE, ScalePointsBalance::BASE_GOAL_FINISHED_POINTS, "Goal", $this->goal_id);
+
+            }else{
+                
+                ScalePointsBalance::addBalance($this->user_id, ScalePointsBalance::BASE_ACHIEVEMENT_SCALE, ScalePointsBalance::BASE_ACHIEVEMENT_POINTS, "Achievement", $this->achievement_id);
+                
+            }
+
+            
 
         }
 

@@ -7,6 +7,8 @@ use amnah\yii2\user\models\User;
 use app\models\Achievement;
 use app\models\Goal;
 use app\models\Follower;
+use app\models\Badge;
+use app\models\BadgeBalance;
 /**
  * This is the model class for table "alarm".
  *
@@ -29,6 +31,7 @@ class Alarm extends \yii\db\ActiveRecord
     const TYPE_ACHIEVEMENT_APPROVED = 5;
     const TYPE_QUEST_CHALLENGE_ACCEPTED = 6;
     const TYPE_QUEST_CHALLENGE_REFUSED = 7;
+    const TYPE_REWARD = 8;
 
     /**
      * @inheritdoc
@@ -85,6 +88,20 @@ class Alarm extends \yii\db\ActiveRecord
         if( $userFrom === $userTo ){
             return false;
         }
+
+
+        //Checl alarmas 
+        if( !empty($userFrom) ){
+            $exists = Alarm::find()->where(['to_user_id' => $userTo,'from_user_id' => $userFrom,'alarm_type' => $alarmType,'entity_class' => $entity_class,'entity_id' => $entity_id])->all();
+        }else{
+            $exists = Alarm::find()->where([ 'to_user_id' => $userTo,'alarm_type' => $alarmType,'entity_class' => $entity_class,'entity_id' => $entity_id])->all();
+        }
+
+        if( $exists ){
+            return false;
+        }
+        
+
 
         $alarm = new Alarm;
         if( !empty($userFrom) ){
@@ -264,6 +281,23 @@ class Alarm extends \yii\db\ActiveRecord
                                                 $obj = Quest::findOne( $alarm->entity_id);
                                                 ?>
                                                    <a href="<?=Yii::$app->urlManager->createUrl(['personal/quest', 'quest_id' => $alarm->entity_id]);?>"><?=$obj->name?></a>
+                                                <?
+                                            
+
+
+                                              ?>
+                                <?
+                                break;
+
+                                case 8:
+                                ///index.php?r=personal%2Freward-detail&badge_id=1&badge_balance_id=70
+                                ?>
+                                       У вас новая награда 
+                                        <?  
+                                                $badgeBalance = BadgeBalance::findOne( $alarm->entity_id);
+                                                $obj = Badge::findOne( $badgeBalance->badge_id);
+                                                ?>
+                                                   <a href="<?=Yii::$app->urlManager->createUrl(['personal/reward-detail', 'badge_id' => $obj->entity_id, 'badge_balance_id' => $badgeBalance->badge_id]);?>"><?=$obj->name?></a>
                                                 <?
                                             
 
