@@ -13,7 +13,6 @@ use Yii;
 class Scale extends \yii\db\ActiveRecord
 {
 
-    const BASE_ACHIEVEMENT_SCALE = 1;
     /**
      * @inheritdoc
      */

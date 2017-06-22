@@ -78,7 +78,11 @@ class BadgeBalance extends \yii\db\ActiveRecord
 	    $badgeBalance->date_created = date("Y-m-d H:i:s");
         if ( !empty($entity_class)) {$badgeBalance->entity_class =  $entity_class; }
         if ( !empty($entity_id)) {$badgeBalance->entity_id =  $entity_id; }
-		$badgeBalance->save();
+		if ( $badgeBalance->save() ) {
+            return $badgeBalance->badge_balance_id;
+        }else{
+            return false;
+        }
     }
 /* Andrey */
 

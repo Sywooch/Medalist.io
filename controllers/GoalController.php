@@ -13,6 +13,7 @@ use app\models\Tag;
 use app\models\Category;
 use app\models\Notification;
 use app\models\NotificationType;
+use app\models\ScalePointsBalance;
 use app\models\Photo;
 /**
  * GoalController implements the CRUD actions for Goal model.
@@ -211,6 +212,9 @@ class GoalController extends Controller
 
                     //NOTIFICATION - NEW ACHIEVEMENT 
                     Notification::addNotification( $goal->user_id,  NotificationType::NT_NEW_GOAL,  $goal);
+
+                    //ScalePointsBalance - NEW GOAL 
+                    ScalePointsBalance::addBalance( $goal->user_id,  ScalePointsBalance::BASE_GOAL_CREATED_SCALE, ScalePointsBalance::BASE_GOAL_CREATED_POINTS,  'Goal', $goal->goal_id);
 
 
                     if( !empty($post['interests']) ) {

@@ -88,6 +88,7 @@ if ( empty($this->title) ){
 
 
             $ajaxUrls['addFollower'] = Yii::$app->urlManager->createUrl('follower/ajax-follow');
+            $ajaxUrls['removeFollower'] = Yii::$app->urlManager->createUrl('follower/ajax-unfollow');
 
 
             $ajaxUrls['addComment'] = Yii::$app->urlManager->createUrl('comment/ajax-add-comment');

@@ -14,6 +14,7 @@ use app\models\Quest;
 use app\models\Category;
 use app\models\User;
 use app\models\Tag;
+use app\models\ScalePointsBalance;
 
 class SiteController extends Controller
 {
@@ -177,6 +178,20 @@ class SiteController extends Controller
 
         }
        
+    }
+
+    public function actionAjaxShareTrack(){
+        $result = [];
+
+        $get = Yii::$app->request->get();
+        $result['success'] = false;
+        if( !empty($get['user_id']) && !empty($get['entity_class']) && !empty($get['entity_id'])){
+            ScalePointsBalance::addBalance($get['user_id'], ScalePointsBalance::BASE_SHARE_SCALE, ScalePointsBalance::BASE_SHARE_POINTS, $get['entity_class'], $get['entity_id']);    
+            $result['success'] = true;
+        }
+        
+
+        return json_encode($result);
     }
 
     /**

@@ -60,10 +60,12 @@ if ( !Yii::$app->user->isGuest ){
                                  }else{ 
 
                                         if ( !$isFollowed  ){
-                                            Yii::$app->decor->button('Подписаться', '', 'js-follow-person', ['user_id' => $user->id]);  
+                                            Yii::$app->decor->button('Подписаться', '', 'js-follow-person mdlst-button-smaller ', ['user_id' => $user->id]);
+                                            Yii::$app->decor->button('Отписаться', '', 'js-unfollow-person js-hidden mdlst-button-smaller', ['user_id' => $user->id]);  
                                         }else{
-
-                                            Yii::$app->decor->button('Уже подписаны', '', 'mdlst-button-disabled mdlst-button-smaller withNoButton'); 
+                                                Yii::$app->decor->button('Подписаться', '', 'js-follow-person  js-hidden mdlst-button-smaller', ['user_id' => $user->id]);
+                                            Yii::$app->decor->button('Отписаться', '', 'js-unfollow-person mdlst-button-smaller', ['user_id' => $user->id]);  
+                                            
 
                                         }
                                 } 
