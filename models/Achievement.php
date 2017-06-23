@@ -30,7 +30,7 @@ use app\models\Badge;
  */
 class Achievement extends \yii\db\ActiveRecord
 {
-    const LIKES_TO_CONFIRM = 1;
+    const LIKES_TO_CONFIRM = 3;
     /**
      * @inheritdoc
      */
