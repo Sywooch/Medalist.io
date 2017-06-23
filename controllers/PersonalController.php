@@ -612,7 +612,7 @@ class PersonalController extends \yii\web\Controller
          //OG PARAMS
         $this->view->params['og_title'] = 'Квест '.$q->name." - пройди и получи баллы. Сможешь?";
         $this->view->params['og_description'] = 'А вы сможете выполнить квест '.$q->name.'? Кое-кто уже доказал, что сможет.';
-        $this->view->params['og_image'] = 'http://'.Yii::$app->request->serverName.$q->picture;
+        $this->view->params['og_image'] = 'http://'.Yii::$app->request->serverName.'/'.$q->picture;
 
 
         return $this->render('quest', ['quest' => $q, 'category' => $category , 'badge' => $badge , 'achievements' => $achievements]);
