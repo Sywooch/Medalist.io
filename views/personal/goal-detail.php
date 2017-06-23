@@ -334,7 +334,7 @@ if( Yii::$app->user->isGuest ){
                                         <label for="tabs-0-2">Комментарии</label>
 
                                         <div>
-                                            <div class="goal-comments-block goal-comments-<?=$goal->goal_id?>  comments-widget" data-obj="Goal" data-id="<?=$goal->goal_id?>" >
+                                            <div class="goal-comments-block   questblock-comments-quest-<?=$goal->goal_id?> comments-widget  " data-obj="Goal" data-id="<?=$goal->goal_id?>" >
                                                 <div class="questblock-comments-form"><?=Yii::$app->comment->renderResponseForm( $goal  );?></div>
                                                 <div class="questblock-comments-form-wrapper"><?=Yii::$app->comment->renderCommentFeed( $goal, 0, 10 );?></div>
                                             </div>

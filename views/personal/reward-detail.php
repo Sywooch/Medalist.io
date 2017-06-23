@@ -26,7 +26,7 @@ echo $this->render('_panel.php');
 
 							</div> 
 
-							<div class="output-content">
+							<div class="output-content  repost-points-wrapper reward-detail-page-<?=$badge->badge_id?>" data-entity_class="Badge"  data-entity_id="<?=$badge->badge_id?>">
 								<div style="background-color: white; margin-top: 10px; margin-bottom: 10px; padding: 25px; box-sizing:  border-box; text-align: center;	">
 									<img src="<?=$badge->picture?>">
 									<p><?=$badge->description?></p>

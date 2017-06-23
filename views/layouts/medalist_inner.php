@@ -93,6 +93,8 @@ if ( empty($this->title) ){
 
             $ajaxUrls['addComment'] = Yii::$app->urlManager->createUrl('comment/ajax-add-comment');
             $ajaxUrls['getCommentHtml'] = Yii::$app->urlManager->createUrl('comment/ajax-get-comment-html');
+
+            $ajaxUrls['shareTrack'] = Yii::$app->urlManager->createUrl('site/ajax-share-track');
             echo json_encode( $ajaxUrls );
         ?>        
     </script>

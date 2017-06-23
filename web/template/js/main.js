@@ -934,4 +934,30 @@ $(document).ready(function(){
 
 		/* ALARMS END */
 
+
+
+
+ 
+		/* SHARE REWARDS */
+		$('.ya-share2__link').on('click', function(){
+			var p = $(this).parents('.repost-points-wrapper'),
+				entity_class = p.data('entity_class'),
+				entity_id = p.data('entity_id');
+				 
+			$.ajax({
+				url: ajaxUrls['shareTrack'],
+				data: {  entity_class: entity_class, entity_id: entity_id},
+				dataType: 'json',
+				success: function(data){
+					console.log(data);
+				}
+			});
+		});
+		/* SHARE REWARDS END*/
+
+
+
+
+
 });
+

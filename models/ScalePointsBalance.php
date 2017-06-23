@@ -35,7 +35,7 @@ class ScalePointsBalance extends \yii\db\ActiveRecord
 
 
     const BASE_SHARE_SCALE = 1;
-    const BASE_SHARE_POINTS = 10;
+    const BASE_SHARE_POINTS = 2;
 
     /**
      * @inheritdoc
@@ -99,9 +99,9 @@ class ScalePointsBalance extends \yii\db\ActiveRecord
     }
 
 /* Andrey */
-    public static function addBalance($user_id, $scale_id, $points, $attached_entity_class, $attached_entity_id){
+    public static function addBalance($user_id, $scale_id, $points, $attached_entity_class, $attached_entity_id, $type = null){
 
-        $scalePointsBalance = ScalePointsBalance::find()->where(['user_id' => $user_id, 'attached_entity_class' => $attached_entity_class, 'attached_entity_id' => $attached_entity_id, 'scale_id' => $scale_id])->one();
+        $scalePointsBalance = ScalePointsBalance::find()->where(['user_id' => $user_id, 'attached_entity_class' => $attached_entity_class, 'attached_entity_id' => $attached_entity_id, 'scale_id' => $scale_id, 'type' => $type])->one();
 		if(empty($scalePointsBalance)){
 			$scalePointsBalance = new ScalePointsBalance;
 		}
@@ -110,7 +110,8 @@ class ScalePointsBalance extends \yii\db\ActiveRecord
 		$scalePointsBalance->attached_entity_id = $attached_entity_id;
 		$scalePointsBalance->date_created = date("Y-m-d H:i:s");
 		$scalePointsBalance->points = $points;
-		$scalePointsBalance->scale_id = $scale_id;
+        $scalePointsBalance->scale_id = $scale_id;
+		$scalePointsBalance->type = $type;
 		$scalePointsBalance->save();
 
     }

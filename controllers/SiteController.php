@@ -185,13 +185,17 @@ class SiteController extends Controller
 
         $get = Yii::$app->request->get();
         $result['success'] = false;
-        if( !empty($get['user_id']) && !empty($get['entity_class']) && !empty($get['entity_id'])){
-            ScalePointsBalance::addBalance($get['user_id'], ScalePointsBalance::BASE_SHARE_SCALE, ScalePointsBalance::BASE_SHARE_POINTS, $get['entity_class'], $get['entity_id']);    
-            $result['success'] = true;
-        }
-        
 
-        return json_encode($result);
+        if( !Yii::$app->user->isGuest ){
+
+            if( !empty($get['entity_class']) && !empty($get['entity_id'])){
+                ScalePointsBalance::addBalance( Yii::$app->user->identity->id, ScalePointsBalance::BASE_SHARE_SCALE, ScalePointsBalance::BASE_SHARE_POINTS, $get['entity_class'], $get['entity_id'], 'repost');    
+                $result['success'] = true;
+            }
+        
+        }
+
+        echo json_encode($result);
     }
 
     /**
