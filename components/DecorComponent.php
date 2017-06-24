@@ -230,6 +230,29 @@ class DecorComponent extends Component
        	$info = pathinfo( $photo );
 		return $info['dirname'].'/'.$info['filename'].'_tb.'.$info['extension'];
 	}
+
+
+
+    public static function classnameToName($classname){
+        switch ($classname) {
+            case 'Badge':
+                return 'Награда';
+                break;
+            case 'Quest':
+                return 'Квест';
+                break;
+            case 'Goal':
+                return 'Цель';
+                break;
+            case 'Achievement':
+                return 'Достижение';
+                break;
+            
+            default:
+                # code...
+                break;
+        }
+    }
  
  
 }

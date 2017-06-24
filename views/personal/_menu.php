@@ -73,6 +73,11 @@ $currentUrl = Url::current();
 										<div class="container-menu-list-meta"></div>
 									</li>
 
+									<li class="container-menu-list-li">
+										<a class="container-menu-list-link" href="<?=Yii::$app->urlManager->createUrl('personal/development')?>">Моё развитие</a>
+										<div class="container-menu-list-meta"></div>
+									</li>
+
 									<? }else{
 										?>
 									<li class="container-menu-list-li  <?php if($currentUrl == Yii::$app->urlManager->createUrl('user/login') ) {  ?> container-menu-list-li-active <? } ?>">
@@ -82,10 +87,7 @@ $currentUrl = Url::current();
 										<?
 
 									 }?>
-									<!--<li class="container-menu-list-li">
-										<a class="container-menu-list-link" href="<?=Yii::$app->urlManager->createUrl('personal/development')?>">Моё развитие</a>
-										<div class="container-menu-list-meta"></div>
-									</li>-->
+									
 								</ul>
 							</div>
 						</div>

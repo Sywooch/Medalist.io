@@ -729,6 +729,11 @@ $(document).ready(function(){
 				data =  {entity_class : className, entity_id: classId, point: point},
 				that = this;
 
+				//FrontEnd check
+				if( window.isGuest == 1 ){
+					return false;
+				}
+
 				$.ajax({
 					url: ajaxUrls['addLike'],
 					data: data,

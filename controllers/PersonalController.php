@@ -31,6 +31,25 @@ class PersonalController extends \yii\web\Controller
 
     //todo - protect from unuthorized
 
+    public function actionDevelopment()
+    {
+
+
+        
+        if( !Yii::$app->user->isGuest ){
+            $userToFind = Yii::$app->user->identity->id;
+            $scalePointsBalance = ScalePointsBalance::find()->where('user_id = '.$userToFind)->orderBy([ 'date_created' => SORT_DESC ])->all();
+            return $this->render('development', ['scalePointsBalance' =>$scalePointsBalance  ]);    
+        }else{
+           // throw new \yii\web\NotFoundHttpException();
+            throw new \yii\web\ForbiddenHttpException();
+             return false;
+        }
+
+        
+    }
+    //todo - protect from unuthorized
+
     public function actionAchievements()
     {
 

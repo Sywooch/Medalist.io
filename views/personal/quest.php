@@ -4,6 +4,9 @@ use app\models\Like;
 use app\models\Comment;
 use app\models\Badge;
 use app\models\Scale;
+use app\models\QuestPendingTask;
+use app\models\QuestChallenge;
+use app\models\Achievement;
 use app\models\Category;
 use amnah\yii2\user\models\User;
 
@@ -91,9 +94,20 @@ echo $this->render('_panel.php');
 									
 								</div>
 
-											<div class="questblock-info-controlls-button">
-												<a href="#" class="mdlst-button mdlst-button-default js-quest-takequest" data-id="<?=$quest->quest_id?>">Взять квест</a>
-											</div>
+								<?php 
+								if( !Yii::$app->user->isGuest ){
+								$qpt = QuestPendingTask::find()->where(['quest_id' => $quest->quest_id, 'user_id' => Yii::$app->user->identity->id, 'status' => [0,1]]  )->all();
+								$ach = Achievement::find()->where(['quest_id' => $quest->quest_id,  'user_id' => Yii::$app->user->identity->id]  )->all();
+								$qch = QuestChallenge::find()->where(['quest_id' => $quest->quest_id,  'to_user_id' => Yii::$app->user->identity->id]  )->all();
+									if( empty($qpt) && empty($ach) &&  empty($qch)) {
+								?>
+								<div class="questblock-info-controlls-button">
+									<a href="#" class="mdlst-button mdlst-button-default js-quest-takequest" data-id="<?=$quest->quest_id?>">Взять квест</a>
+								</div>
+								<? } 
+
+								}
+								?>
 
 								<div class="questdetail-completeduser-list">
 									<h3>Бросить вызов: </h3>
