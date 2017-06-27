@@ -126,7 +126,7 @@ echo $this->render('_panel.php');
 								 					</div>
 
 														
-													<div class="achievement-block-content-description"><?=$a->description;?></div>
+													<div class="achievement-block-content-description"><?=Yii::$app->decor->cutDescription($a->description);?></div>
 
 								 					<div class="achievement-block-content-bar">
 								 						<!-- todo universa;-bar-->	
@@ -198,7 +198,7 @@ echo $this->render('_panel.php');
 			                					       	$photos = $a->getPhotos();
 						            	        	    if(!empty($photos) ) { 
 														$thumbs = Yii::$app->decor->getThumbnails($photos);
-    	                					    	?>
+    	                					    	?>                       
 
 										 			<div class="achievement-block-images">
 										                    <div class="goals-picture-mid" <?php if(!empty($photos[0]) ) { ?> style = "background-image: url(<?=$thumbs[0]?>);"<? } ?>></div>
@@ -258,7 +258,7 @@ echo $this->render('_panel.php');
 								 					
 								 					</div>
 														
-													<div class="achievement-block-content-description"><?=$a->description?></div>
+													<div class="achievement-block-content-description"><?=Yii::$app->decor->cutDescription($a->description)?></div>
   
 
 

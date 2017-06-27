@@ -212,7 +212,7 @@ class Notification extends \yii\db\ActiveRecord
 				<div class="newblock-data-text">
 					<span class="not-date"><?=date("d.m.Y", strtotime($obj->date_achieved) );?></span>
 					Новое достижение<!----> <a href="<?=Yii::$app->urlManager->createUrl( ['personal/achievement','achievement_id' => $obj->achievement_id])?>"><?=$obj->name?></a>
-					<p class="newblock-desc"> <?=$obj->description?></p>
+					<p class="newblock-desc"> <?=Yii::$app->decor->cutDescription($obj->description)?></p>
 				</div>
 		                <div class="newblock-pic-user-to">
 					<a href="<?=Yii::$app->urlManager->createUrl( ['personal/achievement','achievement_id' => $obj->achievement_id])?>" class="newblock-pic-name"><?=$obj->name?></a>

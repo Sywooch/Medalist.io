@@ -254,5 +254,12 @@ class DecorComponent extends Component
         }
     }
  
- 
+
+	public static function cutDescription($string) {
+		$string = strip_tags($string);
+		$string = substr($string, 0, 700);
+		$string = rtrim($string, "!,.-");
+		$string = substr($string, 0, strrpos($string, ' '));
+		return $string."… ";
+	}
 }
