@@ -67,6 +67,31 @@ class Comment extends \yii\db\ActiveRecord
     }
 
 
+    public function getObject(){
+        $class = "app\\models\\".$this->entity_class;
+        return $class::findOne($this->entity_id);
+        //Todo User
+    }
+
+    public function getObjectUrl(){
+        switch ( $this->entity_class ) {
+            case 'Achievement':
+                return Yii::$app->urlManager->createUrl( ['personal/achievement', 'achievement_id' => $this->entity_id] );
+                break;
+            case 'Goal':
+                return Yii::$app->urlManager->createUrl( ['personal/goal', 'goal_id' => $this->entity_id] );
+                break;
+            case 'Quest':
+                return Yii::$app->urlManager->createUrl( ['personal/quest', 'quest_id' => $this->entity_id] );
+                break;
+            
+            default:
+                # code...
+                break;
+        }
+    }
+
+
 
     //GetLikesOfObject
     public static function getCommentsOfObject( $obj, $comment_id = false ){
@@ -85,6 +110,8 @@ class Comment extends \yii\db\ActiveRecord
 
 
     }
+
+
 
 
 

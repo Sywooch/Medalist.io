@@ -412,7 +412,13 @@ $(document).ready(function(){
 		$('.js-addach-isdifficult').hide();
 		console.log($('[data-toggle="rangeslider"]').rangeslider({ polyfill: false }));
 		$('.addach-description-text-textarea').trumbowyg(  );
-		$('[data-toggle="datepicker"]').datepicker( {format: 'dd.mm.yyyy'}).datepicker("setDate", "0");
+		$('[data-toggle="datepicker"]').datepicker( {format: 'dd.mm.yyyy'});
+		$('[data-toggle="datepicker"]').each(function(i,e){
+			if( $(e).val() == '' ){
+				$(e).datepicker("setDate", "0");
+			}
+		});
+
 
 
 		if( $('[data-toggle="dropzone"]').length > 0 ){

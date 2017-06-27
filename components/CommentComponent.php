@@ -34,7 +34,7 @@ class CommentComponent extends Component
             <div class="comment-block <?=$extraClass?> comment-id-<?=$comment->comment_id?>">
                 <div class="comment-block-data">
                     <div class="comment-block-data-user">
-                        <div class="comment-block-data-user-pic"><img src="<?=$user->getProfile()->one()->getAvatarSrc();?>"></div>
+                        <div class="comment-block-data-user-pic" style="background-image: url(<?=$user->getProfile()->one()->getAvatarSrc();?>)"></div>
                         <div class="comment-block-data-user-name"> <a class="comment-block-data-user-name-link" href="<?=Yii::$app->urlManager->createUrl( ['personal/viewprofile','user_id' => $user->id])?>"><?=$user->getName();?></a></div>
                         
                     </div>

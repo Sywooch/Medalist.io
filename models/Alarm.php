@@ -145,6 +145,9 @@ class Alarm extends \yii\db\ActiveRecord
 
 
 
+
+
+
     public static function renderAlarmBlockHTML( $alarmId, $big = false){
 
         if( !is_object($alarmId) ){
@@ -212,6 +215,13 @@ class Alarm extends \yii\db\ActiveRecord
                                                 $obj = Goal::findOne( $alarm->entity_id);
                                                 ?>
                                                     вашу цель <a href="<?=Yii::$app->urlManager->createUrl(['personal/goal', 'goal_id' => $alarm->entity_id]);?>"><?=$obj->name?></a>
+                                                <?
+                                            break;
+                                            case "Comment":
+                                                $obj = Comment::findOne( $alarm->entity_id);
+                                                $commentedObj =  $obj->getObject();
+                                                ?>
+                                                    ваш ответ к <a href="<?=$obj->getObjectUrl();?>"><?=$commentedObj->name?></a>
                                                 <?
                                             break;
 

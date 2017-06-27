@@ -39,9 +39,15 @@ class CommentController extends \yii\web\Controller
 
 
 
-                    if( !empty($obj) && !empty(Yii::$app->request->get()['parent_comment_id']) ){
-                        $c = Comment::findOne(Yii::$app->request->get()['parent_comment_id']);
-                        Alarm::addAlarm(Yii::$app->user->identity->id, $c->created_by_id, Alarm::TYPE_COMMENT, false, Yii::$app->request->get()['entity_class'], Yii::$app->request->get()['entity_id']);    
+                    if( !empty($obj)  ){
+
+                        if( !empty(Yii::$app->request->get()['parent_comment_id']) ){
+                            $c = Comment::findOne(Yii::$app->request->get()['parent_comment_id']);
+                            Alarm::addAlarm(Yii::$app->user->identity->id, $obj->user_id, Alarm::TYPE_COMMENT, false, 'Comment',  $c->comment_id);        
+                        }else {
+                            Alarm::addAlarm(Yii::$app->user->identity->id, $obj->user_id, Alarm::TYPE_COMMENT, false, Yii::$app->request->get()['entity_class'], Yii::$app->request->get()['entity_id']);     
+                        }
+                        
                     }
                     
 

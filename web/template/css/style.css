@@ -695,8 +695,13 @@ a {
   width: 100%;
   margin-bottom: 30px;
 }
+.comment-block-sub {
+  box-sizing: border-box;
+  padding-left: 50px;
+}
 .comment-block-sub .comment-block-data-user-pic {
   width: 40px;
+  height: 40px;
 }
 .comment-block-sub .comment-block-data-user-pic img {
   max-width: 40px;
@@ -704,8 +709,13 @@ a {
 .comment-block-sub .comment-block-data-user-name {
   font-size: 14px;
 }
+.comment-block-data {
+  width: 100%;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
 .comment-block-data-user {
-  width: 100px;
+  width: 15%;
   margin-right: 10px;
   text-align: center;
 }
@@ -718,10 +728,18 @@ a {
 }
 .comment-block-data-user-pic img {
   max-width: 60px;
+  width: 60px;
+  height: 60px;
+  background-size: cover;
+  background-position: top;
 }
 .comment-block-data-user-name {
   width: 100px;
   margin-top: 5px;
+}
+.comment-block-data-content {
+  white-space: normal;
+  width: 85%;
 }
 .comment-block-data-content-date {
   font-size: 12px;
@@ -743,7 +761,6 @@ a {
   margin-top: 25px;
   border-top: 1px solid rgba(49,51,62,0.05);
   padding-top: 25px;
-  padding-left: 50px;
 }
 .comment-controll span {
   position: relative;
