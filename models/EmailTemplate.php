@@ -21,6 +21,7 @@ use Yii;
  */
 class EmailTemplate extends \yii\db\ActiveRecord
 {
+    const ALARM_NOTIFICATION = 1;
     /**
      * @inheritdoc
      */
@@ -69,5 +70,42 @@ class EmailTemplate extends \yii\db\ActiveRecord
     public static function find()
     {
         return new EmailTemplateQuery(get_called_class());
+    }
+
+
+    public function send( $to, $subject, $fields, $from = false, $cc = false, $bcc = false ){
+
+        $template = $this->html;
+        $templateText = $this->text;
+
+        if( empty($from) ){
+            $from = $this->email_from;
+        }
+
+
+        foreach ($fields as $field => $value) {
+            $template = str_replace("#".$field."#", $value, $template);
+            $templateText = str_replace("#".$field."#", $value, $templateText);
+        }
+
+        //SENDING 
+
+        $mailer = Yii::$app->mailer->compose()
+            ->setFrom( $from )
+            ->setTo( $to )
+            ->setSubject( $subject )
+            ->setTextBody( $templateText )
+            ->setHtmlBody( $template);
+           
+        if( !empty($bcc) )   {
+            $mailer->setBcc( $bcc );
+        }  
+        if( !empty($cc) )   {
+            $mailer->setCc( $cc );
+        }
+        $mailer->send();
+
+
+
     }
 }
