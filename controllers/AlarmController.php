@@ -70,6 +70,126 @@ INSERT INTO `email_template` (`email_template_id`, `code`, `email_from`, `name_f
 
 
 
+INSERT INTO `email_template` (`email_template_id`, `code`, `email_from`, `name_from`, `email_to`, `cc`, `bcc`, `html`, `text`, `extra_headers`, `files`) VALUES (NULL, 'NEW_QUEST_CHALLENGE', 'no-reply@medalyst.online', NULL, NULL, NULL, NULL, '
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+     <title>Medalyst.online email template</title>
+
+
+  </head>
+
+  <body>
+      <table style="width: 600px;" cellspacing="0" align="center">
+
+          <tr style="background-color:  #8a44ff; height: 80px;">
+              <td style="width: 450px; padding: 15px;">
+                  <a href="http://medalyst.online/"><img src="http://medalyst.online/template/img/logo-white.png" alt=""></a>
+              </td>
+              <td  style="width: 150px; padding: 15px;">
+              <!--http://www.flaticon.com/free-icon/vk-social-network-logo_25684#term=vk&page=1&position=3-->
+                  <a href=""><img src="http://medalyst.online/template/img/icon-vk.png" style="max-width: 25px"></a>
+                  <a href=""><img src="http://medalyst.online/template/img/icon-fb.png" style="max-width: 25px"></a>
+                  <a href=""><img src="http://medalyst.online/template/img/icon-inst.png" style="max-width: 25px"></a>
+              </td>
+          </tr>
+
+          <tr>
+              <td colspan="2" style="padding: 25px;">
+                  <h2 style="font-family: sans-serif;">Вам брошен новый вызов!</h2>
+                  <p>#TO_NAME#, вам брошен новый вызов! #FROM_NAME# хочет, чтобы вы прошли испытание</p>
+                  <div style="background-color:  #8a44ff; padding: 10px"><a href="#QUEST_URL#" style="color: white">#QUEST_NAME#</a></div>
+                  <div style="text-align: center; background-color: #DDD;"><a href="#QUEST_URL#"><img src="#QUEST_IMAGE_URL#" alt="" style="width: 100%"></a></div>
+                  <div style="text-align: center; background-color: black; padding: 15px">
+                    <a style="display: inline-block;background-color: red;color: white;padding: 10px 25px;border-radius: 25px;text-decoration: none;" href="#QUEST_LIST_URL#">Принять вызов или отказать</a>
+                  </div>
+              </td>
+          </tr>
+
+          <tr style="background-color:  #FAFAFA;  height: 100px; padding: 15px;">
+                <td style="font-size: 12px; color: #999; padding: 15px;">
+                    Вы получили это письмо так как зарегистрированы в сервисе Medalyst.online. Перейдите по <a href="№">этой ссылке</a>, чтобы больше не получать писем.
+                </td>
+              <td  style="width: 150px;  padding: 15px;">
+                  <a href=""><img src="http://medalyst.online/template/img/icon-vk-black.png" style="max-width: 25px"></a>
+                  <a href=""><img src="http://medalyst.online/template/img/icon-fb-black.png" style="max-width: 25px"></a>
+                  <a href=""><img src="http://medalyst.online/template/img/icon-inst-black.png" style="max-width: 25px"></a>
+              </td>
+          </tr>
+      </table>
+ 
+
+ 
+  </body>
+</html>
+', NULL, NULL, NULL);
+
+ALTER TABLE `email_template` ADD `subject` VARCHAR(1024) NULL AFTER `email_to`;
+
+
+
+
+INSERT INTO `email_template` (`email_template_id`, `code`, `email_from`, `name_from`, `email_to`, `subject`, `cc`, `bcc`, `html`, `text`, `extra_headers`, `files`) VALUES (NULL, 'QUEST_DEADLINE_EXPIRED', 'no-reply@medalyst.online', NULL, NULL, 'Плохие новости. Вы не успели завершить квест.', NULL, NULL, '<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+     <title>Medalyst.online email template</title>
+
+
+  </head>
+
+  <body>
+      <table style="width: 600px;" cellspacing="0" align="center">
+
+          <tr style="background-color:  #8a44ff; height: 80px;">
+              <td style="width: 450px; padding: 15px;">
+                  <a href="http://medalyst.online/"><img src="http://medalyst.online/template/img/logo-white.png" alt=""></a>
+              </td>
+              <td  style="width: 150px; padding: 15px;">
+              <!--http://www.flaticon.com/free-icon/vk-social-network-logo_25684#term=vk&page=1&position=3-->
+                  <a href=""><img src="http://medalyst.online/template/img/icon-vk.png" style="max-width: 25px"></a>
+                  <a href=""><img src="http://medalyst.online/template/img/icon-fb.png" style="max-width: 25px"></a>
+                  <a href=""><img src="http://medalyst.online/template/img/icon-inst.png" style="max-width: 25px"></a>
+              </td>
+          </tr>
+
+          <tr>
+              <td colspan="2" style="padding: 25px;">
+                  <h2 style="font-family: sans-serif;">Вы провалили дедлайн по квесту</h2>
+
+                  <table>
+                    <tr>
+                      <td><div style="font-size: 150px;">:(</div></td>
+                      <td><p>#TO_NAME#, к сожалению, вы не успели сдать квест <a href="#QUEST_URL#">#QUEST_NAME#</a> вовремя. Ну, что ж поделать. В следующий раз у вас выйдет. Штраф 20 баллов.</p></td>
+                    </tr>
+                  </table>
+                  
+                  
+              </td>
+          </tr>
+
+          <tr style="background-color:  #FAFAFA;  height: 100px; padding: 15px;">
+                <td style="font-size: 12px; color: #999; padding: 15px;">
+                    Вы получили это письмо так как зарегистрированы в сервисе Medalyst.online. Перейдите по <a href="№">этой ссылке</a>, чтобы больше не получать писем.
+                </td>
+              <td  style="width: 150px;  padding: 15px;">
+                  <a href=""><img src="http://medalyst.online/template/img/icon-vk-black.png" style="max-width: 25px"></a>
+                  <a href=""><img src="http://medalyst.online/template/img/icon-fb-black.png" style="max-width: 25px"></a>
+                  <a href=""><img src="http://medalyst.online/template/img/icon-inst-black.png" style="max-width: 25px"></a>
+              </td>
+          </tr>
+      </table>
+ 
+
+ 
+  </body>
+</html>
+', NULL, NULL, NULL);
+
+
 */
 class AlarmController extends \yii\web\Controller
 {
@@ -142,7 +262,7 @@ class AlarmController extends \yii\web\Controller
             $content .= $alarmsHTML;
 
             $email = EmailTemplate::findOne( EmailTemplate::ALARM_NOTIFICATION );
-            $email->send( $u->email, 'Ого! Чего только не случилось, пока вас не было.', ['CONTENT' => $content]);
+            $email->send( $u->email,  ['CONTENT' => $content] , 'Ого! Чего только не случилось, пока вас не было');
 
         }
 

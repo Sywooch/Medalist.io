@@ -11,7 +11,10 @@ use app\models\Notification;
 use app\models\NotificationType;
 use app\models\ScalePointsBalance;
 use app\models\Alarm;
+use app\models\EmailTemplate;
+use amnah\yii2\user\models\User;
 use Yii;
+use yii\helpers\BaseUrl;
 
 
 class QuestController extends \yii\web\Controller
@@ -163,6 +166,25 @@ class QuestController extends \yii\web\Controller
 
                      Alarm::addAlarm( $questChallenge->user_id ,  $questChallenge->to_user_id  , Alarm::TYPE_QUEST_CHALLENGE, false , 'Quest', $questChallenge->quest_id );
                      $result['success'] = true;
+
+
+                     //EMAIL NOTIFICATEION
+                     $email = EmailTemplate::findOne( EmailTemplate::NEW_QUEST_CHALLENGE );
+                      // [QUEST_NAME, QUEST_URL, QUEST_IMAGE_URL, QUEST_LIST_URL, TO_NAME, FROM_NAME]
+                     $toUser = User::findOne( $uid );
+                     $fromUser = User::findOne( Yii::$app->user->identity->id );
+                     $quest = Quest::findOne( $uid );
+
+                     $email->send($toUser->email, [
+                        'QUEST_NAME' => $quest->name,
+                        'QUEST_URL' => BaseUrl::base(true).Yii::$app->urlManager->createUrl(['personal/quest', 'quest_id' => $quest->quest_id]),
+                        'QUEST_IMAGE_URL' =>  BaseUrl::base(true).'/'.$quest->picture,
+                        'QUEST_LIST_URL' => BaseUrl::base(true).Yii::$app->urlManager->createUrl(['personal/quests']),
+                        'TO_NAME' => $toUser->getName(),
+                        'FROM_NAME' => $fromUser->getName()
+
+                    ]);
+                     //EMAIL NOTIFICATEION END 
                 }
 
             }
@@ -172,6 +194,34 @@ class QuestController extends \yii\web\Controller
         echo  json_encode($result);
 
 
+    }
+
+
+    //Просроченные квесты
+    public function actionCronQuestTaskExpire(){
+
+        $questTasksExpired = QuestPendingTask::find()
+                                    ->where(['status' => 0])
+                                    ->andWhere(['<', 'deadline', date("Y-m-d H:i:s")])
+                                    ->all();
+        foreach ($questTasksExpired as $task) {
+            var_dump($task);
+
+
+            $email = EmailTemplate::findOne( EmailTemplate::QUEST_DEADLINE_EXPIRED );
+
+            $toUser = User::findOne( $task->user_id );
+            $quest = Quest::findOne( $task->quest_id );
+
+            $email->send( $toUser->email, [
+                'QUEST_NAME' => $quest->name,
+                'QUEST_URL' => BaseUrl::base(true).Yii::$app->urlManager->createUrl(['personal/quest', 'quest_id' => $quest->quest_id]),
+                'TO_NAME' => $toUser->getName()
+                ]);
+
+            $task->status = 3; //Expired
+            $task->save();
+        }
     }
 
 }

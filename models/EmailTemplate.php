@@ -22,6 +22,8 @@ use Yii;
 class EmailTemplate extends \yii\db\ActiveRecord
 {
     const ALARM_NOTIFICATION = 1;
+    const NEW_QUEST_CHALLENGE = 2;  // [QUEST_NAME, QUEST_URL, QUEST_IMAGE_URL, QUEST_LIST_URL, TO_NAME, FROM_NAME]
+    const QUEST_DEADLINE_EXPIRED = 3;  // [QUEST_NAME, QUEST_URL,   TO_NAME]
     /**
      * @inheritdoc
      */
@@ -73,13 +75,16 @@ class EmailTemplate extends \yii\db\ActiveRecord
     }
 
 
-    public function send( $to, $subject, $fields, $from = false, $cc = false, $bcc = false ){
+    public function send( $to, $fields, $subject = false, $from = false, $cc = false, $bcc = false ){
 
         $template = $this->html;
         $templateText = $this->text;
 
         if( empty($from) ){
             $from = $this->email_from;
+        }
+        if( empty($subject) ){
+            $subject = $this->subject;
         }
 
 
@@ -108,4 +113,6 @@ class EmailTemplate extends \yii\db\ActiveRecord
 
 
     }
+
+
 }

@@ -560,13 +560,15 @@ a {
   color: #8a44ff;
 }
 .output-header {
-  white-space: nowrap;
+  white-space: normal;
   position: relative;
+  line-height: 2em;
 }
 .output-header-meta {
   position: absolute;
   right: 0;
   top: 22px;
+  line-height: 1em;
 }
 .output-controlls-searchbox {
   width: 530px;
