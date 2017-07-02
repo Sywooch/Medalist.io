@@ -31,7 +31,7 @@ if ( empty($this->title) ){
 
     <?php if(!empty( $this->params['og_title']) ){ ?><meta property="og:title" content="<?=strip_tags($this->params['og_title'])?>" /><? } ?>
     <?php if(!empty( $this->params['og_image']) ){ ?><meta property="og:image" content="<?=$this->params['og_image']?>" /><? } ?>
-    <?php if(!empty( $this->params['og_description']) ){ ?><meta property="og:description" content="<?/*=strip_tags($this->params['og_description'])*/?>" /><? } ?>
+    <?php if(!empty( $this->params['og_description']) ){ ?><meta property="og:description" content="<?=strip_tags($this->params['og_description'])?>" /><? } ?>
     <?php if(!empty( $this->params['og_video']) ){ ?><meta property="og:video" content="<?=$this->params['og_video']?>" /><? } ?>
     <?php if(!empty( $this->params['og_url']) ){ ?><meta property="og:url" content="<?=$this->params['og_url']?>" /><? } ?>
     <?php if(!empty( $this->params['og_type']) ){ ?><meta property="og:type" content="<?=$this->params['og_type']?>" /><? } ?>
@@ -146,13 +146,14 @@ if ( empty($this->title) ){
                 <div class="footer-menu">
                     <ul class="footer-menu-list">
                         <li class="footer-menu-list-li"><a href="#" class="footer-menu-list-li-a">Политика</a></li>
-                        <li class="footer-menu-list-li"><a href="#" class="footer-menu-list-li-a">Обратная связь</a></li>
-                        <li class="footer-menu-list-li"><a href="#" class="footer-menu-list-li-a">Публичная оферта</a></li>
+                        <li class="footer-menu-list-li"><a href="mailto:medalystproject@yandex.ru" class="footer-menu-list-li-a">medalystproject@yandex.ru</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </footer>
+
+
 
 <!-- reward popup -->
     <div class="rewardpopup" style="display: none;">

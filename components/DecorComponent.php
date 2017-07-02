@@ -255,9 +255,9 @@ class DecorComponent extends Component
     }
  
 
-	public static function cutDescription($string) {
+	public static function cutDescription($string, $length=700) {
 		$string = strip_tags($string);
-		$string = substr($string, 0, 700);
+		$string = substr($string, 0, $length);
 		$string = rtrim($string, "!,.-");
 		$string = substr($string, 0, strrpos($string, ' '));
 		return $string."… ";

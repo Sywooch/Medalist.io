@@ -99,7 +99,7 @@ class PersonalController extends \yii\web\Controller
 
          //OG PARAMS
         $this->view->params['og_title'] = $achievement->getUser()->name.': Достижение: '.$achievement->name;
-        $this->view->params['og_description'] = $achievement->description;
+        $this->view->params['og_description'] = Yii::$app->decor->cutDescription($achievement->description, 700);
 
       	$photos = $achievement->getPhotos();
    	    if(!empty($photos) ) { 
