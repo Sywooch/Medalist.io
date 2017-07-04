@@ -727,7 +727,8 @@ a {
   -webkit-border-radius: 30px;
   -moz-border-radius: 30px;
   border-radius: 30px;
-  overflow: hidden;
+/*overflow hidden*/
+  background-size: cover;
 }
 .comment-block-data-user-pic img {
   max-width: 60px;
