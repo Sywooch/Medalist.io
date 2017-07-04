@@ -24,6 +24,9 @@ class EmailTemplate extends \yii\db\ActiveRecord
     const ALARM_NOTIFICATION = 1;
     const NEW_QUEST_CHALLENGE = 2;  // [QUEST_NAME, QUEST_URL, QUEST_IMAGE_URL, QUEST_LIST_URL, TO_NAME, FROM_NAME]
     const QUEST_DEADLINE_EXPIRED = 3;  // [QUEST_NAME, QUEST_URL,   TO_NAME]
+    const EMAIL_REANIMATE_1 = 4;  // [  TO_NAME ENTER_URL]
+    const EMAIL_REANIMATE_2 = 5;  // [  TO_NAME ENTER_URL]
+    const EMAIL_REANIMATE_3 = 6;  // [  TO_NAME ENTER_URL]
     /**
      * @inheritdoc
      */
@@ -108,7 +111,21 @@ class EmailTemplate extends \yii\db\ActiveRecord
         if( !empty($cc) )   {
             $mailer->setCc( $cc );
         }
-        $mailer->send();
+        $result = $mailer->send();
+
+        //Email Trace
+        $et = new EmailTrace;
+        $et->date_created = date("Y-m-d H:i:s");
+        $et->email = $to;
+        $et->email_template_id = $this->email_template_id;
+        $et->status = (int)$result;
+        $et->meta = json_encode(['from' => $from]);
+
+        if( !empty($fields['user_id']) ){
+            $et->user_id = $fields['user_id'];
+        }
+        $et->save();
+
 
 
 

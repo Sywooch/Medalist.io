@@ -12,9 +12,13 @@ use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\Quest;
 use app\models\Category;
-use app\models\User;
+//use app\models\User;
 use app\models\Tag;
+use app\models\EmailTrace;
+use app\models\EmailTemplate;
 use app\models\ScalePointsBalance;
+use amnah\yii2\user\models\User;
+use yii\helpers\BaseUrl;
 
 class SiteController extends Controller
 {
@@ -196,6 +200,144 @@ class SiteController extends Controller
         }
 
         echo json_encode($result);
+    }
+
+
+
+
+    public function actionCronReanimateEmails(){
+
+        //3 days - week - 2 weeks
+
+        $fromTime = time() - 60 * 60 * 24 * 3;
+        $toTime = time() - 60 * 60 * 24 * 7;
+
+        //Users Who hasnot Logged In in 3 days
+        $users3days = User::find()
+                        ->where(['<', 'logged_in_at', date("Y-m-d H:i:s", $fromTime)])
+                        ->andWhere(['>', 'logged_in_at', date("Y-m-d H:i:s",  $toTime)])
+                        ->all();
+        foreach( $users3days as $u3days){
+            $userIds[] = $u3days->id;
+        }
+
+        //... and no letters was sent 
+        $emailTrace = EmailTrace::find()
+                        ->where(['email_template_id' => EmailTemplate::EMAIL_REANIMATE_1])
+                        ->andWhere(['user_id' => $userIds])
+
+                        //->andWhere(['<', 'date_created', date("Y-m-d H:i:s", $fromTime)])
+                        //->andWhere(['>', 'date_created', date("Y-m-d H:i:s", $toTime)])
+                        ->all();
+        $usersTraced = [];
+        foreach ($emailTrace as $et) {
+            $usersTraced[] = $et->user_id;
+        }
+
+        //Sending3days reminder 
+        foreach ($users3days as $u) {
+            //wasnt traced
+            if( !in_array($u->id, $usersTraced) ){
+                $emailTemplate = EmailTemplate::findOne( EmailTemplate::EMAIL_REANIMATE_1 );
+
+                $emailTemplate->send($u->email, [
+                    'TO_NAME' => $u->getName(), 
+                    'ENTER_URL' => BaseUrl::base(true).Yii::$app->urlManager->createUrl(['user/login']),
+                    'user_id'  => $u->id
+                ]);
+                var_dump($u->id);
+            }
+        }
+
+
+
+
+        
+
+        //3 days - week - 2 weeks
+
+        $fromTime = time() - 60 * 60 * 24 * 7;
+        $toTime = time() - 60 * 60 * 24 * 14;
+
+        //Users Who hasnot Logged In in 3 days
+        $users3days = User::find()
+                        ->where(['<', 'logged_in_at', date("Y-m-d H:i:s", $fromTime)])
+                        ->andWhere(['>', 'logged_in_at', date("Y-m-d H:i:s",  $toTime)])
+                        ->all();
+        foreach( $users3days as $u3days){
+            $userIds[] = $u3days->id;
+        }
+
+        //... and no letters was sent 
+        $emailTrace = EmailTrace::find()
+                        ->where(['email_template_id' => EmailTemplate::EMAIL_REANIMATE_2])
+                        ->andWhere(['user_id' => $userIds])
+
+                        //->andWhere(['<', 'date_created', date("Y-m-d H:i:s", $fromTime)])
+                        //->andWhere(['>', 'date_created', date("Y-m-d H:i:s", $toTime)])
+                        ->all();
+        $usersTraced = [];
+        foreach ($emailTrace as $et) {
+            $usersTraced[] = $et->user_id;
+        }
+
+        //Sending3days reminder 
+        foreach ($users3days as $u) {
+            //wasnt traced
+            if( !in_array($u->id, $usersTraced) ){
+                $emailTemplate = EmailTemplate::findOne( EmailTemplate::EMAIL_REANIMATE_2 );
+
+                $emailTemplate->send($u->email, [
+                    'TO_NAME' => $u->getName(), 
+                    'ENTER_URL' => BaseUrl::base(true).Yii::$app->urlManager->createUrl(['user/login']),
+                    'user_id'  => $u->id
+                ]);
+                var_dump($u->id);
+            }
+        }
+
+
+
+        //3 days - week - 2 weeks
+
+        $fromTime = time() - 60 * 60 * 24 * 14;
+
+        //Users Who hasnot Logged In in 3 days
+        $users3days = User::find()
+                        ->where(['<', 'logged_in_at', date("Y-m-d H:i:s", $fromTime)])
+                        ->all();
+        foreach( $users3days as $u3days){
+            $userIds[] = $u3days->id;
+        }
+
+        //... and no letters was sent 
+        $emailTrace = EmailTrace::find()
+                        ->where(['email_template_id' => EmailTemplate::EMAIL_REANIMATE_3])
+                        ->andWhere(['user_id' => $userIds])
+
+                        //->andWhere(['<', 'date_created', date("Y-m-d H:i:s", $fromTime)])
+                        //->andWhere(['>', 'date_created', date("Y-m-d H:i:s", $toTime)])
+                        ->all();
+        $usersTraced = [];
+        foreach ($emailTrace as $et) {
+            $usersTraced[] = $et->user_id;
+        }
+
+        //Sending3days reminder 
+        foreach ($users3days as $u) {
+            //wasnt traced
+            if( !in_array($u->id, $usersTraced) ){
+                $emailTemplate = EmailTemplate::findOne( EmailTemplate::EMAIL_REANIMATE_3 );
+
+                $emailTemplate->send($u->email, [
+                    'TO_NAME' => $u->getName(), 
+                    'ENTER_URL' => BaseUrl::base(true).Yii::$app->urlManager->createUrl(['user/login']),
+                    'user_id'  => $u->id
+                ]);
+                var_dump($u->id);
+            }
+        }
+
     }
 
     /**

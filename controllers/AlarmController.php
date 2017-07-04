@@ -190,6 +190,258 @@ INSERT INTO `email_template` (`email_template_id`, `code`, `email_from`, `name_f
 ', NULL, NULL, NULL);
 
 
+
+CREATE TABLE `medalyst_yii`.`email_trace` ( `email_trace_id` INT(11) NOT NULL AUTO_INCREMENT , `date_created` DATETIME NOT NULL , `user_id` INT(11) NOT NULL , `email` VARCHAR(255) NULL , `email_template_id` INT(11) NULL , `status` INT(1) NULL , `meta` VARCHAR(2048) NULL , `counter` INT(5) NULL , PRIMARY KEY (`email_trace_id`)) ENGINE = InnoDB;
+
+ALTER TABLE `email_trace` CHANGE `user_id` `user_id` INT(11) NULL;
+
+
+
+
+EMAIL_REANIMATE_1
+
+INSERT INTO `email_template` (`email_template_id`, `code`, `email_from`, `name_from`, `email_to`, `subject`, `cc`, `bcc`, `html`, `text`, `extra_headers`, `files`) VALUES (NULL, 'EMAIL_REANIMATE_1', 'no-reply@medalyst.online', NULL, NULL, 'Мы не можем вас найти. Куда вы пропали?', NULL, NULL, '
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+     <title>Medalyst.online email template</title>
+
+
+  </head>
+
+  <body>
+      <table style="width: 600px;" cellspacing="0" align="center">
+
+          <tr style="background-color:  #8a44ff; height: 80px;">
+              <td style="width: 450px; padding: 15px;">
+                  <a href="http://medalyst.online/"><img src="http://medalyst.online/template/img/logo-white.png" alt=""></a>
+              </td>
+              <td  style="width: 150px; padding: 15px;">
+              <!--http://www.flaticon.com/free-icon/vk-social-network-logo_25684#term=vk&page=1&position=3-->
+                  <a href=""><img src="http://medalyst.online/template/img/icon-vk.png" style="max-width: 25px"></a>
+                  <a href=""><img src="http://medalyst.online/template/img/icon-fb.png" style="max-width: 25px"></a>
+                  <a href=""><img src="http://medalyst.online/template/img/icon-inst.png" style="max-width: 25px"></a>
+              </td>
+          </tr>
+
+          <tr>
+              <td colspan="2" style="padding: 25px;">
+                  <h2 style="font-family: sans-serif;">Вас давно не было!</h2>
+
+                  <table>
+                    <tr>
+                      <td><img src="http://medalyst.online/template/img/e/lnch01_1.jpg" style="max-width: 100%"></td>
+                    </tr>
+                    <tr>
+                      <td><p>#TO_NAME#, Вас почему-то давно не было на нашем сайте.</p></td>
+                    </tr>
+                    <tr>
+                      <td><p>Самое трудное - это начать. Часто мы даём себе обещание, что "с понедельника" начнём новую жизнь. И часто в понедельник ничего не происходит.</p></td>
+                    </tr>
+                    <tr>
+                      <td><p>С Медалистом новая жизнь начинается каждый день. Ещё одно достижение, ещё одна цель. Ещё один шанс стать чуточку лучше.</p></td>
+                    </tr>
+                    <tr>
+                      <td><p>Продолжите свой путь к успеху прямо сейчас.</p></td>
+                    </tr>
+                    <tr>
+                      <td><p>Поставьте себе новые цели; откройте новые горизонты.</p></td>
+                    </tr>
+                    <tr>
+                      <td> <a style="display: inline-block;background-color: red;color: white;padding: 10px 25px;border-radius: 25px;text-decoration: none;" href="#ENTER_URL#">Вернуться на Medalyst.Online</a></td>
+                    </tr>
+                  </table>
+                  
+                  
+              </td>
+          </tr>
+
+          <tr style="background-color:  #FAFAFA;  height: 100px; padding: 15px;">
+                <td style="font-size: 12px; color: #999; padding: 15px;">
+                    Вы получили это письмо так как зарегистрированы в сервисе Medalyst.online. Перейдите по <a href="№">этой ссылке</a>, чтобы больше не получать писем.
+                </td>
+              <td  style="width: 150px;  padding: 15px;">
+                  <a href=""><img src="http://medalyst.online/template/img/icon-vk-black.png" style="max-width: 25px"></a>
+                  <a href=""><img src="http://medalyst.online/template/img/icon-fb-black.png" style="max-width: 25px"></a>
+                  <a href=""><img src="http://medalyst.online/template/img/icon-inst-black.png" style="max-width: 25px"></a>
+              </td>
+          </tr>
+      </table>
+ 
+
+ 
+  </body>
+</html>
+', NULL, NULL, NULL);
+
+
+
+
+
+
+EMAIL_REANIMATE_2
+
+INSERT INTO `email_template` (`email_template_id`, `code`, `email_from`, `name_from`, `email_to`, `subject`, `cc`, `bcc`, `html`, `text`, `extra_headers`, `files`) VALUES (NULL, 'EMAIL_REANIMATE_2', 'no-reply@medalyst.online', NULL, NULL, 'Уж неделя прошла... Столько нового произошло!', NULL, NULL, '
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+     <title>Medalyst.online email template</title>
+
+
+  </head>
+
+  <body>
+      <table style="width: 600px;" cellspacing="0" align="center">
+
+          <tr style="background-color:  #8a44ff; height: 80px;">
+              <td style="width: 450px; padding: 15px;">
+                  <a href="http://medalyst.online/"><img src="http://medalyst.online/template/img/logo-white.png" alt=""></a>
+              </td>
+              <td  style="width: 150px; padding: 15px;">
+              <!--http://www.flaticon.com/free-icon/vk-social-network-logo_25684#term=vk&page=1&position=3-->
+                  <a href=""><img src="http://medalyst.online/template/img/icon-vk.png" style="max-width: 25px"></a>
+                  <a href=""><img src="http://medalyst.online/template/img/icon-fb.png" style="max-width: 25px"></a>
+                  <a href=""><img src="http://medalyst.online/template/img/icon-inst.png" style="max-width: 25px"></a>
+              </td>
+          </tr>
+
+          <tr>
+              <td colspan="2" style="padding: 25px;">
+                  <h2 style="font-family: sans-serif;">Прошла целая неделя...</h2>
+
+                  <table>
+                    <tr>
+                      <td><img src="http://medalyst.online/template/img/e/lnch02_1.jpg" style="max-width: 100%"></td>
+                    </tr>
+                    <tr>
+                      <td><p>#TO_NAME#, последний раз вы заходили в свою учётку на medalist.online неделю назад.</p></td>
+                    </tr>
+                    <tr>
+                      <td><p>За это время сотни людей отважились на новые цели, о которых до этого даже и подумать не могли. А многие - примут участие в захватывающих квестах, и им-то уж точно не будет стыдно за потраченный отпуск ;-)</p></td>
+                    </tr> 
+                    <tr>
+                      <td><p>Чем же вы хуже? Самое время вернуться. Акутализируйте, пожалуйста, свои цели и задачи, и запишитесь на квест.</p></td>
+                    </tr> 
+                    <tr>
+                      <td> <a style="display: inline-bloыck;background-color: red;color: white;padding: 10px 25px;border-radius: 25px;text-decoration: none;" href="#ENTER_URL#">Вернуться на Medalyst.Online</a></td>
+                    </tr>
+
+
+                    <tr>
+                      <td><p>Пс!.. Если Вы вернётесь в течение суток после прочтения этого письма - вы получите секретную награду.</p></td>
+                    </tr>  
+                    <tr>
+                      <td><p>[Данное письмо - сжечь после прочтения]</p></td>
+                    </tr>  
+
+
+                  </table>
+                  
+                  
+              </td>
+          </tr>
+
+          <tr style="background-color:  #FAFAFA;  height: 100px; padding: 15px;">
+                <td style="font-size: 12px; color: #999; padding: 15px;">
+                    Вы получили это письмо так как зарегистрированы в сервисе Medalyst.online. Перейдите по <a href="№">этой ссылке</a>, чтобы больше не получать писем.
+                </td>
+              <td  style="width: 150px;  padding: 15px;">
+                  <a href=""><img src="http://medalyst.online/template/img/icon-vk-black.png" style="max-width: 25px"></a>
+                  <a href=""><img src="http://medalyst.online/template/img/icon-fb-black.png" style="max-width: 25px"></a>
+                  <a href=""><img src="http://medalyst.online/template/img/icon-inst-black.png" style="max-width: 25px"></a>
+              </td>
+          </tr>
+      </table>
+ 
+
+ 
+  </body>
+</html>
+', NULL, NULL, NULL);
+
+
+
+
+
+INSERT INTO `email_template` (`email_template_id`, `code`, `email_from`, `name_from`, `email_to`, `subject`, `cc`, `bcc`, `html`, `text`, `extra_headers`, `files`) VALUES (NULL, 'EMAIL_REANIMATE_3', 'no-reply@medalyst.online', NULL, NULL, 'Ваш аккаунт заблокирован.', NULL, NULL, '
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+     <title>Medalyst.online email template</title>
+
+
+  </head>
+
+  <body>
+      <table style="width: 600px;" cellspacing="0" align="center">
+
+          <tr style="background-color:  #8a44ff; height: 80px;">
+              <td style="width: 450px; padding: 15px;">
+                  <a href="http://medalyst.online/"><img src="http://medalyst.online/template/img/logo-white.png" alt=""></a>
+              </td>
+              <td  style="width: 150px; padding: 15px;">
+              <!--http://www.flaticon.com/free-icon/vk-social-network-logo_25684#term=vk&page=1&position=3-->
+                  <a href=""><img src="http://medalyst.online/template/img/icon-vk.png" style="max-width: 25px"></a>
+                  <a href=""><img src="http://medalyst.online/template/img/icon-fb.png" style="max-width: 25px"></a>
+                  <a href=""><img src="http://medalyst.online/template/img/icon-inst.png" style="max-width: 25px"></a>
+              </td>
+          </tr>
+
+          <tr>
+              <td colspan="2" style="padding: 25px;">
+                  <h2 style="font-family: sans-serif;">Ваш аккаунт заблокирован. Будет.</h2>
+
+                  <table>
+                    <tr>
+                      <td><img src="http://medalyst.online/template/img/e/lnch03_1.jpg" style="max-width: 100%"></td>
+                    </tr>
+                    <tr>
+                      <td><p>#TO_NAME#, прошло уже 2 недели с момента вашего последнего захода на medalyst.online.</p></td>
+                    </tr> 
+                    <tr>
+                      <td><p>По какой-то причине вы не хотите продолжать вместе с нами. Чтобы не докучать вам письмами (это последнее честно-честно), завтра мы приостановим дейсвтие вашей учётной записи. Ваши достижения и цели будут скрыты с сайта, а их комментирование и подтверждение заблокировано.</p></td>
+                    </tr> 
+                    <tr>
+                      <td><p>Вы можете отменить блокировку в любой момент, нажав кнопку ниже. Или просто авторизовавшись на медалисте =)</p></td>
+                    </tr> 
+                    <tr>
+                      <td> <a style="display: inline-block;background-color: red;color: white;padding: 10px 25px;border-radius: 25px;text-decoration: none;" href="#ENTER_URL#">Вернуться на Medalyst.Online</a></td>
+                    </tr>
+ 
+                    <tr>
+                      <td><p>Надеемся, Вы вернётесь! Ведь столько классных вещей ещё можно сделать, и столько возможностей сделать себя и мир лучше.</p></td>
+                    </tr> 
+
+                  </table>
+                  
+                  
+              </td>
+          </tr>
+
+          <tr style="background-color:  #FAFAFA;  height: 100px; padding: 15px;">
+                <td style="font-size: 12px; color: #999; padding: 15px;">
+                    Вы получили это письмо так как зарегистрированы в сервисе Medalyst.online. Перейдите по <a href="№">этой ссылке</a>, чтобы больше не получать писем.
+                </td>
+              <td  style="width: 150px;  padding: 15px;">
+                  <a href=""><img src="http://medalyst.online/template/img/icon-vk-black.png" style="max-width: 25px"></a>
+                  <a href=""><img src="http://medalyst.online/template/img/icon-fb-black.png" style="max-width: 25px"></a>
+                  <a href=""><img src="http://medalyst.online/template/img/icon-inst-black.png" style="max-width: 25px"></a>
+              </td>
+          </tr>
+      </table>
+ 
+
+ 
+  </body>
+</html>
+', NULL, NULL, NULL);
+
 */
 class AlarmController extends \yii\web\Controller
 {
