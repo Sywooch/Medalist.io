@@ -148,7 +148,7 @@ echo $this->render('_panel.php');
                                                      style="margin-left: -<?= 100 - $a->getProgressPercent() ?>%;"></div>
                                             </div>
                                         </div>
-                                        <? if ($a->getProgressPercent() < 100) { ?>
+                                        <? if (!$a->completed) { ?>
 			                                 <div class="processWprogress">
             			                     <div class="mygoals-clock"><img src="/template/img/goals/clock.png" alt=""></div>
                         			          <span class="mygoals-process">В процессе</span>
@@ -157,7 +157,7 @@ echo $this->render('_panel.php');
 										else{?>
 			                                 <div class="processWprogress">
             			                     <div class="mygoals-clock"><img src="/template/img/goals/clock.png" alt=""></div>
-                        			          <span class="mygoals-process">Выполнена</span>
+                        			          <span class="mygoals-completed">Выполнена!</span>
 			                                 </div>
 										<?} ?>
                                     </div>

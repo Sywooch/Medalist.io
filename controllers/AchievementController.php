@@ -199,7 +199,7 @@ class AchievementController extends \yii\web\Controller
             $achievement->quest_id = $questId;
             $achievement->goal_id = $goalId;
             //$achievement->date_created = date("Y-m-d H:i:s");
-            $achievement->user_id = Yii::$app->user->identity->id;
+//            $achievement->user_id = Yii::$app->user->identity->id;
             $achievement->date_achieved = $dateAchievedSql;
 
 

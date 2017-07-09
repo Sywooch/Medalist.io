@@ -53,12 +53,13 @@ if( Yii::$app->user->isGuest ){
 
 			                        <h2 class="mdlst-h2t-goals">Цель</h2>
             			            <div class="output-header-meta-goals">
-                        		    <?
-			                            if ($goal->active) {
-		                                echo '
+                        		    <? if (!$goal->completed) {?>
 					                     <div class="mygoals-clock"><img src="/template/img/goals/clock.png" alt=""></div>
-					                     <span class="mygoals-process">В процессе</span>';
-			                            } ?>
+					                     <span class="mygoals-process">В процессе</span>
+			                          <? } else{ ?>
+					                     <div class="mygoals-clock"><img src="/template/img/goals/clock.png" alt=""></div>
+					                     <span class="mygoals-completed">Выполнена!</span>
+			                          <?  } ?>
 								</div>
 								</div>
 							 				
@@ -136,24 +137,6 @@ if( Yii::$app->user->isGuest ){
 
                         <div class="clear"></div>
 
-<!--
-                        <?php if(!empty($goal->getPhotos()) ) { ?>
-                        <div class="goals-pictures">
-                            <a class="goals-picture-big"   data-fancybox="group"  href="<?=$goal->getPhotos()[0]->filename?>" <?php if(!empty($goal->getPhotos()[0]) ) { ?> style = "background-image: url(<?=$goal->getPhotos()[0]->filename?>);"<? } ?>></a>
-
-                            <div class="goals-pictures-small">
-
-                                <? $Photos = $goal->getPhotos();
-                                for ($n = 1; $n < count($Photos); $n++) {?>
-	                            <a class="goals-picture-small" data-fancybox="group"  style = "background-image: url(<?=$Photos[$n]->filename?>);" href="<?=$Photos[$n]->filename?>"></a>
-                                <? }
-                                ?>
-
-                            </div>
-                        </div>
-                        <? } ?>
-
--->
 						<?php 
                        	$photos = $goal->getPhotos();
                         if(!empty($photos) ) { 

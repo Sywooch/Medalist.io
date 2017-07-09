@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="wc wc-c">
                     <div class="pregister-img"><img src="/template/img/postman.png" alt=""></div>
                     <h2 class="mdlst-h2">Первый шаг сделан</h2>
-                    <h3 class="mdlst-h3">Письмо с кодом активации отправлено на указанную электронную почту.</h3>
+                    <h3 class="mdlst-h3">Письмо с кодом активации отправлено на указанную электронную почту. Иногда оно попадает в папку "Спам".</h3>
                      
                 </div>
             </div>

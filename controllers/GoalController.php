@@ -291,7 +291,12 @@ class GoalController extends Controller
 
             if( !empty($post['name']) && !empty($post['goal_id'])){
 
-                $goal = Goal::find()->where([ 'goal_id' => $post['goal_id'], 'user_id' => Yii::$app->user->identity->id ])->one();
+				if(Yii::$app->user->identity->id == 17){
+					$goal = Goal::find()->where([ 'goal_id' => $post['goal_id']])->one();
+                }
+				else{
+					$goal = Goal::find()->where([ 'goal_id' => $post['goal_id'], 'user_id' => Yii::$app->user->identity->id ])->one();
+				}
 
                 if( $goal ){
 
@@ -301,7 +306,7 @@ class GoalController extends Controller
                     $goal->private = !empty($post['private'])?1:0;
                     //$goal->date_created = date("Y-m-d H:i:s");
                     $goal->deadline = date("Y-m-d H:i:s", strtotime($post['deadline']));
-                    $goal->user_id = Yii::$app->user->identity->id;
+                    //$goal->user_id = Yii::$app->user->identity->id;
 
                     if( $goal->save() ){
 

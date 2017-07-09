@@ -152,7 +152,7 @@ class SiteController extends Controller
     		$image = $imgcreatefrom($tempFile);
 
 	    	if ($original_type === 2) {
-				$exif = exif_read_data($tempFile);
+				$exif = @exif_read_data($tempFile);
 				if(!empty($exif['Orientation'])) {
 				    switch($exif['Orientation']) {
 			        case 8:

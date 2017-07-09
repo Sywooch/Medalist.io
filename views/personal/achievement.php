@@ -166,21 +166,6 @@ echo $this->render('_panel.php');
 									 		<div class="achievement-block-info">Ваше достижение подтверждено!</div>
 										<?}?>
 
-<!--
-													 <?php if( $other === false ) { ?>
-														<div style="margin-top: 30px;">
-
-
-													<? Yii::$app->decor->button(
-        													'Редактировать', 
-        													Yii::$app->urlManager->createUrl(['personal/achievement-edit','achievement_id' => $achievement->achievement_id]) 
-        												) ?>
-
-        												 <? Yii::$app->decor->button( 'Удалить достижение',  '', 'mdlst-button-accent   js-delete-achievement', ['delete_url' => Yii::$app->urlManager->createUrl(['achievement/delete-achievement', 'achievement_id' => $achievement->achievement_id])] );?>
-        												</div>
-
-        												<? } ?>
--->
 								 		<div class="achievement-share"><? Yii::$app->decor->shareWidget(); ?></div>
 
 								<?php if(!empty($quest) || !empty($goal)) { 

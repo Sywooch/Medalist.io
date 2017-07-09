@@ -2336,6 +2336,12 @@ a {
   font-size: 14px;
   line-height: 32px;
 }
+.mygoals-completed {
+  color: #008000;
+  margin-left: 8px;
+  font-size: 14px;
+  line-height: 32px;
+}
 .mygoals-name-div {
   position: relative;
   left: 0px;

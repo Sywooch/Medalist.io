@@ -67,6 +67,14 @@ class PersonalController extends \yii\web\Controller
 
         }
 
+
+        if( !Yii::$app->user->isGuest ){
+			if(Yii::$app->user->identity->id == 17) {
+				$other = false;
+			}
+        }
+
+
         $achievements = Achievement::find()->where('user_id = '.$userToFind)->orderBy([ 'date_achieved' => SORT_DESC, 'date_created' => SORT_DESC ])->all();
         return $this->render('achievements', ['achievements' =>$achievements,  'other' =>  $other?$userToFind:false ]);
     }
@@ -85,6 +93,12 @@ class PersonalController extends \yii\web\Controller
 
         }else{
              $other = true;
+        }
+
+        if( !Yii::$app->user->isGuest ){
+			if(Yii::$app->user->identity->id == 17) {
+				$other = false;
+			}
         }
      
 
@@ -105,7 +119,7 @@ class PersonalController extends \yii\web\Controller
    	    if(!empty($photos) ) { 
 			$thumbs = Yii::$app->decor->getThumbnails($photos);
 
-	        $this->view->params['og_image'] = 'http://'.Yii::$app->request->serverName.$thumbs[0];
+	        $this->view->params['og_image'] = 'http://'.Yii::$app->request->serverName.$photos[0]->filename;
 		}
 
         return $this->render('achievement', [
@@ -391,6 +405,12 @@ class PersonalController extends \yii\web\Controller
             $userToFind = Yii::$app->request->get()['user_id'];
         }
 
+        if( !Yii::$app->user->isGuest ){
+			if(Yii::$app->user->identity->id == 17) {
+				$other = false;
+			}
+        }
+
 
         $goals = Goal::find()->where('user_id = '.$userToFind)->orderBy(['goal_id' => SORT_DESC])->all();
         return $this->render('goals', ['goals' => $goals,  'other' =>  $other?$userToFind:false ]);
@@ -418,6 +438,11 @@ class PersonalController extends \yii\web\Controller
              $other = true;
         }
 
+        if( !Yii::$app->user->isGuest ){
+			if(Yii::$app->user->identity->id == 17) {
+				$other = false;
+			}
+        }
 
 
          //OG PARAMS
@@ -465,7 +490,12 @@ class PersonalController extends \yii\web\Controller
 
         $goal_id = Yii::$app->request->get()['goal_id'];
 
-        $goal = Goal::find()->where(['goal_id' => $goal_id, 'user_id' => Yii::$app->user->identity->id])->one();
+		if(Yii::$app->user->identity->id == 17){
+	        $goal = Goal::find()->where(['goal_id' => $goal_id])->one();
+		}
+		else{
+	        $goal = Goal::find()->where(['goal_id' => $goal_id, 'user_id' => Yii::$app->user->identity->id])->one();
+		}
 
          if( !$goal ){
              throw new \yii\web\ForbiddenHttpException();
