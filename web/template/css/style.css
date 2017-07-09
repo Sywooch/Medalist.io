@@ -136,6 +136,9 @@
 .mdlst-lurm i,
 .share-widget-title,
 .share-widget-content,
+.subtasks-pane-block-num,
+.subtasks-pane-block-name,
+.subtasks-pane-block-delete,
 .lastachievement-info-data-pic,
 .lastachievement-info-data-data,
 .notifications-block-user,
@@ -287,7 +290,10 @@
 .mdlst-button-closer,
 .mdlst-switch-text,
 .mdlst-cattag,
-.mdlst-lurm i {
+.mdlst-lurm i,
+.subtasks-pane-block-num,
+.subtasks-pane-block-name,
+.subtasks-pane-block-delete {
   vertical-align: baseline;
 }
 .dib_icon,
@@ -314,6 +320,7 @@
 .friend-list-block,
 .profileview,
 .editprofile,
+.subtasks-w,
 .lastachievement,
 .notifications,
 .notificationslist {
@@ -333,6 +340,7 @@
 .friend-list-block-padding,
 .profileview-padding,
 .editprofile-padding,
+.subtasks-w-padding,
 .lastachievement-padding,
 .notifications-padding,
 .notificationslist-padding,
@@ -344,6 +352,7 @@
 .friend-list-block,
 .profileview,
 .editprofile,
+.subtasks-w,
 .lastachievement,
 .notifications,
 .notificationslist {
@@ -2313,6 +2322,34 @@ a {
 /* GOALS */
 .clear {
   clear: both;
+}
+/* goals subtasks widget */
+.subtaskadder {
+  border: 0;
+  border-bottom: 2px solid #9a9ba0;
+  color: #a7a7a7;
+  font-size: 1.2em;
+  width: 100%;
+}
+.subtasks-pane {
+  box-sizing: border-box;
+  padding: 5px;
+}
+.subtasks-pane-output {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.subtasks-pane-block {
+  white-space: nowrap;
+}
+.subtasks-pane-block-num {
+  width: 5%;
+}
+.subtasks-pane-block-name {
+  width: 90%;
+}
+.subtasks-pane-block-delete {
+  width: 5%;
 }
 .mdlst-h2t-goals {
   font-size: 32px;

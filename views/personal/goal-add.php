@@ -65,6 +65,20 @@ echo $this->render('_panel.php');
 			 							</div>
 			 						</div>
 
+			 						<div class="addach-tags">
+			 							<div class="addach-tags-title">Подзадачи:</div>
+			 							<div class="subtasks-w">
+			 								<div class="subtasks-pane">
+												<div class="subtasks-pane-output"> 
+												</div>			 								
+			 									<input type="text" class="subtaskadder">	
+			 								</div>
+			 								
+			 							 
+			 								 
+			 							</div>
+			 						</div>
+
 
 			 						<div class="addach-errors" style="margin-top: 20px; margin-bottom: 20px; background: rgba(255,0,0,0.05); padding: 10px 40px; display:none;">
 			 							<p class="addach-errors-text">Возникли незначительные ошибки при создании цели</p>

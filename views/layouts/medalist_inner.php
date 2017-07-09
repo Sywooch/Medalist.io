@@ -57,6 +57,7 @@ if ( empty($this->title) ){
     <script src="/template/js/dropzone/dropzone.js"></script>
     <script src="/template/js/owl/owl.carousel.min.js"></script>
     <script src="/template/js/fancybox/dist/jquery.fancybox.min.js"></script>
+    <script src="/template/js/html5sortable-master/jquery.sortable.js"></script>
    
     <script type="text/javascript">
         var ajaxUrls = <?php 

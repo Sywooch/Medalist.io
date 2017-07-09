@@ -28,13 +28,18 @@ $(document).ready(function(){
 				deadline = p.find('[name="deadline"]'),
 				private = p.find('[name="private"]'),
 				tags = p.find('.addach-tags-w .addach-tags-tag'),
+				subtasksBlocks = $('.subtasks-pane-block'),
 				tagWords = [],
+				subtasks = [],
 				_csrf = p.find('input[name=_csrf]'),
 				data = {}
 				;
 
 				tags.each(function(i,e){
 					tagWords[ tagWords.length ] = $(e).text();
+				});
+				subtasksBlocks.each(function(i,e){
+					subtasks[ subtasks.length ] = $(e).find('.subtasks-pane-block-name').text();
 				});
 
 				data['name'] = name.val();
@@ -43,6 +48,7 @@ $(document).ready(function(){
 				data['deadline'] = deadline.val();
 				data['private'] = (private.is(":checked"))?1:0;
 				data['interests'] =  tagWords;
+				data['subtasks'] =  subtasks;
 				data['files'] =  myDropzoneFiles;
 				data['_csrf'] = _csrf.val();
 				 
@@ -249,6 +255,32 @@ $(document).ready(function(){
 
 
 		/* GOALS END */
+
+		//$('.subtasks-pane-output').sortable();
+		//$('.subtasks-pane-output').sortable();
+		
+
+		$(document).on('keydown', '.subtaskadder', function(ev){
+			var data = $(this).val(),
+				l = $('.subtasks-pane-block').length;
+
+			console.log(l);
+			if(ev.which == 13 || ev.keyCode == 13){
+				ev.preventDefault();
+				ev.stopPropagation();
+
+				$(this).val('');
+
+				$('.subtasks-pane-output').append('<div class="subtasks-pane-block"><div class="subtasks-pane-block-num">'+(l+1)+'.</div><div class="subtasks-pane-block-name">'+(data)+'</div><div class="subtasks-pane-block-delete"></div></div>');
+				$('.subtasks-pane-output').sortable();
+				//$('.subtasks-pane-output').sortable({  handle: '.handle' });
+
+				return false;
+
+
+			}
+
+		});
 
  
 
