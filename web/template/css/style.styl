@@ -1944,6 +1944,35 @@ a
 .clear
   clear: both
 
+/* goals subtasks widget */
+.subtaskadder
+    border 0
+    border-bottom 2px solid CGrayText
+    color CGray
+    font-size 1.2em
+    width 100%
+.subtasks-w
+    @extends .simplebox
+    @extends .simplebox-padding
+.subtasks-pane
+    box-sizing border-box
+    padding 5px
+    &-output 
+        margin-top 10px
+        margin-bottom 10px
+    &-block 
+        white-space nowrap
+        &-num
+            @extends .dib_base
+            width 5%
+        &-name
+            @extends .dib_base
+            width 90%
+        &-delete
+            @extends .dib_base
+            width 5%
+
+
 .mdlst-h2t-goals
   font-size: 32px
   margin-top: 20px

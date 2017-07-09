@@ -234,6 +234,18 @@ class GoalController extends Controller
 
                     }
 
+                    if( !empty($post['subtasks']) ){
+                        foreach ($post['subtasks'] as $st) {
+                            $s = new GoalSubtask;
+                            $s->name = $post['name'];
+                            $s->date_created = date("Y-m-d H:i:s");
+                            $s->goal_id = $goal->goal_id;
+                            $s->goal_subtask_parent_id = 0;
+                            $s->deadline = "";
+                            $s->save();
+                        }
+                    }
+
                 
 
 
@@ -471,7 +483,7 @@ class GoalController extends Controller
 
 <li class="subtask-container">
             <div class="subtask-top">
-                <div class="subtask-top-left ">
+                <div class="subtask-top-left  js-set-subtask-complete"  data-goal_subtask_id="<?=$goalSubtask->goal_subtask_id?>" data-goal_id="<?=$parentGoal->goal_id?>">
                     <div class="input-check">
                         <input id="<?=$goalUID?>" name= value="<?=$goalUID?>" type="checkbox">
                         <label for="<?=$goalUID?>" class="subtask-top-name"><?=$get['no']?>. <?=$goalSubtask->name;?> </label>
@@ -483,7 +495,7 @@ class GoalController extends Controller
                     </div>
                     <span class="mygoals-dead color-red subtask-top-dead"><? if(!empty( $goalSubtask->deadline) ) {  echo date("d.m.Y", strtotime($goalSubtask->deadline));  } ?></span>
                 </div>
-                <?=Yii::$app->decor->plus('');?>
+                
             </div>
             <div class="subtask-bottom"></div>
 
