@@ -914,21 +914,34 @@ a {
   background-color: #fff;
 }
 .questblock-pic {
-  width: 340px;
-  min-height: 270px;
+  width: 270px;
+  height: 100%;
   background-position: center;
   background-size: cover;
-  position: relative;
+  position: absolute;
+  overflow: hidden;
 }
 .questblock-pic-tag {
   background-color: #ffe212;
   position: absolute;
   padding: 3px;
 }
+.questblock-pic-curtain {
+  background-color: #fff;
+  right: -30px;
+  top: 0;
+  width: 60px;
+  height: 105%;
+  position: absolute;
+  transform: skewX(-6deg);
+}
 .questblock-info {
   box-sizing: border-box;
   padding: 16px 26px 16px 16px;
   width: 450px;
+  position: relative;
+  z-index: 25;
+  margin-left: 270px;
 }
 .questblock-info-title {
   font-size: 30px;
@@ -977,6 +990,7 @@ a {
 }
 .questblock-info-controlls {
   white-space: nowrap;
+  margin-bottom: 15px;
 }
 .questblock-info-controlls-likes {
   margin-right: 65px;
@@ -2202,6 +2216,7 @@ a {
   height: 16px;
   margin-right: 5px;
   background-repeat: no-repeat;
+  vertical-align: middle;
 }
 .mdlst-status__pending .mdlst-status-icon {
   background-image: url("../img/icon-time.png");

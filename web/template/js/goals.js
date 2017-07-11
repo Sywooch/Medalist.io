@@ -27,13 +27,16 @@ $(document).ready(function(){
 				difficulty = p.find('input[name="difficulty"]'),
 				deadline = p.find('[name="deadline"]'),
 				private = p.find('[name="private"]'),
-				tags = p.find('.addach-tags-w .addach-tags-tag'),
+				tags =[],
 				subtasksBlocks = $('.subtasks-pane-block'),
 				tagWords = [],
 				subtasks = [],
 				_csrf = p.find('input[name=_csrf]'),
 				data = {}
 				;
+
+				pushTagsToAdded(p.find('input.js-tag-adder'), p.find('.addach-tags-w'));
+				tags = p.find('.addach-tags-w .addach-tags-tag');
 
 				tags.each(function(i,e){
 					tagWords[ tagWords.length ] = $(e).text();
@@ -101,11 +104,17 @@ $(document).ready(function(){
 				difficulty = p.find('input[name="difficulty"]'),
 				deadline = p.find('[name="deadline"]'),
 				private = p.find('[name="private"]'),
-				tags = p.find('.addach-tags-w .addach-tags-tag'),
+				tags = [],
 				tagWords = [],
 				_csrf = p.find('input[name=_csrf]'),
 				data = {}
 				;
+
+
+				pushTagsToAdded(p.find('input.js-tag-adder'), p.find('.addach-tags-w'));
+				tags = p.find('.addach-tags-w .addach-tags-tag');
+
+				
 
 				tags.each(function(i,e){
 					tagWords[ tagWords.length ] = $(e).text();

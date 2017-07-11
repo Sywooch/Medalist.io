@@ -298,6 +298,7 @@ echo $this->render('_panel.php');
 								<div class="questblock">
 									<div class="questblock-pic" style="background-image: url(<?=$q->picture?>)">
 										<div class="questblock-pic-tag tagbgcolor-<?=$category->category_id?>"><?=$category->name?>	</div>
+										<div class="questblock-pic-curtain"></div>
 									</div>
 									<div class="questblock-info">
 										<div class="questblock-info-meta">
