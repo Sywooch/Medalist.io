@@ -256,7 +256,15 @@ class DecorComponent extends Component
  
 
 	public static function cutDescription($string, $length=700) {
+
+		$string = str_replace(array('<p>',  '</p>', '<br>', '<br />'),
+                    array("&p&", '&/p&', "&br&","&br&"),   $string);
 		$string = strip_tags($string);
+
+		$string = str_replace(array("&p&", '&/p&', "&br&"),
+                    array('<p>',  '</p>', '<br />'),   $string);
+
+
 		$string = substr($string, 0, $length);
 		$string = rtrim($string, "!,.-");
 		$string = substr($string, 0, strrpos($string, ' '));
