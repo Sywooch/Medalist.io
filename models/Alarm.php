@@ -185,14 +185,16 @@ class Alarm extends \yii\db\ActiveRecord
 
                                             case "Achievement":
                                                 $obj = Achievement::findOne( $alarm->entity_id);
+
+
                                                 ?>
-                                                    ваше достижение <a href="<?=Yii::$app->urlManager->createUrl(['personal/achievement', 'achievement_id' => $alarm->entity_id]);?>"><?=$obj->name?></a>
+                                                    ваше достижение <?if( !empty($obj) ){?> <a href="<?=Yii::$app->urlManager->createUrl(['personal/achievement', 'achievement_id' => $alarm->entity_id]);?>"><?=$obj->name?></a><?}?>
                                                 <?
                                             break;
                                             case "Goal":
                                                 $obj = Goal::findOne( $alarm->entity_id);
                                                 ?>
-                                                    вашу цель <a href="<?=Yii::$app->urlManager->createUrl(['personal/goal', 'goal_id' => $alarm->entity_id]);?>"><?=$obj->name?></a>
+                                                    вашу цель <?if( !empty($obj) ){?><a href="<?=Yii::$app->urlManager->createUrl(['personal/goal', 'goal_id' => $alarm->entity_id]);?>"><?=$obj->name?></a><?}?>
                                                 <?
                                             break;
 
@@ -208,20 +210,20 @@ class Alarm extends \yii\db\ActiveRecord
                                             case "Achievement":
                                                 $obj = Achievement::findOne( $alarm->entity_id);
                                                 ?>
-                                                    ваше достижение <a href="<?=Yii::$app->urlManager->createUrl(['personal/achievement', 'achievement_id' => $alarm->entity_id]);?>"><?=$obj->name?></a>
+                                                    ваше достижение <?if( !empty($obj) ){?><a href="<?=Yii::$app->urlManager->createUrl(['personal/achievement', 'achievement_id' => $alarm->entity_id]);?>"><?=$obj->name?></a><?}?>
                                                 <?
                                             break;
                                             case "Goal":
                                                 $obj = Goal::findOne( $alarm->entity_id);
                                                 ?>
-                                                    вашу цель <a href="<?=Yii::$app->urlManager->createUrl(['personal/goal', 'goal_id' => $alarm->entity_id]);?>"><?=$obj->name?></a>
+                                                    вашу цель <?if( !empty($obj) ){?><a href="<?=Yii::$app->urlManager->createUrl(['personal/goal', 'goal_id' => $alarm->entity_id]);?>"><?=$obj->name?></a<?}?>>
                                                 <?
                                             break;
                                             case "Comment":
                                                 $obj = Comment::findOne( $alarm->entity_id);
                                                 $commentedObj =  $obj->getObject();
                                                 ?>
-                                                    ваш ответ к <a href="<?=$obj->getObjectUrl();?>"><?=$commentedObj->name?></a>
+                                                    ваш ответ <?if( !empty($obj) ){?>к <a href="<?=$obj->getObjectUrl();?>"><?=$commentedObj->name?></a><?}?>
                                                 <?
                                             break;
 
@@ -235,7 +237,7 @@ class Alarm extends \yii\db\ActiveRecord
                                         <?  
                                                 $obj = Quest::findOne( $alarm->entity_id);
                                                 ?>
-                                                   <a href="<?=Yii::$app->urlManager->createUrl(['personal/quest', 'quest_id' => $alarm->entity_id]);?>"><?=$obj->name?></a>
+                                                  <?if( !empty($obj) ){?> <a href="<?=Yii::$app->urlManager->createUrl(['personal/quest', 'quest_id' => $alarm->entity_id]);?>"><?=$obj->name?></a><?}?>
                                                 <?
                                             
 
@@ -256,7 +258,7 @@ class Alarm extends \yii\db\ActiveRecord
                                             case "Achievement":
                                                 $obj = Achievement::findOne( $alarm->entity_id);
                                                 ?>
-                                                   Ваше достижение <a href="<?=Yii::$app->urlManager->createUrl(['personal/achievement', 'achievement_id' => $alarm->entity_id]);?>"><?=$obj->name?></a> подтверждено
+                                                   Ваше достижение <?if( !empty($obj) ){?><a href="<?=Yii::$app->urlManager->createUrl(['personal/achievement', 'achievement_id' => $alarm->entity_id]);?>"><?=$obj->name?></a><?}?> подтверждено
                                                 <?
                                             break; 
 
@@ -273,7 +275,7 @@ class Alarm extends \yii\db\ActiveRecord
                                         <?  
                                                 $obj = Quest::findOne( $alarm->entity_id);
                                                 ?>
-                                                   <a href="<?=Yii::$app->urlManager->createUrl(['personal/quest', 'quest_id' => $alarm->entity_id]);?>"><?=$obj->name?></a>
+                                                  <?if( !empty($obj) ){?> <a href="<?=Yii::$app->urlManager->createUrl(['personal/quest', 'quest_id' => $alarm->entity_id]);?>"><?=$obj->name?></a><?}?>
                                                 <?
                                             
 
@@ -290,7 +292,7 @@ class Alarm extends \yii\db\ActiveRecord
                                         <?  
                                                 $obj = Quest::findOne( $alarm->entity_id);
                                                 ?>
-                                                   <a href="<?=Yii::$app->urlManager->createUrl(['personal/quest', 'quest_id' => $alarm->entity_id]);?>"><?=$obj->name?></a>
+                                                   <?if( !empty($obj) ){?> <a href="<?=Yii::$app->urlManager->createUrl(['personal/quest', 'quest_id' => $alarm->entity_id]);?>"><?=$obj->name?></a><?}?>
                                                 <?
                                             
 
@@ -307,7 +309,7 @@ class Alarm extends \yii\db\ActiveRecord
                                                 $badgeBalance = BadgeBalance::findOne( $alarm->entity_id);
                                                 $obj = Badge::findOne( $badgeBalance->badge_id);
                                                 ?>
-                                                   <a href="<?=Yii::$app->urlManager->createUrl(['personal/reward-detail', 'badge_id' => $obj->entity_id, 'badge_balance_id' => $badgeBalance->badge_id]);?>"><?=$obj->name?></a>
+                                                  <?if( !empty($obj) ){?><a href="<?=Yii::$app->urlManager->createUrl(['personal/reward-detail', 'badge_id' => $obj->entity_id, 'badge_balance_id' => $badgeBalance->badge_id]);?>"><?=$obj->name?></a><?}?> 
                                                 <?
                                             
 

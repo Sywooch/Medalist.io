@@ -54,6 +54,27 @@ checkAlarms = function(){
 setInterval(checkAlarms, 5000);
 
 
+pushTagsToAdded = function( fieldFrom, container){
+	var val = '';
+
+	if( typeof fieldFrom == 'string'){
+		fieldFrom = $(fieldFrom);
+	}
+	if( typeof container == 'string'){
+		container = $(container);
+	}
+
+	val = fieldFrom.val();
+
+	val = val.split('#').join('');
+
+	if( val.length > 0 ){
+		container.append('<div class="  mdlst-button mdlst-button-default addach-tags-tag"  >'+val+'<div class="mdlst-button-closer "></div></div>');
+		 
+	}
+};
+
+
 $(document).ready(function(){
 
 
@@ -509,11 +530,18 @@ $(document).ready(function(){
 				difficult = p.find('input[name="addach-chk-isimportant"]'),
 				entity = p.find('[name="entity"]'),
 				date_achieved = p.find('[name="date_achieved"]'),
-				tags = p.find('.addach-tags-w .addach-tags-tag'),
+				tags = [],
 				tagWords = [],
 				_csrf = p.find('input[name=_csrf]'),
 				data = {}
 				;
+
+
+
+				pushTagsToAdded(p.find('input.js-tag-adder'), p.find('.addach-tags-w'));
+				tags = p.find('.addach-tags-w .addach-tags-tag');
+
+				
 
 				tags.each(function(i,e){
 					tagWords[ tagWords.length ] = $(e).text();
@@ -565,11 +593,18 @@ $(document).ready(function(){
 				difficult = p.find('input[name="addach-chk-isimportant"]'),
 				entity = p.find('[name="entity"]'),
 				date_achieved = p.find('[name="date_achieved"]'),
-				tags = p.find('.addach-tags-w .addach-tags-tag'),
+				tags = [],
 				tagWords = [],
 				_csrf = p.find('input[name=_csrf]'),
 				data = {}
 				;
+
+				
+
+				pushTagsToAdded(p.find('input.js-tag-adder'), p.find('.addach-tags-w'));
+				tags = p.find('.addach-tags-w .addach-tags-tag');
+
+				
 
 				tags.each(function(i,e){
 					tagWords[ tagWords.length ] = $(e).text();
@@ -708,16 +743,24 @@ $(document).ready(function(){
 
 
 
+		
 
 
-		$(document).on('keydown', '.js-tag-adder', function(e ){
+		$(document).on('keydown', '.js-tag-adder', function( e ){
 		 	var  v = $(this).val();
 
-			if( e.which == 13 ){
-				e.preventDefault();
-				$(this).val('');
-				$('.addach-tags-w').append('<div class="  mdlst-button mdlst-button-default addach-tags-tag"  >'+v+'<div class="mdlst-button-closer "></div></div>')
+		 	v = v.split('#').join('');
 
+			if( e.which == 13 ||  e.which == 188 ){
+				e.preventDefault();
+				if( v.length > 0 ){
+					$(this).val('');
+					$('.addach-tags-w').append('<div class="  mdlst-button mdlst-button-default addach-tags-tag"  >'+v+'<div class="mdlst-button-closer "></div></div>');
+	
+				}else{
+					$(this).val('');
+				}
+				
 			}
 		});
 

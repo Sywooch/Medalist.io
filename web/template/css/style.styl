@@ -600,21 +600,36 @@ a
     background-color white
     &-pic 
         @extends .dib_t
-        width 340px
-        min-height 270px
+        width 270px
+        height 100%
         background-position center
         background-size cover
-        position relative
+        position absolute
+        overflow hidden
         &-tag 
             background-color CSub
             position absolute
             padding 3px 
+        &-curtain 
             
+            background-color white
+            right -30px 
+            top 0 
+            width 60px 
+            height 105%
+            position absolute
+            transform skewX(-6deg)
+                
+    
+        
     &-info 
         @extends .dib_t
         box-sizing border-box
         padding 16px 26px 16px 16px
         width 450px
+        position relative
+        z-index 25
+        margin-left 270px
         &-title 
             font-size 30px
             font-weight bold
@@ -659,6 +674,7 @@ a
                 margin-top 10px
         &-controlls
             white-space nowrap
+            margin-bottom 15px
             &-likes 
                 @extends .dib_base
                 margin-right 65px
@@ -1825,6 +1841,7 @@ a
             height 16px
             margin-right 5px
             background-repeat no-repeat
+            vertical-align middle
         &__pending 
             & .mdlst-status-icon
                 background-image url(../img/icon-time.png)
