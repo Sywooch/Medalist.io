@@ -255,19 +255,24 @@ class DecorComponent extends Component
     }
  
 
-	public static function cutDescription($string, $length=700) {
+	public static function cutDescription($string, $length=400) {
 
 		$string = str_replace(array('<p>',  '</p>', '<br>', '<br />'),
-                    array("&p&", '&/p&', "&br&","&br&"),   $string);
+                    array("", '', "",""),   $string);
+
+		$string = preg_replace( '@<(script|style)[^>]*?>.*?</\\1>@si', '', $string );
 		$string = strip_tags($string);
 
-		$string = str_replace(array("&p&", '&/p&', "&br&"),
+		//$string = substr($string, 0, $length);
+		$string  = mb_substr($string, 0, $length, 'UTF-8');
+
+		$string = rtrim($string, "!,.-");
+//		$string = substr($string, 0, strrpos($string, ' '));
+
+
+		$string = str_replace(array("", '', ""),
                     array('<p>',  '</p>', '<br />'),   $string);
 
-
-		$string = substr($string, 0, $length);
-		$string = rtrim($string, "!,.-");
-		$string = substr($string, 0, strrpos($string, ' '));
 		return $string."… ";
 	}
 }

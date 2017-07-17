@@ -58,21 +58,31 @@ class PersonalController extends \yii\web\Controller
 
         if( !Yii::$app->user->isGuest ){
             $userToFind = Yii::$app->user->identity->id;
+
         }
         
+	        if( !empty(Yii::$app->request->get()['user_id']) ){
 
-        if( !empty(Yii::$app->request->get()['user_id']) ){
-            $other = true;
-            $userToFind = Yii::$app->request->get()['user_id'];
+	            $userToFind = Yii::$app->request->get()['user_id'];
 
-        }
+
+		        if( Yii::$app->user->isGuest ){
+            		$other = true;
+
+				}
+				elseif($userToFind != Yii::$app->user->identity->id){
+            		$other = true;
+				}
+	
+	        }
 
 
         if( !Yii::$app->user->isGuest ){
+
 			if(Yii::$app->user->identity->id == 17) {
 				$other = false;
 			}
-        }
+		}
 
 
         $achievements = Achievement::find()->where('user_id = '.$userToFind)->orderBy([ 'date_achieved' => SORT_DESC, 'date_created' => SORT_DESC ])->all();
@@ -100,6 +110,7 @@ class PersonalController extends \yii\web\Controller
 				$other = false;
 			}
         }
+
      
 
         if( ! $achievement ){
@@ -183,18 +194,23 @@ class PersonalController extends \yii\web\Controller
     public function actionAchievementEdit()
     {
 
-        $questPendingTasks = QuestPendingTask::find()->where('user_id = '.Yii::$app->user->identity->id.' AND status = 0')->all();
-        $goals = Goal::find()->where('user_id = '.Yii::$app->user->identity->id.' AND completed = 0')->all();
+        $achievement =  Achievement::findOne ( Yii::$app->request->get()['achievement_id'] );
 
+        $questPendingTasks = QuestPendingTask::find()->where('user_id = '.$achievement->user_id/*.' AND status = 0'*/)->all();
+        $goals = Goal::find()->where('user_id = '.$achievement->user_id/*.' AND completed = 0'*/)->all();
+
+/*
         $quest = false;
         $quest_id = !empty(Yii::$app->request->get()['quest_id']) ?  Yii::$app->request->get()['quest_id'] : 0;
 
-
         $goal = false;
         $goal_id = !empty(Yii::$app->request->get()['goal_id']) ?  Yii::$app->request->get()['goal_id'] : 0;
-
-        $achievement =  Achievement::findOne ( Yii::$app->request->get()['achievement_id'] );
+*/
  
+        $quest_id = $achievement->quest_id;
+        $goal_id = $achievement->goal_id;
+        $quest = false;
+        $goal = false;
 
         return $this->render('achievement-edit', [
             'goals' => $goals, 
@@ -204,6 +220,7 @@ class PersonalController extends \yii\web\Controller
             'goal' => $goal,
             'goal_id' => $goal_id,
             'difficult' => $achievement->difficult,
+            'difficulty' => $achievement->difficulty,
             'achievement' => $achievement,
             
 
@@ -396,6 +413,8 @@ class PersonalController extends \yii\web\Controller
     public function actionGoals()
     {
         //$id = Yii::$app->request->get()['goal_id'];
+
+/*
         $userToFind = Yii::$app->user->identity->id;
 
         $other = false;
@@ -410,6 +429,40 @@ class PersonalController extends \yii\web\Controller
 				$other = false;
 			}
         }
+
+*/
+
+
+        $other = false;
+
+        if( !Yii::$app->user->isGuest ){
+            $userToFind = Yii::$app->user->identity->id;
+
+        }
+        
+	        if( !empty(Yii::$app->request->get()['user_id']) ){
+
+	            $userToFind = Yii::$app->request->get()['user_id'];
+
+
+		        if( Yii::$app->user->isGuest ){
+            		$other = true;
+
+				}
+				elseif($userToFind != Yii::$app->user->identity->id){
+            		$other = true;
+				}
+	
+	        }
+
+
+        if( !Yii::$app->user->isGuest ){
+
+			if(Yii::$app->user->identity->id == 17) {
+				$other = false;
+			}
+		}
+
 
 
         $goals = Goal::find()->where('user_id = '.$userToFind)->orderBy(['goal_id' => SORT_DESC])->all();

@@ -253,6 +253,23 @@ echo $this->render('_panel.php');
 								 			<div class="achievement-block-content-cols">
 								 				<div class="achievement-block-content-col achievement-block-content-col-1">
 								 					<div class="achievement-block-content-title"><?=$a->name?></div>
+
+
+											 <?php if( $other === false ) { ?>
+											<div class="achievement-block-content-col ">
+												<div class="achievement-block-content-nav-serv">
+													<ul id="nav-serv">
+													  <li><a href="#"></a>
+													    <ul>
+													      <li><a href="<?=Yii::$app->urlManager->createUrl(['personal/achievement-edit','achievement_id' => $a->achievement_id]) ?>">Редактировать</a></li>
+													      <li><a class="js-delete-achievement" href="<?=Yii::$app->urlManager->createUrl(['achievement/delete-achievement', 'achievement_id' => $a->achievement_id]) ?>">Удалить</a></li>
+													    </ul>
+													  </li>
+													</ul>
+												</div>
+											</div>
+											<? } ?>
+
 								 					<div class="achievement-block-content-info">
 								 						<div class="achievement-block-content-info-date"><?=date( 'd.m.Y' ,  strtotime($a->date_achieved))?></div>
 								 					
@@ -276,18 +293,13 @@ echo $this->render('_panel.php');
 										                            <div class="achievement-block-images-picture-small" <?php if(!empty($photos[0]) ) { ?> style = "background-image: url(<?=$thumbs[0]?>);"<? } ?>></div>
 										 			</div>
 						                    	    <? } ?>
-
-
-														<?php if( $other === false ) { ?>
-										 			 <? Yii::$app->decor->button( 'Удалить достижение',  '', 'mdlst-button-accent mdlst-button-small js-delete-achievement', ['delete_url' => Yii::$app->urlManager->createUrl(['achievement/delete-achievement', 'achievement_id' => $a->achievement_id])] );?>
-										 			 	<?php } ?>
- 
-								 					 
+				 					 
 									 			
 								 				</div>
 								 			</div>
 								 		</div>
 
+								 		</div>
 								 		<!-- extra info --> 
 								 		
 								 	</div>

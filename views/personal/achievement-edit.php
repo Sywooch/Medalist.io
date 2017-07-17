@@ -113,7 +113,8 @@ echo $this->render('_panel.php');
 												</div>
 												<select name="entity" id="entity" class="dropdown-select-real">
 													<option value="">Выберите ЦЕЛЬ или КВЕСТ</option>
-													<?php foreach($questPendingTasks as $qpt ) { ?>
+													<?php foreach($questPendingTasks as $qpt ) { var_dump($quest_id);?>
+
 													<option value="q<?=$qpt->quest_id?>" <?=($quest_id==$qpt->getQuest()->one()->quest_id)?"selected":""?>><?=$qpt->getQuest()->one()->name?></option>
 													<? } ?>
 													<?php foreach($goals as $goal ) { ?>
