@@ -2562,6 +2562,63 @@ ntainer
             line-height 1.35em
 
 
+/* invite friends */
+.invitefriends-widget
+    @extends .simplebox
+    @extends .simplebox-padding
+    &-screen
+        position relative
+        &-1 
+            &-titleblock 
+                text-align center
+                &2
+                    display none
+            &-title 
+                color CAccent
+                font-size 2em 
+                margin-top 1em 
+                margin-bottom 0.5em
+            &-subtitle 
+                padding 0 20% 
+                margin-top 2em 
+                margin-bottom 1em
+            &-form 
+                text-align center
+                &-controlls 
+                    & input 
+                        border 0 
+                        border-bottom 2px solid CMain
+                        padding 10px 
+                        font-size 1.7em
+                    &-add 
+                        @extends .dib_base
+        &-2
+            text-align center
+            padding-top 20px
+            &-block 
+                white-space nowrap
+                padding 20px
+                box-sizing border-box
+                min-height 120px
+            &-emails
+                @extends .dib_m
+                color inherit
+                width 40%
+                white-space normal
+            &-multiplier
+                @extends .dib_m
+                font-size 3em
+                color CGrayText
+                width 20%
+                text-align center
+            &-sum
+                @extends .dib_m
+                font-size 3em
+                width 20%
+            &-info 
+                margin-top 15px
+                margin-bottom 15px
+
 
 
 #nav-serv,#nav-serv li ul{

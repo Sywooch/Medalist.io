@@ -297,6 +297,112 @@ $(document).ready(function(){
 	/* . REGISTRATION END */
 
 
+		/* invite friends */
+		window.validateEmail = function(e){
+			
+			var re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+			if (e == '' || !re.test( e ))
+			{
+			    
+			    return false;
+			}else{
+				return true;
+			}
+
+		};
+		window.inviteFriendsCalcPoints = function(){
+			var c = $('.js-invitefriends-emaillist'),
+				list = c.find('.js-friendemail-block'),
+				length = list.length;
+
+				return length;
+		};
+		window.inviteFriendsRewriteTotalPoints = function ( calc ){
+			$('.invitefriends-widget-screen-2-sum span').text((calc*10));
+		};
+		window.inviteFriendsAddEmail = function(email, destinationClass){
+			var e = '<div class="  mdlst-button mdlst-button-default js-friendemail-block addach-tags-tag">'+email+'<div class="mdlst-button-closer "></div></div><br>';
+			if( typeof destinationClass != 'object'){
+				destinationClass = $(destinationClass);
+			}
+			destinationClass.append(e);
+			window.inviteFriendsRewriteTotalPoints ( window.inviteFriendsCalcPoints()  );
+		};
+
+		window.inviteFriensCountEmails = function( destinationClass){
+			if( typeof destinationClass != 'object'){
+				destinationClass = $(destinationClass);
+			}
+			return $(destinationClass).find('.js-friendemail-block').length;
+		};
+
+		$(document).on('focus', '.js-invitefriends-input', function(){
+			var p = $(this).parents('.invitefriends-widget'),
+				title1 = p.find('.invitefriends-widget-screen-1-titleblock1'),
+				title2 = p.find('.invitefriends-widget-screen-1-titleblock2');
+
+			$('.invitefriends-widget-screen-2').slideDown();
+			title1.slideUp();
+			title2.slideDown();
+		});
+		$(document).on('blur', '.js-invitefriends-input', function(){
+			var p = $(this).parents('.invitefriends-widget'),
+				title1 = p.find('.invitefriends-widget-screen-1-titleblock1'),
+				title2 = p.find('.invitefriends-widget-screen-1-titleblock2');
+
+			if( window.inviteFriendsCalcPoints() == 0 && $('.js-invitefriends-input').val().length == 0 ){
+				title1.slideDown();
+				title2.slideUp();	
+			}
+			
+		});
+		$(document).on('keydown', '.js-invitefriends-input', function( e ){
+			var p = $(this).parents('.invitefriends-widget'),
+				val = $(this).val();
+
+				if( e.which == 13 || e.which == 188){
+					e.preventDefault();
+					if( window.validateEmail(val) ){
+						window.inviteFriendsAddEmail( val, p.find('.js-invitefriends-emaillist') );	
+					}
+					
+					$(this).val('');
+				}
+
+		});
+		$(document).on('click', '.js-invitefriends-addemail', function(){
+			var e = jQuery.Event("keydown");
+			e.which = 188; // # Some key code value
+			$('.js-invitefriends-input').trigger(e);
+
+			//$('.js-invitefriends-input').keydown(13);
+		});
+		$(document).on('click', '.js-invitefriends-invite', function(){
+			 var emails = $('.js-friendemail-block'),
+			 		toInvite = [],
+			 		that = this;
+			 emails.each(function(i,e){
+			 	toInvite[ toInvite.length ] = $(e).text();
+			 	
+			 });
+
+			 $(this).addClass('mdlst-button-disabled');
+			 $.ajax({
+			 	url :ajaxUrls['inviteFriends'],
+			 	data: {emails: toInvite},
+			 	dataType: 'json',
+			 	success: function(data){
+			 		console.log(data);
+			 		$(that).removeClass('mdlst-button-disabled');
+			 		$('.invitefriends-widget-screen-1').slideUp();
+			 		$('.invitefriends-widget-screen-2').slideUp();
+			 		$('.invitefriends-widget-screen-3').slideDown();
+			 	}
+			 });
+		});
+		/* invite friends end */
+
+
 
 
 

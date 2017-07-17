@@ -96,6 +96,7 @@ if ( empty($this->title) ){
             $ajaxUrls['getCommentHtml'] = Yii::$app->urlManager->createUrl('comment/ajax-get-comment-html');
 
             $ajaxUrls['shareTrack'] = Yii::$app->urlManager->createUrl('site/ajax-share-track');
+            $ajaxUrls['inviteFriends'] = Yii::$app->urlManager->createUrl('site/ajax-invite-friends');
             echo json_encode( $ajaxUrls );
         ?>     
         var isGuest =  <?=(int)Yii::$app->user->isGuest?> ;

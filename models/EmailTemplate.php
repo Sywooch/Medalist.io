@@ -27,6 +27,7 @@ class EmailTemplate extends \yii\db\ActiveRecord
     const EMAIL_REANIMATE_1 = 4;  // [  TO_NAME ENTER_URL]
     const EMAIL_REANIMATE_2 = 5;  // [  TO_NAME ENTER_URL]
     const EMAIL_REANIMATE_3 = 6;  // [  TO_NAME ENTER_URL]
+    const EMAIL_REFERRAL_INVITE = 7;  // [  FRIEND_NAME ENTER_URL]
     /**
      * @inheritdoc
      */

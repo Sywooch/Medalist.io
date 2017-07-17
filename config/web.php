@@ -16,6 +16,9 @@ $config = [
         'decor' => [
             'class' => 'app\components\DecorComponent',
         ],
+        'inviteFriends' => [
+            'class' => 'app\components\InviteFriendsComponent',
+        ],
         'common' => [
             'class' => 'app\components\DecorComponent',
         ],
