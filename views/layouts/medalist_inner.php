@@ -22,10 +22,10 @@ if ( empty($this->title) ){
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
   <head>
-    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
      <title><?= Html::encode($this->title) ?></title>
 
 
@@ -45,10 +45,11 @@ if ( empty($this->title) ){
     <link rel="stylesheet" href="/template/css/style.css">
     <link rel="stylesheet" href="/template/css/style.768.css">
     <link rel="stylesheet" href="/template/css/style.320.css">
+    <link rel="stylesheet" href="http://blast-off.ru/css/my_style.css">
+
     <link rel="stylesheet" href="/template/js/trumbowyg/dist/ui/trumbowyg.css">
     <link rel="stylesheet" href="/template/js/datepicker/dist/datepicker.css">
     <link rel="stylesheet" href="/template/js/rangeslider/rangeslider.css">
-<!--     <link rel="stylesheet" href="/template/css/goals.css">-->
      <link rel="stylesheet" href="/template/js/dropzone/dropzone.css">
      <link rel="stylesheet" href="/template/js/owl/owl.carousel.css">
      <link rel="stylesheet" href="/template/js/fancybox/dist/jquery.fancybox.min.css">
