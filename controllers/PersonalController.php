@@ -451,9 +451,9 @@ class PersonalController extends \yii\web\Controller
 
       	$photos = $goal->getPhotos();
    	    if(!empty($photos) ) { 
-			$thumbs = Yii::$app->decor->getThumbnails($photos);
+/*			$thumbs = Yii::$app->decor->getThumbnails($photos);*/
 
-	        $this->view->params['og_image'] = 'http://'.Yii::$app->request->serverName.$thumbs[0];
+	        $this->view->params['og_image'] = 'http://'.Yii::$app->request->serverName.$photos[0]->filename;
 		}
 
 

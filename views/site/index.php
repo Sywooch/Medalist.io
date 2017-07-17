@@ -2,8 +2,9 @@
 
 /* @var $this yii\web\View */
  
-$this->title = 'Медалист. Система хранения достижений, выполнения квестов и формирования рейтингов.';
+$this->title = 'Medalyst.online. Система хранения достижений, выполнения целей и формирования рейтингов.';
 ?>
+
 <div id="videoDiv">
      <div id="videoBlock">
         <div id="videoCurtain"></div>

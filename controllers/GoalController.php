@@ -264,7 +264,7 @@ class GoalController extends Controller
 
 
                            $photo = new Photo;
-                           $photo->filename =  $targetFile;
+                           $photo->filename =  '/uploads/g/'. $info['filename'].'.jpg';;
                            $photo->entity_class  = 'Goal';
                            $photo->entity_id =  $goal->goal_id;
                            $photo->date_created = date("Y-m-d H:i:s");
