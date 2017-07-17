@@ -30,7 +30,14 @@ echo $this->render('_panel.php');
                     <?php foreach($news as $new ) { 
 
                          Notification::renderNotificationHTML($new);
-                        }?>
+                        
+                        }
+
+
+                        if( empty($news) ){
+                            Yii::$app->inviteFriends->form();
+                        }
+                        ?>
 
                     </div>
 

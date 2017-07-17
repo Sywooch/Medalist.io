@@ -16,6 +16,7 @@ use app\models\Category;
 use app\models\Tag;
 use app\models\EmailTrace;
 use app\models\EmailTemplate;
+use app\models\EmailReferral;
 use app\models\ScalePointsBalance;
 use amnah\yii2\user\models\User;
 use yii\helpers\BaseUrl;
@@ -197,6 +198,35 @@ class SiteController extends Controller
                 $result['success'] = true;
             }
         
+        }
+
+        echo json_encode($result);
+    }
+
+
+    //TODO after referred user register - add him to this user friends
+    public function actionAjaxInviteFriends(){
+        $result = [];
+
+        $get = Yii::$app->request->get();
+        $result['success'] = false;
+        $result['get'] = $get;
+
+        if( !Yii::$app->user->isGuest ){
+
+            $userName = Yii::$app->user->identity->getName();
+            $emails = $get['emails'];
+            foreach ($emails as $e) {
+                $email = EmailTemplate::findOne( EmailTemplate::EMAIL_REFERRAL_INVITE );
+                $email->send( $e,  ['FRIEND_NAME' => $userName, 'ENTER_URL' => 'http://medalyst.online'] , 'Ваш друг '.$userName.' приглашает вас в Медалист!');
+
+                $er = new EmailReferral;
+                $er->email =$e;
+                $er->date_created = date("Y-m-d H:i:s");
+                $er->user_id = Yii::$app->user->identity->id;
+                $er->save();
+                $result['success'] = true;
+            }
         }
 
         echo json_encode($result);

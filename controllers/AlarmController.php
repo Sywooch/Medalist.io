@@ -365,7 +365,7 @@ INSERT INTO `email_template` (`email_template_id`, `code`, `email_from`, `name_f
 
 
 
-
+EMAIL_REANIMATE_3
 
 INSERT INTO `email_template` (`email_template_id`, `code`, `email_from`, `name_from`, `email_to`, `subject`, `cc`, `bcc`, `html`, `text`, `extra_headers`, `files`) VALUES (NULL, 'EMAIL_REANIMATE_3', 'no-reply@medalyst.online', NULL, NULL, 'Ваш аккаунт заблокирован.', NULL, NULL, '
 <!DOCTYPE html>
@@ -441,6 +441,87 @@ INSERT INTO `email_template` (`email_template_id`, `code`, `email_from`, `name_f
   </body>
 </html>
 ', NULL, NULL, NULL);
+
+
+
+
+CREATE TABLE `medalyst_yii`.`email_referral` ( `email_referral_id` INT(11) NOT NULL AUTO_INCREMENT , `user_id` INT(11) NOT NULL , `to_user_id` INT(11) NULL COMMENT 'is added AFTER registration' , `email` VARCHAR(512) NOT NULL , `date_created` DATETIME NOT NULL , PRIMARY KEY (`email_referral_id`)) ENGINE = InnoDB;
+
+
+EMAIL_REFERRAL_INVITE
+
+
+INSERT INTO `email_template` (`email_template_id`, `code`, `email_from`, `name_from`, `email_to`, `subject`, `cc`, `bcc`, `html`, `text`, `extra_headers`, `files`) VALUES (NULL, 'EMAIL_REFERRAL_INVITE', NULL, NULL, NULL, 'Ваш друг приглашает вас в Medalyst.online!', NULL, NULL, '
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+     <title>Medalyst.online email template</title>
+
+
+  </head>
+
+  <body>
+      <table style="width: 600px;" cellspacing="0" align="center">
+
+          <tr style="background-color:  #8a44ff; height: 80px;">
+              <td style="width: 450px; padding: 15px;">
+                  <a href="http://medalyst.online/"><img src="http://medalyst.online/template/img/logo-white.png" alt=""></a>
+              </td>
+              <td  style="width: 150px; padding: 15px;">
+              <!--http://www.flaticon.com/free-icon/vk-social-network-logo_25684#term=vk&page=1&position=3-->
+                  <a href=""><img src="http://medalyst.online/template/img/icon-vk.png" style="max-width: 25px"></a>
+                  <a href=""><img src="http://medalyst.online/template/img/icon-fb.png" style="max-width: 25px"></a>
+                  <a href=""><img src="http://medalyst.online/template/img/icon-inst.png" style="max-width: 25px"></a>
+              </td>
+          </tr>
+
+          <tr>
+              <td colspan="2" style="padding: 25px;">
+                  <h2 style="font-family: sans-serif;">Ваш друг приглашает вас в Medalyst.</h2>
+
+                  <table>
+                    
+                    <tr>
+                      <td><p>Ваш друг #FRIEND_NAME# приглашает вас отрыть новую страницу личных достижений и персонального роста.</p></td>
+                    </tr> 
+                    <tr>
+                      <td><p>Сервис Медалист - это сотни квестов, система личных целей и достижений, тренды развития, возможность бросить вызов друзьям и ещё куча крутых штук.</p></td>
+                    </tr>  
+                    <tr>
+                      <td> <a style="display: inline-block;background-color: red;color: white;padding: 10px 25px;border-radius: 25px;text-decoration: none;" href="#ENTER_URL#">Зарегистрироваться на Medalyst.Online</a></td>
+                    </tr>
+  
+
+                  </table>
+                  
+                  
+              </td>
+          </tr>
+
+          <tr style="background-color:  #FAFAFA;  height: 100px; padding: 15px;">
+                <td style="font-size: 12px; color: #999; padding: 15px;">
+                    Вы получили это письмо так как ваш друг указал ваш емейл в качестве контактного. Перейдите по <a href="№">этой ссылке</a>, чтобы больше не получать писем.
+                </td>
+              <td  style="width: 150px;  padding: 15px;">
+                  <a href=""><img src="http://medalyst.online/template/img/icon-vk-black.png" style="max-width: 25px"></a>
+                  <a href=""><img src="http://medalyst.online/template/img/icon-fb-black.png" style="max-width: 25px"></a>
+                  <a href=""><img src="http://medalyst.online/template/img/icon-inst-black.png" style="max-width: 25px"></a>
+              </td>
+          </tr>
+      </table>
+ 
+
+ 
+  </body>
+</html>
+', NULL, NULL, NULL);
+
+ALTER TABLE `email_referral` ADD `status` INT(2) NOT NULL DEFAULT '0' AFTER `date_created`, ADD `date_accepted` INT NULL AFTER `status`;
+
+
+
 
 */
 class AlarmController extends \yii\web\Controller

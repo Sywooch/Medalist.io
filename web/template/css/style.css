@@ -144,7 +144,11 @@
 .notifications-block-user,
 .notifications-block-text,
 .notificationslist-block-user,
-.notificationslist-block-text {
+.notificationslist-block-text,
+.invitefriends-widget-screen-1-form-controlls-add,
+.invitefriends-widget-screen-2-emails,
+.invitefriends-widget-screen-2-multiplier,
+.invitefriends-widget-screen-2-sum {
   display: inline-block;
   *display: inline;
   zoom: 1;
@@ -239,7 +243,10 @@
 .profileview-level,
 .mdlst-switch-state,
 .share-widget-title,
-.share-widget-content {
+.share-widget-content,
+.invitefriends-widget-screen-2-emails,
+.invitefriends-widget-screen-2-multiplier,
+.invitefriends-widget-screen-2-sum {
   vertical-align: middle;
 }
 .dib_b {
@@ -293,7 +300,8 @@
 .mdlst-lurm i,
 .subtasks-pane-block-num,
 .subtasks-pane-block-name,
-.subtasks-pane-block-delete {
+.subtasks-pane-block-delete,
+.invitefriends-widget-screen-1-form-controlls-add {
   vertical-align: baseline;
 }
 .dib_icon,
@@ -323,7 +331,8 @@
 .subtasks-w,
 .lastachievement,
 .notifications,
-.notificationslist {
+.notificationslist,
+.invitefriends-widget {
   box-shadow: 0 0 5px rgba(49,51,62,0.1);
   box-sizing: border-box;
   -webkit-border-radius: 4px;
@@ -344,6 +353,7 @@
 .lastachievement-padding,
 .notifications-padding,
 .notificationslist-padding,
+.invitefriends-widget-padding,
 .questssuggested,
 .questssuggested-quests-quest,
 .achievement-block-content,
@@ -355,7 +365,8 @@
 .subtasks-w,
 .lastachievement,
 .notifications,
-.notificationslist {
+.notificationslist,
+.invitefriends-widget {
   padding: 29px 26px;
 }
 /* 1280 */
@@ -2937,6 +2948,65 @@ ntainer {
   font-size: 14px;
   white-space: normal;
   line-height: 1.35em;
+}
+/* invite friends */
+.invitefriends-widget-screen {
+  position: relative;
+}
+.invitefriends-widget-screen-1-titleblock {
+  text-align: center;
+}
+.invitefriends-widget-screen-1-titleblock2 {
+  display: none;
+}
+.invitefriends-widget-screen-1-title {
+  color: #ff2d0b;
+  font-size: 2em;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+}
+.invitefriends-widget-screen-1-subtitle {
+  padding: 0 20%;
+  margin-top: 2em;
+  margin-bottom: 1em;
+}
+.invitefriends-widget-screen-1-form {
+  text-align: center;
+}
+.invitefriends-widget-screen-1-form-controlls input {
+  border: 0;
+  border-bottom: 2px solid #8a44ff;
+  padding: 10px;
+  font-size: 1.7em;
+}
+.invitefriends-widget-screen-2 {
+  text-align: center;
+  padding-top: 20px;
+}
+.invitefriends-widget-screen-2-block {
+  white-space: nowrap;
+  padding: 20px;
+  box-sizing: border-box;
+  min-height: 120px;
+}
+.invitefriends-widget-screen-2-emails {
+  color: inherit;
+  width: 40%;
+  white-space: normal;
+}
+.invitefriends-widget-screen-2-multiplier {
+  font-size: 3em;
+  color: #9a9ba0;
+  width: 20%;
+  text-align: center;
+}
+.invitefriends-widget-screen-2-sum {
+  font-size: 3em;
+  width: 20%;
+}
+.invitefriends-widget-screen-2-info {
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 #nav-serv,
 #nav-serv li ul {
