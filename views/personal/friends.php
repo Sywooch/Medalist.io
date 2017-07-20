@@ -102,6 +102,11 @@ echo $this->render('_panel.php');
                     } ?>
                     </div>
 
+
+                    <? 
+                      Yii::$app->inviteFriends->form();
+                    ?>
+
                     
                 </div>
                 <!--output-->
