@@ -1,3 +1,89 @@
+.goals-picture-mid {
+    float: none;
+}
+.achievement-block-content-header-col.achievement-block-content-header-col-1 > .achievement-block-content-info{
+	    margin-top: 24px!important;
+}
+#nav-serv{
+	    position: absolute;
+    top: 30px;
+    right: 0;
+}
+.marginBottom30 {
+    line-height: 1.65em;
+}
+.goals-picture-small {
+    margin: 0px 1%;
+    width: 14.5%;
+    height: 80px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.goals-picture-big {
+    width: 100%;
+    margin: 0 0 30px 0;
+}
+.achievement-block--small .achievement-block-content-col-1 {
+    width: 430px;
+}
+.goals-picture-mid {
+    width: 200px;
+    height: 200px;
+}
+.achievement-block-meta {
+    position: absolute;
+    left: 0;
+    top: 0px;
+    left: 25px;
+}
+.achievement-block-content-description {
+    min-height: 150px;
+}
+.achievement-block--small .achievement-block-images-picture-small {
+	    position: absolute;
+    top: 80px;
+    right: 30px;
+}
+.goals-picture-mid {
+    position: absolute;
+    top: 80px;
+    right: 30px;
+}
+.withHeader {
+    margin-top: 27px;
+    margin-right: 0;
+    margin-top: 20px;
+    padding: 0px 30px;
+}
+.simplebox.simplebox-padding > .questblock-pic {
+    height: 200px;
+    position: static;
+}
+.output-header-meta {
+    top: 0px;
+}
+.withHeader {
+    margin-bottom: 15px;
+
+}
+.achievement-block-content-col.achievement-block-content-header-col-2{
+	    width: initial;
+}
+@media all and (max-width: 1280px) {
+	.output-header-meta-goals {
+    left: 80px;
+    right: initial;
+	}
+	.achievement-block-content-cols {
+    white-space: initial;
+}
+#videoMessage h3 {
+    font-size: 1.7em!important;
+}
+.achievement-block-content-col-2 {
+    width: initial;
+}	
+}
 @media all and (min-width: 801px) and (max-width: 1270px) {
   .simplebox-padding {
     padding: 20px 20px;
@@ -179,4 +265,68 @@
   .addach-tags-w {
     width: 465px;
   }
+  .achievement-block-content-header-col.achievement-block-content-header-col-1 > .achievement-block-content-info {
+    margin-top: 20px!important;
+}
+#nav-serv {
+    top: 23px;
+}
+	.profileview-aside-img {
+    background-size: contain;
+}
+	.achievement-block-content-description {
+    min-height: initial;
+}
+.achievement-block--small .achievement-block-images-picture-small {
+  position: static;
+}
+.goals-picture-mid {
+        position: static;
+}
+	.questpending-description {
+    width: 100%;
+}
+	.questblock-info {
+    margin-left: 180px;
+}
+	.questpending-deadline {
+    right: 0;
+	}
+	.questpending-title {
+    margin-top: 20px;
+}
+	.profileview-allachievements {
+    margin-right: 5px;
+	}
+}
+@media all and (max-width: 1000px) {
+	.header-menu-list-li {
+    margin-left: 15px;
+}
+#videoMessage h1 {
+    font-size: 2.4em!important;
+}
+#videoMessage h2 {
+    font-size: 2em!important;
+}
+#videoMessage h3 {
+    font-size: 1.6em!important;
+}
+	#videoMessage > .owl-carousel.owl-theme{
+		    width: 100%!important;
+	}
+	.container-col-1 {
+    margin-right: 10px;
+}
+}
+
+@media all and (min-width: 801px) and (max-width: 920px) {
+.header-menu {
+    width: 400px;
+}
+}
+@media all and (max-width: 920px) {
+	.newblock-icon {
+    margin-left: 0;
+}
 }

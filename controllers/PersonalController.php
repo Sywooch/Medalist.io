@@ -590,6 +590,12 @@ class PersonalController extends \yii\web\Controller
     public function actionQuests()
     {
 
+        if( Yii::$app->user->isGuest ){
+            throw new \yii\web\ForbiddenHttpException();
+             return false;
+        }
+
+
         //Todo подбор интересных квестов
 
         $questChallenges = QuestChallenge::find()->where('to_user_id = '.Yii::$app->user->identity->id.' AND status = 0')->all();

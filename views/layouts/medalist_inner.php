@@ -29,7 +29,8 @@ if ( empty($this->title) ){
      <title><?= Html::encode($this->title) ?></title>
 
 
-    <?php if(!empty( $this->params['og_title']) ){ ?><meta property="og:title" content="<?=strip_tags($this->params['og_title'])?>" /><? } ?>
+    <?php if(!empty( $this->params['og_title']) ){ ?><meta property="og:title" content="<?=strip_tags($this->params['og_title'])?>" /><? } else{?>
+	<meta property="og:title" content="Medalyst.online. Поделись своими успехами, посмотри достижения других, достигни своих целей, стань лучшим!" /><?} ?>
     <?php if(!empty( $this->params['og_image']) ){ ?><meta property="og:image" content="<?=$this->params['og_image']?>" /><? }else{?>
 	<meta property="og:image" content="/template/img/logo.gif" /><?} ?>
     <?php if(!empty( $this->params['og_description']) ){ ?><meta property="og:description" content="<?=strip_tags($this->params['og_description'])?>" /><? } ?>
@@ -43,9 +44,12 @@ if ( empty($this->title) ){
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="/template/css/system.css">
     <link rel="stylesheet" href="/template/css/style.css">
-    <link rel="stylesheet" href="/template/css/style.768.css">
-    <link rel="stylesheet" href="/template/css/style.320.css">
-    <link rel="stylesheet" href="http://blast-off.ru/css/my_style.css">
+
+<!--    <link rel="stylesheet" href="/template/css/style.768.css">
+    <link rel="stylesheet" href="/template/css/style.320.css"> -->
+
+<!--    <link rel="stylesheet" href="adaptive.css">-->
+   <link rel="stylesheet" href="http://blast-off.ru/css/my_style.css">
 
     <link rel="stylesheet" href="/template/js/trumbowyg/dist/ui/trumbowyg.css">
     <link rel="stylesheet" href="/template/js/datepicker/dist/datepicker.css">

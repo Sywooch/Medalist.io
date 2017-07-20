@@ -21,7 +21,9 @@ echo $this->render('_panel.php');
 							<form method="post" action="">
 							<input type="hidden" value="<?=Yii::$app->request->getCsrfToken()?>" placeholder="email" name="_csrf">
 							<div class="output-header">
-								<h2 class="mdlst-h2t-goals">Поиск пользователей</h2>
+								<h2 class="mdlst-h2t-goals">Пригласить друзей</h2>
+							            <?= Yii::$app->inviteFriends->form(); ?>
+								<h2 class="mdlst-h2t-goals">Поиск друзей</h2>
 								<div class="output-controlls">
 									<div class="output-controlls-searchbox"><div class="searchbox"><input type="text" class="searchbox-inp" name="text" value="<?=$predefinedText?>"><div class="searchbox-icon"></div></div></div>
 								 

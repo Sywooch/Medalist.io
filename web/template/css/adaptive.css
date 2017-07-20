@@ -1,0 +1,1738 @@
+﻿@media all and (min-width: 801px) and (max-width: 1270px) {
+  .simplebox-padding {
+    padding: 20px 20px;
+  }
+  .wc {
+    width: 768px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .wc-c {
+    text-align: center;
+  }
+  .container-col-1 {
+    width: 200px;
+  }
+  .container-col-2 {
+    width: 570px;
+  }
+  .mdlst-button {
+    padding: 8px 20px;
+  }
+  .mdlst-h2t-goals {
+    font-size: 24px;
+  }
+  .output-controlls-searchbox,
+  .questblock-info {
+    width: 373px;
+  }
+  .header-menu {
+    width: 431px;
+  }
+  .header-menu-list-li-a {
+    font-size: 13px;
+  }
+  .header-logo {
+    width: 182px;
+  }
+  .header-enter-link {
+    font-size: 14px;
+    margin-right: 20px;
+  }
+  .userpanel-user {
+    width: 300px;
+  }
+  .userpanel-user-pic {
+    width: 60px;
+    height: 60px;
+    margin-right: 14px;
+  }
+  .userpanel-info {
+    width: 450px;
+    margin-top: 5px;
+  }
+  .userpanel-user-info-name {
+    font-size: 18px;
+  }
+  .userpanel-user-info-date {
+    font-size: 14px;
+  }
+  .userpanel-user-notifications {
+    margin-left: 20px;
+  }
+  .userpanel-info-level {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+  }
+  .userpanel-info-level-point {
+    font-size: 24px;
+    padding-top: 0px;
+  }
+  .profileview-content {
+    width: 320px;
+  }
+  .profileview-aside-img {
+    width: 100px;
+    height: 100px;
+  }
+  .possible-friends-block-pic-userlink {
+    width: 150px;
+    height: 150px;
+  }
+  .profileview-content-level {
+    padding-top: 60px;
+  }
+  .profileview-h1 {
+    font-size: 22px;
+  }
+  .possible-friends-block {
+    width: 159px;
+  }
+  .editprofile-field-label {
+    width: 120px;
+    font-size: 13px;
+  }
+  .editprofile-field-input {
+    width: 130px;
+  }
+  .editprofile-field-input input {
+    width: 100%;
+  }
+  .friend-list-header-block-goals {
+    margin-left: 180px;
+    width: 80px;
+  }
+  .friend-list-block-pic2 {
+    width: 60px;
+    height: 60px;
+    margin-right: 15px;
+  }
+  .friend-list-header-block {
+    font-size: 14px;
+  }
+  .friend-list-block-name {
+    width: 72px;
+    margin-right: 5px;
+  }
+  .friend-list-block-goals {
+    width: 70px;
+    margin-rigth: 25px;
+  }
+  .friend-list-block-achievements {
+    width: 110px;
+  }
+  .friend-list-block-points {
+    width: 80px;
+  }
+  .friend-list-header-block-level {
+    width: 60px;
+  }
+  .newblock-pic {
+    width: 80px;
+  }
+  .newblock-pic img {
+    width: 80px;
+    height: 80px;
+  }
+  .newblock-pic-userlink {
+    width: 80px;
+    height: 80px;
+  }
+  .newblock-data {
+    width: 380px;
+  }
+  .newblock-data-text {
+    width: 230px;
+  }
+  .questblock-pic {
+    width: 190px;
+  }
+  .questblock-info-title {
+    width: 340px;
+    font-size: 20px;
+  }
+  .questblock-info-info-list-li {
+    font-size: 12px;
+  }
+  .lastachievement-info {
+    left: 50px;
+  }
+  .lastachievement-info-data-data {
+    width: 300px;
+    line-height: 1.5em;
+  }
+  .achievement-block-user-link {
+    width: 270px;
+  }
+  .achievement-block-user-pic {
+    width: 55px;
+    height: 55px;
+  }
+  .achievement-block-user-name {
+    font-size: 16px;
+    margin-left: 10px;
+  }
+  .goals-picture-big {
+    width: 291px;
+  }
+  .addach-tags-w {
+    width: 465px;
+  }
+}
+
+
+.mobile_only {
+  display: none;
+}
+@media all and (max-width: 800px) {
+  body {
+    width: 640px;
+    overflow-x: hidden;
+  }
+  .mobile_only {
+    display: block;
+  }
+  .mobile_only-inline-block {
+    display: inline-block;
+  }
+  .mobile_only-inline {
+    display: inline;
+  }
+  .simplebox-padding {
+    padding: 10px 10px;
+  }
+  .wc {
+    width: 640px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .wc-c {
+    text-align: center;
+  }
+  .container-col-1 {
+    width: 640px;
+  }
+  .container-col-2 {
+    width: 640px;
+  }
+  .container-cols {
+    white-space: normal;
+  }
+  .container-col-1 {
+    width: 100%;
+  }
+  .container-col-2 {
+    width: 100%;
+  }
+  .mdlst-button {
+    padding: 8px 20px;
+  }
+  .mdlst-h2t,
+  .mdlst-h2t-goals {
+    font-size: 18px;
+    white-space: normal;
+  }
+  .footer-wrapper {
+    white-space: normal;
+  }
+  .footer-menu {
+    width: 100%;
+  }
+  .footer-copy {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  .mdlst-pan-text {
+    font-size: 14px;
+  }
+  .output-header {
+    white-space: normal;
+  }
+  .output-controlls-searchbox,
+  .questblock-info {
+    width: 100%;
+  }
+  .myrewards-list,
+  .rewards-catalog-list {
+    text-align: center;
+  }
+  .myrewards-block {
+    margin-right: 0;
+    margin-bottom: 45px;
+  }
+  .header-menu {
+    display: none;
+  }
+  .header-menu-list-li-a {
+    font-size: 13px;
+  }
+  .header-logo {
+    width: 120px;
+  }
+  .header-logo img {
+    max-width: 100px;
+    margin-top: 5px;
+  }
+  .header-enter-link {
+    font-size: 14px;
+    margin-right: 20px;
+  }
+  .userpanel-user {
+    width: 100%;
+  }
+  .userpanel-user-pic {
+    width: 60px;
+    height: 60px;
+    margin-right: 14px;
+  }
+  .userpanel-info {
+    width: 100%;
+    margin-top: 5px;
+  }
+  .userpanel-user-info-name {
+    font-size: 18px;
+  }
+  .userpanel-user-info-date {
+    font-size: 14px;
+  }
+  .userpanel-user-notifications {
+    margin-left: 20px;
+  }
+  .userpanel-info-scale {
+    width: 250px;
+  }
+  .userpanel-info-level {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+  }
+  .userpanel-info-level-point {
+    font-size: 24px;
+    padding-top: 0px;
+  }
+  .profileview-content {
+    width: 100%;
+  }
+  .profileview-aside-img {
+    width: 100px;
+    height: 100px;
+  }
+  .possible-friends-block-pic-userlink {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+  }
+  .profileview-content-level {
+    padding-top: 154px;
+  }
+  .profileview-h1 {
+    font-size: 22px;
+  }
+  .possible-friends-block {
+    width: 100%;
+    text-align: center;
+  }
+  .editprofile-field-label {
+    width: 120px;
+    font-size: 13px;
+  }
+  .editprofile-field-input {
+    width: 130px;
+  }
+  .editprofile-field-input input {
+    width: 100%;
+  }
+  .friend-list-header-block-goals {
+    margin-left: 180px;
+    width: 80px;
+  }
+  .friend-list-block-pic2 {
+    width: 60px;
+    height: 60px;
+    margin-right: 15px;
+  }
+  .friend-list-header-block {
+    font-size: 14px;
+  }
+  .friend-list-block-name {
+    width: 72px;
+    margin-right: 5px;
+  }
+  .friend-list-block-goals {
+    width: 70px;
+    margin-rigth: 25px;
+  }
+  .friend-list-block-achievements {
+    width: 110px;
+  }
+  .friend-list-block-points {
+    width: 50px;
+  }
+  .friend-list-header-block-level {
+    width: 60px;
+  }
+  .newblock {
+    white-space: normal;
+    position: relative;
+  }
+  .newblock-pic {
+    width: 100%;
+    margin-right: 10px;
+  }
+  .newblock-pic-name {
+    float: right;
+    text-align: left;
+    width: 70%;
+  }
+  .newblock-pic-user-to {
+    display: none;
+  }
+  .newblock-pic img {
+    width: 80px;
+    height: 80px;
+  }
+  .newblock-pic-userlink {
+    width: 60px;
+    height: 60px;
+  }
+  .newblock-data {
+    width: 100%;
+  }
+  .newblock-data-text {
+    width: 250px;
+  }
+  .newblock-data-text .not-date {
+    display: block;
+    font-size: 12px;
+  }
+  .newblock-icon {
+    position: absolute;
+    right: 0;
+    top: 110px;
+  }
+  .newblock-desc {
+    display: none;
+  }
+  .questblock {
+    white-space: normal;
+  }
+  .questblock-pic {
+    width: 100%;
+  }
+  .questblock-info-title {
+    width: 300px;
+    font-size: 17px;
+  }
+  .questblock-info-info-list-li {
+    font-size: 12px;
+  }
+  .lastachievement-info {
+    left: 50px;
+  }
+  .lastachievement-info-data-data {
+    width: 100%;
+    line-height: 1.5em;
+  }
+  .questblock-info-controlls-likes {
+    margin-right: 15px;
+    font-size: 14px;
+  }
+  .questblock-info-controlls-comments {
+    margin-right: 10px;
+    font-size: 14px;
+  }
+  .achievement-block-user-link {
+    width: 100%;
+  }
+  .achievement-block-user-pic {
+    width: 55px;
+    height: 55px;
+  }
+  .achievement-block-user-name {
+    font-size: 16px;
+    margin-left: 10px;
+  }
+  .goals-picture-big {
+    width: 100%;
+  }
+  .addach-tags-w {
+    width: 100%;
+  }
+  .achievement-block-user {
+    white-space: normal;
+  }
+  .achievement-block-user-allachievements {
+    padding-left: 60px;
+    box-sizing: border-box;
+  }
+  .achievement-block-content-info {
+    margin: 0 !important;
+  }
+  .footer-menu-list-li {
+    margin-left: 10px;
+  }
+  .footer-menu-list-li-a {
+    font-size: 12px;
+  }
+  .profileview {
+    white-space: normal;
+  }
+  .profileview-aside {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  .profileview-aside-img {
+    width: 280px;
+    height: 190px;
+  }
+  .editprofile-field {
+    white-space: normal;
+  }
+  .mobile_menu_toggle {
+    display: none;
+  }
+  .mobile_menu_toggle.mobile_menu_toggle__active {
+    display: block;
+  }
+  .friend-list-header-block-goals,
+  .friend-list-header-block-achievements,
+  .friend-list-block-goals,
+  .friend-list-block-achievements {
+    display: none;
+  }
+  .friend-list-block {
+    white-space: nowrap;
+  }
+  .friend-list-block-name {
+    white-space: normal;
+  }
+  .friend-list-header-block-points {
+    margin-left: 150px;
+  }
+  .achievement-block-content-col-1 {
+    width: 100%;
+  }
+  .output-header-meta {
+    top: 0;
+  }
+  .achievement-block-content-header-col-1 {
+    width: 75%;
+  }
+  .achievement-block-content-header-col-2 {
+    width: 25%;
+  }
+  .achievement-block-info {
+    margin-top: 30px;
+  }
+  .share-widget-title {
+    font-size: 13px;
+    margin-bottom: 3px;
+  }
+  .addach-header-inp {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  .addach-description-date {
+    right: auto;
+    left: 10px;
+  }
+  .addach-controlls-isgoal {
+    display: none;
+  }
+  .addach-tags {
+    white-space: normal;
+  }
+  .addach-tags-title {
+    margin-bottom: 5px;
+  }
+  .addach-extra {
+    white-space: normal;
+  }
+  .addach-extra-range {
+    white-space: normal;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .addach-extra-range-range {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .addach-header-inp-w {
+    width: 100%;
+  }
+  .achievement-block-content-cols {
+    white-space: normal;
+  }
+  .achievement-block-content-col.achievement-block-content-col-1 {
+    width: 100%;
+  }
+  .achievement-attachedquest-info {
+    width: 100%;
+  }
+  .questdetail-completeduser-text {
+    white-space: normal;
+    text-align: left;
+    margin-bottom: 5px;
+  }
+  .mygoals-left-wrapper {
+    float: none;
+    width: 100%;
+    white-space: normal;
+  }
+  .mygoals-left-wrapper .withProcess {
+    float: none;
+    width: 100%;
+  }
+  .mygoals-dead {
+    font-size: 12px;
+    margin-left: 16px;
+  }
+  .mygoals-stars {
+    margin-left: 67px;
+  }
+  .mygoals-diff {
+    font-size: 12px;
+  }
+  .processWprogress {
+    position: static;
+  }
+  .mygoals-progress {
+    width: 300px;
+  }
+  .goal-addsubtask-text {
+    width: 200px;
+  }
+  .goal-addsubtask-button {
+    width: 50px;
+  }
+  .goal-addsubtask-controll {
+    white-space: nowrap;
+  }
+  .subtask-top-left {
+    white-space: normal;
+    float: none;
+    margin-right: 0;
+  }
+  .subtask-top-left .input-check {
+    float: none;
+    display: block;
+  }
+  .subtask-top-name {
+    width: 100%;
+  }
+  .subtask-progress {
+    float: none;
+    margin-top: 3px;
+    margin-left: 44px;
+  }
+  .friend-list-block {
+    white-space: normal;
+  }
+  .friend-list-block a {
+    text-decoration: none;
+  }
+  .questpending-deadline {
+    width: 100%;
+    display: block;
+    position: static;
+    box-sizing: border-box;
+    margin-bottom: 5px;
+  }
+  .questpending-description {
+    box-sizing: border-box;
+    margin-bottom: 5px;
+    width: 100%;
+  }
+  .questssuggested-quests-quest-quest {
+    box-sizing: border-box;
+    width: 100%;
+    white-space: normal;
+  }
+  .questssuggested-quests-quest-quest-pic {
+    max-width: 100%;
+    max-height: 80px;
+    box-sizing: border-box;
+    border-radius: 0;
+  }
+  .questssuggested-quests-quest-quest-pic img {
+    max-width: 100%;
+  }
+  .questssuggested-quests-quest-quest-name {
+    margin-left: 0;
+    margin-bottom: 5px;
+  }
+  .questssuggested-quests-quest-user {
+    margin-right: 10px;
+  }
+  .goal-done-button {
+    float: none;
+    display: block;
+  }
+  .mdlst-h2t,
+  .mdlst-h2t-goals {
+    float: none !important;
+  }
+
+
+}
+
+
+
+
+
+.mobile_only {
+  display: none;
+}
+@media all and (max-width: 500px) {
+  body {
+    width: 340px;
+    overflow-x: hidden;
+  }
+  .mobile_only {
+    display: block;
+  }
+  .mobile_only-inline-block {
+    display: inline-block;
+  }
+  .mobile_only-inline {
+    display: inline;
+  }
+  .simplebox-padding {
+    padding: 10px 10px;
+  }
+  .wc {
+    width: 340px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .wc-c {
+    text-align: center;
+  }
+  .container-col-1 {
+    width: 340px;
+  }
+  .container-col-2 {
+    width: 340px;
+  }
+  .container-cols {
+    white-space: normal;
+  }
+  .container-col-1 {
+    width: 100%;
+  }
+  .container-col-2 {
+    width: 100%;
+  }
+  .mdlst-button {
+    padding: 8px 20px;
+  }
+  .mdlst-h2t,
+  .mdlst-h2t-goals {
+    font-size: 18px;
+    white-space: normal;
+  }
+  .footer-wrapper {
+    white-space: normal;
+  }
+  .footer-menu {
+    width: 100%;
+  }
+  .footer-copy {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  .mdlst-pan-text {
+    font-size: 14px;
+  }
+  .output-header {
+    white-space: normal;
+  }
+  .output-controlls-searchbox,
+  .questblock-info {
+    width: 100%;
+  }
+  .myrewards-list,
+  .rewards-catalog-list {
+    text-align: center;
+  }
+  .myrewards-block {
+    margin-right: 0;
+    margin-bottom: 45px;
+  }
+  .header-menu {
+    display: none;
+  }
+  .header-menu-list-li-a {
+    font-size: 13px;
+  }
+  .header-logo {
+    width: 120px;
+  }
+  .header-logo img {
+    max-width: 100px;
+    margin-top: 5px;
+  }
+  .header-enter-link {
+    font-size: 14px;
+    margin-right: 20px;
+  }
+  .userpanel-user {
+    width: 100%;
+  }
+  .userpanel-user-pic {
+    width: 60px;
+    height: 60px;
+    margin-right: 14px;
+  }
+  .userpanel-info {
+    width: 100%;
+    margin-top: 5px;
+  }
+  .userpanel-user-info-name {
+    font-size: 18px;
+  }
+  .userpanel-user-info-date {
+    font-size: 14px;
+  }
+  .userpanel-user-notifications {
+    margin-left: 20px;
+  }
+  .userpanel-info-scale {
+    width: 250px;
+  }
+  .userpanel-info-level {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+  }
+  .userpanel-info-level-point {
+    font-size: 24px;
+    padding-top: 0px;
+  }
+  .profileview-content {
+    width: 100%;
+  }
+  .profileview-aside-img {
+    width: 100px;
+    height: 100px;
+  }
+  .possible-friends-block-pic-userlink {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+  }
+  .profileview-content-level {
+    padding-top: 154px;
+  }
+  .profileview-h1 {
+    font-size: 22px;
+  }
+  .possible-friends-block {
+    width: 100%;
+    text-align: center;
+  }
+  .editprofile-field-label {
+    width: 120px;
+    font-size: 13px;
+  }
+  .editprofile-field-input {
+    width: 130px;
+  }
+  .editprofile-field-input input {
+    width: 100%;
+  }
+  .friend-list-header-block-goals {
+    margin-left: 180px;
+    width: 80px;
+  }
+  .friend-list-block-pic2 {
+    width: 60px;
+    height: 60px;
+    margin-right: 15px;
+  }
+  .friend-list-header-block {
+    font-size: 14px;
+  }
+  .friend-list-block-name {
+    width: 72px;
+    margin-right: 5px;
+  }
+  .friend-list-block-goals {
+    width: 70px;
+    margin-rigth: 25px;
+  }
+  .friend-list-block-achievements {
+    width: 110px;
+  }
+  .friend-list-block-points {
+    width: 50px;
+  }
+  .friend-list-header-block-level {
+    width: 60px;
+  }
+  .newblock {
+    white-space: normal;
+    position: relative;
+  }
+  .newblock-pic {
+    width: 100%;
+    margin-right: 10px;
+  }
+  .newblock-pic-name {
+    float: right;
+    text-align: left;
+    width: 70%;
+  }
+  .newblock-pic-user-to {
+    display: none;
+  }
+  .newblock-pic img {
+    width: 80px;
+    height: 80px;
+  }
+  .newblock-pic-userlink {
+    width: 60px;
+    height: 60px;
+  }
+  .newblock-data {
+    width: 100%;
+  }
+  .newblock-data-text {
+    width: 250px;
+  }
+  .newblock-data-text .not-date {
+    display: block;
+    font-size: 12px;
+  }
+  .newblock-icon {
+    position: absolute;
+    right: 0;
+    top: 110px;
+  }
+  .newblock-desc {
+    display: none;
+  }
+  .questblock {
+    white-space: normal;
+  }
+  .questblock-pic {
+    width: 100%;
+  }
+  .questblock-info-title {
+    width: 300px;
+    font-size: 17px;
+  }
+  .questblock-info-info-list-li {
+    font-size: 12px;
+  }
+  .lastachievement-info {
+    left: 50px;
+  }
+  .lastachievement-info-data-data {
+    width: 100%;
+    line-height: 1.5em;
+  }
+  .questblock-info-controlls-likes {
+    margin-right: 15px;
+    font-size: 14px;
+  }
+  .questblock-info-controlls-comments {
+    margin-right: 10px;
+    font-size: 14px;
+  }
+  .achievement-block-user-link {
+    width: 100%;
+  }
+  .achievement-block-user-pic {
+    width: 55px;
+    height: 55px;
+  }
+  .achievement-block-user-name {
+    font-size: 16px;
+    margin-left: 10px;
+  }
+  .goals-picture-big {
+    width: 100%;
+  }
+  .addach-tags-w {
+    width: 100%;
+  }
+  .achievement-block-user {
+    white-space: normal;
+  }
+  .achievement-block-user-allachievements {
+    padding-left: 60px;
+    box-sizing: border-box;
+  }
+  .achievement-block-content-info {
+    margin: 0 !important;
+  }
+  .footer-menu-list-li {
+    margin-left: 10px;
+  }
+  .footer-menu-list-li-a {
+    font-size: 12px;
+  }
+  .profileview {
+    white-space: normal;
+  }
+  .profileview-aside {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  .profileview-aside-img {
+    width: 280px;
+    height: 190px;
+  }
+  .editprofile-field {
+    white-space: normal;
+  }
+  .mobile_menu_toggle {
+    display: none;
+  }
+  .mobile_menu_toggle.mobile_menu_toggle__active {
+    display: block;
+  }
+  .friend-list-header-block-goals,
+  .friend-list-header-block-achievements,
+  .friend-list-block-goals,
+  .friend-list-block-achievements {
+    display: none;
+  }
+  .friend-list-block {
+    white-space: nowrap;
+  }
+  .friend-list-block-name {
+    white-space: normal;
+  }
+  .friend-list-header-block-points {
+    margin-left: 150px;
+  }
+  .achievement-block-content-col-1 {
+    width: 100%;
+  }
+  .output-header-meta {
+    top: 0;
+  }
+  .achievement-block-content-header-col-1 {
+    width: 75%;
+  }
+  .achievement-block-content-header-col-2 {
+    width: 25%;
+  }
+  .achievement-block-info {
+    margin-top: 30px;
+  }
+  .share-widget-title {
+    font-size: 13px;
+    margin-bottom: 3px;
+  }
+  .addach-header-inp {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  .addach-description-date {
+    right: auto;
+    left: 10px;
+  }
+  .addach-controlls-isgoal {
+    display: none;
+  }
+  .addach-tags {
+    white-space: normal;
+  }
+  .addach-tags-title {
+    margin-bottom: 5px;
+  }
+  .addach-extra {
+    white-space: normal;
+  }
+  .addach-extra-range {
+    white-space: normal;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .addach-extra-range-range {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .addach-header-inp-w {
+    width: 100%;
+  }
+  .achievement-block-content-cols {
+    white-space: normal;
+  }
+  .achievement-block-content-col.achievement-block-content-col-1 {
+    width: 100%;
+  }
+  .achievement-attachedquest-info {
+    width: 100%;
+  }
+  .questdetail-completeduser-text {
+    white-space: normal;
+    text-align: left;
+    margin-bottom: 5px;
+  }
+  .mygoals-left-wrapper {
+    float: none;
+    width: 100%;
+    white-space: normal;
+  }
+  .mygoals-left-wrapper .withProcess {
+    float: none;
+    width: 100%;
+  }
+  .mygoals-dead {
+    font-size: 12px;
+    margin-left: 16px;
+  }
+  .mygoals-stars {
+    margin-left: 67px;
+  }
+  .mygoals-diff {
+    font-size: 12px;
+  }
+  .processWprogress {
+    position: static;
+  }
+  .mygoals-progress {
+    width: 300px;
+  }
+  .goal-addsubtask-text {
+    width: 200px;
+  }
+  .goal-addsubtask-button {
+    width: 50px;
+  }
+  .goal-addsubtask-controll {
+    white-space: nowrap;
+  }
+  .subtask-top-left {
+    white-space: normal;
+    float: none;
+    margin-right: 0;
+  }
+  .subtask-top-left .input-check {
+    float: none;
+    display: block;
+  }
+  .subtask-top-name {
+    width: 100%;
+  }
+  .subtask-progress {
+    float: none;
+    margin-top: 3px;
+    margin-left: 44px;
+  }
+  .friend-list-block {
+    white-space: normal;
+  }
+  .friend-list-block a {
+    text-decoration: none;
+  }
+  .questpending-deadline {
+    width: 100%;
+    display: block;
+    position: static;
+    box-sizing: border-box;
+    margin-bottom: 5px;
+  }
+  .questpending-description {
+    box-sizing: border-box;
+    margin-bottom: 5px;
+    width: 100%;
+  }
+  .questssuggested-quests-quest-quest {
+    box-sizing: border-box;
+    width: 100%;
+    white-space: normal;
+  }
+  .questssuggested-quests-quest-quest-pic {
+    max-width: 100%;
+    max-height: 80px;
+    box-sizing: border-box;
+    border-radius: 0;
+  }
+  .questssuggested-quests-quest-quest-pic img {
+    max-width: 100%;
+  }
+  .questssuggested-quests-quest-quest-name {
+    margin-left: 0;
+    margin-bottom: 5px;
+  }
+  .questssuggested-quests-quest-user {
+    margin-right: 10px;
+  }
+  .goal-done-button {
+    float: none;
+    display: block;
+  }
+  .mdlst-h2t,
+  .mdlst-h2t-goals {
+    float: none !important;
+  }
+
+
+
+}
+
+
+
+
+
+
+
+.goals-picture-mid {
+    float: none;
+}
+.achievement-block-content-header-col.achievement-block-content-header-col-1 > .achievement-block-content-info{
+	    margin-top: 24px!important;
+}
+#nav-serv{
+	    position: absolute;
+    top: 30px;
+    right: 0;
+}
+.marginBottom30 {
+    line-height: 1.65em;
+}
+.goals-picture-small {
+    margin: 0px 1%;
+    width: 14.5%;
+    height: 80px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.goals-picture-big {
+    width: 100%;
+    margin: 0 0 30px 0;
+}
+.achievement-block--small .achievement-block-content-col-1 {
+    width: 430px;
+}
+.goals-picture-mid {
+    width: 200px;
+    height: 200px;
+}
+.achievement-block-meta {
+    position: absolute;
+    left: 0;
+    top: 0px;
+    left: 25px;
+}
+.achievement-block-content-description {
+    min-height: 150px;
+}
+.achievement-block--small .achievement-block-images-picture-small {
+	    position: absolute;
+    top: 80px;
+    right: 30px;
+}
+.goals-picture-mid {
+    position: absolute;
+    top: 80px;
+    right: 30px;
+}
+.withHeader {
+    margin-top: 27px;
+    margin-right: 0;
+    margin-top: 20px;
+    padding: 0px 30px;
+}
+.simplebox.simplebox-padding > .questblock-pic {
+    height: 200px;
+    position: static;
+}
+.output-header-meta {
+    top: 0px;
+}
+.withHeader {
+    margin-bottom: 15px;
+
+}
+.achievement-block-content-col.achievement-block-content-header-col-2{
+	    width: initial;
+}
+@media all and (max-width: 1280px) {
+	.output-header-meta-goals {
+    left: 80px;
+    right: initial;
+	}
+	.achievement-block-content-cols {
+    white-space: initial;
+}
+#videoMessage h3 {
+    font-size: 1.7em!important;
+}
+.achievement-block-content-col-2 {
+    width: initial;
+}	
+}
+@media all and (min-width: 801px) and (max-width: 1270px) {
+	.achievement-block-content-header-col.achievement-block-content-header-col-1 > .achievement-block-content-info {
+    margin-top: 20px!important;
+}
+#nav-serv {
+    top: 23px;
+}
+	.profileview-aside-img {
+    background-size: contain;
+}
+	.achievement-block-content-description {
+    min-height: initial;
+}
+.achievement-block--small .achievement-block-images-picture-small {
+  position: static;
+}
+.goals-picture-mid {
+        position: static;
+}
+	.questpending-description {
+    width: 100%;
+}
+	.questblock-info {
+    margin-left: 180px;
+}
+	.questpending-deadline {
+    right: 0;
+	}
+	.questpending-title {
+    margin-top: 20px;
+}
+	.profileview-allachievements {
+    margin-right: 5px;
+	}
+}
+@media all and (max-width: 1000px) {
+	.header-menu-list-li {
+    margin-left: 15px;
+}
+#videoMessage h1 {
+    font-size: 2.4em!important;
+}
+#videoMessage h2 {
+    font-size: 2em!important;
+}
+#videoMessage h3 {
+    font-size: 1.6em!important;
+}
+	#videoMessage > .owl-carousel.owl-theme{
+		    width: 100%!important;
+	}
+	.container-col-1 {
+    margin-right: 10px;
+}
+}
+
+@media all and (min-width: 801px) and (max-width: 920px) {
+.header-menu {
+    width: 400px;
+}
+}
+@media all and (max-width: 920px) {
+	.newblock-icon {
+    margin-left: 0;
+}
+}
+@media all and (max-width: 800px) {
+	#nav-serv {
+    top: 20px;
+	}
+	.achievement-block-content-header-col.achievement-block-content-header-col-1 > .achievement-block-content-info{
+		    position: absolute;
+    margin-top: 36px;
+    float: left;
+    margin-left: 30px;
+    top: 0;
+    left: 120px;
+	}
+	.profileview-aside-img {
+    background-size: cover;
+}
+	
+	/* Ñ€ÐµÐ´Ð°ÐºÑ‚ */
+.newblock-pic-user-to {
+    display: block;
+    position: absolute;
+    right: 15px;
+    top: 30px;
+}
+	.possible-friends-block {
+    width: 49%;
+	    margin-right: 0;
+}
+	.newblock-icon {
+    position: absolute;
+    right: 5px;
+    top: -20px;
+}
+	.newblock-data-text {
+    width: 100%;
+}
+.newblock-pic-name {
+    float: none;
+    text-align: left;
+    width: 100%;
+}
+.mobile_only {
+    display: block;
+}
+	.rewards-catalog-block:nth-child(4n) {
+    margin-right: 20px;
+}
+	.lastachievement-wrapper {
+    width: 100%;
+	}
+	body {
+    width: 100%;
+	}
+	.wc {
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 20px;
+    padding-right: 20px;
+	}
+	.footer-menu {
+    width: initial;
+    float: right;
+}
+	.questblock-pic {
+    width: 300px;
+    height: 260px;
+	position: static;
+	}
+	.questblock-info-title {
+    width: 100%;
+	}
+	.header-menu {
+    display: inline-block; 
+	    width: 400px;
+}
+.userpanel-user {
+    width: 300px;
+}
+.userpanel-info {
+    width: 320px;
+}
+	/* Ð½Ð¾Ð² */
+	.profileview-aside-img {
+    background-position: top;
+	}
+	.achievement-block--small .achievement-block-images-picture-small {
+  position: static;
+}
+		.achievement-block-content-description {
+    min-height: initial;
+}
+.goals-picture-mid {
+        position: static;
+}
+	.mygoals-name-div > .withHeader {
+    margin-bottom: 15px;
+    margin-top: 20px;
+}
+.mygoals-name-div > .goal-done-button {
+    float: right;
+    display: block;
+}
+.mygoals-name-div > .mdlst-button {
+    padding: 0px 20px;
+}
+.mygoals-name-div > .withHeader {
+    margin-right: 0;
+}
+.mygoals-name-div > .mdlst-h2t-goals {
+    float: left !important;
+}
+	.achievement-block-content-nav-serv{
+		    position: absolute;
+    right: 0;
+	    top: 0;
+	}
+	.mygoals-name-div > .mygoals-name-button{
+		    float: right;
+	}
+	#userpanel > .wc{
+		    width: 670px;
+	}
+	.newblock-pic-user-to > .newblock-pic-userlink {
+    background-size: contain;
+    margin: 0 auto;
+}
+	.questblock-info-meta-points {
+    position: static;
+	}
+		.output-controlls .mdlst-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 12px 20px;
+}
+	.questblock-info {
+    margin-left: 0;
+	    padding: 16px 16px 16px 16px;
+}
+	.questblock-pic-curtain {
+    display: none;
+	}
+	.questblock {
+    text-align: center;
+	}
+.output-controlls{
+	position: relative;
+}
+	.rewards-catalog-block {
+    margin-right: 20px;
+    margin-left: 20px;
+	}
+		#video {
+    width: 800px!important;
+}
+	.header-enter{
+	position: absolute;
+    right: 20px;
+    top: 30px;
+	}
+	.footer-copy {
+    width: initial;
+	}
+	#videoMessage h1 {
+    font-size: 2em!important;
+}
+#videoMessage h2 {
+    font-size: 1.6em!important;
+}
+#videoMessage h3 {
+    font-size: 1.2em!important;
+}
+.achievement-block-content-header-col.achievement-block-content-header-col-1 > .achievement-block-content-info {
+    margin-top: 15px!important;
+    margin-left: 20px!important;
+}
+
+}
+@media all and (max-width: 767px) {
+	.header-menu {
+    display: none; 
+}	
+}
+@media all and (max-width: 680px) {
+	.achievement-block--small .achievement-block-content-col-1 {
+    width: 100%;
+    margin: 0;
+}
+	.mygoals-name {
+    float: none;
+}
+.mygoals-name-div > .mygoals-name-button {
+    float: none;
+}
+	.userpanel-user {
+    width: 100%;
+}
+.userpanel-info {
+    width: 100%;
+}
+	#userpanel > .wc{
+		    width: 100%;
+	}
+}
+@media all and (max-width: 620px) {
+	#nav-serv {
+    top: 16px;
+}
+	.mdlst-h2t, .mdlst-h2t-goals {
+    float: none !important;
+}
+.achievement-block-content-header-col.achievement-block-content-header-col-1 > .achievement-block-content-info {
+
+    margin-left: 0px!important;
+}
+	.goals-picture-big {
+    background-position: center;
+	}
+	.goals-picture-small {
+    margin: 0 0 5px 0;
+    width: 100%;
+    background-position: center;
+    height: 180px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+	.rewards-catalog-header-meta {
+    position: static;
+    margin-top: 20px;
+	}
+	.lastachievement-info {
+    width: 300px;
+    left: 50%;
+    margin-left: -150px;
+    top: 10px;
+	}
+	.lastachievement-info-data-data {
+    padding-left: 0;
+}
+.lastachievement-info-data {
+    white-space: initial;
+    text-align: center;
+}
+}
+@media all and (max-width: 480px) {
+	.notifications {
+    margin-left: -260px;
+	}
+	.questblock-info-info-list-2-badge {
+    padding: 0;
+	}
+	.questblock-info-info-list {
+    width: 100%;
+	    list-style-type: none;
+	}
+	.questblock-info-info-list-li {
+    margin-left: 0;
+}
+	.achievement-block--small {
+    margin-left: 0;
+	    opacity: 1;
+	}
+	.profileview-aside {
+    margin-right: 0;
+	}
+	#videoMessage h1 {
+    font-size: 1.6em!important;
+}
+#videoMessage h2 {
+    font-size: 1.4em!important;
+}
+#videoMessage h3 {
+    font-size: 1.1em!important;
+}
+.output-header-meta {
+    position: static;
+    margin: 0 0 25px 0;
+}
+}
+@media all and (max-width: 390px) {
+	.achievement-block-content-header-col.achievement-block-content-header-col-1 > .achievement-block-content-info {
+		    position: static;
+	}
+	.mygoals-left-wrapper {
+    text-align: left;
+	}
+	.achievement-block-info {
+    padding: 15px 10px;
+	}
+	.mdlst-h2t, .mdlst-h2t-goals {
+    text-align: center;
+}
+	.share-widget-title {
+    margin-right: 0;
+	}
+	.tabs input[type="radio"] + label {
+    padding: 3px;
+	}
+	.questblock-info-controlls {
+    margin-top: 10px;
+}
+	.container-menu-list-meta-add-plus {
+    left: 0;
+	}
+
+.mygoals-progress {
+    width: 290px;
+}
+
+.mygoals-left-wrapper {
+    padding: 0 5px;
+}
+	.output-header-meta-goals {
+    position: static;
+	}
+	.mygoals-clock {
+    display: none;
+	}
+	.goal-done-button {
+    margin: 15px auto 0;
+}
+	.mygoals-process {
+    margin-left: 0;
+	}
+	.questblock-info-info-list-2 {
+    padding: 0;
+}
+	.achievement-block-content-header-col.achievement-block-content-header-col-1{
+		    width: 100%;
+    margin: 0;
+	}
+	.achievement-block-content-info{
+		float: none!important;
+	}
+	.achievement-block-user-allachievements {
+    padding-left: 0;
+	}
+	.simplebox.simplebox-padding{
+		    width: 100%;
+    text-align: center;
+    display: block;
+	    padding: 15px 0;
+    font-size: 15px;
+	}
+	.questblock-info-controlls-likes {
+    margin-right: 10px;
+	}
+	.like-controll-plus {
+    margin-right: 10px;
+}
+	.footer-wrapper {
+    text-align: center;
+}
+.footer-menu {
+    float: none;
+}
+.wc {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.header-enter-link {
+    margin-right: 10px;
+}
+.simplebox-padding, .questssuggested-padding, .questssuggested-quests-quest-padding, .achievement-block-padding, .newblock-padding, .friend-list-block-padding, .profileview-padding, .editprofile-padding, .subtasks-w-padding, .lastachievement-padding, .notifications-padding, .notificationslist-padding, .questssuggested, .questssuggested-quests-quest, .achievement-block-content, .achievement-attachedquest-block, .newblock, .friend-list-block, .profileview, .editprofile, .subtasks-w, .lastachievement, .notifications, .notificationslist {
+    padding: 29px 10px;
+}
+.friend-list-block-level {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    width: 60px;
+}
+.friend-list-header-block-points {
+    margin-left: 160px;
+}
+.friend-list-header-block-points {
+    width: 60px;
+}
+.possible-friends-block {
+    width: 100%;
+}
+}
+@media all and (max-width: 339px) {
+	.userpanel-info-scale {
+    width: 235px;
+}
+}
+.achievement-block-content-info {
+    margin-bottom: 0px;
+}
+.mdlst-h2t-goals {
+    margin-bottom: 0px;
+}
+.achievement-block-content-header-col-2 {
+    width: initial;
+}
+body {
+    min-width: 320px;
+}
+.newblock-pic-user-to > .newblock-pic-userlink {
+    background-repeat: no-repeat;
+}
